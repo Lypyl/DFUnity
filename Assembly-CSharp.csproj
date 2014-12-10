@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+	<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+	<ProductVersion>10.0.20506</ProductVersion>
+	<SchemaVersion>2.0</SchemaVersion>
+	<ProjectGuid>{1D45277B-A47E-F56E-AB7D-9CA29A1739D3}</ProjectGuid>
+	<OutputType>Library</OutputType>
+	<AppDesignerFolder>Properties</AppDesignerFolder>
+	<RootNamespace></RootNamespace>
+	<AssemblyName>Assembly-CSharp</AssemblyName>
+	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+	<FileAlignment>512</FileAlignment>
+	<BaseDirectory>Assets</BaseDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+	<DebugSymbols>true</DebugSymbols>
+	<DebugType>full</DebugType>
+	<Optimize>false</Optimize>
+	<OutputPath>Temp\bin\Debug\</OutputPath>
+	<DefineConstants>DEBUG;TRACE;UNITY_4_6_0;UNITY_4_6;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_4_6_FEATURES;INCLUDE_WP_BLUE_SUPPORT;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+	<DebugType>pdbonly</DebugType>
+	<Optimize>true</Optimize>
+	<OutputPath>Temp\bin\Release\</OutputPath>
+	<DefineConstants>TRACE</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+	<Reference Include="System" />
+    <Reference Include="System.XML" />
+	<Reference Include="System.Core" />
+	<Reference Include="System.Xml.Linq" />
+	<Reference Include="UnityEngine">
+	  <HintPath>F:/apps/programming/Unity/Data/Managed/UnityEngine.dll</HintPath>
+	</Reference>
+	<Reference Include="UnityEditor">
+	  <HintPath>F:/apps/programming/Unity/Data/Managed/UnityEditor.dll</HintPath>
+	</Reference>
+  </ItemGroup>
+  <ItemGroup>
+     <Compile Include="Assets\Daggerfall Unity\Scripts\API\Arch3dFile.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\API\BaseImageFile.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\API\BlocksFile.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\API\BsaFile.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\API\CifRciFile.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\API\DFBitmap.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\API\DFBlock.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\API\DFColor.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\API\DFLocation.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\API\DFMesh.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\API\DFMonster.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\API\DFPalette.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\API\DFPosition.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\API\DFRandom.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\API\DFRegion.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\API\DFSize.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\API\DFSound.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\API\DFValidator.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\API\FaceUVTool.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\API\FileProxy.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\API\ImgFile.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\API\MapsFile.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\API\MonsterFile.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\API\PakFile.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\API\PowerOfTwo.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\API\SkyFile.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\API\SndFile.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\API\TextureFile.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\API\Vector3.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\API\WoodsFile.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\DaggerfallUnity.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\DaggerfallUnityEnums.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\DaggerfallUnityStructs.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Demo\AmbientEffectsPlayer.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Demo\AnimateTexture.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Demo\EnemyAttack.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Demo\EnemyBlood.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Demo\EnemyDeath.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Demo\EnemyHealth.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Demo\EnemyMotor.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Demo\EnemySenses.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Demo\EnemySounds.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Demo\FPSCrosshair.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Demo\FPSWeapon.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Demo\PlayerActivate.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Demo\PlayerEnterExit.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Demo\PlayerFootsteps.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Demo\PlayerHealth.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Demo\PlayerMotor.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Demo\PlayerMouseLook.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Demo\ShowPlayerDamage.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Demo\SunlightManager.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Demo\WeaponManager.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\External\iTween.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Game\DevConsole.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Game\Error.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Internal\DaggerfallAction.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Internal\DaggerfallActionDoor.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Internal\DaggerfallAudioSource.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Internal\DaggerfallBillboard.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Internal\DaggerfallBlock.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Internal\DaggerfallCityGate.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Internal\DaggerfallGroundMesh.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Internal\DaggerfallInterior.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Internal\DaggerfallLight.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Internal\DaggerfallLocation.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Internal\DaggerfallMesh.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Internal\DaggerfallMobileUnit.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Internal\DaggerfallSky.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Internal\DaggerfallStaticDoors.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Internal\PlayerGPS.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Internal\WorldTime.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\MaterialReader.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\MeshReader.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\SoundClips.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\SoundReader.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Utility\ClimateSwaps.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Utility\ContentReader.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Utility\EnemyBasics.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Utility\GameObjectHelper.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Utility\ImageProcessing.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Utility\ModelCombiner.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Utility\RDBLayout.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Utility\RMBLayout.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Utility\RandomEncounters.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Utility\ThreadedJob.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Utility\WeaponBasics.cs" />
+ <Reference Include="UnityEngine.UI">
+ <HintPath>F:/apps/programming/Unity/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
+ </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+	   Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  
+</Project>

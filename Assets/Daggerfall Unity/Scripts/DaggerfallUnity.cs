@@ -45,6 +45,7 @@ namespace DaggerfallWorkshop
 
         #region Public Fields
 
+        public bool devConsoleOpen = false; 
         public string Arena2Path;
         public int ModelImporter_ModelID = 456;
         public string BlockImporter_BlockName = "MAGEAA01.RMB";

@@ -11,6 +11,7 @@ namespace DaggerfallWorkshop.Demo
     {
         Vector2 _mouseAbsolute;
         Vector2 _smoothMouse;
+        DaggerfallUnity _dfUnity;
 
         public bool invertMouseY = false;
         public Vector2 clampInDegrees = new Vector2(360, 180);
@@ -49,7 +50,8 @@ namespace DaggerfallWorkshop.Demo
 
             // Suppress mouse look if fire2 is down
             // This means the player is swinging weapon
-            if (Input.GetButton("Fire2"))
+            // Or if the dev console is open 
+            if (Input.GetButton("Fire2") || _dfUnity.devConsoleOpen)
                 return;
 
             // Allow the script to clamp based on a desired target value.
@@ -111,6 +113,13 @@ namespace DaggerfallWorkshop.Demo
             // Reset smoothing
             _mouseAbsolute = Vector2.zero;
             _smoothMouse = Vector2.zero;
+
+            if (!_dfUnity) { 
+                if(!DaggerfallUnity.FindDaggerfallUnity(out _dfUnity)) { 
+                    DaggerfallUnity.LogMessage(Error.ERROR_GAME_DAG_UNITY_NOT_FOUND);
+                    Application.Quit();
+                }
+            }
         }
 
         public void SetFacing(Vector3 forward)

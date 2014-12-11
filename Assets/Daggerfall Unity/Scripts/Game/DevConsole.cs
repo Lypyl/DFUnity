@@ -12,7 +12,7 @@ namespace DaggerfallWorkshop.Game {
         string _outputText;
 
         public void displayText(string text) {
-            this._outputText += "\n" + System.DateTime.UtcNow + "***" + text;
+            this._outputText += "\n" + System.DateTime.UtcNow + " *** " + text;
         }
 
         public void flushText() {
@@ -21,7 +21,7 @@ namespace DaggerfallWorkshop.Game {
 
         // Use this for initialization
         void Start () {
-        
+            displayText("Dev console created");        
         }
 
         // Sanity check
@@ -44,14 +44,6 @@ namespace DaggerfallWorkshop.Game {
                         dfUnity.devConsoleOpen = false;
                     } else {
                         dfUnity.devConsoleOpen = true;
-                        displayText("Dev console opened!");
-                        displayText("Dev console opened!");
-                        displayText("Dev console opened!");
-                        displayText("Dev console opened!");
-                        displayText("Dev console opened!");
-                        displayText("Dev console opened!");
-                        displayText("Dev console opened!");
-                        displayText("Dev console opened!");
                     }
                 }
             } 

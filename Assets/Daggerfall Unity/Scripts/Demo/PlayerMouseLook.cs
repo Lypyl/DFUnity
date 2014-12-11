@@ -21,6 +21,8 @@ namespace DaggerfallWorkshop.Demo
         public Vector2 targetDirection;
         public Vector2 targetCharacterDirection;
 
+        bool enableMLook = true;
+
         // Assign this if there's a parent object controlling motion, such as a Character Controller.
         // Yaw rotation will affect this object instead of the camera if set.
         public GameObject characterBody;
@@ -47,6 +49,16 @@ namespace DaggerfallWorkshop.Demo
 #else
             Screen.lockCursor = lockCursor;
 #endif
+
+            if (Input.GetKeyDown(KeyCode.Escape)) {
+                enableMLook = !enableMLook;
+            }
+
+            if (!enableMLook && Input.GetMouseButtonDown(0) || !enableMLook && Input.GetMouseButtonDown(1)) {
+                enableMLook = true;
+            }
+
+            if (!enableMLook) return;
 
             // Suppress mouse look if fire2 is down
             // This means the player is swinging weapon

@@ -3,10 +3,21 @@ using System.Collections;
 
 namespace DaggerfallWorkshop.Game {
 
+    // Displays internal game messages and allows the user to execute internal game commands
+    // Call displayText(...) to append a message to the log
     public class DevConsole : MonoBehaviour {
 
         DaggerfallUnity dfUnity;
         float deltaTime = 0.0f;
+        string _outputText;
+
+        public void displayText(string text) {
+            this._outputText += "\n" + System.DateTime.UtcNow + "***" + text;
+        }
+
+        public void flushText() {
+            this._outputText = "";
+        }
 
         // Use this for initialization
         void Start () {
@@ -33,6 +44,14 @@ namespace DaggerfallWorkshop.Game {
                         dfUnity.devConsoleOpen = false;
                     } else {
                         dfUnity.devConsoleOpen = true;
+                        displayText("Dev console opened!");
+                        displayText("Dev console opened!");
+                        displayText("Dev console opened!");
+                        displayText("Dev console opened!");
+                        displayText("Dev console opened!");
+                        displayText("Dev console opened!");
+                        displayText("Dev console opened!");
+                        displayText("Dev console opened!");
                     }
                 }
             } 
@@ -49,11 +68,13 @@ namespace DaggerfallWorkshop.Game {
         }
 
         void drawDevConsole() {
-            GUI.Box(new Rect(0, 0, Screen.width, Screen.height), "Dev Console");
             int w = Screen.width, h = Screen.height;
+            Vector2 scrollPosition = Vector2.zero;
 
+            GUI.Box(new Rect(0, 0, Screen.width, Screen.height), "Dev Console");
+
+            // FPS
             GUIStyle style = new GUIStyle();
-
             Rect rect = new Rect(0, 0, w, h * 2 / 100);
             style.alignment = TextAnchor.UpperLeft;
             style.fontSize = h * 2 / 100;
@@ -62,6 +83,13 @@ namespace DaggerfallWorkshop.Game {
             float fps = 1.0f / deltaTime;
             string text = string.Format("{0:0.0} ms ({1:0.} fps)", msec, fps);
             GUI.Label(rect, text, style);
+
+            GUILayout.BeginArea(new Rect(0, 50, w, h - 50));
+            scrollPosition.y = Mathf.Infinity; // this seems silly (and will go away when input is implemented)
+            scrollPosition = GUILayout.BeginScrollView(scrollPosition, GUILayout.Width(w), GUILayout.Height(h - 50));
+            GUILayout.TextField(_outputText, "Label");
+            GUILayout.EndScrollView();
+            GUILayout.EndArea();
         }
     }
 }

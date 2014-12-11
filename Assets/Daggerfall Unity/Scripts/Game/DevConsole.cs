@@ -64,7 +64,9 @@ namespace DaggerfallWorkshop.Game {
             if (dfUnity.IsReady) {
                 if (dfUnity.devConsoleOpen) {
                     if (Event.current.keyCode == KeyCode.Return) {
-                        dispatchCommand();
+                        if (_userCommand != "") { 
+                            dispatchCommand();
+                        }
                     } 
                     drawDevConsole();
                 }
@@ -72,6 +74,7 @@ namespace DaggerfallWorkshop.Game {
         }
 
         void dispatchCommand() {
+            displayText("> " + _userCommand);
             _userCommand = "";
         }
 

@@ -58,13 +58,14 @@ namespace DaggerfallWorkshop.Demo
                 enableMLook = true;
             }
 
-            if (!enableMLook) return;
-
             // Suppress mouse look if fire2 is down
             // This means the player is swinging weapon
             // Or if the dev console is open 
-            if (Input.GetButton("Fire2") || _dfUnity.devConsoleOpen) {
+            if (!enableMLook || Input.GetButton("Fire2") || _dfUnity.devConsoleOpen) {
+                this.lockCursor = false;
                 return;
+            } else { 
+                this.lockCursor = true;
             }
 
             // Allow the script to clamp based on a desired target value.

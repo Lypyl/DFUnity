@@ -7,16 +7,23 @@ namespace DaggerfallWorkshop.Game {
     // Call displayText(...) to append a message to the log
     public class DevConsole : MonoBehaviour {
 
+        public static DevConsole instance { get; private set; }
+
+        void Awake() {
+            instance = this;
+        }
+             
         DaggerfallUnity dfUnity;
         float deltaTime = 0.0f;
-        string _outputText;
+        static string _outputText = "";
 
-        public void displayText(string text) {
-            this._outputText += "\n" + System.DateTime.UtcNow + " *** " + text;
+        public static void displayText(string text) {
+            // TODO: can string.concat ever buffer overflow?
+            _outputText += "\n" + System.DateTime.UtcNow + " *** " + text;
         }
 
-        public void flushText() {
-            this._outputText = "";
+        public static void flushText() {
+            _outputText = "";
         }
 
         // Use this for initialization

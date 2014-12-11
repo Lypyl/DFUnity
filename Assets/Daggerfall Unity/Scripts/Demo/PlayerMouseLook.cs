@@ -51,8 +51,9 @@ namespace DaggerfallWorkshop.Demo
             // Suppress mouse look if fire2 is down
             // This means the player is swinging weapon
             // Or if the dev console is open 
-            if (Input.GetButton("Fire2") || _dfUnity.devConsoleOpen)
+            if (Input.GetButton("Fire2") || _dfUnity.devConsoleOpen) {
                 return;
+            }
 
             // Allow the script to clamp based on a desired target value.
             var targetOrientation = Quaternion.Euler(targetDirection);

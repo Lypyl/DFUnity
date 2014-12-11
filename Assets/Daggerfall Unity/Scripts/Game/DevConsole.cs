@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace DaggerfallWorkshop.Game {
 
@@ -16,6 +17,7 @@ namespace DaggerfallWorkshop.Game {
         DaggerfallUnity dfUnity;
         float deltaTime = 0.0f;
         static string _outputText = "";
+        string _userCommand = "";
 
         public static void displayText(string text) {
             // TODO: can string.concat ever buffer overflow?
@@ -61,9 +63,16 @@ namespace DaggerfallWorkshop.Game {
 
             if (dfUnity.IsReady) {
                 if (dfUnity.devConsoleOpen) {
+                    if (Event.current.keyCode == KeyCode.Return) {
+                        dispatchCommand();
+                    } 
                     drawDevConsole();
                 }
             }
+        }
+
+        void dispatchCommand() {
+            _userCommand = "";
         }
 
         void drawDevConsole() {
@@ -83,12 +92,16 @@ namespace DaggerfallWorkshop.Game {
             string text = string.Format("{0:0.0} ms ({1:0.} fps)", msec, fps);
             GUI.Label(rect, text, style);
 
-            GUILayout.BeginArea(new Rect(0, 50, w, h - 50));
+            GUILayout.BeginArea(new Rect(0, 50, w, h - 100));
             scrollPosition.y = Mathf.Infinity; // this seems silly (and will go away when input is implemented)
-            scrollPosition = GUILayout.BeginScrollView(scrollPosition, GUILayout.Width(w), GUILayout.Height(h - 50));
+            scrollPosition = GUILayout.BeginScrollView(scrollPosition, GUILayout.Width(w), GUILayout.Height(h - 100));
             GUILayout.TextField(_outputText, "Label");
             GUILayout.EndScrollView();
             GUILayout.EndArea();
+            
+            // TODO: SECURITY: userCommand should be validated 
+            GUI.SetNextControlName("InputField");
+            _userCommand = GUI.TextField(new Rect(0, h - 50, w, 50), _userCommand, 25);
         }
     }
 }

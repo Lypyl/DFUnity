@@ -33,6 +33,7 @@ namespace DaggerfallWorkshop
         bool isReady = false;
         DaggerfallUnity instance;
         Dictionary<int, MobileEnemy> enemyDict;
+        FileProxy confFile;
         ContentReader reader;
 
         WorldTime worldTime;
@@ -239,14 +240,14 @@ namespace DaggerfallWorkshop
             }
         }
 
-        private void SetupContentReaders()
-        {
-            if (isReady)
-            {
-                if (reader == null)
+        private void SetupContentReaders() {
+            if (isReady) {
+                if (reader == null) {
                     reader = new ContentReader(Arena2Path, this);
-                if (enemyDict == null)
+                }
+                if (enemyDict == null) { 
                     enemyDict = EnemyBasics.GetEnemyDict();
+                }
             }
         }
 
@@ -256,7 +257,9 @@ namespace DaggerfallWorkshop
 
         public static void LogMessage(string message, bool showInEditor = false)
         {
-            if (showInEditor || Application.isPlaying) Debug.Log(string.Format("DaggerfallUnity {0}: {1}", Version, message));
+            if (showInEditor || Application.isPlaying) { 
+                Debug.Log(string.Format("DaggerfallUnity {0}: {1}", Version, message));
+            }
         }
 
         public static bool FindDaggerfallUnity(out DaggerfallUnity dfUnityOut)

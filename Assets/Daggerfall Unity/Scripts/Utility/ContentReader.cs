@@ -19,6 +19,7 @@ namespace DaggerfallWorkshop
         BlocksFile blockFileReader;
         MapsFile mapFileReader;
         MonsterFile monsterFileReader;
+        ConfFile confFileReader;
 
         public bool IsReady
         {
@@ -110,13 +111,21 @@ namespace DaggerfallWorkshop
         /// </summary>
         private void SetupReaders()
         {
-            if (blockFileReader == null)
+            if (blockFileReader == null) { 
                 blockFileReader = new BlocksFile(Path.Combine(arena2Path, BlocksFile.Filename), FileUsage.UseMemory, true);
-            if (mapFileReader == null)
+            }
+            if (mapFileReader == null) { 
                 mapFileReader = new MapsFile(Path.Combine(arena2Path, MapsFile.Filename), FileUsage.UseMemory, true);
-            if (monsterFileReader == null)
+            }
+            if (monsterFileReader == null) { 
                 monsterFileReader = new MonsterFile(Path.Combine(arena2Path, MonsterFile.Filename), FileUsage.UseMemory, true);
-
+            }
+            if (confFileReader == null) {
+                // TODO: DEBUG: Remove messages
+                DaggerfallWorkshop.Game.DevConsole.displayText("Loading a new conf file reader");
+                confFileReader = new ConfFile(ConfFile.Filename, FileUsage.UseDisk, false);
+                DaggerfallWorkshop.Game.DevConsole.displayText("Finished loading the conf file reader");
+            }
             isReady = true;
         }
 

@@ -30,7 +30,11 @@ namespace DaggerfallWorkshop.Game {
 
         // Use this for initialization
         void Start () {
-            displayText("Dev console created");        
+            displayText("Dev console created");
+            displayText("Command line args: ");
+            foreach (string arg in System.Environment.GetCommandLineArgs()) {
+                displayText(arg);
+            }
         }
 
         // Sanity check

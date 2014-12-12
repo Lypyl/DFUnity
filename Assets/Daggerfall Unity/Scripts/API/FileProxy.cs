@@ -270,6 +270,24 @@ namespace DaggerfallConnect.Utility
         }
 
         /// <summary>
+        /// Gets a stream reader to managed file.
+        /// </summary>
+        /// <returns>StreamReader to managed file with UTF8 encoding.</returns>
+        public StreamReader GetStreamReader()
+        {
+            switch (fileUsage)
+            {
+                case FileUsage.UseMemory:
+                    return new StreamReader(GetMemoryStream(), Encoding.UTF8);
+                case FileUsage.UseDisk:
+                    return new StreamReader(GetFileStream(), Encoding.UTF8);
+                default:
+                    return null;
+            }
+        }
+
+
+        /// <summary>
         /// Get a binary reader to managed file starting at the specified position.
         /// </summary>
         /// <param name="position">Position to start in stream (number of bytes from start of file).</param>
@@ -295,6 +313,22 @@ namespace DaggerfallConnect.Utility
                     return new BinaryWriter(GetMemoryStream(), Encoding.UTF8);
                 case FileUsage.UseDisk:
                     return new BinaryWriter(GetFileStream(), Encoding.UTF8);
+                default:
+                    return null;
+            }
+        }
+
+        /// <summary>
+        /// Gets a stream writer to managed file.
+        /// </summary>
+        /// <returns>StreamWriter to managed file with UTF8 encoding.</returns>
+        public StreamWriter GetStreamWriter() { 
+            switch (fileUsage)
+            {
+                case FileUsage.UseMemory:
+                    return new StreamWriter(GetMemoryStream(), Encoding.UTF8);
+                case FileUsage.UseDisk:
+                    return new StreamWriter(GetFileStream(), Encoding.UTF8);
                 default:
                     return null;
             }
@@ -541,8 +575,9 @@ namespace DaggerfallConnect.Utility
         private bool LoadDisk(string filePath, FileAccess fileAccess, FileShare fileShare)
         {
             // File must exist
-            if (!File.Exists(filePath))
+            if (!File.Exists(filePath)) {
                 return false;
+            }
 
             // Open file
             try

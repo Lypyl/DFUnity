@@ -17,7 +17,7 @@ namespace DaggerfallWorkshop
         public bool IsLocked = false;                   // Normally locked doors must be unlocked by keys, spells, or force
         public bool IsMagicallyHeld = false;            // Magically held locks can be opened by spells only
         public float OpenAngle = -90f;                  // Angle to swing door on axis when opening
-        public float OpenDuration = 1.5f;               // How long in seconds for door to open
+        public float OpenDuration = 1.0f;               // How long in seconds for door to open
         public bool DisableColliderWhenOpen = true;     // Collider is disabled when door opens
         public float ChanceToBash = 0.25f;              // Chance of successfully bashing open door (0=no chance, 1=first time)
         public bool PlaySounds = true;                  // Play open and close sounds if present (OpenSound > 0, CloseSound > 0)

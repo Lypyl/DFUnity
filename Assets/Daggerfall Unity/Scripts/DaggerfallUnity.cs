@@ -210,11 +210,11 @@ namespace DaggerfallWorkshop
                     SetupContentReaders();
                 }
 #else
-                Logger.instance.Setup();
-                Logger.instance.log("DFUnity version " + Version + " started in standalone mode\nArgs:");
+                Logger.GetInstance().Setup();
+                Logger.GetInstance().log("DFUnity version " + Version + " started in standalone mode\nArgs:");
 
                 foreach (string arg in System.Environment.GetCommandLineArgs()) {
-                    Logger.instance.log(arg);
+                    Logger.GetInstance().log(arg);
                 }
                 SetupSingleton();
                 SetupContentReaders();

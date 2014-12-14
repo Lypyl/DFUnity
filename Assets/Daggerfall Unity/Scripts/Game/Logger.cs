@@ -4,14 +4,13 @@ using DaggerfallConnect.Utility;
 using DaggerfallWorkshop.Game;
 using System.IO;
 
-public class Logger : MonoBehaviour {
+public class Logger {
 
     //public static Logger instance { get; private set; }
     private static Logger instance;
     public static Logger GetInstance() { 
-        if (!instance) {
-            GameObject obj = new GameObject();
-            instance = obj.AddComponent<Logger>();
+        if (instance == null) {
+            instance = new Logger();
         }
         return instance;
     }
@@ -24,12 +23,9 @@ public class Logger : MonoBehaviour {
     private FileProxy managedFile = new FileProxy();
     private StreamWriter writer;
 
-    void Awake() {
-        instance = this;
+    ~Logger() {
+        writer.Close();
     }
-
-	void Start() {
-	}
 
     public void log(string line) {
         writer.WriteLine(System.DateTime.UtcNow + " *** " + line);
@@ -52,12 +48,4 @@ public class Logger : MonoBehaviour {
         return true;
     }
 
-	// Update is called once per frame
-	void Update() {
-	
-	}
-
-    ~Logger() {
-        writer.Close();
-    }
 }

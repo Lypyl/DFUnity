@@ -3,6 +3,7 @@ using System;
 using System.Text;
 using System.IO;
 using DaggerfallConnect.Utility;
+using DaggerfallWorkshop;
 #endregion
 
 namespace DaggerfallConnect.Arena2
@@ -47,12 +48,13 @@ namespace DaggerfallConnect.Arena2
             System.IO.StreamWriter writer = managedFile.GetStreamWriter();
             writer.Write(sb.ToString());
             writer.Close();
-            DaggerfallWorkshop.Game.DevConsole.displayText("written");
+            Logger.GetInstance().log("written");
             */
 
             //Reading
-            /*System.IO.StreamReader reader = managedFile.GetStreamReader();
-            string line, name;
+            System.IO.StreamReader reader = managedFile.GetStreamReader();
+            string line, name, path;
+            path = "";
             string[] id_value = {"", ""};
             while ( (line = reader.ReadLine()) != null ) {
                 id_value = line.Split('=');
@@ -60,12 +62,19 @@ namespace DaggerfallConnect.Arena2
                     case "name":
                         name = id_value[1].ToString();
                         break;
+                    case "path":
+                        path = id_value[1].ToString();
+                        DaggerfallUnity dfUnity;
+                        if(DaggerfallUnity.FindDaggerfallUnity(out dfUnity)) { 
+                            dfUnity.Arena2Path = path;
+                        }
+                        break;
                 } 
             }
             reader.Close();
 
-            DaggerfallWorkshop.Game.DevConsole.displayText("read in name=" + id_value[1].ToString());
-            */
+            //Logger.GetInstance().log("read in name=" + id_value[1].ToString());
+            Logger.GetInstance().log("read in path=" + path);
             
         }
 

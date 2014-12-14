@@ -5,6 +5,7 @@ using System.IO;
 using DaggerfallConnect;
 using DaggerfallConnect.Utility;
 using DaggerfallConnect.Arena2;
+using DaggerfallWorkshop.Game;
 
 namespace DaggerfallWorkshop
 {
@@ -111,20 +112,25 @@ namespace DaggerfallWorkshop
         /// </summary>
         private void SetupReaders()
         {
-            if (blockFileReader == null) { 
+            if (confFileReader == null) {
+                Logger.GetInstance().log("Loading a new conf file reader");
+                confFileReader = new ConfFile(ConfFile.Filename, FileUsage.UseDisk, false);
+            }
+            DaggerfallUnity dfUnity;
+            if(DaggerfallUnity.FindDaggerfallUnity(out dfUnity)) { 
+                arena2Path = dfUnity.Arena2Path;
+            }
+            if (blockFileReader == null) {
+                Logger.GetInstance().log("Loading BSA file path: " + Path.Combine(arena2Path, BlocksFile.Filename));
                 blockFileReader = new BlocksFile(Path.Combine(arena2Path, BlocksFile.Filename), FileUsage.UseMemory, true);
             }
             if (mapFileReader == null) { 
+                Logger.GetInstance().log("Loading MapsFile path: " + Path.Combine(arena2Path, MapsFile.Filename));
                 mapFileReader = new MapsFile(Path.Combine(arena2Path, MapsFile.Filename), FileUsage.UseMemory, true);
             }
             if (monsterFileReader == null) { 
+                Logger.GetInstance().log("Loading MonsterFile path: " + Path.Combine(arena2Path, MonsterFile.Filename));
                 monsterFileReader = new MonsterFile(Path.Combine(arena2Path, MonsterFile.Filename), FileUsage.UseMemory, true);
-            }
-            if (confFileReader == null) {
-                // TODO: DEBUG: Remove messages
-                DaggerfallWorkshop.Game.DevConsole.displayText("Loading a new conf file reader");
-                confFileReader = new ConfFile(ConfFile.Filename, FileUsage.UseDisk, false);
-                DaggerfallWorkshop.Game.DevConsole.displayText("Finished loading the conf file reader");
             }
             isReady = true;
         }

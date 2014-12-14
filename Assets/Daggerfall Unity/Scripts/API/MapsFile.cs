@@ -419,9 +419,11 @@ namespace DaggerfallConnect.Arena2
         public bool Load(string filePath, FileUsage usage, bool readOnly)
         {
             // Validate filename
-            filePath = filePath.ToUpper();
-            if (!filePath.EndsWith("MAPS.BSA"))
+            //filePath = filePath.ToUpper();
+            if (!filePath.EndsWith("MAPS.BSA")) {
+                Logger.GetInstance().log("File didn't end with MAPS.BSA!");
                 return false;
+            }
 
             // Load PAK files
             string arena2Path = Path.GetDirectoryName(filePath);
@@ -430,8 +432,10 @@ namespace DaggerfallConnect.Arena2
 
             // Load file
             isReady = false;
-            if (!bsaFile.Load(filePath, usage, readOnly))
+            if (!bsaFile.Load(filePath, usage, readOnly)) { 
+                Logger.GetInstance().log("Loading MAPS.BSA didn't work!");
                 return false;
+            }
 
             // Create records array
             regions = new RegionRecord[RegionCount];

@@ -20,7 +20,7 @@ namespace DaggerfallWorkshop.Demo
         Quaternion activeLocalPlatformRotation;
         Quaternion activeGlobalPlatformRotation;
 
-        public float walkSpeed = 6.0f;
+        public float walkSpeed = 11.0f;
 
         public float runSpeed = 11.0f;
 

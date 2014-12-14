@@ -322,7 +322,7 @@ namespace DaggerfallWorkshop
             if (string.IsNullOrEmpty(blockName))
                 return null;
 
-            blockName = blockName.ToUpper();
+            //blockName = blockName.ToUpper();
             GameObject go = null;
             if (blockName.EndsWith(".RMB"))
                 go = RMBLayout.CreateGameObject(dfUnity, blockName);

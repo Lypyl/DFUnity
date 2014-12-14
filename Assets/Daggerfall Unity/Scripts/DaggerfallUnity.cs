@@ -33,7 +33,6 @@ namespace DaggerfallWorkshop
         bool isReady = false;
         DaggerfallUnity instance;
         Dictionary<int, MobileEnemy> enemyDict;
-        FileProxy confFile;
         ContentReader reader;
 
         WorldTime worldTime;
@@ -182,11 +181,14 @@ namespace DaggerfallWorkshop
             if (!isReady)
             {
 #if UNITY_EDITOR
+                Logger.GetInstance().Setup();
+                Logger.GetInstance().log("DFUnity started in editor\n");
                 if (!Application.isPlaying)
                 {
                     // Must have a path set
-                    if (string.IsNullOrEmpty(Arena2Path))
+                    if (string.IsNullOrEmpty(Arena2Path)) { 
                         return false;
+                    }
 
                     // Validate current path
                     if (ValidateArena2Path(Arena2Path))
@@ -208,6 +210,12 @@ namespace DaggerfallWorkshop
                     SetupContentReaders();
                 }
 #else
+                Logger.instance.Setup();
+                Logger.instance.log("DFUnity started in standalone mode\nArgs:");
+
+                foreach (string arg in System.Environment.GetCommandLineArgs()) {
+                    Logger.instance.log(arg);
+                }
                 SetupSingleton();
                 SetupContentReaders();
 #endif

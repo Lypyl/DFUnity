@@ -300,7 +300,7 @@ namespace DaggerfallConnect.Arena2
         public bool Load(string filePath, FileUsage usage, bool readOnly)
         {
             // Validate filename
-            filePath = filePath.ToUpper();
+            //filePath = filePath.ToUpper();
             if (!filePath.EndsWith("ARCH3D.BSA"))
                 return false;
 

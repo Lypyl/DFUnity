@@ -29,6 +29,8 @@ namespace DaggerfallConnect
 
         /// <summary>File is opened as read-only from disk.</summary>
         UseDisk,
+
+        AppendToDisk,
     }
 }
 
@@ -204,7 +206,7 @@ namespace DaggerfallConnect.Utility
         /// <param name="usage">Specify if file will be accessed from disk, or loaded into RAM.</param>
         /// <param name="readOnly">File will be read-only if true, read-write if false.</param>
         /// <returns>True if successful, otherwise false.</returns>
-        public bool Load(string filePath, FileUsage usage, bool readOnly)
+        public bool Load(string filePath, FileUsage usage, bool readOnly, bool createFile = false)
         {
             // Determine file access settings
             FileAccess fileAccess;
@@ -226,10 +228,12 @@ namespace DaggerfallConnect.Utility
             switch (usage)
             {
                 case FileUsage.UseMemory:
-                    return LoadMemory(filePath, fileAccess, fileShare);
+                    return LoadMemory(filePath, fileAccess, fileShare, createFile);
+                case FileUsage.AppendToDisk:
+                    return AppendToDisk(filePath, fileShare, createFile);
                 case FileUsage.UseDisk:
                 default:
-                    return LoadDisk(filePath, fileAccess, fileShare);
+                    return LoadDisk(filePath, fileAccess, fileShare, createFile);
             }
         }
 
@@ -328,6 +332,7 @@ namespace DaggerfallConnect.Utility
                 case FileUsage.UseMemory:
                     return new StreamWriter(GetMemoryStream(), Encoding.UTF8);
                 case FileUsage.UseDisk:
+                case FileUsage.AppendToDisk: 
                     return new StreamWriter(GetFileStream(), Encoding.UTF8);
                 default:
                     return null;
@@ -522,7 +527,7 @@ namespace DaggerfallConnect.Utility
         /// <param name="fileAccess">Defines access to file.</param>
         /// <param name="fileShare">Defines shared access to file.</param>
         /// <returns>True if successful, otherwise false.</returns>
-        private bool LoadMemory(string filePath, FileAccess fileAccess, FileShare fileShare)
+        private bool LoadMemory(string filePath, FileAccess fileAccess, FileShare fileShare, bool createFile = false)
         {
             // Attempt to locate in Unity Resources folder first
             string fileName = Path.GetFileName(filePath);
@@ -534,8 +539,14 @@ namespace DaggerfallConnect.Utility
             else
             {
                 // File must exist
-                if (!File.Exists(filePath))
-                    return false;
+                if (!File.Exists(filePath)) {
+                    if (createFile) { 
+                        File.Create(filePath);
+                    } else { 
+                        Logger.GetInstance().log("FileProxy: The requested file at " + filePath + " doesn't exist!");
+                        return false;
+                    }
+                }
 
                 // Load file into memory buffer
                 try
@@ -552,6 +563,7 @@ namespace DaggerfallConnect.Utility
                 {
                     myLastException = e;
                     Console.WriteLine(e.Message);
+                    Logger.GetInstance().log("FileProxy: Unhandled exception while reading: " + e.Message);
                     return false;
                 }
             }
@@ -572,11 +584,15 @@ namespace DaggerfallConnect.Utility
         /// <param name="fileAccess">Defines access to file.</param>
         /// <param name="fileShare">Defines shared access to file.</param>
         /// <returns>True if successful, otherwise false.</returns>
-        private bool LoadDisk(string filePath, FileAccess fileAccess, FileShare fileShare)
+        private bool LoadDisk(string filePath, FileAccess fileAccess, FileShare fileShare, bool createFile = false)
         {
             // File must exist
             if (!File.Exists(filePath)) {
-                return false;
+                if (createFile) {
+                    File.Create(filePath);
+                } else { 
+                    return false;
+                }
             }
 
             // Open file
@@ -601,6 +617,50 @@ namespace DaggerfallConnect.Utility
 
             return true;
         }
+
+        /// <summary>
+        /// Opens a file from disk to append to it. No FileAccess option, as files opened for FileMode.Append must be write-only.
+        /// </summary>
+        /// <param name="filePath">Absolute path of file to load.</param>
+        /// <param name="fileShare">Defines shared access to file.</param>
+        /// <param name="createFile">Whether the file should be created if it doesn't exist (and if the function should continue to open the file)</param>
+        /// <returns>True if successful, otherwise false.</returns>
+        private bool AppendToDisk(string filePath, FileShare fileShare, bool createFile = false)
+        {
+            // File must exist
+            if (!File.Exists(filePath)) {
+                if (createFile) {
+                    File.Create(filePath);
+                } else {
+                    Logger.GetInstance().log("Failed to create the file: " + filePath + ".");
+                    return false;
+                }
+            }
+
+            // Open file
+            try {
+                fileStream = File.Open(filePath, FileMode.Append, FileAccess.Write, fileShare);
+                if (fileStream == null) {
+                    Logger.GetInstance().log("The File.open failed for file: " + filePath);
+                    return false;
+                }
+            }
+            catch (Exception e) {
+                myLastException = e;
+                Logger.GetInstance().log("Exception caught when trying to open the log file. e: " + e.Message);
+                Console.WriteLine(e.Message);
+                return false;
+            }
+
+            // Store filename
+            managedFilePath = filePath;
+
+            // Set usage
+            fileUsage = FileUsage.AppendToDisk;
+
+            return true;
+        }
+
 
         #endregion
     }

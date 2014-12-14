@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using DaggerfallWorkshop.Game;
 
 namespace DaggerfallWorkshop.Game {
 
@@ -19,9 +20,12 @@ namespace DaggerfallWorkshop.Game {
         static string _outputText = "";
         string _userCommand = "";
 
-        public static void displayText(string text) {
+        public static void displayText(string text, bool newline = true) {
             // TODO: can string.concat ever buffer overflow?
-            _outputText += "\n" + System.DateTime.UtcNow + " *** " + text;
+            _outputText += System.DateTime.UtcNow + " *** " + text;
+            if (newline) { 
+                _outputText += "\n";
+            }
         }
 
         public static void flushText() {
@@ -31,10 +35,6 @@ namespace DaggerfallWorkshop.Game {
         // Use this for initialization
         void Start () {
             displayText("Dev console created");
-            displayText("Command line args: ");
-            foreach (string arg in System.Environment.GetCommandLineArgs()) {
-                displayText(arg);
-            }
         }
 
         // Sanity check
@@ -78,6 +78,7 @@ namespace DaggerfallWorkshop.Game {
         }
 
         void dispatchCommand() {
+            //string[] args = _userCommand.Split(' ');
             displayText("> " + _userCommand);
             _userCommand = "";
         }
@@ -108,7 +109,7 @@ namespace DaggerfallWorkshop.Game {
             
             // TODO: SECURITY: userCommand should be validated 
             GUI.SetNextControlName("InputField");
-            _userCommand = GUI.TextField(new Rect(0, h - 50, w, 50), _userCommand, 25);
+            _userCommand = GUI.TextField(new Rect(0, h - 50, w, 50), _userCommand, 2048);
         }
     }
 }

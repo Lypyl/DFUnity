@@ -148,18 +148,24 @@ namespace DaggerfallConnect.Arena2
         public bool Load(string filePath, FileUsage usage, bool readOnly)
         {
             // Ensure filename ends with .BSA
-            filePath = filePath.ToUpper();
+            //filePath = filePath.ToUpper();
             if (!filePath.EndsWith(".BSA") &&
-                !filePath.EndsWith(".SND"))
+                !filePath.EndsWith(".SND")) {
+                Logger.GetInstance().log(".BSA and .SND check didn't work on the BSAFile. File: " + filePath);
                 return false;
+            }
 
             // Load file into memory
-            if (!managedFile.Load(filePath, usage, readOnly))
+            if (!managedFile.Load(filePath, usage, readOnly)) { 
+                Logger.GetInstance().log("Couldn't load the BSA or SND file into memory. File: " + filePath);
                 return false;
+            }
 
             // Read file
-            if (!Read())
+            if (!Read()) { 
+                Logger.GetInstance().log("General failure while reading the BSA or SND file. File: " + filePath);
                 return false;
+            }
 
             return true;
         }

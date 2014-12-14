@@ -182,7 +182,7 @@ namespace DaggerfallWorkshop
             {
 #if UNITY_EDITOR
                 Logger.GetInstance().Setup();
-                Logger.GetInstance().log("DFUnity started in editor\n");
+                Logger.GetInstance().log("DFUnity version " + Version + " started in editor\n");
                 if (!Application.isPlaying)
                 {
                     // Must have a path set
@@ -211,7 +211,7 @@ namespace DaggerfallWorkshop
                 }
 #else
                 Logger.instance.Setup();
-                Logger.instance.log("DFUnity started in standalone mode\nArgs:");
+                Logger.instance.log("DFUnity version " + Version + " started in standalone mode\nArgs:");
 
                 foreach (string arg in System.Environment.GetCommandLineArgs()) {
                     Logger.instance.log(arg);

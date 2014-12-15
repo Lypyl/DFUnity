@@ -28,6 +28,7 @@ public class Logger {
     }
 
     public void log(string line) {
+        if (writer == null) return;
         writer.WriteLine(System.DateTime.UtcNow + " *** " + line);
         if (aggressiveFlushing) {
             writer.Flush();

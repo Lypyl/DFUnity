@@ -53,15 +53,12 @@ namespace DaggerfallConnect.Arena2
 
             //Reading
             System.IO.StreamReader reader = managedFile.GetStreamReader();
-            string line, name, path;
+            string line, path;
             path = "";
             string[] id_value = {"", ""};
             while ( (line = reader.ReadLine()) != null ) {
                 id_value = line.Split('=');
                 switch (id_value[0]) { 
-                    case "name":
-                        name = id_value[1].ToString();
-                        break;
                     case "path":
                         path = id_value[1].ToString();
                         DaggerfallUnity dfUnity;
@@ -73,7 +70,6 @@ namespace DaggerfallConnect.Arena2
             }
             reader.Close();
 
-            //Logger.GetInstance().log("read in name=" + id_value[1].ToString());
             Logger.GetInstance().log("read in path=" + path);
             
         }
@@ -87,7 +83,7 @@ namespace DaggerfallConnect.Arena2
         /// </summary>
         static public string Filename
         {
-            get { return "config.cfg"; }
+            get { return "dfunity.cfg"; }
         }
         #endregion
 
@@ -103,7 +99,7 @@ namespace DaggerfallConnect.Arena2
         public bool Load(string filePath, FileUsage usage, bool readOnly)
         {
             // Load file into memory
-            if (!managedFile.Load(filePath, usage, readOnly))
+            if (!managedFile.Load(filePath, usage, readOnly, true))
                 return false;
 
             // Read file

@@ -2,30 +2,40 @@
 using System.Collections;
 using System.Collections.Generic;
 using DaggerfallWorkshop.Game;
+using UnityEngine.UI;
 
 namespace DaggerfallWorkshop.Game {
 
     // Displays internal game messages and allows the user to execute internal game commands
     // Call displayText(...) to append a message to the log
     public class DevConsole : MonoBehaviour {
-
-        public static DevConsole instance { get; private set; }
+        public Text outputTextField;
+        /*public static DevConsole instance { get; private set; }
 
         void Awake() {
             instance = this;
-        }
+        }*/
              
         DaggerfallUnity dfUnity;
         float deltaTime = 0.0f;
         static string _outputText = "";
         string _userCommand = "";
 
-        public static void displayText(string text, bool newline = true) {
+        /*public static void displayText(string text, bool newline = true) {
             // TODO: can string.concat ever buffer overflow?
             _outputText += System.DateTime.UtcNow + " *** " + text;
             if (newline) { 
                 _outputText += "\n";
             }
+        }*/
+
+        public void displayText(string text, bool newline = true) {
+            // TODO: can string.concat ever buffer overflow?
+            _outputText += System.DateTime.UtcNow + " *** " + text;
+            if (newline) { 
+                _outputText += "\n";
+            }
+            outputTextField.text = _outputText;
         }
 
         public static void flushText() {
@@ -35,6 +45,7 @@ namespace DaggerfallWorkshop.Game {
         // Use this for initialization
         void Start () {
             displayText("Dev console created");
+            enabled = false;
         }
 
         // Sanity check
@@ -50,31 +61,10 @@ namespace DaggerfallWorkshop.Game {
         // Update is called once per frame
         void Update () {
             deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
-            Check();
-            if (dfUnity.IsReady) {
-                if (Input.GetButtonDown("DevConsole")) {
-                    if (dfUnity.devConsoleOpen) {
-                        dfUnity.devConsoleOpen = false;
-                    } else {
-                        dfUnity.devConsoleOpen = true;
-                    }
-                }
-            } 
         }
 
         void OnGUI() {
-            Check();
-
-            if (dfUnity.IsReady) {
-                if (dfUnity.devConsoleOpen) {
-                    if (Event.current.keyCode == KeyCode.Return) {
-                        if (_userCommand != "") { 
-                            dispatchCommand();
-                        }
-                    } 
-                    drawDevConsole();
-                }
-            }
+            drawFPS();
         }
 
         void dispatchCommand() {
@@ -83,7 +73,11 @@ namespace DaggerfallWorkshop.Game {
             _userCommand = "";
         }
 
-        void drawDevConsole() {
+        public void dispatchCommand(string command) { 
+            displayText("> " + command);
+        }
+
+        void drawFPS() {
             int w = Screen.width, h = Screen.height;
             Vector2 scrollPosition = Vector2.zero;
 
@@ -100,7 +94,7 @@ namespace DaggerfallWorkshop.Game {
             string text = string.Format("{0:0.0} ms ({1:0.} fps)", msec, fps);
             GUI.Label(rect, text, style);
 
-            GUILayout.BeginArea(new Rect(0, 50, w, h - 100));
+            /*GUILayout.BeginArea(new Rect(0, 50, w, h - 100));
             scrollPosition.y = Mathf.Infinity; // this seems silly (and will go away when input is implemented)
             scrollPosition = GUILayout.BeginScrollView(scrollPosition, GUILayout.Width(w), GUILayout.Height(h - 100));
             GUILayout.TextField(_outputText, "Label");
@@ -109,7 +103,7 @@ namespace DaggerfallWorkshop.Game {
             
             // TODO: SECURITY: userCommand should be validated 
             GUI.SetNextControlName("InputField");
-            _userCommand = GUI.TextField(new Rect(0, h - 50, w, 50), _userCommand, 2048);
+            _userCommand = GUI.TextField(new Rect(0, h - 50, w, 50), _userCommand, 2048);*/
         }
     }
 }

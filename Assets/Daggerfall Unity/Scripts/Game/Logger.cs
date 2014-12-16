@@ -34,14 +34,17 @@ public class Logger {
             writer.Flush();
         }
         if (outputToDevConsole) {
-            DevConsole.displayText(line);
+            //DevConsole.displayText(line);
+            GameObject uiOwner = GameObject.FindGameObjectWithTag("UIOwner");
+            uiOwner.SendMessage("devConsole_displayText", line);
         }
 
     }
 
 	public bool Setup() { 
         if (!managedFile.Load(logFilePath, DaggerfallConnect.FileUsage.AppendToDisk, false, true)) {
-            DevConsole.displayText("Failed to set up logging with file: " + logFilePath);
+            //DevConsole.displayText("Failed to set up logging with file: " + logFilePath);
+
             return false;
         }
         writer = managedFile.GetStreamWriter();

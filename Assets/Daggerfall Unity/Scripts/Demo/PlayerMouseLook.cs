@@ -21,7 +21,8 @@ namespace DaggerfallWorkshop.Demo
         public Vector2 targetDirection;
         public Vector2 targetCharacterDirection;
 
-        bool enableMLook = true;
+        public bool enableMLook = true;
+        public GameObject uiOwner;
 
         // Assign this if there's a parent object controlling motion, such as a Character Controller.
         // Yaw rotation will affect this object instead of the camera if set.
@@ -50,11 +51,13 @@ namespace DaggerfallWorkshop.Demo
             Screen.lockCursor = lockCursor;
 #endif
 
-            if (Input.GetKeyDown(KeyCode.Escape)) {
-                enableMLook = !enableMLook;
-            }
-
-            if (!enableMLook && Input.GetMouseButtonDown(0) || !enableMLook && Input.GetMouseButtonDown(1)) {
+            /*if (!enableMLook && Input.GetMouseButtonDown(0) || !enableMLook && Input.GetMouseButtonDown(1)) {
+                enableMLook = true;
+            }*/
+            
+            if (uiOwner.GetComponent<UIManager>().isUIOpen) {
+                enableMLook = false;
+            } else {
                 enableMLook = true;
             }
 

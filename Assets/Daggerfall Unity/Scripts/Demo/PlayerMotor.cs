@@ -55,8 +55,9 @@ namespace DaggerfallWorkshop.Demo
 
         public bool toggleFly = false;
         public float flySpeed = 1.0f;
-        Camera ccamera;
         Ray ray;
+
+        public GameObject uiOwner;
 
         private Vector3 moveDirection = Vector3.zero;
         private bool grounded = false;
@@ -90,11 +91,11 @@ namespace DaggerfallWorkshop.Demo
             rayDistance = controller.height * .5f + controller.radius;
             slideLimit = controller.slopeLimit - .1f;
             jumpTimer = antiBunnyHopFactor;
-            ccamera = GetComponentInChildren<Camera>();
         }
 
         void FixedUpdate()
         {
+            if (uiOwner.GetComponent<UIManager>().isUIOpen) return;
             float inputX = Input.GetAxis("Horizontal");
             float inputY = Input.GetAxis("Vertical");
             // If both horizontal and vertical are used simultaneously, limit speed (if allowed), so the total doesn't exceed normal move speed

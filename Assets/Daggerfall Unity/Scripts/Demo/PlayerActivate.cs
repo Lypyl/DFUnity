@@ -8,6 +8,7 @@ namespace DaggerfallWorkshop.Demo
     /// </summary>
     public class PlayerActivate : MonoBehaviour
     {
+        public GameObject uiOwner;
         PlayerEnterExit playerEnterExit;           // Example component to enter/exit buildings
         GameObject mainCamera;
 
@@ -21,8 +22,9 @@ namespace DaggerfallWorkshop.Demo
 
         void Update()
         {
-            if (mainCamera == null)
+            if (mainCamera == null || uiOwner.GetComponent<UIManager>().isUIOpen) { 
                 return;
+            }
 
             // Fire ray into scene
             if (Input.GetButtonDown("Fire1"))

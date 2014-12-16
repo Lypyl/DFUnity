@@ -397,7 +397,8 @@ namespace DaggerfallWorkshop
                     DFBlock.RmbGroundTiles tile = blockData.RmbBlock.FldHeader.GroundData.GroundTiles[x, (tileCount - 1) - y];
 
                     // Set random terrain marker back to grass
-                    int record = (tile.TextureRecord > 55) ? 2 : tile.TextureRecord;
+                    //int record = (tile.TextureRecord > 55) ? 2 : tile.TextureRecord;
+                    int record = 0;
 
                     // Create vertices for this quad
                     vert0 = new Vector3(x * tileDimension, groundHeight, y * tileDimension);

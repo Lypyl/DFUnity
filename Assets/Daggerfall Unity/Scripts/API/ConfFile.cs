@@ -103,8 +103,9 @@ namespace DaggerfallConnect.Arena2
                 return false;
 
             // Read file
-            if (!Read())
+/*            if (!Read())
                 return false;
+            */
 
             return true;
         }
@@ -122,7 +123,7 @@ namespace DaggerfallConnect.Arena2
         #endregion
 
         #region Readers
-
+/*
         /// <summary>
         /// Read file.
         /// </summary>
@@ -140,7 +141,7 @@ namespace DaggerfallConnect.Arena2
             }
 
             return true;
-        }
+        }*/
 
       #endregion
     }

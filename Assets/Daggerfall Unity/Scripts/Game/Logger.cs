@@ -22,6 +22,7 @@ public class Logger {
 
     private FileProxy managedFile = new FileProxy();
     private StreamWriter writer;
+    private GameObject uiOwner; 
 
     ~Logger() {
         writer.Close();
@@ -35,8 +36,10 @@ public class Logger {
         }
         if (outputToDevConsole) {
             //DevConsole.displayText(line);
-            GameObject uiOwner = GameObject.FindGameObjectWithTag("UIOwner");
-            uiOwner.SendMessage("devConsole_displayText", line);
+            //GameObject uiOwner = GameObject.FindGameObjectWithTag("UIOwner");
+            if (uiOwner != null) { 
+                uiOwner.SendMessage("devConsole_displayText", line);
+            }
         }
 
     }
@@ -47,6 +50,7 @@ public class Logger {
 
             return false;
         }
+        uiOwner = GameObject.FindGameObjectWithTag("UIOwner");
         writer = managedFile.GetStreamWriter();
         log("Logging started");
         return true;

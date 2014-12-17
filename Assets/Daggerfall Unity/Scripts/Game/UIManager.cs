@@ -11,17 +11,19 @@ public class UIManager : MonoBehaviour {
 
     public Canvas MenuOptions1;
     public Canvas DevConsole;
+    public Canvas PlayerSheet;
     public Camera playerCamera; // necessary to change PlayerMouseLook behavior
 
 	// Use this for initialization
 	void Start () {
         MenuOptions1.enabled = false;
         DevConsole.enabled = false;
-
+        PlayerSheet.enabled = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        // This whole area will need game logic for what can be opened when
 	    if (Input.GetKeyDown(KeyCode.Alpha1)) {
             MenuOptions1.enabled = !MenuOptions1.enabled;
             _isUIOpen = MenuOptions1.enabled;
@@ -36,6 +38,9 @@ public class UIManager : MonoBehaviour {
                 DevConsole.enabled = false;
                 DevConsole.GetComponent<DevConsole>().enabled = false;
             }
+        } else if (Input.GetButtonDown("PlayerSheet")) { 
+            PlayerSheet.enabled = !PlayerSheet.enabled;
+            _isUIOpen = PlayerSheet.enabled; 
         }
 	}
 

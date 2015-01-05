@@ -20,7 +20,8 @@ namespace DaggerfallWorkshop.Demo
         Quaternion activeLocalPlatformRotation;
         Quaternion activeGlobalPlatformRotation;
 
-        public float walkSpeed = 11.0f;
+        public float walkSpeed = 6.0f;
+
         public float runSpeed = 11.0f;
 
         // If true, diagonal speed (when strafing + moving forward or back) can't exceed normal move speed; otherwise it's about 1.4 times faster
@@ -52,12 +53,6 @@ namespace DaggerfallWorkshop.Demo
 
         // Player must be grounded for at least this many physics frames before being able to jump again; set to 0 to allow bunny hopping
         public int antiBunnyHopFactor = 1;
-
-        public bool toggleFly = false;
-        public float flySpeed = 1.0f;
-        Ray ray;
-
-        public GameObject uiOwner;
 
         private Vector3 moveDirection = Vector3.zero;
         private bool grounded = false;
@@ -95,26 +90,10 @@ namespace DaggerfallWorkshop.Demo
 
         void FixedUpdate()
         {
-            if (uiOwner.GetComponent<UIManager>().isUIOpen) return;
             float inputX = Input.GetAxis("Horizontal");
             float inputY = Input.GetAxis("Vertical");
             // If both horizontal and vertical are used simultaneously, limit speed (if allowed), so the total doesn't exceed normal move speed
             float inputModifyFactor = (inputX != 0.0f && inputY != 0.0f && limitDiagonalSpeed) ? .7071f : 1.0f;
-
-            // Fly mode (by /u/lypyl on Reddit.com/r/DFTFU)
-            if (Input.GetAxis("Fly") > 0) {
-                toggleFly = !toggleFly;
-            }
-
-            if (toggleFly) { 
-                if (inputY == 0 && inputX == 0) {   // hold the player still if they're not pushing forward or back
-                    return;
-                }
-
-                ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                transform.Translate(ray.direction * inputY * flySpeed, Space.World);
-                return;
-            }
 
             if (grounded)
             {

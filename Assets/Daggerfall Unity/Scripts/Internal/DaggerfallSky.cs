@@ -6,6 +6,7 @@ using System.IO;
 using DaggerfallConnect;
 using DaggerfallConnect.Arena2;
 using DaggerfallConnect.Utility;
+using DaggerfallWorkshop.Utility;
 
 namespace DaggerfallWorkshop
 {
@@ -29,7 +30,7 @@ namespace DaggerfallWorkshop
         //public static float MaxTimeScale = 1000;
 
         [Range(0, 31)]
-        public int SkyIndex = 17;                                           // Sky index for daytime skies
+        public int SkyIndex = 16;                                           // Sky index for daytime skies
         [Range(0, 63)]
         public int SkyFrame = 31;                                           // Sky frame for daytime skies
         public bool IsNight = false;                                        // Swaps sky to night variant based on index
@@ -41,7 +42,7 @@ namespace DaggerfallWorkshop
         const int skyNativeHalfWidth = 256;     // Half native image width
         const int skyNativeHeight = 220;        // Native image height
         const float skyScale = 1.2f;            // Scale of sky image relative to display area
-        const float skyHorizon = 0.35f;         // Higher the value lower the horizon
+        const float skyHorizon = 0.30f;         // Higher the value lower the horizon
 
         DaggerfallUnity dfUnity;
         Camera mainCamera;
@@ -346,6 +347,9 @@ namespace DaggerfallWorkshop
 
             // Set camera clear colour
             cameraClearColor = colors.clearColor;
+
+            // Assign colour to fog
+            UnityEngine.RenderSettings.fogColor = cameraClearColor;
         }
 
         private void ApplyTimeAndSpace()

@@ -66,6 +66,16 @@ namespace DaggerfallConnect
         /// </summary>
         public int Politic;
 
+        /// <summary>
+        /// Region index.
+        /// </summary>
+        public int RegionIndex;
+
+        /// <summary>
+        /// Location index.
+        /// </summary>
+        public int LocationIndex;
+
         #endregion
 
         #region Climate Enumerations
@@ -83,33 +93,73 @@ namespace DaggerfallConnect
         }
 
         /// <summary>
-        /// Climate texture sets for climate-swapping textures.
+        /// Climate texture groups for identifying how texture is used.
+        /// </summary>
+        public enum ClimateTextureGroup
+        {
+            None,
+            Nature,
+            Terrain,
+            Exterior,
+            Interior,
+        }
+
+        /// <summary>
+        /// Climate texture sets that can be cast to texture index for any climate.
+        /// Includes enumerations for detail/misc textures with no climate swap.
         /// </summary>
         public enum ClimateTextureSet
         {
             // General sets
             None = -1,
             Misc = 46,
-            Doors = 74,
 
             // Terrain sets
             Exterior_Terrain = 2,
 
             // Exterior sets
             Exterior_Ruins = 7,
+            Exterior_Ruins_2 = 8,
             Exterior_Castle = 9,
+            Exterior_Castle_Snow = 10,
             Exterior_CityA = 12,
+            Exterior_CityA_Snow = 13,
             Exterior_CityB = 14,
+            Exterior_CityB_Snow = 15,
             Exterior_CityWalls = 17,
+            Exterior_CityWalls_Snow = 18,
             Exterior_Farm = 26,
+            Exterior_Farm_Snow = 27,
             Exterior_Fences = 29,
+            Exterior_Fences_Snow = 30,
             Exterior_MagesGuild = 35,
+            Exterior_MagesGuild_Snow = 36,
             Exterior_Manor = 38,
+            Exterior_Manor_Snow = 39,
             Exterior_MerchantHomes = 42,
+            Exterior_MerchantHomes_Snow = 43,
             Exterior_TavernExteriors = 58,
+            Exterior_TavernExteriors_Snow = 59,
             Exterior_TempleExteriors = 61,
+            Exterior_TempleExteriors_Snow = 62,
             Exterior_Village = 64,
+            Exterior_Village_Snow = 65,
             Exterior_Roofs = 69,
+            Exterior_Roofs_Snow = 70,
+            Exterior_CitySpec = 79,
+            Exterior_CitySpec_Snow = 80,
+            Exterior_CitySpecB = 82,
+            Exterior_CitySpecB_Snow = 83,
+
+            // Exterior misc (no climate variant)
+            Exterior_Hedges = 33,
+            Exterior_MiscWoodPlanks = 67,
+            Exterior_Doors = 74,
+            Exterior_BaseTextures = 85,
+            Exterior_Wagon = 88,
+            Exterior_BarnInterior = 171,     // Used on underside of city roofs
+            Exterior_Barn = 171,
+            Exterior_Barn_Snow = 172,
 
             // Interior sets
             Interior_PalaceInt = 11,
@@ -132,6 +182,7 @@ namespace DaggerfallConnect
             Interior_TempleInt = 63,
             Interior_VillageInt = 66,
             Interior_Sewer = 68,
+            Interior_MiscFurniture = 90,
 
             // Nature sets
             Nature_RainForest = 500,
@@ -139,9 +190,13 @@ namespace DaggerfallConnect
             Nature_Swamp = 502,
             Nature_Desert = 503,
             Nature_TemperateWoodland = 504,
+            Nature_TemperateWoodland_Snow = 505,
             Nature_WoodlandHills = 506,
+            Nature_WoodlandHills_Snow = 507,
             Nature_HauntedWoodlands = 508,
+            Nature_HauntedWoodlands_Snow = 509,
             Nature_Mountains = 510,
+            Nature_Mountains_Snow = 511,
         }
 
         /// <summary>

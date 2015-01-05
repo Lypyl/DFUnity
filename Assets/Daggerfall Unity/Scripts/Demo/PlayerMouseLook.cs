@@ -11,7 +11,6 @@ namespace DaggerfallWorkshop.Demo
     {
         Vector2 _mouseAbsolute;
         Vector2 _smoothMouse;
-        DaggerfallUnity _dfUnity;
 
         public bool invertMouseY = false;
         public Vector2 clampInDegrees = new Vector2(360, 180);
@@ -20,9 +19,6 @@ namespace DaggerfallWorkshop.Demo
         public Vector2 smoothing = new Vector2(3, 3);
         public Vector2 targetDirection;
         public Vector2 targetCharacterDirection;
-
-        public bool enableMLook = true;
-        public GameObject uiOwner;
 
         // Assign this if there's a parent object controlling motion, such as a Character Controller.
         // Yaw rotation will affect this object instead of the camera if set.
@@ -51,25 +47,10 @@ namespace DaggerfallWorkshop.Demo
             Screen.lockCursor = lockCursor;
 #endif
 
-            /*if (!enableMLook && Input.GetMouseButtonDown(0) || !enableMLook && Input.GetMouseButtonDown(1)) {
-                enableMLook = true;
-            }*/
-            
-            if (uiOwner.GetComponent<UIManager>().isUIOpen) {
-                enableMLook = false;
-            } else {
-                enableMLook = true;
-            }
-
             // Suppress mouse look if fire2 is down
             // This means the player is swinging weapon
-            // Or if the dev console is open 
-            if (!enableMLook || Input.GetButton("Fire2") || _dfUnity.devConsoleOpen) {
-                this.lockCursor = false;
+            if (Input.GetButton("Fire2"))
                 return;
-            } else { 
-                this.lockCursor = true;
-            }
 
             // Allow the script to clamp based on a desired target value.
             var targetOrientation = Quaternion.Euler(targetDirection);
@@ -130,13 +111,6 @@ namespace DaggerfallWorkshop.Demo
             // Reset smoothing
             _mouseAbsolute = Vector2.zero;
             _smoothMouse = Vector2.zero;
-
-            if (!_dfUnity) { 
-                if(!DaggerfallUnity.FindDaggerfallUnity(out _dfUnity)) { 
-                    DaggerfallUnity.LogMessage(Error.ERROR_GAME_DAG_UNITY_NOT_FOUND);
-                    Application.Quit();
-                }
-            }
         }
 
         public void SetFacing(Vector3 forward)

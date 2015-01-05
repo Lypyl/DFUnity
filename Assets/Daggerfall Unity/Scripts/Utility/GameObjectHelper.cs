@@ -3,12 +3,12 @@ using System.Collections;
 using DaggerfallConnect;
 using DaggerfallConnect.Arena2;
 
-namespace DaggerfallWorkshop
+namespace DaggerfallWorkshop.Utility
 {
     /// <summary>
     /// Static helper methods to instantiate common types of Daggerfall gameobjects.
     /// </summary>
-    public class GameObjectHelper
+    public static class GameObjectHelper
     {
         public static void AssignAnimateTextureComponent(DaggerfallUnity dfUnity, CachedMaterial[] cachedMaterials, GameObject go)
         {
@@ -50,7 +50,11 @@ namespace DaggerfallWorkshop
             return materials;
         }
 
-        public static GameObject CreateDaggerfallMeshGameObject(DaggerfallUnity dfUnity, uint modelID, Transform parent, bool makeStatic = false)
+        public static GameObject CreateDaggerfallMeshGameObject(
+            DaggerfallUnity dfUnity,
+            uint modelID,
+            Transform parent,
+            bool makeStatic = false)
         {
             // Create gameobject
             GameObject go = new GameObject(string.Format("DaggerfallMesh [ID={0}]", modelID));
@@ -101,7 +105,12 @@ namespace DaggerfallWorkshop
             return go;
         }
 
-        public static GameObject CreateCombinedMeshGameObject(DaggerfallUnity dfUnity, ModelCombiner combiner, string meshName, Transform parent, bool makeStatic = false)
+        public static GameObject CreateCombinedMeshGameObject(
+            DaggerfallUnity dfUnity,
+            ModelCombiner combiner,
+            string meshName,
+            Transform parent,
+            bool makeStatic = false)
         {
             // Create gameobject
             GameObject go = new GameObject(meshName);
@@ -322,7 +331,7 @@ namespace DaggerfallWorkshop
             if (string.IsNullOrEmpty(blockName))
                 return null;
 
-            //blockName = blockName.ToUpper();
+            blockName = blockName.ToUpper();
             GameObject go = null;
             if (blockName.EndsWith(".RMB"))
                 go = RMBLayout.CreateGameObject(dfUnity, blockName);
@@ -336,7 +345,7 @@ namespace DaggerfallWorkshop
             return go;
         }
 
-        public static GameObject CreateDaggerfallCityGameObject(DaggerfallUnity dfUnity, string multiName, Transform parent)
+        public static GameObject CreateDaggerfallLocationGameObject(DaggerfallUnity dfUnity, string multiName, Transform parent)
         {
             if (string.IsNullOrEmpty(multiName))
                 return null;
@@ -354,10 +363,10 @@ namespace DaggerfallWorkshop
             if (!dfUnity.ContentReader.GetLocation(parts[0], parts[1], out location))
                 return null;
 
-            GameObject go = new GameObject(string.Format("DaggerfallCity [Region={0}, Name={1}]", parts[0], parts[1]));
+            GameObject go = new GameObject(string.Format("DaggerfallLocation [Region={0}, Name={1}]", parts[0], parts[1]));
             if (parent) go.transform.parent = parent;
             DaggerfallLocation c = go.AddComponent<DaggerfallLocation>() as DaggerfallLocation;
-            c.SetLocation(location, false);
+            c.SetLocation(location);
 
             return go;
         }
@@ -388,8 +397,8 @@ namespace DaggerfallWorkshop
 
             GameObject go = new GameObject(string.Format("DaggerfallDungeon [Region={0}, Name={1}]", parts[0], parts[1]));
             if (parent) go.transform.parent = parent;
-            DaggerfallLocation c = go.AddComponent<DaggerfallLocation>();
-            c.SetLocation(location, true);
+            DaggerfallDungeon c = go.AddComponent<DaggerfallDungeon>();
+            c.SetDungeon(location);
 
             return go;
         }
@@ -402,14 +411,14 @@ namespace DaggerfallWorkshop
         /// <param name="recordIndex">Record index of interior.</param>
         /// <param name="buildingMatrix">Individual building matrix.</param>
         /// <returns>Array of doors in this model data.</returns>
-        public static DaggerfallStaticDoors.StaticDoor[] GetStaticDoors(ref ModelData modelData, int blockIndex, int recordIndex, Matrix4x4 buildingMatrix)
+        public static StaticDoor[] GetStaticDoors(ref ModelData modelData, int blockIndex, int recordIndex, Matrix4x4 buildingMatrix)
         {
             // Exit if no doors
             if (modelData.Doors == null)
                 return null;
 
             // Add door triggers
-            DaggerfallStaticDoors.StaticDoor[] staticDoors = new DaggerfallStaticDoors.StaticDoor[modelData.Doors.Length];
+            StaticDoor[] staticDoors = new StaticDoor[modelData.Doors.Length];
             for (int i = 0; i < modelData.Doors.Length; i++)
             {
                 // Get door and diagonal verts
@@ -422,7 +431,7 @@ namespace DaggerfallWorkshop
                 Vector3 size = new Vector3(v2.x - v0.x, v2.y - v0.y, v2.z - v0.z) + door.Normal * thickness;
 
                 // Add door to array
-                DaggerfallStaticDoors.StaticDoor newDoor = new DaggerfallStaticDoors.StaticDoor()
+                StaticDoor newDoor = new StaticDoor()
                 {
                     buildingMatrix = buildingMatrix,
                     doorType = door.Type,

@@ -36,13 +36,6 @@ namespace DaggerfallWorkshop
             set { EditorPrefs.SetBool(showWindowTexturesFoldout, value); }
         }
 
-        private const string showDungeonTexturesFoldout = "DaggerfallUnity_ShowDungeonTexturesFoldout";
-        private static bool ShowDungeonTexturesFoldout
-        {
-            get { return EditorPrefs.GetBool(showDungeonTexturesFoldout, true); }
-            set { EditorPrefs.SetBool(showDungeonTexturesFoldout, value); }
-        }
-
         SerializedProperty Prop(string name)
         {
             return serializedObject.FindProperty(name);
@@ -55,7 +48,6 @@ namespace DaggerfallWorkshop
 
             DisplayAboutGUI();
             DisplayClimateGUI();
-            DisplayDungeonTexturesGUI();
 
             // Save modified properties
             serializedObject.ApplyModifiedProperties();
@@ -132,41 +124,20 @@ namespace DaggerfallWorkshop
                     });
                     GUILayoutHelper.Horizontal(() =>
                     {
-                        EditorGUILayout.LabelField("In Dungeon", GUILayout.Width(EditorGUIUtility.labelWidth - 4));
-                        EditorGUILayout.SelectableLabel(dfLocation.Summary.InDungeon.ToString(), EditorStyles.textField, GUILayout.Height(EditorGUIUtility.singleLineHeight));
+                        EditorGUILayout.LabelField("Climate Base", GUILayout.Width(EditorGUIUtility.labelWidth - 4));
+                        EditorGUILayout.SelectableLabel(dfLocation.Summary.Climate.ToString(), EditorStyles.textField, GUILayout.Height(EditorGUIUtility.singleLineHeight));
                     });
-                    if (dfLocation.Summary.InDungeon)
+                    GUILayoutHelper.Horizontal(() =>
                     {
-                        GUILayoutHelper.Horizontal(() =>
-                        {
-                            int dungeonIndex = (int)dfLocation.Summary.DungeonType >> 8;
-                            EditorGUILayout.LabelField("Dungeon Type", GUILayout.Width(EditorGUIUtility.labelWidth - 4));
-                            EditorGUILayout.SelectableLabel(DFRegion.DungeonTypeNames[dungeonIndex], EditorStyles.textField, GUILayout.Height(EditorGUIUtility.singleLineHeight));
-                        });
-                    }
-                    else
-                    {
-                        GUILayoutHelper.Horizontal(() =>
-                        {
-                            EditorGUILayout.LabelField("Climate Base", GUILayout.Width(EditorGUIUtility.labelWidth - 4));
-                            EditorGUILayout.SelectableLabel(dfLocation.Summary.Climate.ToString(), EditorStyles.textField, GUILayout.Height(EditorGUIUtility.singleLineHeight));
-                        });
-                        GUILayoutHelper.Horizontal(() =>
-                        {
-                            EditorGUILayout.LabelField("Nature Flats", GUILayout.Width(EditorGUIUtility.labelWidth - 4));
-                            EditorGUILayout.SelectableLabel(dfLocation.Summary.Nature.ToString(), EditorStyles.textField, GUILayout.Height(EditorGUIUtility.singleLineHeight));
-                        });
-                    }
+                        EditorGUILayout.LabelField("Nature Flats", GUILayout.Width(EditorGUIUtility.labelWidth - 4));
+                        EditorGUILayout.SelectableLabel(dfLocation.Summary.Nature.ToString(), EditorStyles.textField, GUILayout.Height(EditorGUIUtility.singleLineHeight));
+                    });
                 });
             });
         }
 
         private void DisplayClimateGUI()
         {
-            // Climate controls not valid in dungeons
-            if (dfLocation.Summary.InDungeon)
-                return;
-
             var propClimateUse = Prop("ClimateUse");
             var propCurrentClimate = Prop("CurrentClimate");
             var propCurrentSeason = Prop("CurrentSeason");
@@ -195,44 +166,6 @@ namespace DaggerfallWorkshop
                     {
                         dfLocation.ApplyClimateSettings();
                     }
-                });
-            });
-        }
-
-        private void DisplayDungeonTexturesGUI()
-        {
-            var propDungeonTextureUse = Prop("DungeonTextureUse");
-
-            // Only valid in dungeons
-            if (!dfLocation.Summary.InDungeon)
-                return;
-
-            EditorGUILayout.Space();
-            ShowClimateFoldout = GUILayoutHelper.Foldout(ShowDungeonTexturesFoldout, new GUIContent("Dungeon Textures (Beta)"), () =>
-            {
-                GUILayoutHelper.Indent(() =>
-                {
-                    propDungeonTextureUse.enumValueIndex = (int)(DungeonTextureUse)EditorGUILayout.EnumPopup(new GUIContent("Usage"), (DungeonTextureUse)propDungeonTextureUse.enumValueIndex);
-                    if (propDungeonTextureUse.enumValueIndex == (int)DungeonTextureUse.Disabled ||
-                        propDungeonTextureUse.enumValueIndex == (int)DungeonTextureUse.UseLocation_NotImplemented)
-                        return;
-
-                    dfLocation.DungeonTextureTable[0] = EditorGUILayout.IntField("119 is ->", dfLocation.DungeonTextureTable[0]);
-                    dfLocation.DungeonTextureTable[1] = EditorGUILayout.IntField("120 is ->", dfLocation.DungeonTextureTable[1]);
-                    dfLocation.DungeonTextureTable[2] = EditorGUILayout.IntField("122 is ->", dfLocation.DungeonTextureTable[2]);
-                    dfLocation.DungeonTextureTable[3] = EditorGUILayout.IntField("123 is ->", dfLocation.DungeonTextureTable[3]);
-                    dfLocation.DungeonTextureTable[4] = EditorGUILayout.IntField("124 is ->", dfLocation.DungeonTextureTable[4]);
-                    dfLocation.DungeonTextureTable[5] = EditorGUILayout.IntField("168 is ->", dfLocation.DungeonTextureTable[5]);
-
-                    GUILayoutHelper.Horizontal(() =>
-                    {
-                        if (GUILayout.Button("Reset"))
-                            dfLocation.ResetDungeonTextureTable();
-                        if (GUILayout.Button("Random"))
-                            dfLocation.RandomiseDungeonTextureTable();
-                        if (GUILayout.Button("Apply"))
-                            dfLocation.ApplyDungeonTextureTable();
-                    });
                 });
             });
         }

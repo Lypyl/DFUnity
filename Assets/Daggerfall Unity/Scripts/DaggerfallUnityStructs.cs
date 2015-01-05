@@ -6,6 +6,18 @@ using DaggerfallConnect.Utility;
 namespace DaggerfallWorkshop
 {
     /// <summary>
+    /// Some information about a climate texture, returned by climate parser.
+    /// </summary>
+    [Serializable]
+    public struct ClimateTextureInfo
+    {
+        public DFLocation.ClimateTextureGroup textureGroup;
+        public DFLocation.ClimateTextureSet textureSet;
+        public bool supportsWinter;
+        public bool supportsRain;
+    }
+
+    /// <summary>
     /// Defines a single cached material.
     /// </summary>
     [Serializable]
@@ -124,12 +136,12 @@ namespace DaggerfallWorkshop
     [Serializable]
     public struct ModelDoor
     {
-        public int Index;
-        public DoorTypes Type;
-        public Vector3 Vert0;
-        public Vector3 Vert1;
-        public Vector3 Vert2;
-        public Vector3 Normal;
+        public int Index;                       // Index of this door in model data
+        public DoorTypes Type;                  // Type of door found (building, dungeon, etc.)
+        public Vector3 Vert0;                   // Vertex 0
+        public Vector3 Vert1;                   // Vertex 1
+        public Vector3 Vert2;                   // Vertex 2
+        public Vector3 Normal;                  // Normal facing away from door
     }
 
     /// <summary>
@@ -138,10 +150,83 @@ namespace DaggerfallWorkshop
     [Serializable]
     public struct WeaponAnimation
     {
-        public int Record;                  // Index of this animation
-        public int NumFrames;               // Number of frames in this animation
-        public int FramePerSecond;          // Speed at which this animation plays
-        public WeaponAlignment Alignment;   // Side of screen to align animation
-        public float Offset;                // Offset from edge of screen in 0-1 range, ignored for WeaponAlignment.Center
+        public int Record;                      // Index of this animation
+        public int NumFrames;                   // Number of frames in this animation
+        public int FramePerSecond;              // Speed at which this animation plays
+        public WeaponAlignment Alignment;       // Side of screen to align animation
+        public float Offset;                    // Offset from edge of screen in 0-1 range, ignored for WeaponAlignment.Center
+    }
+
+    /// <summary>
+    /// Defines a static door inside a scene.
+    /// </summary>
+    [Serializable]
+    public struct StaticDoor
+    {
+        public Matrix4x4 buildingMatrix;        // Matrix of individual building owning this door
+        public DoorTypes doorType;              // Type of door
+        public int blockIndex;                  // Block index in BLOCKS.BSA
+        public int recordIndex;                 // Record index of interior
+        public int doorIndex;                   // Door index for individual building/record (most buildings have only 1-2 doors)
+        public Vector3 centre;                  // Door centre in model space
+        public Vector3 size;                    // Door size in model space
+        public Vector3 normal;                  // Normal pointing away from door
+    }
+
+    /// <summary>
+    /// Information about a single map pixel for streaming world.
+    /// </summary>
+    public struct MapPixelData
+    {
+        public int mapPixelX;                   // Map pixel X coordinate
+        public int mapPixelY;                   // Map pixel Y coordinate
+        public int worldHeight;                 // Height of this pixel
+        public int worldClimate;                // Climate of this pixel
+        public int worldPolitic;                // Politics of this pixel
+        public bool hasLocation;                // True if location present
+        public int regionIndex;                 // Region index
+        public int mapIndex;                    // Location map index (if present)
+        public int locationID;                  // Location ID (if present)
+        public string locationName;             // Location name (if present)
+        public float locationHeight;            // Average height of terrain
+        public GameObject gameObject;           // GameObject with terrain component
+    }
+
+    /// <summary>
+    /// Height, normal, and texture information for any point in world.
+    /// </summary>
+    public struct WorldSample
+    {
+        public float height;                    // Height of this sample
+        public Vector3 normal;                  // Normal of sample
+        public WorldTile tile;                  // Texture and nature of sample
+    }
+
+    /// <summary>
+    /// Tile texture information.
+    /// </summary>
+    public struct WorldTile
+    {
+        public int record;                      // Record index into texture atlas
+        public bool flip;                       // Flip texture UVs
+        public bool rotate;                     // Rotate texture UVs
+        public bool location;                   // True if location present
+        public int nature;                      // Index of nature flat at this point (0 is nothing)
+    }
+
+    /// <summary>
+    /// Data for a single terrain chunk.
+    /// </summary>
+    public struct TerrainChunkData
+    {
+        //public Mesh renderMesh;                 // Mesh for rendering this chunk
+        //public Mesh colliderMesh;               // Mesh for colliding with this chunk
+        //public Material material;               // Shared terrain material atlas for this chunk
+        public Vector3[] vertices;              // Vertex array
+        public Vector3[] normals;               // Normal array
+        public Vector2[] uvs;                   // UV array
+        public int[] indices;                   // Mesh indices
+        //public Vector3[] colliderVerts;         // Collider vertices
+        //public int[] colliderIndices;           // Collider indices;
     }
 }

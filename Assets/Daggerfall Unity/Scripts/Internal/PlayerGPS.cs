@@ -13,23 +13,22 @@ namespace DaggerfallWorkshop
     /// </summary>
     public class PlayerGPS : MonoBehaviour
     {
-        public int WorldX;      // Player X coordinate in Daggerfall world units (0-32768000)
-        public int WorldZ;      // Player Z coordinate in Daggerfall world units (0-16384000)
+        public int WorldX;                      // Player X coordinate in Daggerfall world units (0-32768000)
+        public int WorldZ;                      // Player Z coordinate in Daggerfall world units (0-16384000)
 
         DaggerfallUnity dfUnity;
-        int mapPixelX = -1;
-        int mapPixelY = -1;
+        int lastMapPixelX = -1;
+        int lastMapPixelY = -1;
         int currentClimate;
         int currentPolitic;
         DFLocation.ClimateSettings climateSettings;
+        Dictionary<int, MapSummary> mapDict;
 
-        private Dictionary<int, MapSummary> mapDict;
         public struct MapSummary
         {
             public int ID;
             public int RegionIndex;
             public int MapIndex;
-            public DFRegion.RegionMapTable MapTable;
         }
 
         /// <summary>
@@ -37,7 +36,7 @@ namespace DaggerfallWorkshop
         /// </summary>
         public DFPosition CurrentMapPixel
         {
-            get { return new DFPosition(mapPixelX, mapPixelY); }
+            get { return MapsFile.WorldCoordToMapPixel(WorldX, WorldZ); }
         }
 
         /// <summary>
@@ -73,11 +72,11 @@ namespace DaggerfallWorkshop
 
             // Update climate whenever player map pixel changes
             DFPosition pos = MapsFile.WorldCoordToMapPixel(WorldX, WorldZ);
-            if (pos.X != mapPixelX || pos.Y != mapPixelY)
+            if (pos.X != lastMapPixelX || pos.Y != lastMapPixelY)
             {
                 UpdateClimate(pos.X, pos.Y);
-                mapPixelX = pos.X;
-                mapPixelY = pos.Y;
+                lastMapPixelX = pos.X;
+                lastMapPixelY = pos.Y;
             }
         }
 
@@ -86,12 +85,18 @@ namespace DaggerfallWorkshop
         /// <summary>
         /// Determines if the current WorldCoord has a location.
         /// </summary>
-        /// <param name="x">Map pixel X.</param>
-        /// <param name="y">Map pixel Y.</param>
+        /// <param name="mapPixelX">Map pixel X.</param>
+        /// <param name="mapPixelY">Map pixel Y.</param>
         /// <returns>True if there is a location at this map pixel.</returns>
-        public bool HasLocation(int x, int y, out MapSummary summaryOut)
+        public bool HasLocation(int mapPixelX, int mapPixelY, out MapSummary summaryOut)
         {
-            int id = MapsFile.GetMapPixelID(x, y);
+            if (!ReadyCheck())
+            {
+                summaryOut = new MapSummary();
+                return false;
+            }
+
+            int id = MapsFile.GetMapPixelID(mapPixelX, mapPixelY);
             if (mapDict.ContainsKey(id))
             {
                 summaryOut = mapDict[id];
@@ -126,12 +131,7 @@ namespace DaggerfallWorkshop
                     summary.ID = mapTable.MapId & 0x000fffff;
                     summary.RegionIndex = region;
                     summary.MapIndex = location;
-                    summary.MapTable = mapTable;
-
-                    if (mapDict.ContainsKey(summary.ID))
-                        DaggerfallUnity.LogMessage("Duplicate MapTable.MapID found by PlayerGPS. This should not happen.");
-                    else
-                        mapDict.Add(summary.ID, summary);
+                    mapDict.Add(summary.ID, summary);
                 }
             }
         }

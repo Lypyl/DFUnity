@@ -5,9 +5,8 @@ using System.IO;
 using DaggerfallConnect;
 using DaggerfallConnect.Utility;
 using DaggerfallConnect.Arena2;
-using DaggerfallWorkshop.Game;
 
-namespace DaggerfallWorkshop
+namespace DaggerfallWorkshop.Utility
 {
     /// <summary>
     /// General content interface between DaggerfallConnect API classes and Unity.
@@ -20,7 +19,7 @@ namespace DaggerfallWorkshop
         BlocksFile blockFileReader;
         MapsFile mapFileReader;
         MonsterFile monsterFileReader;
-        ConfFile confFileReader;
+        WoodsFile woodsFileReader;
 
         public bool IsReady
         {
@@ -40,6 +39,11 @@ namespace DaggerfallWorkshop
         public MonsterFile MonsterFileReader
         {
             get { return monsterFileReader; }
+        }
+
+        public WoodsFile WoodsFileReader
+        {
+            get { return woodsFileReader; }
         }
 
         #region Constructors
@@ -112,26 +116,15 @@ namespace DaggerfallWorkshop
         /// </summary>
         private void SetupReaders()
         {
-            if (confFileReader == null) {
-                Logger.GetInstance().log("Loading a new conf file reader");
-                confFileReader = new ConfFile(ConfFile.Filename, FileUsage.UseDisk, false);
-            }
-            DaggerfallUnity dfUnity;
-            if(DaggerfallUnity.FindDaggerfallUnity(out dfUnity)) { 
-                arena2Path = dfUnity.Arena2Path;
-            }
-            if (blockFileReader == null) {
-                Logger.GetInstance().log("Loading BSA file path: " + Path.Combine(arena2Path, BlocksFile.Filename));
+            if (blockFileReader == null)
                 blockFileReader = new BlocksFile(Path.Combine(arena2Path, BlocksFile.Filename), FileUsage.UseMemory, true);
-            }
-            if (mapFileReader == null) { 
-                Logger.GetInstance().log("Loading MapsFile path: " + Path.Combine(arena2Path, MapsFile.Filename));
+            if (mapFileReader == null)
                 mapFileReader = new MapsFile(Path.Combine(arena2Path, MapsFile.Filename), FileUsage.UseMemory, true);
-            }
-            if (monsterFileReader == null) { 
-                Logger.GetInstance().log("Loading MonsterFile path: " + Path.Combine(arena2Path, MonsterFile.Filename));
+            if (monsterFileReader == null)
                 monsterFileReader = new MonsterFile(Path.Combine(arena2Path, MonsterFile.Filename), FileUsage.UseMemory, true);
-            }
+            if (woodsFileReader == null)
+                woodsFileReader = new WoodsFile(Path.Combine(arena2Path, WoodsFile.Filename), FileUsage.UseMemory, true);
+
             isReady = true;
         }
 

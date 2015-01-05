@@ -8,11 +8,10 @@ namespace DaggerfallWorkshop.Demo
     /// </summary>
     public class PlayerActivate : MonoBehaviour
     {
-        public GameObject uiOwner;
-        PlayerEnterExit playerEnterExit;           // Example component to enter/exit buildings
+        PlayerEnterExit playerEnterExit;        // Example component to enter/exit buildings
         GameObject mainCamera;
 
-        public float RayDistance = 2.5f;        // Distance of ray check, tune this to your scale and preference
+        public float RayDistance = 2.0f;        // Distance of ray check, tune this to your scale and preference
 
         void Start()
         {
@@ -22,15 +21,16 @@ namespace DaggerfallWorkshop.Demo
 
         void Update()
         {
-            if (mainCamera == null || uiOwner.GetComponent<UIManager>().isUIOpen) { 
+            if (mainCamera == null)
                 return;
-            }
 
             // Fire ray into scene
             if (Input.GetButtonDown("Fire1"))
             {
-                // Using RaycastAll as sometime hits are blocked by decorations
-                Ray ray = new Ray(mainCamera.transform.position + mainCamera.transform.forward * 0.2f, mainCamera.transform.forward);
+                // Using RaycastAll as hits can be blocked by decorations or other models
+                // When this happens activation feels unresponsive to player
+                // Also processing hit detection in order of priority
+                Ray ray = new Ray(mainCamera.transform.position, mainCamera.transform.forward);
                 RaycastHit[] hits;
                 hits = Physics.RaycastAll(ray, RayDistance);
                 if (hits != null)
@@ -38,28 +38,6 @@ namespace DaggerfallWorkshop.Demo
                     // Check each hit in range for action, exit on first valid action processed
                     for (int i = 0; i < hits.Length; i++)
                     {
-                        // Check for a static door hit
-                        DaggerfallStaticDoors doors = hits[i].transform.GetComponent<DaggerfallStaticDoors>();
-                        if (doors && playerEnterExit)
-                        {
-                            DaggerfallStaticDoors.StaticDoor door;
-                            if (doors.HasHit(hits[i].point, out door))
-                            {
-                                if (door.doorType == DoorTypes.Building && !playerEnterExit.PlayerInside)
-                                {
-                                    // Hit door while outside, transition inside
-                                    playerEnterExit.TransitionInterior(hits[i].transform.gameObject, door);
-                                }
-                                else if (door.doorType == DoorTypes.Building && playerEnterExit.PlayerInside)
-                                {
-                                    // Hit door while inside, transition outside
-                                    playerEnterExit.TransitionExterior();
-                                }
-                            }
-
-                            return;
-                        }
-
                         // Check for an action door hit
                         DaggerfallActionDoor actionDoor;
                         if (ActionDoorCheck(hits[i], out actionDoor))
@@ -75,9 +53,51 @@ namespace DaggerfallWorkshop.Demo
                             action.Play();
                             return;
                         }
+
+                        // Check for a static door hit
+                        Transform doorOwner;
+                        DaggerfallStaticDoors doors = GetDoors(hits[i].transform, out doorOwner);
+                        if (doors && playerEnterExit)
+                        {
+                            StaticDoor door;
+                            if (doors.HasHit(hits[i].point, out door))
+                            {
+                                if (door.doorType == DoorTypes.Building && !playerEnterExit.PlayerInside)
+                                {
+                                    // Hit door while outside, transition inside
+                                    playerEnterExit.TransitionInterior(doorOwner, door);
+                                    return;
+                                }
+                                else if (door.doorType == DoorTypes.Building && playerEnterExit.PlayerInside)
+                                {
+                                    // Hit door while inside, transition outside
+                                    playerEnterExit.TransitionExterior();
+                                    return;
+                                }
+                            }
+                        }
                     }
                 }
             }
+        }
+
+        // Look for doors on object, then on direct parent
+        private DaggerfallStaticDoors GetDoors(Transform transform, out Transform owner)
+        {
+            owner = null;
+            DaggerfallStaticDoors doors = transform.GetComponent<DaggerfallStaticDoors>();
+            if (!doors)
+            {
+                doors = transform.GetComponentInParent<DaggerfallStaticDoors>();
+                if (doors)
+                    owner = doors.transform;
+            }
+            else
+            {
+                owner = doors.transform;
+            }
+
+            return doors;
         }
 
         // Check if raycast hit a static door

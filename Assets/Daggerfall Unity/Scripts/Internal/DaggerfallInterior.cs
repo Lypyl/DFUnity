@@ -6,6 +6,7 @@ using System.IO;
 using DaggerfallConnect;
 using DaggerfallConnect.Utility;
 using DaggerfallConnect.Arena2;
+using DaggerfallWorkshop.Utility;
 
 namespace DaggerfallWorkshop
 {
@@ -20,29 +21,29 @@ namespace DaggerfallWorkshop
         ClimateBases climateBase = ClimateBases.Temperate;
         ClimateSeason climateSeason = ClimateSeason.Summer;
         List<GameObject> markers = new List<GameObject>();
-        DaggerfallStaticDoors.StaticDoor entryDoor;
-        GameObject exterior;
+        StaticDoor entryDoor;
+        Transform doorOwner;
 
         /// <summary>
-        /// Gets gameobject of building exterior saved during layout.
+        /// Gets transform owning door array.
         /// </summary>
-        public GameObject BuildingExterior
+        public Transform DoorOwner
         {
-            get { return exterior; }
+            get { return doorOwner; }
         }
 
         /// <summary>
-        /// Gets door array from building exterior.
+        /// Gets door array from owner.
         /// </summary>
         public DaggerfallStaticDoors ExteriorDoors
         {
-            get { return (exterior) ? exterior.GetComponent<DaggerfallStaticDoors>() : null; }
+            get { return (doorOwner) ? doorOwner.GetComponent<DaggerfallStaticDoors>() : null; }
         }
 
         /// <summary>
         /// Gets the door player clicked on to enter building.
         /// </summary>
-        public DaggerfallStaticDoors.StaticDoor EntryDoor
+        public StaticDoor EntryDoor
         {
             get { return entryDoor; }
         }
@@ -50,11 +51,11 @@ namespace DaggerfallWorkshop
         /// <summary>
         /// Layout interior based on data in exterior door and optional location for climate settings.
         /// </summary>
-        /// <param name="exterior">Exterior game object housing this interior.</param>
+        /// <param name="doorOwner">Parent transform owning door array.</param>
         /// <param name="door">Exterior door player clicked on.</param>
         /// <param name="location">DaggerfallLocation component of parent city.</param>
         /// <returns>True if successful.</returns>
-        public bool DoLayout(GameObject exterior, DaggerfallStaticDoors.StaticDoor door, DaggerfallLocation location = null)
+        public bool DoLayout(Transform doorOwner, StaticDoor door, DaggerfallLocation location = null)
         {
             // Attempt to get DaggerfallUnity
             if (!DaggerfallUnity.FindDaggerfallUnity(out dfUnity))
@@ -69,7 +70,7 @@ namespace DaggerfallWorkshop
 
             // Save exterior information
             this.entryDoor = door;
-            this.exterior = exterior;
+            this.doorOwner = doorOwner;
 
             // Get block data
             blockData = dfUnity.ContentReader.BlockFileReader.GetBlock(door.blockIndex);
@@ -127,13 +128,11 @@ namespace DaggerfallWorkshop
         /// </summary>
         private void AddModels()
         {
+            List<StaticDoor> doors = new List<StaticDoor>();
             GameObject node = new GameObject("Models");
             GameObject doorsNode = new GameObject("Doors");
             node.transform.parent = this.transform;
             doorsNode.transform.parent = this.transform;
-
-            // This list receives all static doors for single or combined mesh
-            List<DaggerfallStaticDoors.StaticDoor> allStaticDoors = new List<DaggerfallStaticDoors.StaticDoor>();
 
             // Iterate through models in this subrecord
             combiner.NewCombiner();
@@ -166,8 +165,9 @@ namespace DaggerfallWorkshop
                 Vector3 modelRotation = new Vector3(0, -obj.YRotation / BlocksFile.RotationDivisor, 0);
                 Matrix4x4 modelMatrix = Matrix4x4.TRS(modelPosition, Quaternion.Euler(modelRotation), Vector3.one);
 
-                // Get array of static doors from model data
-                allStaticDoors.AddRange(GameObjectHelper.GetStaticDoors(ref modelData, entryDoor.blockIndex, entryDoor.recordIndex, modelMatrix));
+                // Does this model have doors?
+                if (modelData.Doors != null)
+                    doors.AddRange(GameObjectHelper.GetStaticDoors(ref modelData, entryDoor.blockIndex, entryDoor.recordIndex, modelMatrix));
 
                 // Combine or add
                 if (dfUnity.Option_CombineRMB)
@@ -180,10 +180,6 @@ namespace DaggerfallWorkshop
                     GameObject go = GameObjectHelper.CreateDaggerfallMeshGameObject(dfUnity, obj.ModelIdNum, node.transform, dfUnity.Option_SetStaticFlags);
                     go.transform.position = modelMatrix.GetColumn(3);
                     go.transform.rotation = GameObjectHelper.QuaternionFromMatrix(modelMatrix);
-
-                    // Add static doors component
-                    DaggerfallStaticDoors c = go.AddComponent<DaggerfallStaticDoors>();
-                    c.Doors = allStaticDoors.ToArray();
 
                     // Update climate
                     DaggerfallMesh dfMesh = go.GetComponent<DaggerfallMesh>();
@@ -199,15 +195,15 @@ namespace DaggerfallWorkshop
                     combiner.Apply();
                     GameObject go = GameObjectHelper.CreateCombinedMeshGameObject(dfUnity, combiner, "CombinedModels", node.transform, dfUnity.Option_SetStaticFlags);
 
-                    // Add static doors component
-                    DaggerfallStaticDoors c = go.AddComponent<DaggerfallStaticDoors>();
-                    c.Doors = allStaticDoors.ToArray();
-
                     // Update climate
                     DaggerfallMesh dfMesh = go.GetComponent<DaggerfallMesh>();
                     dfMesh.SetClimate(dfUnity, climateBase, climateSeason, WindowStyle.Disabled);
                 }
             }
+
+            // Add static doors component
+            DaggerfallStaticDoors c = this.gameObject.AddComponent<DaggerfallStaticDoors>();
+            c.Doors = doors.ToArray();
         }
 
         /// <summary>

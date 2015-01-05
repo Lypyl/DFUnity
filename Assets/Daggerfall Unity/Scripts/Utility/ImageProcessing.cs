@@ -3,12 +3,12 @@ using System.Collections;
 using DaggerfallConnect;
 using DaggerfallConnect.Utility;
 
-namespace DaggerfallWorkshop
+namespace DaggerfallWorkshop.Utility
 {
     /// <summary>
     /// Basic image processing for textures.
     /// </summary>
-    public class ImageProcessing
+    public static class ImageProcessing
     {
         /// <summary>
         /// Creates a blended border around transparent textures.
@@ -39,41 +39,213 @@ namespace DaggerfallWorkshop
         }
 
         /// <summary>
-        /// Copies texture to all eight positions around itself.
-        /// Reduces bleeding at low mipmap levels for atlased tiles (e.g. ground textures).
+        /// Wraps texture into emtpty border area on opposite side.
         /// </summary>
         /// <param name="colors">Source image.</param>
         /// <param name="size">Image size.</param>
         /// <param name="border">Border width.</param>
-        public static void CopyToOppositeBorder(ref Color32[] colors, DFSize size, int border)
+        public static void WrapBorder(ref Color32[] colors, DFSize size, int border, bool leftRight = true, bool topBottom = true)
         {
-            // Copy left-right
-            for (int y = border; y < size.Height - border; y++)
+            // Wrap left-right
+            if (leftRight)
             {
-                int ypos = y * size.Width;
-                int il = ypos + border;
-                int ir = ypos + size.Width - border * 2;
-                for (int x = 0; x < border; x++)
+                for (int y = border; y < size.Height - border; y++)
                 {
-                    colors[ypos + x] = colors[ir + x];
-                    colors[ypos + size.Width - border + x] = colors[il + x];
+                    int ypos = y * size.Width;
+                    int il = ypos + border;
+                    int ir = ypos + size.Width - border * 2;
+                    for (int x = 0; x < border; x++)
+                    {
+                        colors[ypos + x] = colors[ir + x];
+                        colors[ypos + size.Width - border + x] = colors[il + x];
+                    }
                 }
             }
 
-            // Copy top-bottom
-            for (int y = 0; y < border; y++)
+            // Wrap top-bottom
+            if (topBottom)
             {
-                int ypos1 = y * size.Width;
-                int ypos2 = (y + size.Height - border) * size.Width;
-
-                int it = (border + y) * size.Width;
-                int ib = (y + size.Height - border * 2) * size.Width;
-                for (int x = 0; x < size.Width; x++)
+                for (int y = 0; y < border; y++)
                 {
-                    colors[ypos1 + x] = colors[ib + x];
-                    colors[ypos2 + x] = colors[it + x];
+                    int ypos1 = y * size.Width;
+                    int ypos2 = (y + size.Height - border) * size.Width;
+
+                    int it = (border + y) * size.Width;
+                    int ib = (y + size.Height - border * 2) * size.Width;
+                    for (int x = 0; x < size.Width; x++)
+                    {
+                        colors[ypos1 + x] = colors[ib + x];
+                        colors[ypos2 + x] = colors[it + x];
+                    }
                 }
             }
+        }
+
+        /// <summary>
+        /// Clamps texture into empty border area.
+        /// </summary>
+        /// <param name="colors">Source image.</param>
+        /// <param name="size">Image size.</param>
+        /// <param name="border">Border width.</param>
+        public static void ClampBorder(
+            ref Color32[] colors,
+            DFSize size,
+            int border,
+            bool leftRight = true,
+            bool topBottom = true,
+            bool topLeft = true,
+            bool topRight = true,
+            bool bottomLeft = true,
+            bool bottomRight = true)
+        {
+            if (leftRight)
+            {
+                // Clamp left-right
+                for (int y = border; y < size.Height - border; y++)
+                {
+                    int ypos = y * size.Width;
+                    Color32 leftColor = colors[ypos + border];
+                    Color32 rightColor = colors[ypos + size.Width - border - 1];
+
+                    int il = ypos;
+                    int ir = ypos + size.Width - border;
+                    for (int x = 0; x < border; x++)
+                    {
+                        colors[il + x] = leftColor;
+                        colors[ir + x] = rightColor;
+                    }
+                }
+            }
+
+            if (topBottom)
+            {
+                // Clamp top-bottom
+                for (int x = border; x < size.Width - border; x++)
+                {
+                    Color32 topColor = colors[((border) * size.Width) + x];
+                    Color32 bottomColor = colors[(size.Height - border - 1) * size.Width + x];
+
+                    for (int y = 0; y < border; y++)
+                    {
+                        int it = y * size.Width + x;
+                        int ib = (size.Height - y - 1) * size.Width + x;
+
+                        colors[it] = topColor;
+                        colors[ib] = bottomColor;
+                    }
+                }
+            }
+
+            if (topLeft)
+            {
+                // Clamp top-left
+                Color32 topLeftColor = colors[(border + 1) * size.Width + border];
+                for (int y = 0; y < border; y++)
+                {
+                    for (int x = 0; x < border; x++)
+                    {
+                        colors[y * size.Width + x] = topLeftColor;
+                    }
+                }
+            }
+
+            if (topRight)
+            {
+                // Clamp top-right
+                Color32 topRightColor = colors[(border + 1) * size.Width + size.Width - border - 1];
+                for (int y = 0; y < border; y++)
+                {
+                    for (int x = size.Width - border; x < size.Width; x++)
+                    {
+                        colors[y * size.Width + x] = topRightColor;
+                    }
+                }
+            }
+
+            if (bottomLeft)
+            {
+                // Clamp bottom-left
+                Color32 bottomLeftColor = colors[(size.Height - border - 1) * size.Width + border];
+                for (int y = size.Height - border; y < size.Height; y++)
+                {
+                    for (int x = 0; x < border; x++)
+                    {
+                        colors[y * size.Width + x] = bottomLeftColor;
+                    }
+                }
+            }
+
+            if (bottomRight)
+            {
+                // Clamp bottom-right
+                Color32 bottomRightColor = colors[(size.Height - border - 1) * size.Width + size.Width - border - 1];
+                for (int y = size.Height - border; y < size.Height; y++)
+                {
+                    for (int x = size.Width - border; x < size.Width; x++)
+                    {
+                        colors[y * size.Width + x] = bottomRightColor;
+                    }
+                }
+            }
+        }
+
+        // Rotates a Color32 array 90 degrees counter-clockwise
+        public static Color32[] RotateColors(ref Color32[] src, int width, int height)
+        {
+            Color32[] dst = new Color32[src.Length];
+
+            // Rotate image data
+            int srcPos = 0;
+            for (int x = width - 1; x >= 0; x--)
+            {
+                for (int y = 0; y < height; y++)
+                {
+                    Color32 col = src[srcPos++];
+                    dst[y * width + x] = col;
+                }
+            }
+
+            return dst;
+        }
+
+        // Flips a Color32 array horizontally and vertically
+        public static Color32[] FlipColors(ref Color32[] src, int width, int height)
+        {
+            Color32[] dst = new Color32[src.Length];
+
+            // Flip image data
+            int srcPos = 0;
+            int dstPos = dst.Length - 1;
+            for (int i = 0; i < width * height; i++)
+            {
+                Color32 col = src[srcPos++];
+                dst[dstPos--] = col;
+            }
+
+            return dst;
+        }
+
+        // Inserts a Color32 array into XY position of another Color32 array
+        public static void InsertColors(ref Color32[] src, ref Color32[] dst, int xPos, int yPos, int srcWidth, int srcHeight, int dstWidth, int dstHeight)
+        {
+            for (int y = 0; y < srcHeight; y++)
+            {
+                for (int x = 0; x < srcWidth; x++)
+                {
+                    Color32 col = src[y * srcWidth + x];
+                    dst[(yPos + y) * dstWidth + (xPos + x)] = col;
+                }
+            }
+        }
+
+        // Helper to create and apply Texture2D from single call
+        public static Texture2D MakeTexture2D(ref Color32[] src, int width, int height, TextureFormat textureFormat, bool mipMaps)
+        {
+            Texture2D texture = new Texture2D(width, height, textureFormat, mipMaps);
+            texture.SetPixels32(src);
+            texture.Apply(true);
+
+            return texture;
         }
 
         /// <summary>
@@ -102,6 +274,7 @@ namespace DaggerfallWorkshop
             }
         }
 
+        // Gets colour indices based on metal type
         public static byte[] GetMetalColors(MetalTypes metalType)
         {
             byte[] indices;

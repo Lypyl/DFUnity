@@ -1,13 +1,13 @@
 ﻿using System;
 using DaggerfallConnect;
 
-namespace DaggerfallWorkshop
+namespace DaggerfallWorkshop.Utility
 {
     /// <summary>
     /// Static definitions for random encounters based on dungeon type (from Daggerfall Chronicles).
     /// These are generally ordered from low-level through to high-level encounters.
     /// </summary>
-    public class RandomEncounters
+    public static class RandomEncounters
     {
         public static RandomEncounterTable[] EncounterTables = new RandomEncounterTable[]
         {

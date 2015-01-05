@@ -9,6 +9,7 @@ using System.IO;
 using DaggerfallConnect;
 using DaggerfallConnect.Utility;
 using DaggerfallConnect.Arena2;
+using DaggerfallWorkshop.Utility;
 
 namespace DaggerfallWorkshop
 {
@@ -285,7 +286,6 @@ namespace DaggerfallWorkshop
             dfUnity.MaterialReader.GetCachedMaterial(archive, record, 0, out cm);
 
             // Get size and scale of this texture
-            //string path = Path.Combine(dfUnity.Arena2Path, TextureFile.IndexToFileName(archive));
             DFSize size = cm.recordSize;
             DFSize scale = cm.recordScale;
 
@@ -360,123 +360,88 @@ namespace DaggerfallWorkshop
         }
 
         /// <summary>
-        /// Gets a ground plane mesh.
+        /// Gets a simple ground plane mesh.
+        /// This is only used for RMB block layouts, not for terrain system.
         /// </summary>
         /// <param name="blockData">BlockData for tiles layout.</param>
-        /// <param name="rects">Array of atlas rects for UVs.</param>
+        /// <param name="tileMap">Tilemap Color32 array for shader.</param>
         /// <returns>Mesh.</returns>
-        public Mesh GetGroundMesh(
+        public Mesh GetSimpleGroundPlaneMesh(
             ref DFBlock blockData,
-            Rect[] rects,
+            out Color32[] tileMap,
             bool solveTangents = false,
             bool lightmapUVs = false)
         {
+            const int tileDim = 16;
+            tileMap = new Color32[tileDim * tileDim];
+
             // Make ground slightly lower to minimise depth-fighting on ground aligned polygons
             // But not too low, or shadows can be seen under buildings
-            const float groundHeight = -0.03f;
+            float groundHeight = DaggerfallGroundPlane.GroundOffset * MeshReader.GlobalScale;
 
-            // Corner positions
-            Vector3 vert0, vert1, vert2, vert3;
-            Vector2 uv0, uv1, uv2, uv3;
-
-            // Create arrays
-            Vector3[] verts = new Vector3[1024];
-            Vector3[] norms = new Vector3[1024];
-            Vector2[] uvs = new Vector2[1024];
-            int[] indices = new int[1536];
-
-            // Loop through tiles
-            int tileCount = 16;
-            int vertIndex = 0, maxIndex = 0;
-            float tileDimension = 256.0f * GlobalScale;
-            for (int y = 0; y < tileCount; y++)
+            // Create tilemap
+            for (int y = 0; y < tileDim; y++)
             {
-                for (int x = 0; x < tileCount; x++)
+                for (int x = 0; x < tileDim; x++)
                 {
                     // Get source tile data
-                    DFBlock.RmbGroundTiles tile = blockData.RmbBlock.FldHeader.GroundData.GroundTiles[x, (tileCount - 1) - y];
+                    DFBlock.RmbGroundTiles tile = blockData.RmbBlock.FldHeader.GroundData.GroundTiles[x, (tileDim - 1) - y];
 
-                    // Set random terrain marker back to grass
-                    //int record = (tile.TextureRecord > 55) ? 2 : tile.TextureRecord;
-                    int record = 0;
-
-                    // Create vertices for this quad
-                    vert0 = new Vector3(x * tileDimension, groundHeight, y * tileDimension);
-                    vert1 = new Vector3(vert0.x, groundHeight, vert0.z + tileDimension);
-                    vert2 = new Vector3(vert0.x + tileDimension, groundHeight, vert0.z + tileDimension);
-                    vert3 = new Vector3(vert0.x + tileDimension, groundHeight, vert0.z);
-
-                    Rect uv = rects[record];
-
-                    // Set UVs
+                    // Calculate tile index
+                    byte record = (byte)(tile.TextureRecord * 4);
                     if (tile.IsRotated && !tile.IsFlipped)
-                    {
-                        // Rotate only
-                        uv3 = new Vector2(uv.xMin, uv.yMin);
-                        uv0 = new Vector2(uv.xMin, uv.yMax);
-                        uv1 = new Vector2(uv.xMax, uv.yMax);
-                        uv2 = new Vector2(uv.xMax, uv.yMin);
-                    }
-                    else if (tile.IsFlipped && !tile.IsRotated)
-                    {
-                        // Flip only
-                        uv2 = new Vector2(uv.xMin, uv.yMin);
-                        uv3 = new Vector2(uv.xMin, uv.yMax);
-                        uv0 = new Vector2(uv.xMax, uv.yMax);
-                        uv1 = new Vector2(uv.xMax, uv.yMin);
-                    }
-                    else if (tile.IsRotated && tile.IsFlipped)
-                    {
-                        // Rotate and flip
-                        uv1 = new Vector2(uv.xMin, uv.yMin);
-                        uv2 = new Vector2(uv.xMin, uv.yMax);
-                        uv3 = new Vector2(uv.xMax, uv.yMax);
-                        uv0 = new Vector2(uv.xMax, uv.yMin);
-                    }
+                        record += 1;
+                    if (!tile.IsRotated && tile.IsFlipped)
+                        record += 2;
+                    if (tile.IsRotated && tile.IsFlipped)
+                        record += 3;
+
+                    // Assign tile index, setting random marker back to grass
+                    int offset = (y * tileDim) + x;
+                    if (tile.TextureRecord < 56)
+                        tileMap[offset] = new Color32(record, 0, 0, 0);
                     else
-                    {
-                        // No rotate or flip
-                        uv0 = new Vector2(uv.xMin, uv.yMin);
-                        uv1 = new Vector2(uv.xMin, uv.yMax);
-                        uv2 = new Vector2(uv.xMax, uv.yMax);
-                        uv3 = new Vector2(uv.xMax, uv.yMin);
-                    }
-
-                    // Add vertex data
-                    verts[vertIndex + 0] = vert0;
-                    verts[vertIndex + 1] = vert1;
-                    verts[vertIndex + 2] = vert2;
-                    verts[vertIndex + 3] = vert3;
-
-                    // Add normal data
-                    norms[vertIndex + 0] = Vector3.up;
-                    norms[vertIndex + 1] = Vector3.up;
-                    norms[vertIndex + 2] = Vector3.up;
-                    norms[vertIndex + 3] = Vector3.up;
-
-                    // Add uv data
-                    uvs[vertIndex + 0] = uv0;
-                    uvs[vertIndex + 1] = uv1;
-                    uvs[vertIndex + 2] = uv2;
-                    uvs[vertIndex + 3] = uv3;
-
-                    // Add index data
-                    indices[maxIndex + 0] = vertIndex + 0;
-                    indices[maxIndex + 1] = vertIndex + 1;
-                    indices[maxIndex + 2] = vertIndex + 2;
-                    indices[maxIndex + 3] = vertIndex + 0;
-                    indices[maxIndex + 4] = vertIndex + 2;
-                    indices[maxIndex + 5] = vertIndex + 3;
-
-                    // Increment
-                    vertIndex += 4;
-                    maxIndex += 6;
+                        tileMap[offset] = new Color32(8, 0, 0, 0);      // Index 8 is grass
                 }
             }
 
+            // Create a basic quad
+            float tileSize = DaggerfallGroundPlane.TileSize * GlobalScale;
+            float quadSize = tileSize * tileDim;
+
+            // Vertices
+            Vector3[] verts = new Vector3[4];
+            verts[0] = new Vector3(0, groundHeight, 0);
+            verts[1] = new Vector3(0, groundHeight, quadSize);
+            verts[2] = new Vector3(quadSize, groundHeight, quadSize);
+            verts[3] = new Vector3(quadSize, groundHeight, 0);
+
+            // Normals
+            Vector3[] norms = new Vector3[4];
+            norms[0] = Vector3.up;
+            norms[1] = Vector3.up;
+            norms[2] = Vector3.up;
+            norms[3] = Vector3.up;
+
+            // UVs
+            Vector2[] uvs = new Vector2[4];
+            uvs[0] = new Vector2(0, 0);
+            uvs[1] = new Vector2(0, 1);
+            uvs[2] = new Vector2(1, 1);
+            uvs[3] = new Vector2(1, 0);
+
+            // Indices
+            int[] indices = new int[6];
+            indices[0] = 0;
+            indices[1] = 1;
+            indices[2] = 2;
+            indices[3] = 0;
+            indices[4] = 2;
+            indices[5] = 3;
+
             // Create mesh
             Mesh mesh = new Mesh();
-            mesh.name = "GroundMesh";
+            mesh.name = "SimpleGroundPlaneMesh";
             mesh.vertices = verts;
             mesh.normals = norms;
             mesh.uv = uvs;
@@ -489,6 +454,127 @@ namespace DaggerfallWorkshop
             mesh.Optimize();
 
             return mesh;
+
+            //const int tileCount = 16;
+            //const int vertexCount = (tileCount * tileCount) * 4;
+            //const int indexCount = (tileCount * tileCount) * 6;
+
+            //// Make ground slightly lower to minimise depth-fighting on ground aligned polygons
+            //// But not too low, or shadows can be seen under buildings
+            //float groundHeight = DaggerfallGroundMesh.GroundOffset * MeshReader.GlobalScale;
+
+            //// Corner positions
+            //Vector3 vert0, vert1, vert2, vert3;
+            //Vector2 uv0, uv1, uv2, uv3;
+
+            //// Create arrays
+            //Vector3[] verts = new Vector3[vertexCount];
+            //Vector3[] norms = new Vector3[vertexCount];
+            //Vector2[] uvs = new Vector2[vertexCount];
+            //int[] indices = new int[indexCount];
+
+            //// Loop through tiles
+            //int vertIndex = 0, maxIndex = 0;
+            //float tileDimension = DaggerfallGroundMesh.TileDimension * GlobalScale;
+            //for (int y = 0; y < tileCount; y++)
+            //{
+            //    for (int x = 0; x < tileCount; x++)
+            //    {
+            //        // Get source tile data
+            //        DFBlock.RmbGroundTiles tile = blockData.RmbBlock.FldHeader.GroundData.GroundTiles[x, (tileCount - 1) - y];
+
+            //        // Set random terrain marker back to grass
+            //        int record = (tile.TextureRecord > 55) ? 2 : tile.TextureRecord;
+
+            //        // Create vertices for this quad
+            //        vert0 = new Vector3(x * tileDimension, groundHeight, y * tileDimension);
+            //        vert1 = new Vector3(vert0.x, groundHeight, vert0.z + tileDimension);
+            //        vert2 = new Vector3(vert0.x + tileDimension, groundHeight, vert0.z + tileDimension);
+            //        vert3 = new Vector3(vert0.x + tileDimension, groundHeight, vert0.z);
+
+            //        Rect uv = rects[record];
+
+            //        // Set UVs
+            //        if (tile.IsRotated && !tile.IsFlipped)
+            //        {
+            //            // Rotate only
+            //            uv3 = new Vector2(uv.xMin, uv.yMin);
+            //            uv0 = new Vector2(uv.xMin, uv.yMax);
+            //            uv1 = new Vector2(uv.xMax, uv.yMax);
+            //            uv2 = new Vector2(uv.xMax, uv.yMin);
+            //        }
+            //        else if (tile.IsFlipped && !tile.IsRotated)
+            //        {
+            //            // Flip only
+            //            uv2 = new Vector2(uv.xMin, uv.yMin);
+            //            uv3 = new Vector2(uv.xMin, uv.yMax);
+            //            uv0 = new Vector2(uv.xMax, uv.yMax);
+            //            uv1 = new Vector2(uv.xMax, uv.yMin);
+            //        }
+            //        else if (tile.IsRotated && tile.IsFlipped)
+            //        {
+            //            // Rotate and flip
+            //            uv1 = new Vector2(uv.xMin, uv.yMin);
+            //            uv2 = new Vector2(uv.xMin, uv.yMax);
+            //            uv3 = new Vector2(uv.xMax, uv.yMax);
+            //            uv0 = new Vector2(uv.xMax, uv.yMin);
+            //        }
+            //        else
+            //        {
+            //            // No rotate or flip
+            //            uv0 = new Vector2(uv.xMin, uv.yMax);
+            //            uv1 = new Vector2(uv.xMin, uv.yMin);
+            //            uv2 = new Vector2(uv.xMax, uv.yMin);
+            //            uv3 = new Vector2(uv.xMax, uv.yMax);
+            //        }
+
+            //        // Add vertex data
+            //        verts[vertIndex + 0] = vert0;
+            //        verts[vertIndex + 1] = vert1;
+            //        verts[vertIndex + 2] = vert2;
+            //        verts[vertIndex + 3] = vert3;
+
+            //        // Add normal data
+            //        norms[vertIndex + 0] = Vector3.up;
+            //        norms[vertIndex + 1] = Vector3.up;
+            //        norms[vertIndex + 2] = Vector3.up;
+            //        norms[vertIndex + 3] = Vector3.up;
+
+            //        // Add uv data
+            //        uvs[vertIndex + 0] = uv0;
+            //        uvs[vertIndex + 1] = uv1;
+            //        uvs[vertIndex + 2] = uv2;
+            //        uvs[vertIndex + 3] = uv3;
+
+            //        // Add index data
+            //        indices[maxIndex + 0] = vertIndex + 0;
+            //        indices[maxIndex + 1] = vertIndex + 1;
+            //        indices[maxIndex + 2] = vertIndex + 2;
+            //        indices[maxIndex + 3] = vertIndex + 0;
+            //        indices[maxIndex + 4] = vertIndex + 2;
+            //        indices[maxIndex + 5] = vertIndex + 3;
+
+            //        // Increment
+            //        vertIndex += 4;
+            //        maxIndex += 6;
+            //    }
+            //}
+
+            //// Create mesh
+            //Mesh mesh = new Mesh();
+            //mesh.name = "GroundMesh";
+            //mesh.vertices = verts;
+            //mesh.normals = norms;
+            //mesh.uv = uvs;
+            //mesh.triangles = indices;
+
+            //// Finalise mesh
+            //if (solveTangents) TangentSolver(mesh);
+            //if (lightmapUVs) AddLightmapUVs(mesh);
+            //mesh.RecalculateBounds();
+            //mesh.Optimize();
+
+            //return mesh;
         }
 
         /// <summary>
@@ -583,7 +669,9 @@ namespace DaggerfallWorkshop
                 // Check if this is a door archive
                 bool doorFound = false;
                 DoorTypes doorType = DoorTypes.None;
-                int archive = (dfSubMesh.TextureArchive > 100) ? (int)ClimateSwaps.GetClimateSet(dfSubMesh.TextureArchive) : dfSubMesh.TextureArchive;
+                //int archive = (dfSubMesh.TextureArchive > 100) ? (int)ClimateSwaps.GetClimateSet(dfSubMesh.TextureArchive) : dfSubMesh.TextureArchive;
+                ClimateTextureInfo ci = ClimateSwaps.GetClimateTextureInfo(dfSubMesh.TextureArchive);
+                int archive = (dfSubMesh.TextureArchive > 100) ? (int)ci.textureSet : dfSubMesh.TextureArchive;
                 switch(archive)
                 {
                     case BuildingDoors:

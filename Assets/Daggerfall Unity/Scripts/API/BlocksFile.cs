@@ -188,17 +188,13 @@ namespace DaggerfallConnect.Arena2
         public bool Load(string filePath, FileUsage usage, bool readOnly)
         {
             // Validate filename
-            //filePath = filePath.ToUpper();
-            if (!filePath.EndsWith("BLOCKS.BSA")) {
-                Logger.GetInstance().log("File didn't end with BLOCKS.BSA!");
+            filePath = filePath.ToUpper();
+            if (!filePath.EndsWith("BLOCKS.BSA"))
                 return false;
-            }
 
             // Load file
-            if (!bsaFile.Load(filePath, usage, readOnly)) { 
-                Logger.GetInstance().log("BLOCKS.BSA didn't load!");
+            if (!bsaFile.Load(filePath, usage, readOnly))
                 return false;
-            }
 
             // Create records array
             blocks = new BlockRecord[bsaFile.Count];

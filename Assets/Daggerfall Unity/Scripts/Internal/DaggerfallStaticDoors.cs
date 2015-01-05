@@ -6,6 +6,7 @@ using System.IO;
 using DaggerfallConnect;
 using DaggerfallConnect.Utility;
 using DaggerfallConnect.Arena2;
+using DaggerfallWorkshop.Utility;
 
 namespace DaggerfallWorkshop
 {
@@ -18,17 +19,21 @@ namespace DaggerfallWorkshop
     {
         public StaticDoor[] Doors;                  // Array of doors attached this building or group of buildings
 
-        [Serializable]
-        public struct StaticDoor
+        void Start()
         {
-            public Matrix4x4 buildingMatrix;        // Matrix of individual building owning this door
-            public DoorTypes doorType;              // Type of door
-            public int blockIndex;                  // Block index in BLOCKS.BSA
-            public int recordIndex;                 // Record index of interior
-            public int doorIndex;                   // Door index for individual building/record (most buildings have only 1-2 doors)
-            public Vector3 centre;                  // Door centre in model space
-            public Vector3 size;                    // Door size in model space
-            public Vector3 normal;                  // Normal pointing away from door
+            //// Debug trigger placement at start
+            //for (int i = 0; i < Doors.Length; i++)
+            //{
+            //    GameObject go = new GameObject();
+            //    go.transform.parent = transform;
+            //    go.transform.position = transform.rotation * Doors[i].buildingMatrix.MultiplyPoint3x4(Doors[i].centre);
+            //    go.transform.position += transform.position;
+            //    go.transform.rotation = transform.rotation;
+
+            //    BoxCollider c = go.AddComponent<BoxCollider>();
+            //    c.size = GameObjectHelper.QuaternionFromMatrix(Doors[i].buildingMatrix) * Doors[i].size;
+            //    c.isTrigger = true;
+            //}
         }
 
         /// <summary>
@@ -56,7 +61,8 @@ namespace DaggerfallWorkshop
             bool found = false;
             for (int i = 0; i < Doors.Length; i++)
             {
-                // Setup trigger position and size over this door
+                // Setup single trigger position and size over each door in turn
+                // This method plays nice with transforms
                 go.transform.position = transform.rotation * Doors[i].buildingMatrix.MultiplyPoint3x4(Doors[i].centre);
                 c.size = GameObjectHelper.QuaternionFromMatrix(Doors[i].buildingMatrix) * Doors[i].size;
                 go.transform.position += transform.position;

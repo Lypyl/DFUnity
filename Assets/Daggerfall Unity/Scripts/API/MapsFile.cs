@@ -22,9 +22,20 @@ namespace DaggerfallConnect.Arena2
     {
         #region Class Variables
 
-        public static float WorldMapTileDim = 32768;
+        public static float WorldMapTerrainDim = 32768;
+        public static float WorldMapTileDim = 128;
+        public static int MinWorldCoordX = 0;
+        public static int MinWorldCoordZ = 0;
         public static int MaxWorldCoordX = 32768000;
-        public static int MaxWorldCoordY = 16384000;
+        public static int MaxWorldCoordZ = 16384000;
+        public static int MinWorldTileCoordX = 0;
+        public static int MaxWorldTileCoordX = 128000;
+        public static int MinWorldTileCoordZ = 0;
+        public static int MaxWorldTileCoordZ = 64000;
+        public static int MinMapPixelX = 0;
+        public static int MinMapPixelY = 0;
+        public static int MaxMapPixelX = 1000;
+        public static int MaxMapPixelY = 500;
 
         /// <summary>
         /// All region names.
@@ -205,6 +216,14 @@ namespace DaggerfallConnect.Arena2
         }
 
         /// <summary>
+        /// Gets raw MAPS.BSA file.
+        /// </summary>
+        public BsaFile BsaFile
+        {
+            get { return bsaFile; }
+        }
+
+        /// <summary>
         /// True when ready to load regions and locations, otherwise false.
         /// </summary>
         public bool Ready
@@ -217,12 +236,19 @@ namespace DaggerfallConnect.Arena2
         #region Static Properties
 
         /// <summary>
+        /// Gets default climate index.
+        /// </summary>
+        static public int DefaultClimate
+        {
+            get { return 231; }
+        }
+
+        /// <summary>
         /// Gets default climate settings.
         /// </summary>
-        /// <returns>Set of default climate settings.</returns>
         static public DFLocation.ClimateSettings DefaultClimateSettings
         {
-            get { return GetWorldClimateSettings(231); }
+            get { return GetWorldClimateSettings(DefaultClimate); }
         }
 
         #endregion
@@ -230,13 +256,13 @@ namespace DaggerfallConnect.Arena2
         #region Static Public Methods
 
         /// <summary>
-        /// Gets map pixel from location longitude and latitude.
-        /// The world is 1000x500 pixels in size.
+        /// Converts longitude and latitude to map pixel coordinates.
+        /// The world is 1000x500 map pixels.
         /// </summary>
         /// <param name="longitude">Longitude position.</param>
         /// <param name="latitude">Latitude position.</param>
         /// <returns>Map pixel position.</returns>
-        public static DFPosition GetMapPixel(int longitude, int latitude)
+        public static DFPosition LongitudeLatitudeToMapPixel(int longitude, int latitude)
         {
             DFPosition pos = new DFPosition();
             pos.X = longitude / 128;
@@ -246,18 +272,35 @@ namespace DaggerfallConnect.Arena2
         }
 
         /// <summary>
-        /// Gets location ID of map pixel.
+        /// Converts map pixel coord to longitude and latitude.
         /// </summary>
-        /// <param name="x">Map pixel X.</param>
-        /// <param name="y">Map pixel Y.</param>
+        /// <param name="mapPixelX">Map pixel X.</param>
+        /// <param name="mapPixelY">Map pixel Y.</param>
         /// <returns></returns>
-        public static int GetMapPixelID(int x, int y)
+        public static DFPosition MapPixelToLongitudeLatitude(int mapPixelX, int mapPixelY)
         {
-            return y * 1000 + x;
+            DFPosition pos = new DFPosition();
+            pos.X = mapPixelX * 128;
+            pos.Y = (499 - mapPixelY) * 128;
+
+            return pos;
         }
 
         /// <summary>
-        /// Gets location ID of map pixel from location latitude and longitude.
+        /// Gets ID of map pixel.
+        /// This can be mapped to location IDs and quest IDs.
+        /// MapTableData.MapId & 0x000fffff = WorldPixelID.
+        /// </summary>
+        /// <param name="mapPixelX">Map pixel X.</param>
+        /// <param name="mapPixelY">Map pixel Y.</param>
+        /// <returns>Map pixel ID.</returns>
+        public static int GetMapPixelID(int mapPixelX, int mapPixelY)
+        {
+            return mapPixelY * 1000 + mapPixelX;
+        }
+
+        /// <summary>
+        /// Gets ID of map pixel using latitude and longitude.
         /// This can be mapped to location IDs and quest IDs.
         /// MapTableData.MapId & 0x000fffff = WorldPixelID.
         /// </summary>
@@ -266,7 +309,7 @@ namespace DaggerfallConnect.Arena2
         /// <returns>Map pixel ID.</returns>
         public static int GetMapPixelIDFromLongitudeLatitude(int longitude, int latitude)
         {
-            DFPosition pos = GetMapPixel(longitude, latitude);
+            DFPosition pos = LongitudeLatitudeToMapPixel(longitude, latitude);
 
             return pos.Y * 1000 + pos.X;
         }
@@ -277,11 +320,11 @@ namespace DaggerfallConnect.Arena2
         /// <param name="worldX">Map pixel X.</param>
         /// <param name="worldZ">Map pixel Y.</param>
         /// <returns>World position.</returns>
-        public static DFPosition MapPixelToWorldCoord(int x, int y)
+        public static DFPosition MapPixelToWorldCoord(int mapPixelX, int mapPixelY)
         {
             DFPosition pos = new DFPosition();
-            pos.X = x * 32768;
-            pos.Y = (499 - y) * 32768;
+            pos.X = mapPixelX * 32768;
+            pos.Y = (499 - mapPixelY) * 32768;
 
             return pos;
         }
@@ -419,11 +462,9 @@ namespace DaggerfallConnect.Arena2
         public bool Load(string filePath, FileUsage usage, bool readOnly)
         {
             // Validate filename
-            //filePath = filePath.ToUpper();
-            if (!filePath.EndsWith("MAPS.BSA")) {
-                Logger.GetInstance().log("File didn't end with MAPS.BSA!");
+            filePath = filePath.ToUpper();
+            if (!filePath.EndsWith("MAPS.BSA"))
                 return false;
-            }
 
             // Load PAK files
             string arena2Path = Path.GetDirectoryName(filePath);
@@ -432,10 +473,8 @@ namespace DaggerfallConnect.Arena2
 
             // Load file
             isReady = false;
-            if (!bsaFile.Load(filePath, usage, readOnly)) { 
-                Logger.GetInstance().log("Loading MAPS.BSA didn't work!");
+            if (!bsaFile.Load(filePath, usage, readOnly))
                 return false;
-            }
 
             // Create records array
             regions = new RegionRecord[RegionCount];
@@ -608,6 +647,10 @@ namespace DaggerfallConnect.Arena2
             if (!ReadLocation(region, location, ref dfLocation))
                 return new DFLocation();
 
+            // Store indices
+            dfLocation.RegionIndex = region;
+            dfLocation.LocationIndex = location;
+
             return dfLocation;
         }
 
@@ -700,21 +743,25 @@ namespace DaggerfallConnect.Arena2
         /// <summary>
         /// Reads climate index from CLIMATE.PAK based on world pixel.
         /// </summary>
-        /// <param name="x">World pixel X position.</param>
-        /// <param name="y">World pixel Y position.</param>
-        public int GetClimateIndex(int x, int y)
+        /// <param name="mapPixelX">Map pixel X position.</param>
+        /// <param name="mapPixelY">Map pixel Y position.</param>
+        public int GetClimateIndex(int mapPixelX, int mapPixelY)
         {
-            return climatePak.GetValue(x, y);
+            // Map data appears to be offset X-1 relative to other maps
+            // Add +1 to X coordinate to line up with location
+            mapPixelX += 1;
+
+            return climatePak.GetValue(mapPixelX, mapPixelY);
         }
 
         /// <summary>
         /// Reads politic index from POLITIC.PAK based on world pixel.
         /// </summary>
-        /// <param name="x">World pixel X position.</param>
-        /// <param name="y">World pixel Y position.</param>
-        public int GetPoliticIndex(int x, int y)
+        /// <param name="mapPixelX">Map pixel X position.</param>
+        /// <param name="mapPixelY">Map pixel Y position.</param>
+        public int GetPoliticIndex(int mapPixelX, int mapPixelY)
         {
-            return politicPak.GetValue(x, y);
+            return politicPak.GetValue(mapPixelX, mapPixelY);
         }
 
         #endregion
@@ -797,7 +844,7 @@ namespace DaggerfallConnect.Arena2
         /// <param name="dfLocation">DFLocation.</param>
         private void ReadClimatePoliticData(ref DFLocation dfLocation)
         {
-            DFPosition pos = GetMapPixel((int)dfLocation.MapTableData.Longitude, (int)dfLocation.MapTableData.Latitude);
+            DFPosition pos = LongitudeLatitudeToMapPixel((int)dfLocation.MapTableData.Longitude, (int)dfLocation.MapTableData.Latitude);
 
             // Read politic data. This should always equal region index + 128.
             dfLocation.Politic = politicPak.GetValue(pos.X, pos.Y);

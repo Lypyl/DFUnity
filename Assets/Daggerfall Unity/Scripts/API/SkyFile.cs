@@ -117,7 +117,7 @@ namespace DaggerfallConnect.Arena2
                 return true;
 
             // Validate filename
-            //filePath = filePath.ToUpper();
+            filePath = filePath.ToUpper();
             string fn = Path.GetFileName(filePath);
             if (!fn.StartsWith("SKY") && !fn.EndsWith(".DAT"))
                 return false;

@@ -9,6 +9,7 @@ using System.IO;
 using DaggerfallConnect;
 using DaggerfallConnect.Arena2;
 using DaggerfallConnect.Utility;
+using DaggerfallWorkshop.Utility;
 
 namespace DaggerfallWorkshop
 {
@@ -26,7 +27,7 @@ namespace DaggerfallWorkshop
     public class DaggerfallUnity : MonoBehaviour
     {
         [NonSerialized]
-        public const string Version = "1.1.0";
+        public const string Version = "1.2.7";
 
         #region Fields
 
@@ -45,7 +46,6 @@ namespace DaggerfallWorkshop
 
         #region Public Fields
 
-        public bool devConsoleOpen = false; 
         public string Arena2Path;
         public int ModelImporter_ModelID = 456;
         public string BlockImporter_BlockName = "MAGEAA01.RMB";
@@ -55,12 +55,14 @@ namespace DaggerfallWorkshop
         // Mesh combining options
         public bool Option_CombineRMB = true;
         public bool Option_CombineRDB = true;
+        public bool Option_CombineLocations = true;
 
         // Import options
         public bool Option_SetStaticFlags = true;
         public bool Option_AddMeshColliders = true;
         public bool Option_AddNavmeshAgents = true;
         public bool Option_DefaultSounds = true;
+        public bool Option_SimpleGroundPlane = true;
         public bool Option_CloseCityGates = false;
 
         // Light options
@@ -94,6 +96,12 @@ namespace DaggerfallWorkshop
         public bool Option_AutomateCityWindows = true;
         public bool Option_AutomateCityLights = true;
         public bool Option_AutomateCityGates = false;
+
+        // Resource export options
+#if UNITY_EDITOR
+        public string Option_MyResourcesFolder = "Daggerfall Unity/Resources";
+        public string Option_TerrainAtlasesSubFolder = "TerrainAtlases";
+#endif
 
         #endregion
 
@@ -181,14 +189,11 @@ namespace DaggerfallWorkshop
             if (!isReady)
             {
 #if UNITY_EDITOR
-                Logger.GetInstance().Setup();
-                Logger.GetInstance().log("DFUnity version " + Version + " started in editor\n");
                 if (!Application.isPlaying)
                 {
                     // Must have a path set
-                    if (string.IsNullOrEmpty(Arena2Path)) { 
+                    if (string.IsNullOrEmpty(Arena2Path))
                         return false;
-                    }
 
                     // Validate current path
                     if (ValidateArena2Path(Arena2Path))
@@ -210,12 +215,6 @@ namespace DaggerfallWorkshop
                     SetupContentReaders();
                 }
 #else
-                Logger.GetInstance().Setup();
-                Logger.GetInstance().log("DFUnity version " + Version + " started in standalone mode\nArgs:");
-
-                foreach (string arg in System.Environment.GetCommandLineArgs()) {
-                    Logger.GetInstance().log(arg);
-                }
                 SetupSingleton();
                 SetupContentReaders();
 #endif
@@ -248,14 +247,14 @@ namespace DaggerfallWorkshop
             }
         }
 
-        private void SetupContentReaders() {
-            if (isReady) {
-                if (reader == null) {
+        private void SetupContentReaders()
+        {
+            if (isReady)
+            {
+                if (reader == null)
                     reader = new ContentReader(Arena2Path, this);
-                }
-                if (enemyDict == null) { 
+                if (enemyDict == null)
                     enemyDict = EnemyBasics.GetEnemyDict();
-                }
             }
         }
 
@@ -265,9 +264,7 @@ namespace DaggerfallWorkshop
 
         public static void LogMessage(string message, bool showInEditor = false)
         {
-            if (showInEditor || Application.isPlaying) { 
-                Debug.Log(string.Format("DaggerfallUnity {0}: {1}", Version, message));
-            }
+            if (showInEditor || Application.isPlaying) Debug.Log(string.Format("DaggerfallUnity {0}: {1}", Version, message));
         }
 
         public static bool FindDaggerfallUnity(out DaggerfallUnity dfUnityOut)
@@ -278,19 +275,22 @@ namespace DaggerfallWorkshop
                 LogMessage("Could not locate DaggerfallUnity GameObject instance in scene!", true);
                 return false;
             }
-            else
-            {
-                if (!dfUnityOut.IsReady)
-                {
-                    dfUnityOut = null;
-                    LogMessage("Found DaggerfallUnity instance but it is not ready. Have you set your Arena2 path?", false);
-                    return false;
-                }
-            }
 
             return true;
         }
 
+        #endregion
+
+        #region Editor Asset Export
+#if UNITY_EDITOR
+        public void ExportTerrainTextureAtlases()
+        {
+            if (MaterialReader.IsReady)
+            {
+                TerrainAtlasBuilder.ExportTerrainAtlasTextureResources(materialReader.TextureReader, Option_MyResourcesFolder, Option_TerrainAtlasesSubFolder);
+            }
+        }
+#endif
         #endregion
     }
 }

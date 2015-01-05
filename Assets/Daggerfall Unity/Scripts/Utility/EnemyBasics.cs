@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DaggerfallWorkshop
+namespace DaggerfallWorkshop.Utility
 {
     /// <summary>
     /// Static definitions for basic enemies and their animations.
     /// This is just a starting point!
     /// You will need to implement more as needed, e.g. spells, resists, AI behaviours, etc.
     /// </summary>
-    public class EnemyBasics
+    public static class EnemyBasics
     {
         #region Enemy Animations
 

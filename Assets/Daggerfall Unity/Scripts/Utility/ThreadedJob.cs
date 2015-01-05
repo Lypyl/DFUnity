@@ -7,7 +7,7 @@ using DaggerfallConnect;
 using DaggerfallConnect.Utility;
 using DaggerfallConnect.Arena2;
 
-namespace DaggerfallWorkshop
+namespace DaggerfallWorkshop.Utility
 {
     public class ThreadedJob
     {

@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DaggerfallWorkshop
+namespace DaggerfallWorkshop.Utility
 {
     /// <summary>
     /// Basic definitions for weapon animations.
     /// Use this as a starting point.
     /// </summary>
-    public class WeaponBasics
+    public static class WeaponBasics
     {
         #region Weapon Animations
 

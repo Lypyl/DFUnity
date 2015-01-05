@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using DaggerfallWorkshop.Utility;
 
 namespace DaggerfallWorkshop.Demo
 {
@@ -35,9 +36,9 @@ namespace DaggerfallWorkshop.Demo
         /// <summary>
         /// Transition player through an exterior door into building interior.
         /// </summary>
-        /// <param name="exterior">Exterior game object housing this interior.</param>
+        /// <param name="doorOwner">Parent transform owning door array.</param>
         /// <param name="door">Exterior door player clicked on.</param>
-        public void TransitionInterior(GameObject exterior, DaggerfallStaticDoors.StaticDoor door)
+        public void TransitionInterior(Transform doorOwner, StaticDoor door)
         {
             // Ensure we have component references
             if (!ReferenceComponents())
@@ -47,11 +48,11 @@ namespace DaggerfallWorkshop.Demo
             // This needs to be done first so we know where the enter markers are
             GameObject newInterior = new GameObject(string.Format("DaggerfallInterior [Block={0}, Record={1}]", door.blockIndex, door.recordIndex));
             interior = newInterior.AddComponent<DaggerfallInterior>();
-            interior.DoLayout(exterior, door, Location);
+            interior.DoLayout(doorOwner, door, Location);
 
             // Position interior directly inside of exterior
             // This helps with finding closest enter/exit point relative to player position
-            interior.transform.position = exterior.transform.position + (Vector3)door.buildingMatrix.GetColumn(3);
+            interior.transform.position = doorOwner.position + (Vector3)door.buildingMatrix.GetColumn(3);
             interior.transform.rotation = GameObjectHelper.QuaternionFromMatrix(door.buildingMatrix);
 
             // Position player above closest enter marker

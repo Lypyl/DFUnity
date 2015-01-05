@@ -48,14 +48,14 @@ namespace DaggerfallConnect.Arena2
         /// </summary>
         private UInt32[] dataOffsets;
 
-        /// <summary>
-        /// UNUSED.
-        ///  Unknown data.
-        /// </summary>
-        private DataSection1 dataSection1Data;
+        ///// <summary>
+        ///// UNUSED.
+        /////  Unknown data.
+        ///// </summary>
+        //private DataSection1 dataSection1Data;
 
         /// <summary>
-        /// Height map data.
+        /// Height map data buffer.
         /// </summary>
         private Byte[] heightMapBuffer = new Byte[mapBufferLengthValue];
 
@@ -80,32 +80,30 @@ namespace DaggerfallConnect.Arena2
             public UInt32[] NullValue2;
         }
 
-        /// <summary>
-        /// UNUSED.
-        ///  Represents DataSection1 data.
-        ///  The purpose of this data is currently unknown.
-        /// </summary>
-        private struct DataSection1
-        {
-            public UInt32[] Unknown1;
-        }
+        ///// <summary>
+        ///// UNUSED.
+        /////  Represents DataSection1 data.
+        /////  The purpose of this data is currently unknown.
+        ///// </summary>
+        //private struct DataSection1
+        //{
+        //    public UInt32[] Unknown1;
+        //}
 
-        /*
-        /// <summary>
-        /// NOT IMPLEMENTED.
-        ///  Extended information per world cell.
-        /// </summary>
-        private struct CellData
-        {
-            public UInt16 Unknown1;
-            public UInt32 NullValue1;
-            public UInt16 FileIndex;
-            public Byte Climate;
-            public Byte ClimateNoise;
-            public UInt32[] NullValue2;
-            public Byte[][] ElevationNoise;
-        }
-         * */
+        ///// <summary>
+        ///// UNUSED.
+        /////  Extended information per map pixel.
+        ///// </summary>
+        //private struct PixelData
+        //{
+        //    public UInt16 Unknown1;
+        //    public UInt32 NullValue1;
+        //    public UInt16 FileIndex;
+        //    public Byte Climate;
+        //    public Byte ClimateNoise;
+        //    public UInt32[] NullValue2;
+        //    public Byte[][] ElevationNoise;
+        //}
 
         #endregion
 
@@ -114,7 +112,7 @@ namespace DaggerfallConnect.Arena2
         /// <summary>
         /// Width of heightmap data (always 1000).
         /// </summary>
-        public int MapWidth
+        public static int MapWidth
         {
             get { return mapWidthValue; }
         }
@@ -122,7 +120,7 @@ namespace DaggerfallConnect.Arena2
         /// <summary>
         /// Height of heightmap data (always 500).
         /// </summary>
-        public int MapHeight
+        public static int MapHeight
         {
             get { return mapHeightValue; }
         }
@@ -183,8 +181,8 @@ namespace DaggerfallConnect.Arena2
         public bool Load(string filePath, FileUsage usage, bool readOnly)
         {
             // Validate filename
-            //filePath = filePath.ToUpper();
-            if (!filePath.EndsWith("WOODS.WLD"))
+            filePath = filePath.ToUpper();
+            if (!filePath.EndsWith(Filename))
                 return false;
 
             // Load file into memory
@@ -210,27 +208,107 @@ namespace DaggerfallConnect.Arena2
             DFBitmap.Height = mapHeightValue;
             DFBitmap.Stride = mapWidthValue;
             DFBitmap.Data = heightMapBuffer;
+
             return DFBitmap;
         }
 
         /// <summary>
         /// Gets value for specified position in heightmap.
         /// </summary>
-        /// <param name="x">X position in heightmap. 0 to MapWidth-1.</param>
-        /// <param name="y">Y position in heightmap. 0 to MapHeight-1.</param>
-        /// <returns>Value of heightmap data if valid, -1 if invalid.</returns>
-        public int GetHeightMapValue(int x, int y)
+        /// <param name="mapPixelX">X position in heightmap. 0 to MapWidth-1.</param>
+        /// <param name="mapPixelY">Y position in heightmap. 0 to MapHeight-1.</param>
+        /// <returns>Value of heightmap data.</returns>
+        public Byte GetHeightMapValue(int mapPixelX, int mapPixelY)
         {
-            // Validate
-            if (x < 0 || x >= MapWidth) return -1;
-            if (y < 0 || y >= MapHeight) return -1;
-
-            return Buffer[(y * mapWidthValue) + x];
+            return Buffer[(mapPixelY * mapWidthValue) + mapPixelX];
         }
 
-        #endregion
+        /// <summary>
+        /// Gets range of small height map data.
+        /// Also inverts Y order of height samples.
+        /// </summary>
+        /// <param name="mapPixelX">X position in heightmap. 0 to MapWidth-1.</param>
+        /// <param name="mapPixelY">Y position in heightmap. 0 to MapHeight-1.</param>
+        /// <param name="dim">Dimension of heightmap samples to read.</param>
+        /// <returns>Byte array dim,dim in size.</returns>
+        public Byte[,] GetHeightMapValuesRange(int mapPixelX, int mapPixelY, int dim)
+        {
+            Byte[,] dstData = new Byte[dim, dim];
+            for (int y = 0; y < dim; y++)
+            {
+                for (int x = 0; x < dim; x++)
+                {
+                    dstData[x, y] = GetHeightMapValue(mapPixelX + x, mapPixelY - y);
+                }
+            }
 
-        #region Private Methods
+            return dstData;
+        }
+
+        /// <summary>
+        /// Gets 5x5 large map data for given map pixel.
+        /// Read exactly as found in files.
+        /// </summary>
+        /// <param name="mapPixelX">X position in heightmap. 0 to MapWidth-1.</param>
+        /// <param name="mapPixelY">Y position in heightmap. 0 to MapHeight-1.</param>
+        /// <returns>5x5 grid of map data.</returns>
+        public Byte[,] GetLargeMapData(int mapPixelX, int mapPixelY)
+        {
+            // Offset directly to this pixel data
+            BinaryReader reader = managedFile.GetReader();
+            reader.BaseStream.Position = dataOffsets[mapPixelY * mapWidthValue + mapPixelX] + 22;
+
+            // Read 5x5 data
+            Byte[,] data = new Byte[5, 5];
+            for (int y = 0; y < 5; y++)
+            {
+                for (int x = 0; x < 5; x++)
+                {
+                    data[x, y] = reader.ReadByte();
+                }
+            }
+
+            return data;
+        }
+
+        /// <summary>
+        /// Gets a range of large height map values with unknown grid stripped away.
+        /// Also inverts Y order of height samples.
+        /// </summary>
+        /// <param name="mapPixelX">Start X position in heightmap. 0 to MapWidth-1.</param>
+        /// <param name="mapPixelY">Start Y position in heightmap. 0 to MapHeight-1.</param>
+        /// <param name="dim">Dimension of heightmap cells to read.</param>
+        /// <returns>Byte array dim*3,dim*3 in size.</returns>
+        public Byte[,] GetLargeHeightMapValuesRange(int mapPixelX, int mapPixelY, int dim)
+        {
+            const int offsetx = 1;
+            const int offsety = 1;
+            const int len = 3;
+
+            Byte[,] dstData = new Byte[dim * len, dim * len];
+            for (int y = 0; y < dim; y++)
+            {
+                for (int x = 0; x < dim; x++)
+                {
+                    // Get source 5x5 data
+                    Byte[,] srcData = GetLargeMapData(mapPixelX + x, mapPixelY - y);
+
+                    // Write 3x3 heightmap pixels to destination array
+                    int startX = x * len;
+                    int startY = y * len;
+                    for (int iy = offsety; iy < offsety + len; iy++)
+                    {
+                        for (int ix = offsetx; ix < offsetx + len; ix++)
+                        {
+                            dstData[startX + ix - offsetx, startY + iy - offsety] = srcData[ix, 4 - iy];
+                        }
+                    }
+                }
+            }
+
+            return dstData;
+        }
+
         #endregion
 
         #region Readers
@@ -246,7 +324,7 @@ namespace DaggerfallConnect.Arena2
                 BinaryReader Reader = managedFile.GetReader();
                 ReadHeader(Reader);
                 ReadDataOffsets(Reader);
-                ReadDataSection1(Reader);
+                //ReadDataSection1(Reader);     // No sense reading this if not used
                 ReadHeightMap(Reader);
             }
             catch (Exception e)
@@ -298,21 +376,21 @@ namespace DaggerfallConnect.Arena2
                 dataOffsets[i] = reader.ReadUInt32();
         }
 
-        /// <summary>
-        /// Read DataSection1 data.
-        ///  The purpose of this data is currently unknown.
-        /// </summary>
-        /// <param name="reader">Reader to stream.</param>
-        private void ReadDataSection1(BinaryReader reader)
-        {
-            // Position reader
-            reader.BaseStream.Position = header.DataSection1Offset;
+        ///// <summary>
+        ///// Read DataSection1 data.
+        /////  The purpose of this data is currently unknown.
+        ///// </summary>
+        ///// <param name="reader">Reader to stream.</param>
+        //private void ReadDataSection1(BinaryReader reader)
+        //{
+        //    // Position reader
+        //    reader.BaseStream.Position = header.DataSection1Offset;
 
-            // Read data
-            dataSection1Data.Unknown1 = new UInt32[256];
-            for (int i = 0; i < 256; i++)
-                dataSection1Data.Unknown1[i] = reader.ReadUInt32();
-        }
+        //    // Read data
+        //    dataSection1Data.Unknown1 = new UInt32[256];
+        //    for (int i = 0; i < 256; i++)
+        //        dataSection1Data.Unknown1[i] = reader.ReadUInt32();
+        //}
 
         /// <summary>
         /// Read heightmap data.

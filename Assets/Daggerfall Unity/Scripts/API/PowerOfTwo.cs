@@ -42,6 +42,18 @@ namespace DaggerfallConnect.Utility
         }
 
         /// <summary>
+        /// Gets count of mipmap levels for value.
+        /// </summary>
+        /// <param name="x">Value.</param>
+        /// <returns>Number of mipmap levels.</returns>
+        public static int MipMapCount(int x)
+        {
+            int count = 0;
+            while (x >= 1) { x >>= 1; count++; }
+            return count;
+        }
+
+        /// <summary>
         /// Gets size of mipmap from value x at level.
         ///  Value x must already be a power of 2.
         ///  Never returns lower than 1.

@@ -6,6 +6,7 @@ using System.IO;
 using DaggerfallConnect;
 using DaggerfallConnect.Utility;
 using DaggerfallConnect.Arena2;
+using DaggerfallWorkshop.Utility;
 
 namespace DaggerfallWorkshop.Demo
 {
@@ -426,8 +427,7 @@ namespace DaggerfallWorkshop.Demo
 
             // Get Color32 array
             DFSize sz;
-            bool foundWindowTexture;
-            Color32[] colors = cifFile.GetColors32(ref dfBitmap, 0, border, out sz, out foundWindowTexture);
+            Color32[] colors = cifFile.GetColors32(ref dfBitmap, 0, border, out sz);
 
             // Dilate edges
             if (border > 0 && dilate)

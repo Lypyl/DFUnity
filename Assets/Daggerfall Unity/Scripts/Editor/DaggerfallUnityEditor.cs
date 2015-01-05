@@ -7,15 +7,13 @@ using DaggerfallConnect;
 using DaggerfallConnect.Arena2;
 using DaggerfallConnect.InternalTypes;
 using DaggerfallConnect.Utility;
+using DaggerfallWorkshop.Utility;
 
 namespace DaggerfallWorkshop
 {
     [CustomEditor(typeof(DaggerfallUnity))]
     public class DaggerfallUnityEditor : Editor
     {
-        const int minCombinerVerts = 4000;
-        const int maxCombinerVerts = 64000;
-
         private DaggerfallUnity dfUnity { get { return target as DaggerfallUnity; } }
 
         private const string showOptionsFoldout = "DaggerfallUnity_ShowOptionsFoldout";
@@ -32,13 +30,6 @@ namespace DaggerfallWorkshop
             set { EditorPrefs.SetBool(showImportFoldout, value); }
         }
 
-        private const string showMaterialBankFoldout = "DaggerfallUnity_ShowMaterialBankFoldout";
-        private static bool ShowMaterialBankFoldout
-        {
-            get { return EditorPrefs.GetBool(showMaterialBankFoldout, true); }
-            set { EditorPrefs.SetBool(showMaterialBankFoldout, value); }
-        }
-
         private const string showEnemyAdvancedFoldout = "DaggerfallUnity_ShowEnemyAdvancedFoldout";
         private static bool ShowEnemyAdvancedFoldout
         {
@@ -51,6 +42,13 @@ namespace DaggerfallWorkshop
         {
             get { return EditorPrefs.GetBool(showTimeAndSpaceFoldout, true); }
             set { EditorPrefs.SetBool(showTimeAndSpaceFoldout, value); }
+        }
+
+        private const string showAssetExportFoldout = "DaggerfallUnity_ShowAssetExportFoldout";
+        private static bool ShowAssetExportFoldout
+        {
+            get { return EditorPrefs.GetBool(showAssetExportFoldout, false); }
+            set { EditorPrefs.SetBool(showAssetExportFoldout, value); }
         }
 
         SerializedProperty Prop(string name)
@@ -98,6 +96,7 @@ namespace DaggerfallWorkshop
             }
 
             // Display other GUI items
+            DisplayAssetExporterGUI();
             DisplayOptionsGUI();
             DisplayImporterGUI();
 
@@ -114,18 +113,21 @@ namespace DaggerfallWorkshop
                 // Combining options
                 var propCombineRMB = Prop("Option_CombineRMB");
                 var propCombineRDB = Prop("Option_CombineRDB");
+                var propCombineLocations = Prop("Option_CombineLocations");
                 EditorGUILayout.Space();
                 EditorGUILayout.LabelField("Combining");
                 GUILayoutHelper.Indent(() =>
                 {
                     propCombineRMB.boolValue = EditorGUILayout.Toggle(new GUIContent("Combine RMB", "Combine city-block meshes together."), propCombineRMB.boolValue);
                     propCombineRDB.boolValue = EditorGUILayout.Toggle(new GUIContent("Combine RDB", "Combine dungeon-block meshes together."), propCombineRDB.boolValue);
+                    propCombineLocations.boolValue = EditorGUILayout.Toggle(new GUIContent("Combine Locations", "Super-combine location RMB blocks together. First combines RMB then chunks those together."), propCombineLocations.boolValue);
                 });
 
                 // Import options
                 var propSetStaticFlags = Prop("Option_SetStaticFlags");
                 var propAddMeshColliders = Prop("Option_AddMeshColliders");
                 var propDefaultSounds = Prop("Option_DefaultSounds");
+                var propSimpleGroundPlane = Prop("Option_SimpleGroundPlane");
                 var propCloseCityGates = Prop("Option_CloseCityGates");
                 EditorGUILayout.Space();
                 EditorGUILayout.LabelField("Import Options");
@@ -134,6 +136,7 @@ namespace DaggerfallWorkshop
                     propSetStaticFlags.boolValue = EditorGUILayout.Toggle(new GUIContent("Set Static Flags", "Apply static flag where appropriate when building scenes. Billboards and dynamic objects are not marked static."), propSetStaticFlags.boolValue);
                     propAddMeshColliders.boolValue = EditorGUILayout.Toggle(new GUIContent("Add Colliders", "Add colliders where appropriate when building scenes. Decorative billboards will not receive colliders."), propAddMeshColliders.boolValue);
                     propDefaultSounds.boolValue = EditorGUILayout.Toggle(new GUIContent("Default Sounds", "Adds DaggerfallAudioSource and setup default sounds for noise-making scene objects."), propDefaultSounds.boolValue);
+                    propSimpleGroundPlane.boolValue = EditorGUILayout.Toggle(new GUIContent("Simple Ground Plane", "Adds simple quad ground plane to imported exterior locations (ignored by terrain system)."), propSimpleGroundPlane.boolValue);
                     propCloseCityGates.boolValue = EditorGUILayout.Toggle(new GUIContent("Close City Gates", "In walled cities use this flag to start city gates in closed position."), propCloseCityGates.boolValue);
                 });
 
@@ -226,7 +229,6 @@ namespace DaggerfallWorkshop
             if (!dfUnity.gameObject.activeInHierarchy)
                 return;
 
-            EditorGUILayout.Space();
             ShowImportFoldout = GUILayoutHelper.Foldout(ShowImportFoldout, new GUIContent("Importer"), () =>
             {
                 GUILayoutHelper.Indent(() =>
@@ -263,7 +265,7 @@ namespace DaggerfallWorkshop
                         propCityName.stringValue = EditorGUILayout.TextField(propCityName.stringValue.Trim());
                         if (GUILayout.Button("Import"))
                         {
-                            GameObjectHelper.CreateDaggerfallCityGameObject((target as DaggerfallUnity), propCityName.stringValue, null);
+                            GameObjectHelper.CreateDaggerfallLocationGameObject((target as DaggerfallUnity), propCityName.stringValue, null);
                         }
                     });
 
@@ -278,6 +280,30 @@ namespace DaggerfallWorkshop
                             GameObjectHelper.CreateDaggerfallDungeonGameObject((target as DaggerfallUnity), propDungeonName.stringValue, null);
                         }
                     });
+                });
+            });
+        }
+
+        private void DisplayAssetExporterGUI()
+        {
+            EditorGUILayout.Space();
+            ShowAssetExportFoldout = GUILayoutHelper.Foldout(ShowAssetExportFoldout, new GUIContent("Asset Exporter (Beta)"), () =>
+            {
+                EditorGUILayout.HelpBox("Export pre-built assets to specified Resources folder and subfolder.", MessageType.Info);
+
+                // Parent Resources path
+                var propMyResourcesFolder = Prop("Option_MyResourcesFolder");
+                propMyResourcesFolder.stringValue = EditorGUILayout.TextField(new GUIContent("My Resources Folder", "Path to Resources folder for asset export."), propMyResourcesFolder.stringValue);
+
+                // Terrain atlases
+                GUILayoutHelper.Horizontal(() =>
+                {
+                    var propTerrainAtlasesSubFolder = Prop("Option_TerrainAtlasesSubFolder");
+                    propTerrainAtlasesSubFolder.stringValue = EditorGUILayout.TextField(new GUIContent("Terrain Atlas SubFolder", "Sub-folder for terrain atlas textures."), propTerrainAtlasesSubFolder.stringValue);
+                    if (GUILayout.Button("Update"))
+                    {
+                        dfUnity.ExportTerrainTextureAtlases();
+                    }
                 });
             });
         }

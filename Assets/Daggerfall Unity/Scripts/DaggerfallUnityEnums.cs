@@ -7,18 +7,12 @@ namespace DaggerfallWorkshop
     /// </summary>
     public enum FlatTypes
     {
-        /// <summary>Decorative flats in RMB and RDB blocks.</summary>
-        Decoration,
-        /// <summary>Non-player characters.</summary>
-        NPC,
-        /// <summary>Editor/marker flats. TEXTURE.199.</summary>
-        Editor,
-        /// <summary>Animated animal flats. TEXTURE.201.</summary>
-        Animal,
-        /// <summary>Light-source flats. TEXTURE.210.</summary>
-        Light,
-        /// <summary>Climate nature flats. TEXTURE.500-TEXTURE.511.</summary>
-        Nature,
+        Decoration,                             // Decorative flats in RMB and RDB blocks
+        NPC,                                    // Non-player characters
+        Editor,                                 // Editor/marker flats (TEXTURE.199)
+        Animal,                                 // Animated animal flats (TEXTURE.201)
+        Light,                                  // Light-source flats (TEXTURE.210)
+        Nature,                                 // Climate nature flats (TEXTURE.500-TEXTURE.511)
     }
 
     /// <summary>
@@ -26,18 +20,12 @@ namespace DaggerfallWorkshop
     /// </summary>
     public enum EditorFlatTypes
     {
-        /// <summary>Unused sub-types.</summary>
-        Other,
-        /// <summary>Entrance point for dungeons.</summary>
-        Enter,
-        /// <summary>Starting point for cities after fast travel.</summary>
-        Start,
-        /// <summary>Fixed mobile enemy (same every load).</summary>
-        FixedMobile,
-        /// <summary>Random mobile enemy (based on dungeon ecology and player level).</summary>
-        RandomMobile,
-        /// <summary>Random treasure pile.</summary>
-        RandomTreasure,
+        Other,                                  // Unused sub-types
+        Enter,                                  // Entrance point for dungeons
+        Start,                                  // Starting point for cities after fast travel
+        FixedMobile,                            // Fixed mobile enemy (same every load)
+        RandomMobile,                           // Random mobile enemy (based on dungeon ecology and player level)
+        RandomTreasure,                         // Random treasure pile
     }
 
     /// <summary>
@@ -45,12 +33,9 @@ namespace DaggerfallWorkshop
     /// </summary>
     public enum LocationClimateUse
     {
-        /// <summary>Don't use climate swaps.</summary>
-        Disabled,
-        /// <summary>Use location climate settings.</summary>
-        UseLocation,
-        /// <summary>Use custom climate settings.</summary>
-        Custom,
+        Disabled,                               // Don't use climate swaps
+        UseLocation,                            // Use location climate settings
+        Custom,                                 // Use custom climate settings
     }
 
     /// <summary>
@@ -114,7 +99,6 @@ namespace DaggerfallWorkshop
         UseLocation_NotImplemented,
         /// <summary>Use custom dungeon texture.</summary>
         Custom,
-
     }
 
     /// <summary>

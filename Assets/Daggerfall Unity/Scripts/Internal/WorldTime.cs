@@ -28,14 +28,11 @@ namespace DaggerfallWorkshop
         public int Hour = 12;
         public int Minute = 0;
         public float Second = 0;
-        public float TimeScale = 100f;
+        public float TimeScale = 10f;
         public bool ShowDebugString = false;
-
-        public GameObject uiOwner;
 
         void Update()
         {
-            if (uiOwner.GetComponent<UIManager>().isUIOpen) return;
             RaiseTime(Time.deltaTime * TimeScale);
         }
 

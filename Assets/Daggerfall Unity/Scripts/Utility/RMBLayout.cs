@@ -7,56 +7,24 @@ using DaggerfallConnect;
 using DaggerfallConnect.Utility;
 using DaggerfallConnect.Arena2;
 
-namespace DaggerfallWorkshop
+namespace DaggerfallWorkshop.Utility
 {
     /// <summary>
     /// Helper for laying out RMB (city block) data in scene.
-    /// Vertices can be welded based on Option_CombineRMB in DaggerfallUnity singleton.
     /// </summary>
-    public class RMBLayout
+    public static class RMBLayout
     {
         public static float RMBSide = 4096f * MeshReader.GlobalScale;
 
+        const float PropsOffsetY = -4f;
+        const float BlockFlatsOffsetY = -6f;
+        const float NatureFlatsOffsetY = -2f;
         const uint cityGateOpenId = 446;
         const uint cityGateClosedId = 447;
 
-        DaggerfallUnity dfUnity;
-        DFBlock blockData;
-        //DaggerfallBlock dfBlock;
+        #region New Layout Methods
 
-        ModelCombiner combiner = new ModelCombiner();
-
-        [NonSerialized]
-        public static float PropsOffsetY = -6f;
-        [NonSerialized]
-        public static float BlockFlatsOffsetY = -6f;
-        [NonSerialized]
-        public static float NatureFlatsOffsetY = -2f;
-
-        public RMBLayout(DaggerfallUnity dfUnity, string blockName)
-        {
-            blockData = dfUnity.ContentReader.BlockFileReader.GetBlock(blockName);
-            if (blockData.Type != DFBlock.BlockTypes.Rmb)
-                throw new Exception(string.Format("Could not load RMB block {0}", blockName), null);
-
-            this.dfUnity = dfUnity;
-        }
-
-        /// <summary>
-        /// Creates a new RMB GameObject and performs block layout.
-        /// </summary>
-        /// <param name="dfUnity">DaggerfallUnity singleton. Required for content readers and settings.</param>
-        /// <param name="blockName">Name of RMB block to build.</param>
-        /// <param name="climateBase">Climate base for texture swaps.</param>
-        /// <param name="natureSet">Nature set for texture swaps.</param>
-        /// <param name="climateSeason">Season modifier for texture swaps.</param>
-        /// <returns>GameObject.</returns>
-        public static GameObject CreateGameObject(
-            DaggerfallUnity dfUnity,
-            string blockName,
-            ClimateBases climateBase = ClimateBases.Temperate,
-            ClimateNatureSets natureSet = ClimateNatureSets.TemperateWoodland,
-            ClimateSeason climateSeason = ClimateSeason.Summer)
+        public static GameObject CreateGameObject(DaggerfallUnity dfUnity, string blockName)
         {
             // Validate
             if (string.IsNullOrEmpty(blockName))
@@ -64,46 +32,68 @@ namespace DaggerfallWorkshop
             if (!blockName.ToUpper().EndsWith(".RMB"))
                 return null;
 
-            // Start layout
-            RMBLayout layout = new RMBLayout(dfUnity, blockName);
+            // Get block data
+            DFBlock blockData = dfUnity.ContentReader.BlockFileReader.GetBlock(blockName);
 
+            return CreateGameObject(dfUnity, ref blockData);
+        }
+
+        public static GameObject CreateGameObject(DaggerfallUnity dfUnity, ref DFBlock blockData)
+        {
             // Create gameobject
-            GameObject go = new GameObject(string.Format("DaggerfallBlock [Name={0}]", blockName));
+            GameObject go = new GameObject(string.Format("DaggerfallBlock [Name={0}]", blockData.Name));
             go.AddComponent<DaggerfallBlock>();
 
-            // Layout exterior
-            layout.AddModels(go.transform, climateBase, climateSeason);
-            layout.AddProps(go.transform, climateBase, climateSeason);
-            layout.AddBlockFlats(go.transform);
-            layout.AddNatureFlats(go.transform, natureSet, climateSeason);
-            layout.AddGroundPlane(go.transform, climateBase, climateSeason);
+            // Setup combiner
+            ModelCombiner combiner = null;
+            if (dfUnity.Option_CombineRMB)
+                combiner = new ModelCombiner();
+
+            // Add models and doors
+            GameObject modelsNode = new GameObject("Models");
+            modelsNode.transform.parent = go.transform;
+            StaticDoor[] doors = AddModels(dfUnity, ref blockData, combiner, modelsNode.transform);
+            AddProps(dfUnity, ref blockData, combiner, modelsNode.transform);
+            AddDoors(doors, go);
+
+            // Add flats
+            GameObject flatsNode = new GameObject("Flats");
+            flatsNode.transform.parent = go.transform;
+            AddBlockFlats(dfUnity, ref blockData, flatsNode.transform);
+            AddNatureFlats(dfUnity, ref blockData, flatsNode.transform);
+
+            // Add ground plane
+            if (dfUnity.Option_SimpleGroundPlane)
+                AddSimpleGroundPlane(dfUnity, ref blockData, go.transform);
+
+            // Apply combiner
+            if (combiner != null)
+            {
+                if (combiner.VertexCount > 0)
+                {
+                    combiner.Apply();
+                    GameObjectHelper.CreateCombinedMeshGameObject(
+                        dfUnity,
+                        combiner,
+                        "CombinedModels",
+                        modelsNode.transform,
+                        dfUnity.Option_SetStaticFlags);
+                }
+            }
 
             return go;
         }
 
-        #region Private Methods
-
-        /// <summary>
-        /// Add RMB models to parent transform.
-        /// </summary>
-        /// <param name="parent">Parent transform.</param>
-        /// <param name="climateBase">Climate base for texture swaps.</param>
-        /// <param name="climateSeason">Season modifier for texture swaps.</param>
-        private void AddModels(
-            Transform parent,
-            ClimateBases climateBase = ClimateBases.Temperate,
-            ClimateSeason climateSeason = ClimateSeason.Summer)
+        public static StaticDoor[] AddModels(
+            DaggerfallUnity dfUnity,
+            ref DFBlock blockData,
+            ModelCombiner combiner = null,
+            Transform parent = null)
         {
-            GameObject node = new GameObject("Models");
-            if (parent != null)
-                node.transform.parent = parent;
-
-            // This list receives all static doors for single or combined mesh
-            List<DaggerfallStaticDoors.StaticDoor> allStaticDoors = new List<DaggerfallStaticDoors.StaticDoor>();
+            List<StaticDoor> doors = new List<StaticDoor>();
 
             // Iterate through all subrecords
             int recordCount = 0;
-            combiner.NewCombiner();
             foreach (DFBlock.RmbSubRecord subRecord in blockData.RmbBlock.SubRecords)
             {
                 // Get subrecord transform
@@ -119,102 +109,35 @@ namespace DaggerfallWorkshop
                     Vector3 modelRotation = new Vector3(0, -obj.YRotation / BlocksFile.RotationDivisor, 0);
                     Matrix4x4 modelMatrix = subRecordMatrix * Matrix4x4.TRS(modelPosition, Quaternion.Euler(modelRotation), Vector3.one);
 
-                    // Override combine and city gate flags
-                    bool overrideCombine = false;
-                    bool isCityGate = false;
-
-                    // Get model ID
-                    ModelData modelData;
-                    uint modelId = obj.ModelIdNum;
-
-                    // City gates are never combined as this can change at runtime
-                    if (modelId == cityGateOpenId || modelId == cityGateClosedId)
-                    {
-                        overrideCombine = true;
-                        isCityGate = true;
-                    }
-
-                    // City gates open or closed?
-                    if (modelId == cityGateOpenId && dfUnity.Option_CloseCityGates)
-                        modelId = cityGateClosedId;
-                    else if (modelId == cityGateClosedId && !dfUnity.Option_CloseCityGates)
-                        modelId = cityGateOpenId;
-
                     // Get model data
-                    dfUnity.MeshReader.GetModelData(modelId, out modelData);
+                    ModelData modelData;
+                    dfUnity.MeshReader.GetModelData(obj.ModelIdNum, out modelData);
 
-                    // Get array of static doors from model data
-                    allStaticDoors.AddRange(GameObjectHelper.GetStaticDoors(ref modelData, blockData.Index, recordCount, modelMatrix));
+                    // Does this model have doors?
+                    if (modelData.Doors != null)
+                        doors.AddRange(GameObjectHelper.GetStaticDoors(ref modelData, blockData.Index, recordCount, modelMatrix));
 
-                    // Combine or add
-                    if (dfUnity.Option_CombineRMB && !overrideCombine)
-                    {
-                        combiner.Add(ref modelData, modelMatrix);
-                    }
+                    // Add or combine
+                    if (combiner == null || IsCityGate(obj.ModelIdNum))
+                        AddStandaloneModel(dfUnity, ref modelData, modelMatrix, parent);
                     else
-                    {
-                        // Add GameObject
-                        GameObject go = GameObjectHelper.CreateDaggerfallMeshGameObject(dfUnity, modelId, node.transform, dfUnity.Option_SetStaticFlags);
-                        go.transform.position = modelMatrix.GetColumn(3);
-                        go.transform.rotation = GameObjectHelper.QuaternionFromMatrix(modelMatrix);
-
-                        // Add static doors component
-                        DaggerfallStaticDoors c = go.AddComponent<DaggerfallStaticDoors>();
-                        c.Doors = allStaticDoors.ToArray();
-
-                        // Update climate
-                        DaggerfallMesh dfMesh = go.GetComponent<DaggerfallMesh>();
-                        dfMesh.SetClimate(dfUnity, climateBase, climateSeason, WindowStyle.Disabled);
-
-                        // Add city gate component
-                        if (isCityGate)
-                        {
-                            DaggerfallCityGate gate = go.AddComponent<DaggerfallCityGate>();
-                            gate.SetOpen(!dfUnity.Option_CloseCityGates);
-                        }
-                    }
+                        combiner.Add(ref modelData, modelMatrix);
                 }
 
                 // Increment record count
                 recordCount++;
             }
 
-            // Add combined GameObject
-            if (dfUnity.Option_CombineRMB)
-            {
-                if (combiner.VertexCount > 0)
-                {
-                    // Add combined models
-                    combiner.Apply();
-                    GameObject go = GameObjectHelper.CreateCombinedMeshGameObject(dfUnity, combiner, "CombinedModels", node.transform, dfUnity.Option_SetStaticFlags);
-
-                    // Add static doors component
-                    DaggerfallStaticDoors c = go.AddComponent<DaggerfallStaticDoors>();
-                    c.Doors = allStaticDoors.ToArray();
-
-                    // Update climate
-                    DaggerfallMesh dfMesh = go.GetComponent<DaggerfallMesh>();
-                    dfMesh.SetClimate(dfUnity, climateBase, climateSeason, WindowStyle.Disabled);
-                }
-            }
+            return doors.ToArray();
         }
 
-        /// <summary>
-        /// Add RMB props to parent transform.
-        /// </summary>
-        /// <param name="parent">Parent transform.</param>
-        /// <param name="climateBase">Climate base for texture swaps.</param>
-        /// <param name="climateSeason">Season modifier for texture swaps.</param>
-        private void AddProps(
-            Transform parent,
-            ClimateBases climateBase = ClimateBases.Temperate,
-            ClimateSeason climateSeason = ClimateSeason.Summer)
+        public static void AddProps(
+            DaggerfallUnity dfUnity,
+            ref DFBlock blockData,
+            ModelCombiner combiner = null,
+            Transform parent = null)
         {
-            GameObject node = new GameObject("Props");
-            node.transform.parent = parent;
-
             // Iterate through all misc records
-            combiner.NewCombiner();
             foreach (DFBlock.RmbBlock3dObjectRecord obj in blockData.RmbBlock.Misc3dObjectRecords)
             {
                 // Get model transform
@@ -222,57 +145,32 @@ namespace DaggerfallWorkshop
                 Vector3 modelRotation = new Vector3(0, -obj.YRotation / BlocksFile.RotationDivisor, 0);
                 Matrix4x4 modelMatrix = Matrix4x4.TRS(modelPosition, Quaternion.Euler(modelRotation), Vector3.one);
 
-                // Combine or add
-                if (dfUnity.Option_CombineRMB)
-                {
-                    // Combine model data
-                    ModelData modelData;
-                    dfUnity.MeshReader.GetModelData(obj.ModelIdNum, out modelData);
-                    combiner.Add(ref modelData, modelMatrix);
-                }
+                // Get model data
+                ModelData modelData;
+                dfUnity.MeshReader.GetModelData(obj.ModelIdNum, out modelData);
+
+                // Add or combine
+                if (combiner == null)
+                    AddStandaloneModel(dfUnity, ref modelData, modelMatrix, parent);
                 else
-                {
-                    // Add GameObject
-                    GameObject go = GameObjectHelper.CreateDaggerfallMeshGameObject(dfUnity, obj.ModelIdNum, node.transform, dfUnity.Option_SetStaticFlags);
-                    go.transform.position = modelMatrix.GetColumn(3);
-                    go.transform.rotation = GameObjectHelper.QuaternionFromMatrix(modelMatrix);
-
-                    // Update climate
-                    DaggerfallMesh dfMesh = go.GetComponent<DaggerfallMesh>();
-                    dfMesh.SetClimate(dfUnity, climateBase, climateSeason, WindowStyle.Disabled);
-                }
-            }
-
-            // Add combined GameObject
-            if (dfUnity.Option_CombineRMB)
-            {
-                if (combiner.VertexCount > 0)
-                {
-                    combiner.Apply();
-                    GameObject go = GameObjectHelper.CreateCombinedMeshGameObject(dfUnity, combiner, "CombinedProps", node.transform, dfUnity.Option_SetStaticFlags);
-
-                    // Update climate
-                    DaggerfallMesh dfMesh = go.GetComponent<DaggerfallMesh>();
-                    dfMesh.SetClimate(dfUnity, climateBase, climateSeason, WindowStyle.Disabled);
-                }
+                    combiner.Add(ref modelData, modelMatrix);
             }
         }
 
-        /// <summary>
-        /// Add RMB flats to parent transform.
-        /// </summary>
-        /// <param name="parent">Parent transform.</param>
-        private void AddBlockFlats(Transform parent)
+        public static void AddBlockFlats(
+            DaggerfallUnity dfUnity,
+            ref DFBlock blockData,
+            Transform parent = null)
         {
-            GameObject node = new GameObject("Block Flats");
-            node.transform.parent = parent;
-
             // Add block flats
             foreach (DFBlock.RmbBlockFlatObjectRecord obj in blockData.RmbBlock.MiscFlatObjectRecords)
             {
                 // Spawn billboard gameobject
-                GameObject go = GameObjectHelper.CreateDaggerfallBillboardGameObject(dfUnity, obj.TextureArchive, obj.TextureRecord, node.transform);
-                go.transform.position = new Vector3(obj.XPos, -obj.YPos + BlockFlatsOffsetY, obj.ZPos + BlocksFile.RMBDimension) * MeshReader.GlobalScale;
+                GameObject go = GameObjectHelper.CreateDaggerfallBillboardGameObject(dfUnity, obj.TextureArchive, obj.TextureRecord, parent);
+                go.transform.position = new Vector3(
+                    obj.XPos,
+                    -obj.YPos + BlockFlatsOffsetY,
+                    obj.ZPos + BlocksFile.RMBDimension) * MeshReader.GlobalScale;
 
                 // Add lights
                 if (obj.TextureArchive == 210 && dfUnity.Option_ImportPointLights)
@@ -280,7 +178,10 @@ namespace DaggerfallWorkshop
                     // Spawn light gameobject
                     Vector2 size = dfUnity.MeshReader.GetScaledBillboardSize(210, obj.TextureRecord);
                     GameObject lightgo = GameObjectHelper.CreateDaggerfallRMBPointLight(dfUnity, go.transform);
-                    lightgo.transform.position = new Vector3(obj.XPos, -obj.YPos + size.y, obj.ZPos + BlocksFile.RMBDimension) * MeshReader.GlobalScale;
+                    lightgo.transform.position = new Vector3(
+                        obj.XPos,
+                        -obj.YPos + size.y,
+                        obj.ZPos + BlocksFile.RMBDimension) * MeshReader.GlobalScale;
 
                     // Animate light
                     DaggerfallLight c = lightgo.AddComponent<DaggerfallLight>();
@@ -293,22 +194,14 @@ namespace DaggerfallWorkshop
             }
         }
 
-        /// <summary>
-        /// Add RMB nature flats to parent transform.
-        /// </summary>
-        /// <param name="parent">Parent transform.</param>
-        /// <param name="archive">Archive index for nature flats.</param>
-        /// <param name="climateBase">Climate base for texture swaps.</param>
-        /// <param name="climateSeason">Season modifier for texture swaps.</param>
-        private void AddNatureFlats(
-            Transform parent,
-            ClimateNatureSets natureSet = ClimateNatureSets.TemperateWoodland,
+        public static void AddNatureFlats(
+            DaggerfallUnity dfUnity,
+            ref DFBlock blockData,
+            Transform parent = null,
+            ClimateNatureSets climateNature = ClimateNatureSets.SubTropical,
             ClimateSeason climateSeason = ClimateSeason.Summer)
         {
-            int archive = ClimateSwaps.GetNatureArchive(natureSet, climateSeason);
-
-            GameObject node = new GameObject("Nature Flats");
-            node.transform.parent = parent;
+            int archive = ClimateSwaps.GetNatureArchive(climateNature, climateSeason);
 
             // Add block scenery
             for (int y = 0; y < 16; y++)
@@ -322,9 +215,9 @@ namespace DaggerfallWorkshop
                     if (scenery.TextureRecord > 0)
                     {
                         // Spawn billboard gameobject
-                        GameObject go = GameObjectHelper.CreateDaggerfallBillboardGameObject(dfUnity, archive, scenery.TextureRecord, node.transform);
+                        GameObject go = GameObjectHelper.CreateDaggerfallBillboardGameObject(dfUnity, archive, scenery.TextureRecord, parent);
                         Vector3 billboardPosition = new Vector3(
-                            x * BlocksFile.TileDimension, 
+                            x * BlocksFile.TileDimension,
                             NatureFlatsOffsetY,
                             y * BlocksFile.TileDimension + BlocksFile.TileDimension) * MeshReader.GlobalScale;
 
@@ -335,36 +228,36 @@ namespace DaggerfallWorkshop
             }
         }
 
-        /// <summary>
-        /// Add RMB ground plane to parent transform.
-        /// </summary>
-        /// <param name="parent">Parent transform.</param>
-        /// <param name="climateBase">Climate base for texture swaps.</param>
-        /// <param name="climateSeason">Season modifier for texture swaps.</param>
-        private void AddGroundPlane(
-            Transform parent,
+        public static GameObject AddSimpleGroundPlane(
+            DaggerfallUnity dfUnity,
+            ref DFBlock blockData,
+            Transform parent = null,
             ClimateBases climateBase = ClimateBases.Temperate,
             ClimateSeason climateSeason = ClimateSeason.Summer)
         {
-            // Create gameobject
-            GameObject go = new GameObject("GroundPlane");
-            if (parent) go.transform.parent = parent;
+            GameObject go = new GameObject("Ground");
+            if (parent != null)
+                go.transform.parent = parent;
 
             // Assign components
-            DaggerfallGroundMesh dfGround = go.AddComponent<DaggerfallGroundMesh>();
+            DaggerfallGroundPlane dfGround = go.AddComponent<DaggerfallGroundPlane>();
             MeshFilter meshFilter = go.GetComponent<MeshFilter>();
 
             // Assign climate and mesh
-            dfGround.SetClimate(dfUnity, climateBase, climateSeason);
-            Mesh mesh = dfUnity.MeshReader.GetGroundMesh(
+            Color32[] tileMap;
+            Mesh mesh = dfUnity.MeshReader.GetSimpleGroundPlaneMesh(
                 ref blockData,
-                dfGround.Summary.rects,
+                out tileMap,
                 dfUnity.MeshReader.AddMeshTangents,
                 dfUnity.MeshReader.AddMeshLightmapUVs);
             if (mesh)
             {
                 meshFilter.sharedMesh = mesh;
             }
+
+            // Assign tileMap and climate
+            dfGround.tileMap = tileMap;
+            dfGround.SetClimate(dfUnity, climateBase, climateSeason);
 
             // Assign collider
             if (dfUnity.Option_AddMeshColliders)
@@ -373,6 +266,52 @@ namespace DaggerfallWorkshop
             // Assign static
             if (dfUnity.Option_SetStaticFlags)
                 go.isStatic = true;
+
+            return go;
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        private static GameObject AddStandaloneModel(
+            DaggerfallUnity dfUnity,
+            ref ModelData modelData,
+            Matrix4x4 matrix,
+            Transform parent)
+        {
+            uint modelID = (uint)modelData.DFMesh.ObjectId;
+
+            // Add GameObject
+            GameObject go = GameObjectHelper.CreateDaggerfallMeshGameObject(dfUnity, modelID, parent, dfUnity.Option_SetStaticFlags);
+            go.transform.position = matrix.GetColumn(3);
+            go.transform.rotation = GameObjectHelper.QuaternionFromMatrix(matrix);
+
+            // Is this a city gate?
+            if (IsCityGate(modelID))
+            {
+                DaggerfallCityGate gate = go.AddComponent<DaggerfallCityGate>();
+                gate.SetOpen(!dfUnity.Option_CloseCityGates);
+            }
+
+            return go;
+        }
+
+        private static void AddDoors(StaticDoor[] doors, GameObject target)
+        {
+            if (doors != null && target != null)
+            {
+                DaggerfallStaticDoors c = target.AddComponent<DaggerfallStaticDoors>();
+                c.Doors = doors;
+            }
+        }
+
+        private static bool IsCityGate(uint modelID)
+        {
+            if (modelID == cityGateOpenId || modelID == cityGateClosedId)
+                return true;
+            else
+                return false;
         }
 
         #endregion

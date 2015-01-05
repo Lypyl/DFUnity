@@ -36,7 +36,6 @@ namespace DaggerfallWorkshop
         private void DisplayGUI()
         {
             var propAtlasTextures = Prop("AtlasTextures");
-            //var propCompressTextures = Prop("CompressTextures");
             var propCompressSkyTextures = Prop("CompressSkyTextures");
             var propMainFilterMode = Prop("MainFilterMode");
             var propSkyFilterMode = Prop("SkyFilterMode");
@@ -58,11 +57,6 @@ namespace DaggerfallWorkshop
             EditorGUILayout.Space();
             propAtlasTextures.boolValue = EditorGUILayout.Toggle(new GUIContent("Atlas Textures", "Combine billboards and ground textures into an atlas."), propAtlasTextures.boolValue);
             propMipMaps.boolValue = EditorGUILayout.Toggle(new GUIContent("MipMaps", "Enable mipmaps for textures. Sky and weapon textures never use mipmaps as they are always drawn 1:1."), propMipMaps.boolValue);
-            //propCompressTextures.boolValue = EditorGUILayout.Toggle(new GUIContent("Compress Textures", "Enable lossy texture compression for smaller scene size. Causes some visual artifacts."), propCompressTextures.boolValue);
-            //GUILayoutHelper.EnableGroup(!propCompressTextures.boolValue, () =>
-            //{
-            //    propCompressSkyTextures.boolValue = EditorGUILayout.Toggle(new GUIContent("Compress Sky Textures", "Enable lossy texture compression just for skies. Always considered true when Compress Textures enabled."), propCompressSkyTextures.boolValue);
-            //});
             propCompressSkyTextures.boolValue = EditorGUILayout.Toggle(new GUIContent("Compress Sky Textures", "Enable lossy texture compression for skies."), propCompressSkyTextures.boolValue);
 
             EditorGUILayout.Space();

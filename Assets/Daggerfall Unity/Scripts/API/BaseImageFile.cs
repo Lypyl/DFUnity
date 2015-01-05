@@ -193,12 +193,11 @@ namespace DaggerfallConnect.Arena2
             DFBitmap srcBitmap = GetDFBitmap(record, frame);
 
             DFSize sz;
-            bool isWindow;
-            return GetColors32(ref srcBitmap, alphaIndex, 0, out sz, out isWindow);
+            return GetColors32(ref srcBitmap, alphaIndex, 0, out sz);
         }
 
         /// <summary>
-        /// 
+        /// Gets a Color32 array for engine with minimum options.
         /// </summary>
         /// <param name="srcBitmap">Source DFBitmap.</param>
         /// <param name="alphaIndex">Index to receive transparent alpha.</param>
@@ -206,42 +205,36 @@ namespace DaggerfallConnect.Arena2
         public Color32[] GetColors32(ref DFBitmap srcBitmap, int alphaIndex = -1)
         {
             DFSize sz;
-            bool isWindow;
-            return GetColors32(ref srcBitmap, alphaIndex, 0, out sz, out isWindow);
+            return GetColors32(ref srcBitmap, alphaIndex, 0, out sz);
         }
 
         /// <summary>
-        /// Gets a Color32 array for engine with a border and window detection.
+        /// Gets a Color32 array for engine with a border.
         /// </summary>
         /// <param name="record">Record index.</param>
         /// <param name="frame">Frame index.</param>
         /// <param name="alphaIndex">Index to receive transparent alpha.</param>
         /// <param name="border">Number of pixels border to add around image.</param>
         /// <param name="sizeOut">Receives image dimensions with borders included.</param>
-        /// <param name="isWindow">True if this is a window texture (contains index 0xff).</param>
         /// <returns>Color32 array.</returns>
-        public Color32[] GetColors32(int record, int frame, int alphaIndex, int border, out DFSize sizeOut, out bool isWindow)
+        public Color32[] GetColors32(int record, int frame, int alphaIndex, int border, out DFSize sizeOut)
         {
             // Get source bitmap
             DFBitmap srcBitmap = GetDFBitmap(record, frame);
 
-            return GetColors32(ref srcBitmap, alphaIndex, border, out sizeOut, out isWindow);
+            return GetColors32(ref srcBitmap, alphaIndex, border, out sizeOut);
         }
 
         /// <summary>
-        /// Gets a Color32 array for engine with a border and window detection.
+        /// Gets a Color32 array for engine with a border.
         /// </summary>
         /// <param name="srcBitmap">Source DFBitmap.</param>
         /// <param name="alphaIndex">Index to receive transparent alpha.</param>
         /// <param name="border">Number of pixels border to add around image.</param>
         /// <param name="sizeOut">Receives image dimensions with borders included.</param>
-        /// <param name="isWindow">True if this is a window texture (contains index 0xff).</param>
         /// <returns>Color32 array.</returns>
-        public Color32[] GetColors32(ref DFBitmap srcBitmap, int alphaIndex, int border, out DFSize sizeOut, out bool isWindow)
+        public Color32[] GetColors32(ref DFBitmap srcBitmap, int alphaIndex, int border, out DFSize sizeOut)
         {
-            // Clear window flag
-            isWindow = false;
-
             // Calculate dimensions
             int srcWidth = srcBitmap.Width;
             int srcHeight = srcBitmap.Height;
@@ -253,22 +246,21 @@ namespace DaggerfallConnect.Arena2
 
             DFColor c;
             byte a;
-            int index, srcPos, dstPos;
+            int index, srcRow, dstRow;
             for (int y = 0; y < srcHeight; y++)
             {
                 // Get row position
-                srcPos = y * srcWidth;
-                dstPos = (dstHeight - 1 - border - y) * dstWidth;
+                srcRow = y * srcWidth;
+                dstRow = (dstHeight - 1 - border - y) * dstWidth;
 
                 // Write data for this row
                 for (int x = 0; x < srcWidth; x++)
                 {
-                    index = srcBitmap.Data[srcPos + x];
+                    index = srcBitmap.Data[srcRow + x];
                     c = myPalette.Get(index);
                     if (alphaIndex == index) a = 0x00; else a = 0xff;
-                    if (windowIndex == index) isWindow = true;
                     
-                    colors[dstPos + border + x] = new Color32(c.R, c.G, c.B, a);
+                    colors[dstRow + border + x] = new Color32(c.R, c.G, c.B, a);
                 }
             }
 
@@ -296,22 +288,22 @@ namespace DaggerfallConnect.Arena2
             alphaColors = new Color32[sz.Width * sz.Height];
 
             byte r, g, b;
-            int index, srcPos, dstPos;
+            int index, srcRow, dstRow;
             for (int y = 0; y < sz.Height; y++)
             {
                 // Get row position
-                srcPos = y * sz.Width;
-                dstPos = (sz.Height - 1 - y) * sz.Width;
+                srcRow = y * sz.Width;
+                dstRow = (sz.Height - 1 - y) * sz.Width; ;
 
                 // Write data for this row
                 for (int x = 0; x < sz.Width; x++)
                 {
-                    index = srcBitmap.Data[srcPos + x];
+                    index = srcBitmap.Data[srcRow + x];
                     if (index == windowIndex)
                     {
                         // Set window parts
-                        diffuseColors[dstPos + x] = color;
-                        alphaColors[dstPos + x] = alpha;
+                        diffuseColors[dstRow + x] = color;
+                        alphaColors[dstRow + x] = alpha;
                     }
                     else
                     {
@@ -319,8 +311,8 @@ namespace DaggerfallConnect.Arena2
                         r = myPalette.GetRed(index);
                         g = myPalette.GetGreen(index);
                         b = myPalette.GetBlue(index);
-                        diffuseColors[dstPos + x] = new Color32(r, g, b, 0xff);
-                        alphaColors[dstPos + x] = new Color32(0, 0, 0, 0);
+                        diffuseColors[dstRow + x] = new Color32(r, g, b, 0xff);
+                        alphaColors[dstRow + x] = new Color32(0, 0, 0, 0);
                     }
                 }
             }

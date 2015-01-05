@@ -7,11 +7,10 @@ using DaggerfallConnect;
 using DaggerfallConnect.Utility;
 using DaggerfallConnect.Arena2;
 
-namespace DaggerfallWorkshop
+namespace DaggerfallWorkshop.Utility
 {
     /// <summary>
     /// Helper for laying out RDB (dungeon block) data in scene.
-    /// Vertices can be welded based on Option_CombineRDB in DaggerfallUnity singleton.
     /// </summary>
     public class RDBLayout
     {
@@ -171,8 +170,7 @@ namespace DaggerfallWorkshop
         }
 
         /// <summary>
-        /// Constructs a Vector3 from magnitude and direction
-        ///  in RDB action resource.
+        /// Constructs a Vector3 from magnitude and direction in RDB action resource.
         /// </summary>
         /// <param name="resource">DFBlock.RdbActionResource</param>
         /// <returns>Vector3.</returns>

@@ -403,6 +403,19 @@ namespace DaggerfallWorkshop.Utility
             return go;
         }
 
+        public static GameObject CreateDaggerfallTerrainGameObject(Transform parent)
+        {
+            // Create Unity Terrain game object
+            GameObject go = Terrain.CreateTerrainGameObject(null);
+            go.gameObject.transform.parent = parent;
+            go.gameObject.transform.localPosition = Vector3.zero;
+
+            // Add DaggerfallTerrain component
+            go.AddComponent<DaggerfallTerrain>();
+
+            return go;
+        }
+
         /// <summary>
         /// Gets static door array from door information stored in model data.
         /// </summary>

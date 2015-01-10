@@ -43,7 +43,9 @@ namespace DaggerfallWorkshop
         public string DefaultUnlitBillboardShaderName = "Unlit/Transparent";
         public string DefaultUnlitTextureShaderName = "Unlit/Texture";
         public string DefaultWeaponShaderName = "Unlit/Transparent";
-        private string _TerrainTilemapShaderName = "Daggerfall/TerrainTilemap";     // Not configurable
+        public const string _DaggerfallTilemapShaderName = "Daggerfall/Tilemap";
+        public const string _DaggerfallTerrainTilemapShaderName = "Daggerfall/TerrainTilemap";
+        public const string _DaggerfallBillboardBatchShaderName = "Daggerfall/BillboardBatch/TransparentCutout";
 
         // Window settings
         public Color DayWindowColor = new Color32(89, 154, 178, 0xff);
@@ -171,6 +173,10 @@ namespace DaggerfallWorkshop
             material.mainTexture = texture;
             material.mainTexture.filterMode = MainFilterMode;
 
+            DFSize size = textureReader.TextureFile.GetSize(record);
+            DFSize scale = textureReader.TextureFile.GetScale(record);
+            Vector2[] recordSizes = new Vector2[1] {new Vector2(size.Width, size.Height)};
+            Vector2[] recordScales = new Vector2[1] {new Vector2(scale.Width, scale.Height)};
             CachedMaterial newcm = new CachedMaterial()
             {
                 key = key,
@@ -179,8 +185,8 @@ namespace DaggerfallWorkshop
                 material = material,
                 filterMode = MainFilterMode,
                 isWindow = ClimateSwaps.IsExteriorWindow(archive, record),
-                recordSize = textureReader.TextureFile.GetSize(record),
-                recordScale = textureReader.TextureFile.GetScale(record),
+                recordSizes = recordSizes,
+                recordScales = recordScales,
                 recordFrameCount = textureReader.TextureFile.GetFrameCount(record),
             };
             materialDict.Add(key, newcm);
@@ -246,6 +252,7 @@ namespace DaggerfallWorkshop
             if (shader == null)
                 shader = Shader.Find(DefaultShaderName);
 
+            Vector2[] sizesOut, scalesOut;
             Material material = new Material(shader);
             material.name = string.Format("TEXTURE.{0:000} [Atlas]", archive);
             Texture2D texture = textureReader.GetTexture2DAtlas(
@@ -255,6 +262,8 @@ namespace DaggerfallWorkshop
                 maxAtlasSize,
                 out rectsOut,
                 out indicesOut,
+                out sizesOut,
+                out scalesOut,
                 border,
                 dilate,
                 shrinkUVs,
@@ -269,6 +278,8 @@ namespace DaggerfallWorkshop
             newcm.indices = indicesOut;
             newcm.material = material;
             newcm.filterMode = MainFilterMode;
+            newcm.recordSizes = sizesOut;
+            newcm.recordScales = scalesOut;
             materialDict.Add(key, newcm);
 
             return material;
@@ -302,16 +313,16 @@ namespace DaggerfallWorkshop
                 }
             }
 
-            //// Attempt to load prebuilt atlas asset, otherwise create one in memory
+            //// TODO: Attempt to load prebuilt atlas asset, otherwise create one in memory
             //Texture2D texture = TerrainAtlasBuilder.LoadTerrainAtlasTextureResource(archive, CreateTextureAssetResourcesPath);
             //if (texture == null)
             Texture2D texture = textureReader.GetTerrainTilesetTexture(archive);
+            texture.filterMode = MainFilterMode;
 
-            Shader shader = Shader.Find(_TerrainTilemapShaderName);
+            Shader shader = Shader.Find(_DaggerfallTilemapShaderName);
             Material material = new Material(shader);
-            material.name = string.Format("TEXTURE.{0:000} [TerrainTilemap]", archive);
+            material.name = string.Format("TEXTURE.{0:000} [Tilemap]", archive);
             material.mainTexture = texture;
-            material.mainTexture.filterMode = MainFilterMode;
 
             CachedMaterial newcm = new CachedMaterial()
             {

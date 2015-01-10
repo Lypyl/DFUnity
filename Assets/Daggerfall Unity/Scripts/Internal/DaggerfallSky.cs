@@ -29,6 +29,7 @@ namespace DaggerfallWorkshop
         // Maximum timescale supported by SetByWorldTime()
         //public static float MaxTimeScale = 1000;
 
+        public PlayerGPS LocalPlayerGPS;                                    // Set to local PlayerGPS
         [Range(0, 31)]
         public int SkyIndex = 16;                                           // Sky index for daytime skies
         [Range(0, 63)]
@@ -65,6 +66,16 @@ namespace DaggerfallWorkshop
 
         void Start()
         {
+            // Try to find local player GPS if not set
+            if (LocalPlayerGPS == null)
+            {
+                GameObject player = GameObject.FindGameObjectWithTag("Player");
+                if (player)
+                {
+                    LocalPlayerGPS = player.GetComponent<PlayerGPS>();
+                }
+            }
+
             // Find main camera gameobject
             GameObject go = GameObject.FindGameObjectWithTag("MainCamera");
             if (go)
@@ -123,7 +134,7 @@ namespace DaggerfallWorkshop
                 return;
 
             // Automate time of day updates
-            if (dfUnity.Option_AutomateSky)
+            if (dfUnity.Option_AutomateSky && LocalPlayerGPS)
                 ApplyTimeAndSpace();
 
             // Update sky textures if frame changed
@@ -302,15 +313,15 @@ namespace DaggerfallWorkshop
             // Create new textures
             if (!IsNight)
             {
-                westTexture = new Texture2D(dayWidth, dayHeight, TextureFormat.RGBA32, false);
-                eastTexture = new Texture2D(dayWidth, dayHeight, TextureFormat.RGBA32, false);
+                westTexture = new Texture2D(dayWidth, dayHeight, TextureFormat.RGB24, false);
+                eastTexture = new Texture2D(dayWidth, dayHeight, TextureFormat.RGB24, false);
             }
             else
             {
-                westTexture = new Texture2D(nightWidth, nightHeight, TextureFormat.RGBA32, false);
-                eastTexture = new Texture2D(nightWidth, nightHeight, TextureFormat.RGBA32, false);
+                westTexture = new Texture2D(nightWidth, nightHeight, TextureFormat.RGB24, false);
+                eastTexture = new Texture2D(nightWidth, nightHeight, TextureFormat.RGB24, false);
             }
-            clearTexture = new Texture2D(clearDim, clearDim, TextureFormat.RGBA32, false);
+            clearTexture = new Texture2D(clearDim, clearDim, TextureFormat.RGB24, false);
 
             // Set pixels, flipping hemisphere if required
             if (!flip)
@@ -323,12 +334,6 @@ namespace DaggerfallWorkshop
                 westTexture.SetPixels32(colors.east);
                 eastTexture.SetPixels32(colors.west);
             }
-
-            // Apply changes
-            clearTexture.SetPixels32(colors.clear);
-            westTexture.Apply(false);
-            eastTexture.Apply(false);
-            clearTexture.Apply(false);
 
             // Set wrap mode
             eastTexture.wrapMode = TextureWrapMode.Clamp;
@@ -345,6 +350,12 @@ namespace DaggerfallWorkshop
                 eastTexture.Compress(true);
             }
 
+            // Apply changes
+            clearTexture.SetPixels32(colors.clear);
+            westTexture.Apply(false, true);
+            eastTexture.Apply(false, true);
+            clearTexture.Apply(false, true);
+
             // Set camera clear colour
             cameraClearColor = colors.clearColor;
 
@@ -360,7 +371,7 @@ namespace DaggerfallWorkshop
 
             // Adjust sky index for climate and season
             // Season value enum ordered same as sky indices
-            SkyIndex = dfUnity.PlayerGPS.ClimateSettings.SkyBase + (int)dfUnity.WorldTime.SeasonValue;
+            SkyIndex = LocalPlayerGPS.ClimateSettings.SkyBase + (int)dfUnity.WorldTime.SeasonValue;
 
             // Set night flag
             IsNight = dfUnity.WorldTime.IsNight;

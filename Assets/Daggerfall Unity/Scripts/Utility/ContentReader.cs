@@ -9,7 +9,7 @@ using DaggerfallConnect.Arena2;
 namespace DaggerfallWorkshop.Utility
 {
     /// <summary>
-    /// General content interface between DaggerfallConnect API classes and Unity.
+    /// General interface between DaggerfallConnect API reader classes and Unity.
     /// </summary>
     public class ContentReader
     {
@@ -20,6 +20,15 @@ namespace DaggerfallWorkshop.Utility
         MapsFile mapFileReader;
         MonsterFile monsterFileReader;
         WoodsFile woodsFileReader;
+        Dictionary<int, MapSummary> mapDict;
+        Noise noise;
+
+        public struct MapSummary
+        {
+            public int ID;
+            public int RegionIndex;
+            public int MapIndex;
+        }
 
         public bool IsReady
         {
@@ -44,6 +53,11 @@ namespace DaggerfallWorkshop.Utility
         public WoodsFile WoodsFileReader
         {
             get { return woodsFileReader; }
+        }
+
+        public Noise Noise
+        {
+            get { return noise; }
         }
 
         #region Constructors
@@ -107,6 +121,31 @@ namespace DaggerfallWorkshop.Utility
             return true;
         }
 
+        /// <summary>
+        /// Determines if the current WorldCoord has a location.
+        /// </summary>
+        /// <param name="mapPixelX">Map pixel X.</param>
+        /// <param name="mapPixelY">Map pixel Y.</param>
+        /// <returns>True if there is a location at this map pixel.</returns>
+        public bool HasLocation(int mapPixelX, int mapPixelY, out MapSummary summaryOut)
+        {
+            if (!isReady)
+            {
+                summaryOut = new MapSummary();
+                return false;
+            }
+
+            int id = MapsFile.GetMapPixelID(mapPixelX, mapPixelY);
+            if (mapDict.ContainsKey(id))
+            {
+                summaryOut = mapDict[id];
+                return true;
+            }
+
+            summaryOut = new MapSummary();
+            return false;
+        }
+
         #endregion
 
         #region Private Methods
@@ -116,6 +155,7 @@ namespace DaggerfallWorkshop.Utility
         /// </summary>
         private void SetupReaders()
         {
+            // Setup general content readers
             if (blockFileReader == null)
                 blockFileReader = new BlocksFile(Path.Combine(arena2Path, BlocksFile.Filename), FileUsage.UseMemory, true);
             if (mapFileReader == null)
@@ -124,8 +164,35 @@ namespace DaggerfallWorkshop.Utility
                 monsterFileReader = new MonsterFile(Path.Combine(arena2Path, MonsterFile.Filename), FileUsage.UseMemory, true);
             if (woodsFileReader == null)
                 woodsFileReader = new WoodsFile(Path.Combine(arena2Path, WoodsFile.Filename), FileUsage.UseMemory, true);
+            if (noise == null)
+                noise = new Noise();
+
+            // Build map lookup dictionary
+            if (mapDict == null)
+                EnumerateMaps();
 
             isReady = true;
+        }
+
+        /// <summary>
+        /// Build dictionary of locations.
+        /// </summary>
+        private void EnumerateMaps()
+        {
+            mapDict = new Dictionary<int, MapSummary>();
+            for (int region = 0; region < mapFileReader.RegionCount; region++)
+            {
+                DFRegion dfRegion = mapFileReader.GetRegion(region);
+                for (int location = 0; location < dfRegion.LocationCount; location++)
+                {
+                    MapSummary summary = new MapSummary();
+                    DFRegion.RegionMapTable mapTable = dfRegion.MapTable[location];
+                    summary.ID = mapTable.MapId & 0x000fffff;
+                    summary.RegionIndex = region;
+                    summary.MapIndex = location;
+                    mapDict.Add(summary.ID, summary);
+                }
+            }
         }
 
         #endregion

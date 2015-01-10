@@ -20,14 +20,13 @@ namespace DaggerfallWorkshop
     [ExecuteInEditMode]
 #endif
     [RequireComponent(typeof(WorldTime))]
-    [RequireComponent(typeof(PlayerGPS))]
     [RequireComponent(typeof(MaterialReader))]
     [RequireComponent(typeof(MeshReader))]
     [RequireComponent(typeof(SoundReader))]
     public class DaggerfallUnity : MonoBehaviour
     {
         [NonSerialized]
-        public const string Version = "1.2.7";
+        public const string Version = "1.2.8";
 
         #region Fields
 
@@ -37,7 +36,6 @@ namespace DaggerfallWorkshop
         ContentReader reader;
 
         WorldTime worldTime;
-        PlayerGPS playerGPS;
         MaterialReader materialReader;
         MeshReader meshReader;
         SoundReader soundReader;
@@ -52,10 +50,11 @@ namespace DaggerfallWorkshop
         public string CityImporter_CityName = "Daggerfall/Daggerfall";
         public string DungeonImporter_DungeonName = "Daggerfall/Privateer's Hold";
 
-        // Mesh combining options
+        // Performance options
         public bool Option_CombineRMB = true;
         public bool Option_CombineRDB = true;
-        public bool Option_CombineLocations = true;
+        //public bool Option_CombineLocations = true;
+        public bool Option_BatchBillboards = true;
 
         // Import options
         public bool Option_SetStaticFlags = true;
@@ -130,11 +129,6 @@ namespace DaggerfallWorkshop
         public WorldTime WorldTime
         {
             get { return (worldTime != null) ? worldTime : worldTime = GetComponent<WorldTime>(); }
-        }
-
-        public PlayerGPS PlayerGPS
-        {
-            get { return (playerGPS != null) ? playerGPS : playerGPS = GetComponent<PlayerGPS>(); }
         }
 
         public ContentReader ContentReader

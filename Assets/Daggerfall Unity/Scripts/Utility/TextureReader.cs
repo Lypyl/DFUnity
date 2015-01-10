@@ -84,7 +84,8 @@ namespace DaggerfallWorkshop.Utility
             out Rect rectOut,
             int border = 0,
             bool dilate = false,
-            bool copyToOppositeBorder = false)
+            bool copyToOppositeBorder = false,
+            bool makeNoLongerReadable = true)
         {
             // Ready check
             if (!ReadyCheck())
@@ -115,7 +116,7 @@ namespace DaggerfallWorkshop.Utility
             else
                 texture = new Texture2D(sz.Width, sz.Height, TextureFormat.RGBA32, MipMaps);
             texture.SetPixels32(colors);
-            texture.Apply(true);
+            texture.Apply(true, makeNoLongerReadable);
 
             // Shrink UV rect to compensate for internal border
             float ru = 1f / sz.Width;
@@ -149,16 +150,21 @@ namespace DaggerfallWorkshop.Utility
             int maxAtlasSize,
             out Rect[] rectsOut,
             out RecordIndex[] indicesOut,
+            out Vector2[] sizesOut,
+            out Vector2[] scalesOut,
             int border,
             bool dilate,
             int shrinkUVs = 0,
-            bool copyToOppositeBorder = false)
+            bool copyToOppositeBorder = false,
+            bool makeNoLongerReadable = true)
         {
             // Ready check
             if (!ReadyCheck())
             {
                 rectsOut = null;
                 indicesOut = null;
+                sizesOut = null;
+                scalesOut = null;
                 return null;
             }
 
@@ -169,10 +175,13 @@ namespace DaggerfallWorkshop.Utility
             Rect rect;
             List<Texture2D> textures = new List<Texture2D>();
             List<RecordIndex> indices = new List<RecordIndex>();
+            sizesOut = new Vector2[textureFile.RecordCount];
+            scalesOut = new Vector2[textureFile.RecordCount];
             for (int record = 0; record < textureFile.RecordCount; record++)
             {
                 int frames = textureFile.GetFrameCount(record);
                 DFSize size = textureFile.GetSize(record);
+                DFSize scale = textureFile.GetScale(record);
                 RecordIndex ri = new RecordIndex()
                 {
                     startIndex = textures.Count,
@@ -183,13 +192,16 @@ namespace DaggerfallWorkshop.Utility
                 indices.Add(ri);
                 for (int frame = 0; frame < frames; frame++)
                 {
-                    textures.Add(GetTexture2D(archive, record, frame, alphaIndex, out rect, border, dilate, copyToOppositeBorder));
+                    textures.Add(GetTexture2D(archive, record, frame, alphaIndex, out rect, border, dilate, copyToOppositeBorder, false));
                 }
+
+                sizesOut[record] = new Vector2(size.Width, size.Height);
+                scalesOut[record] = new Vector2(scale.Width, scale.Height);
             }
 
             // Pack textures into atlas
             Texture2D atlas = new Texture2D(maxAtlasSize, maxAtlasSize, TextureFormat.RGBA32, MipMaps);
-            rectsOut = atlas.PackTextures(textures.ToArray(), padding, maxAtlasSize);
+            rectsOut = atlas.PackTextures(textures.ToArray(), padding, maxAtlasSize, makeNoLongerReadable);
             indicesOut = indices.ToArray();
 
             // Shrink UV rect to compensate for internal border

@@ -96,7 +96,7 @@ namespace DaggerfallWorkshop
             }
 
             // Display other GUI items
-            DisplayAssetExporterGUI();
+            //DisplayAssetExporterGUI();
             DisplayOptionsGUI();
             DisplayImporterGUI();
 
@@ -107,20 +107,23 @@ namespace DaggerfallWorkshop
         }
 
         private void DisplayOptionsGUI()
-        { 
+        {
+            EditorGUILayout.Space();
             ShowOptionsFoldout = GUILayoutHelper.Foldout(ShowOptionsFoldout, new GUIContent("Options"), () =>
             {
                 // Combining options
                 var propCombineRMB = Prop("Option_CombineRMB");
                 var propCombineRDB = Prop("Option_CombineRDB");
-                var propCombineLocations = Prop("Option_CombineLocations");
+                //var propCombineLocations = Prop("Option_CombineLocations");
+                //var propBatchBillboards = Prop("Option_BatchBillboards");
                 EditorGUILayout.Space();
-                EditorGUILayout.LabelField("Combining");
+                EditorGUILayout.LabelField("Performance");
                 GUILayoutHelper.Indent(() =>
                 {
                     propCombineRMB.boolValue = EditorGUILayout.Toggle(new GUIContent("Combine RMB", "Combine city-block meshes together."), propCombineRMB.boolValue);
                     propCombineRDB.boolValue = EditorGUILayout.Toggle(new GUIContent("Combine RDB", "Combine dungeon-block meshes together."), propCombineRDB.boolValue);
-                    propCombineLocations.boolValue = EditorGUILayout.Toggle(new GUIContent("Combine Locations", "Super-combine location RMB blocks together. First combines RMB then chunks those together."), propCombineLocations.boolValue);
+                    //propBatchBillboards.boolValue = EditorGUILayout.Toggle(new GUIContent("Batch Billboards", "Use a fast vertex shader and batched data to draw billboards."), propBatchBillboards.boolValue);
+                    //propCombineLocations.boolValue = EditorGUILayout.Toggle(new GUIContent("Combine Locations", "Super-combine location RMB blocks together. First combines RMB then chunks those together."), propCombineLocations.boolValue);
                 });
 
                 // Import options
@@ -210,7 +213,7 @@ namespace DaggerfallWorkshop
                 var propAutomateTextureSwaps = Prop("Option_AutomateTextureSwaps");
                 var propAutomateSky = Prop("Option_AutomateSky");
                 var propAutomateCityLights = Prop("Option_AutomateCityLights");
-                var propAutomateCityGates = Prop("Option_AutomateCityGates");
+                //var propAutomateCityGates = Prop("Option_AutomateCityGates");
                 EditorGUILayout.Space();
                 EditorGUILayout.LabelField("Time & Space");
                 GUILayoutHelper.Indent(() =>
@@ -218,7 +221,7 @@ namespace DaggerfallWorkshop
                     propAutomateTextureSwaps.boolValue = EditorGUILayout.Toggle(new GUIContent("Automate Textures", "Assign textures for climate, season, and windows at runtime based on player world position and world time."), propAutomateTextureSwaps.boolValue);
                     propAutomateSky.boolValue = EditorGUILayout.Toggle(new GUIContent("Automate Sky", "Assign seasonal skies and full day/night cycle based on player world position and world time."), propAutomateSky.boolValue);
                     propAutomateCityLights.boolValue = EditorGUILayout.Toggle(new GUIContent("Automate City Lights", "Turn city lights on/off based on world time."), propAutomateCityLights.boolValue);
-                    propAutomateCityGates.boolValue = EditorGUILayout.Toggle(new GUIContent("Automate City Gates", "Open/close city gates based on world time. Not implemented."), propAutomateCityGates.boolValue);
+                    //propAutomateCityGates.boolValue = EditorGUILayout.Toggle(new GUIContent("Automate City Gates", "Open/close city gates based on world time. Not implemented."), propAutomateCityGates.boolValue);
                 });
             });
         }
@@ -229,6 +232,7 @@ namespace DaggerfallWorkshop
             if (!dfUnity.gameObject.activeInHierarchy)
                 return;
 
+            EditorGUILayout.Space();
             ShowImportFoldout = GUILayoutHelper.Foldout(ShowImportFoldout, new GUIContent("Importer"), () =>
             {
                 GUILayoutHelper.Indent(() =>

@@ -19,6 +19,8 @@ namespace DaggerfallWorkshop
 
     /// <summary>
     /// Defines a single cached material.
+    /// Marked as serializable but not currently serialized.
+    /// This may change at a later date.
     /// </summary>
     [Serializable]
     public struct CachedMaterial
@@ -33,8 +35,8 @@ namespace DaggerfallWorkshop
         public bool isWindow;                   // True if this is a window material
         public Color windowColor;               // Colour of this window
         public float windowIntensity;           // Intensity of this window
-        public DFSize recordSize;               // Size of texture record
-        public DFSize recordScale;              // Scale of texture record
+        public Vector2[] recordSizes;           // Size of texture records
+        public Vector2[] recordScales;          // Scale of texture records
         public int recordFrameCount;            // Number of frames in this textures record
     }
 
@@ -176,57 +178,38 @@ namespace DaggerfallWorkshop
     /// <summary>
     /// Information about a single map pixel for streaming world.
     /// </summary>
+    [Serializable]
     public struct MapPixelData
     {
+        public bool inWorld;                    // True if map pixel is inside world area
         public int mapPixelX;                   // Map pixel X coordinate
         public int mapPixelY;                   // Map pixel Y coordinate
         public int worldHeight;                 // Height of this pixel
         public int worldClimate;                // Climate of this pixel
         public int worldPolitic;                // Politics of this pixel
         public bool hasLocation;                // True if location present
-        public int regionIndex;                 // Region index
-        public int mapIndex;                    // Location map index (if present)
-        public int locationID;                  // Location ID (if present)
-        public string locationName;             // Location name (if present)
-        public float locationHeight;            // Average height of terrain
-        public GameObject gameObject;           // GameObject with terrain component
+        public int mapRegionIndex;              // Map region index (if location present)
+        public int mapLocationIndex;            // Map location index (if location present)
+        public int locationID;                  // Location ID (if location present)
+        public string locationName;             // Location name (if location present)
+        public float locationHeight;            // Average height of terrain for location placement
+        public Rect locationRect;               // Rect of location tiles in sample are
+        
+        [HideInInspector]
+        public WorldSample[] samples;           // World samples of map data after generation
     }
 
     /// <summary>
-    /// Height, normal, and texture information for any point in world.
+    /// Information for world height samples.
     /// </summary>
+    [Serializable]
     public struct WorldSample
     {
-        public float height;                    // Height of this sample
-        public Vector3 normal;                  // Normal of sample
-        public WorldTile tile;                  // Texture and nature of sample
-    }
-
-    /// <summary>
-    /// Tile texture information.
-    /// </summary>
-    public struct WorldTile
-    {
+        public float scaledHeight;              // Final scaled height of this sample
         public int record;                      // Record index into texture atlas
         public bool flip;                       // Flip texture UVs
         public bool rotate;                     // Rotate texture UVs
-        public bool location;                   // True if location present
+        public bool location;                   // True if location present at this sample
         public int nature;                      // Index of nature flat at this point (0 is nothing)
-    }
-
-    /// <summary>
-    /// Data for a single terrain chunk.
-    /// </summary>
-    public struct TerrainChunkData
-    {
-        //public Mesh renderMesh;                 // Mesh for rendering this chunk
-        //public Mesh colliderMesh;               // Mesh for colliding with this chunk
-        //public Material material;               // Shared terrain material atlas for this chunk
-        public Vector3[] vertices;              // Vertex array
-        public Vector3[] normals;               // Normal array
-        public Vector2[] uvs;                   // UV array
-        public int[] indices;                   // Mesh indices
-        //public Vector3[] colliderVerts;         // Collider vertices
-        //public int[] colliderIndices;           // Collider indices;
     }
 }

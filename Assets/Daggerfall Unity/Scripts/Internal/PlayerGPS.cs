@@ -9,12 +9,14 @@ namespace DaggerfallWorkshop
 {
     /// <summary>
     /// Tracks player position in world space.
-    /// Not fully implemented.
     /// </summary>
     public class PlayerGPS : MonoBehaviour
     {
-        public int WorldX;                      // Player X coordinate in Daggerfall world units (0-32768000)
-        public int WorldZ;                      // Player Z coordinate in Daggerfall world units (0-16384000)
+        // Default location is outside Privateer's Hold
+        [Range(0, 32735232)]
+        public int WorldX = 3571712;            // Player X coordinate in Daggerfall world units
+        [Range(0, 16351232)]
+        public int WorldZ = 11173888;           // Player Z coordinate in Daggerfall world units
 
         DaggerfallUnity dfUnity;
         int lastMapPixelX = -1;
@@ -22,14 +24,6 @@ namespace DaggerfallWorkshop
         int currentClimate;
         int currentPolitic;
         DFLocation.ClimateSettings climateSettings;
-        Dictionary<int, MapSummary> mapDict;
-
-        public struct MapSummary
-        {
-            public int ID;
-            public int RegionIndex;
-            public int MapIndex;
-        }
 
         /// <summary>
         /// Gets current player map pixel.
@@ -47,6 +41,9 @@ namespace DaggerfallWorkshop
             get { return currentClimate; }
         }
 
+        /// <summary>
+        /// Gets political index based on player world position.
+        /// </summary>
         public int CurrentPolitic
         {
             get { return currentPolitic; }
@@ -60,80 +57,29 @@ namespace DaggerfallWorkshop
             get { return climateSettings; }
         }
 
-        void Start()
-        {
-        }
-
         void Update()
         {
             // Do nothing if not ready
             if (!ReadyCheck())
                 return;
 
-            // Update climate whenever player map pixel changes
+            // Update local world information whenever player map pixel changes
             DFPosition pos = MapsFile.WorldCoordToMapPixel(WorldX, WorldZ);
             if (pos.X != lastMapPixelX || pos.Y != lastMapPixelY)
             {
-                UpdateClimate(pos.X, pos.Y);
+                UpdateWorldInfo(pos.X, pos.Y);
                 lastMapPixelX = pos.X;
                 lastMapPixelY = pos.Y;
             }
         }
 
-        #region Public Methods
-
-        /// <summary>
-        /// Determines if the current WorldCoord has a location.
-        /// </summary>
-        /// <param name="mapPixelX">Map pixel X.</param>
-        /// <param name="mapPixelY">Map pixel Y.</param>
-        /// <returns>True if there is a location at this map pixel.</returns>
-        public bool HasLocation(int mapPixelX, int mapPixelY, out MapSummary summaryOut)
-        {
-            if (!ReadyCheck())
-            {
-                summaryOut = new MapSummary();
-                return false;
-            }
-
-            int id = MapsFile.GetMapPixelID(mapPixelX, mapPixelY);
-            if (mapDict.ContainsKey(id))
-            {
-                summaryOut = mapDict[id];
-                return true;
-            }
-
-            summaryOut = new MapSummary();
-            return false;
-        }
-
-        #endregion
-
         #region Private Methods
 
-        private void UpdateClimate(int x, int y)
+        private void UpdateWorldInfo(int x, int y)
         {
             currentClimate = dfUnity.ContentReader.MapFileReader.GetClimateIndex(x, y);
             currentPolitic = dfUnity.ContentReader.MapFileReader.GetPoliticIndex(x, y);
             climateSettings = MapsFile.GetWorldClimateSettings(currentClimate);
-        }
-
-        private void EnumerateMaps()
-        {
-            mapDict = new Dictionary<int, MapSummary>();
-            for (int region = 0; region < dfUnity.ContentReader.MapFileReader.RegionCount; region++)
-            {
-                DFRegion dfRegion = dfUnity.ContentReader.MapFileReader.GetRegion(region);
-                for (int location = 0; location < dfRegion.LocationCount; location++)
-                {
-                    MapSummary summary = new MapSummary();
-                    DFRegion.RegionMapTable mapTable = dfRegion.MapTable[location];
-                    summary.ID = mapTable.MapId & 0x000fffff;
-                    summary.RegionIndex = region;
-                    summary.MapIndex = location;
-                    mapDict.Add(summary.ID, summary);
-                }
-            }
         }
 
         private bool ReadyCheck()
@@ -154,10 +100,6 @@ namespace DaggerfallWorkshop
                 DaggerfallUnity.LogMessage("PlayerGPS: DaggerfallUnity component is not ready. Have you set your Arena2 path?");
                 return false;
             }
-
-            // Build map lookup dictionary
-            if (mapDict == null)
-                EnumerateMaps();
 
             return true;
         }

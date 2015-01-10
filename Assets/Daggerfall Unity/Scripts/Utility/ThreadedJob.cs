@@ -12,6 +12,7 @@ namespace DaggerfallWorkshop.Utility
     public class ThreadedJob
     {
         private bool m_IsDone = false;
+        private bool m_IsAborted = false;
         private object m_Handle = new object();
         private System.Threading.Thread m_Thread = null;
         public bool IsDone
@@ -33,6 +34,25 @@ namespace DaggerfallWorkshop.Utility
                 }
             }
         }
+        public bool IsAborted
+        {
+            get
+            {
+                bool tmp;
+                lock (m_Handle)
+                {
+                    tmp = m_IsAborted;
+                }
+                return tmp;
+            }
+            set
+            {
+                lock (m_Handle)
+                {
+                    m_IsAborted = value;
+                }
+            }
+        }
 
         public virtual void Start()
         {
@@ -42,6 +62,7 @@ namespace DaggerfallWorkshop.Utility
         public virtual void Abort()
         {
             m_Thread.Abort();
+            IsAborted = true;
         }
 
         protected virtual void ThreadFunction() { }

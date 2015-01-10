@@ -31,8 +31,21 @@ namespace DaggerfallWorkshop
 
         #region Public Fields
 
-        // 1/40 Scale
-        public static float GlobalScale = 0.025f;
+        // Using 1/40 scale (or * 0.025).
+        // True world scale is 1/39.37007874015748 (or * 0.0254). Basically conversion is inches (Daggerfall) to metres (Unity).
+        // 1/40 scale has been carefully chosen as it is close to true scale but requires less floating-point precision
+        // for tiling assets. It also produces numbers easier to remember for editor layouts and is easier to
+        // calculate manually (i.e. just divide by 40 to convert native units to Unity units).
+        // For example, an RMB block dimension is 4096 native units.
+        //  4096 / 40 = 102.4 (easy to remember for manual editor layouts, less precision required).
+        //  4096 * 0.0254 = 104.0384 (harder to remember for manual editor layouts, more precision required).
+        // This means world is slightly smaller over large distances (13107.2m error across entire map width).
+        // If you desire exactly scaled layouts then use "true scale" below instead of "default scale".
+        // This may cause precision problems with streaming world and require additional wotk to resolve.
+        // NOTE: You must set scale before generating/importing any scene assets. Existing scenes will need to be recreated.
+        //
+        public static float GlobalScale = 0.025f;       // Default scale
+        //public static float GlobalScale = 0.0254f;      // True scale
 
         public bool AddMeshTangents = true;
         public bool AddMeshLightmapUVs = false;
@@ -281,32 +294,38 @@ namespace DaggerfallWorkshop
             if (!IsReady)
                 return null;
 
-            // Get cached material data
+            // Attempt to get cached atlas data if atlases enabled
             CachedMaterial cm;
-            dfUnity.MaterialReader.GetCachedMaterial(archive, record, 0, out cm);
-
-            // Get size and scale of this texture
-            DFSize size = cm.recordSize;
-            DFSize scale = cm.recordScale;
-
-            // Set start size
-            Vector2 startSize;
-            startSize.x = size.Width;
-            startSize.y = size.Height;
+            Vector2 size, scale;
+            dfUnity.MaterialReader.GetCachedMaterialAtlas(archive, out cm);
+            if (cm.keyGroup == MaterialReader.AtlasKeyGroup)
+            {
+                size = cm.recordSizes[record];
+                scale = cm.recordScales[record];
+            }
+            else
+            {
+                // Get single material data
+                // This is also fallback if atlas not available
+                // Texture will be loaded singlely which takes longer
+                dfUnity.MaterialReader.GetCachedMaterial(archive, record, 0, out cm);
+                size = cm.recordSizes[0];
+                scale = cm.recordScales[0];
+            }
 
             // Apply scale
             Vector2 finalSize;
-            int xChange = (int)(size.Width * (scale.Width / BlocksFile.ScaleDivisor));
-            int yChange = (int)(size.Height * (scale.Height / BlocksFile.ScaleDivisor));
-            finalSize.x = (size.Width + xChange);
-            finalSize.y = (size.Height + yChange);
+            int xChange = (int)(size.x * (scale.x / BlocksFile.ScaleDivisor));
+            int yChange = (int)(size.y * (scale.y / BlocksFile.ScaleDivisor));
+            finalSize.x = (size.x + xChange);
+            finalSize.y = (size.y + yChange);
 
             // Store sizeOut
             sizeOut = finalSize * MeshReader.GlobalScale;
 
             // Nature (TEXTURE.500 and up) do not use scaling in dungeons. Revert scaling.
             if (dungeon && archive > 499)
-                finalSize = startSize;
+                finalSize = size;
 
             // Calcuate offset for correct positioning in scene
             Vector3 offset = Vector3.zero;
@@ -454,127 +473,6 @@ namespace DaggerfallWorkshop
             mesh.Optimize();
 
             return mesh;
-
-            //const int tileCount = 16;
-            //const int vertexCount = (tileCount * tileCount) * 4;
-            //const int indexCount = (tileCount * tileCount) * 6;
-
-            //// Make ground slightly lower to minimise depth-fighting on ground aligned polygons
-            //// But not too low, or shadows can be seen under buildings
-            //float groundHeight = DaggerfallGroundMesh.GroundOffset * MeshReader.GlobalScale;
-
-            //// Corner positions
-            //Vector3 vert0, vert1, vert2, vert3;
-            //Vector2 uv0, uv1, uv2, uv3;
-
-            //// Create arrays
-            //Vector3[] verts = new Vector3[vertexCount];
-            //Vector3[] norms = new Vector3[vertexCount];
-            //Vector2[] uvs = new Vector2[vertexCount];
-            //int[] indices = new int[indexCount];
-
-            //// Loop through tiles
-            //int vertIndex = 0, maxIndex = 0;
-            //float tileDimension = DaggerfallGroundMesh.TileDimension * GlobalScale;
-            //for (int y = 0; y < tileCount; y++)
-            //{
-            //    for (int x = 0; x < tileCount; x++)
-            //    {
-            //        // Get source tile data
-            //        DFBlock.RmbGroundTiles tile = blockData.RmbBlock.FldHeader.GroundData.GroundTiles[x, (tileCount - 1) - y];
-
-            //        // Set random terrain marker back to grass
-            //        int record = (tile.TextureRecord > 55) ? 2 : tile.TextureRecord;
-
-            //        // Create vertices for this quad
-            //        vert0 = new Vector3(x * tileDimension, groundHeight, y * tileDimension);
-            //        vert1 = new Vector3(vert0.x, groundHeight, vert0.z + tileDimension);
-            //        vert2 = new Vector3(vert0.x + tileDimension, groundHeight, vert0.z + tileDimension);
-            //        vert3 = new Vector3(vert0.x + tileDimension, groundHeight, vert0.z);
-
-            //        Rect uv = rects[record];
-
-            //        // Set UVs
-            //        if (tile.IsRotated && !tile.IsFlipped)
-            //        {
-            //            // Rotate only
-            //            uv3 = new Vector2(uv.xMin, uv.yMin);
-            //            uv0 = new Vector2(uv.xMin, uv.yMax);
-            //            uv1 = new Vector2(uv.xMax, uv.yMax);
-            //            uv2 = new Vector2(uv.xMax, uv.yMin);
-            //        }
-            //        else if (tile.IsFlipped && !tile.IsRotated)
-            //        {
-            //            // Flip only
-            //            uv2 = new Vector2(uv.xMin, uv.yMin);
-            //            uv3 = new Vector2(uv.xMin, uv.yMax);
-            //            uv0 = new Vector2(uv.xMax, uv.yMax);
-            //            uv1 = new Vector2(uv.xMax, uv.yMin);
-            //        }
-            //        else if (tile.IsRotated && tile.IsFlipped)
-            //        {
-            //            // Rotate and flip
-            //            uv1 = new Vector2(uv.xMin, uv.yMin);
-            //            uv2 = new Vector2(uv.xMin, uv.yMax);
-            //            uv3 = new Vector2(uv.xMax, uv.yMax);
-            //            uv0 = new Vector2(uv.xMax, uv.yMin);
-            //        }
-            //        else
-            //        {
-            //            // No rotate or flip
-            //            uv0 = new Vector2(uv.xMin, uv.yMax);
-            //            uv1 = new Vector2(uv.xMin, uv.yMin);
-            //            uv2 = new Vector2(uv.xMax, uv.yMin);
-            //            uv3 = new Vector2(uv.xMax, uv.yMax);
-            //        }
-
-            //        // Add vertex data
-            //        verts[vertIndex + 0] = vert0;
-            //        verts[vertIndex + 1] = vert1;
-            //        verts[vertIndex + 2] = vert2;
-            //        verts[vertIndex + 3] = vert3;
-
-            //        // Add normal data
-            //        norms[vertIndex + 0] = Vector3.up;
-            //        norms[vertIndex + 1] = Vector3.up;
-            //        norms[vertIndex + 2] = Vector3.up;
-            //        norms[vertIndex + 3] = Vector3.up;
-
-            //        // Add uv data
-            //        uvs[vertIndex + 0] = uv0;
-            //        uvs[vertIndex + 1] = uv1;
-            //        uvs[vertIndex + 2] = uv2;
-            //        uvs[vertIndex + 3] = uv3;
-
-            //        // Add index data
-            //        indices[maxIndex + 0] = vertIndex + 0;
-            //        indices[maxIndex + 1] = vertIndex + 1;
-            //        indices[maxIndex + 2] = vertIndex + 2;
-            //        indices[maxIndex + 3] = vertIndex + 0;
-            //        indices[maxIndex + 4] = vertIndex + 2;
-            //        indices[maxIndex + 5] = vertIndex + 3;
-
-            //        // Increment
-            //        vertIndex += 4;
-            //        maxIndex += 6;
-            //    }
-            //}
-
-            //// Create mesh
-            //Mesh mesh = new Mesh();
-            //mesh.name = "GroundMesh";
-            //mesh.vertices = verts;
-            //mesh.normals = norms;
-            //mesh.uv = uvs;
-            //mesh.triangles = indices;
-
-            //// Finalise mesh
-            //if (solveTangents) TangentSolver(mesh);
-            //if (lightmapUVs) AddLightmapUVs(mesh);
-            //mesh.RecalculateBounds();
-            //mesh.Optimize();
-
-            //return mesh;
         }
 
         /// <summary>
@@ -592,20 +490,15 @@ namespace DaggerfallWorkshop
                 return Vector2.zero;
 
             // Get size and scale
-            DFSize size = cm.recordSize;
-            DFSize scale = cm.recordScale;
-
-            // Set start size
-            Vector2 startSize;
-            startSize.x = size.Width;
-            startSize.y = size.Height;
+            Vector2 size = cm.recordSizes[0];
+            Vector2 scale = cm.recordScales[0];
 
             // Apply scale
             Vector2 finalSize;
-            int xChange = (int)(size.Width * (scale.Width / BlocksFile.ScaleDivisor));
-            int yChange = (int)(size.Height * (scale.Height / BlocksFile.ScaleDivisor));
-            finalSize.x = (size.Width + xChange);
-            finalSize.y = (size.Height + yChange);
+            int xChange = (int)(size.x * (scale.x / BlocksFile.ScaleDivisor));
+            int yChange = (int)(size.y * (scale.y / BlocksFile.ScaleDivisor));
+            finalSize.x = (size.x + xChange);
+            finalSize.y = (size.y + yChange);
 
             return finalSize;
         }
@@ -664,7 +557,7 @@ namespace DaggerfallWorkshop
                 // Get cached material data
                 CachedMaterial cm;
                 dfUnity.MaterialReader.GetCachedMaterial(dfSubMesh.TextureArchive, dfSubMesh.TextureRecord, 0, out cm);
-                DFSize sz = cm.recordSize;
+                Vector2 sz = cm.recordSizes[0];
 
                 // Check if this is a door archive
                 bool doorFound = false;
@@ -727,7 +620,7 @@ namespace DaggerfallWorkshop
                         // Store vertex data
                         model.Vertices[vertexCount] = position;
                         model.Normals[vertexCount] = Vector3.Normalize(normal);
-                        model.UVs[vertexCount] = new Vector2((dfPoint.U / sz.Width), -(dfPoint.V / sz.Height));
+                        model.UVs[vertexCount] = new Vector2((dfPoint.U / sz.x), -(dfPoint.V / sz.y));
 
                         // Inrement count
                         vertexCount++;

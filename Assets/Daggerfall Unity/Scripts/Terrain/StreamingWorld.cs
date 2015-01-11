@@ -45,6 +45,9 @@ namespace DaggerfallWorkshop
         [Range(TerrainHelper.minTerrainScale, TerrainHelper.maxTerrainScale)]
         public float TerrainScale = TerrainHelper.defaultTerrainScale;
 
+        [HideInInspector, NonSerialized]
+        public bool ShowTestLocationMarker = false;
+
         [HideInInspector]
         public string EditorFindLocationString = "Daggerfall/Privateer's Hold";
 
@@ -53,6 +56,7 @@ namespace DaggerfallWorkshop
         public Vector3 worldCompensation = Vector3.zero;
 
         // List of terrain objects
+        [NonSerialized]
         TerrainDesc[] terrainArray = new TerrainDesc[maxTerrainArray];
         Dictionary<int, int> terrainIndexDict = new Dictionary<int, int>();
 
@@ -97,6 +101,11 @@ namespace DaggerfallWorkshop
 
             // Cache player information
             playerMotor = LocalPlayerGPS.gameObject.GetComponent<PlayerMotor>();
+
+            // Player must be at origin on init for proper world sync
+            // Correct height will be assigned when terrain ready
+            playerMotor.transform.position = Vector3.zero;
+            playerMotor.ResyncPlatformLogic();
 
             // Init streaming world
             ClearTerrainArray();
@@ -191,6 +200,12 @@ namespace DaggerfallWorkshop
                 }
             }
 
+            // Now we can position player on init
+            if (init)
+            {
+                SnapPlayerToTerrain(MapPixelX, MapPixelY, Vector3.zero);
+            }
+
             // Second stage updates terrain nature
             for (int i = 0; i < terrainArray.Length; i++)
             {
@@ -214,6 +229,15 @@ namespace DaggerfallWorkshop
                     CreateLocationGameObject(i, out location, out terrainArray[i].locationObject);
                     if (!terrainArray[i].locationObject)
                         continue;
+
+                    // Create location marker
+                    // This is parented to location and shares its lifetime
+                    if (ShowTestLocationMarker)
+                    {
+                        GameObject locationMarker = (GameObject)GameObject.Instantiate(Resources.Load<GameObject>("LocationMarker"));
+                        locationMarker.transform.parent = terrainArray[i].locationObject.transform;
+                        locationMarker.transform.localPosition = new Vector3(409.6f, 500f, 409.6f);
+                    }
 
                     // Add one nature batch for entire location
                     // This is parented to location and shares its lifetime
@@ -305,6 +329,14 @@ namespace DaggerfallWorkshop
             if (nextTerrain == -1)
                 return;
 
+            // Destroy existing location if present
+            if (terrainArray[nextTerrain].locationObject)
+            {
+                terrainArray[nextTerrain].locationObject.SetActive(false);              // Set inactive
+                GameObject.Destroy(terrainArray[nextTerrain].locationObject);           // Mark for destruction
+                terrainArray[nextTerrain].locationObject = null;                        // And it dies alone and forgotten
+            }
+
             // Setup new terrain
             terrainArray[nextTerrain].active = true;
             terrainArray[nextTerrain].updateHeights = true;
@@ -332,24 +364,10 @@ namespace DaggerfallWorkshop
             // Add new terrain index to dictionary
             terrainIndexDict.Add(key, nextTerrain);
 
-            // Check if terrain has a location
+            // Check if terrain has a location, if so it will be added on next update
             ContentReader.MapSummary mapSummary;
             if (dfUnity.ContentReader.HasLocation(mapPixelX, mapPixelY, out mapSummary))
-            {
-                // Set flag for updating
                 terrainArray[nextTerrain].updateLocation = true;
-            }
-            else
-            {
-                // Otherwise destroy any existing location before recycling takes place
-                terrainArray[nextTerrain].updateLocation = false;
-                if (terrainArray[nextTerrain].locationObject)
-                {
-                    terrainArray[nextTerrain].locationObject.SetActive(false);
-                    GameObject.Destroy(terrainArray[nextTerrain].locationObject);
-                    terrainArray[nextTerrain].locationObject = null;
-                }
-            }
         }
 
         // Flatten terrain array
@@ -534,14 +552,6 @@ namespace DaggerfallWorkshop
             if (!dfTerrain.MapData.hasLocation)
                 return;
 
-            // Destroy existing location object
-            if (terrainArray[terrain].locationObject)
-            {
-                terrainArray[terrain].locationObject.SetActive(false);
-                GameObject.Destroy(terrainArray[terrain].locationObject);
-                terrainArray[terrain].locationObject = null;
-            }
-
             // Get location data
             locationOut = dfUnity.ContentReader.MapFileReader.GetLocation(dfTerrain.MapData.mapRegionIndex, dfTerrain.MapData.mapLocationIndex);
             if (!locationOut.Loaded)
@@ -550,9 +560,9 @@ namespace DaggerfallWorkshop
             // Spawn parent game object for new location
             float height = dfTerrain.MapData.averageHeight * TerrainScale;
             locationObject = new GameObject(string.Format("DaggerfallLocation [Region={0}, Name={1}]", locationOut.RegionName, locationOut.Name));
+            locationObject.transform.parent = this.transform;
             locationObject.hideFlags = HideFlags.HideAndDontSave;
-            locationObject.transform.parent = terrainArray[terrain].terrainObject.transform;
-            locationObject.transform.localPosition = new Vector3(0, height, 0);
+            locationObject.transform.position = terrainArray[terrain].terrainObject.transform.position + new Vector3(0, height, 0);
             DaggerfallLocation dfLocation = locationObject.AddComponent<DaggerfallLocation>() as DaggerfallLocation;
             dfLocation.SetLocation(locationOut, false);
         }
@@ -662,6 +672,29 @@ namespace DaggerfallWorkshop
             }
 
             return false;
+        }
+
+        // Sets player to gound level at position in specified terrain
+        // Terrain data must already be loaded
+        private void SnapPlayerToTerrain(int mapPixelX, int mapPixelY, Vector3 position)
+        {
+            // Get terrain key
+            int key = TerrainHelper.MakeTerrainKey(mapPixelX, mapPixelY);
+            if (!terrainIndexDict.ContainsKey(key))
+                return;
+
+            // Get terrain
+            Terrain terrain = terrainArray[terrainIndexDict[key]].terrainObject.GetComponent<Terrain>();
+
+            // Sample height at this position
+            Vector3 pos = new Vector3(position.x, 0, position.z);
+            float height = terrain.SampleHeight(pos + terrain.transform.position);
+            pos.y = height + 1;
+
+            // Move player to this position and snap to ground using raycast
+            playerMotor.transform.position = pos;
+            playerMotor.FixStanding();
+            playerMotor.ResyncPlatformLogic();
         }
 
         private bool ReadyCheck()

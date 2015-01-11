@@ -174,7 +174,8 @@ namespace DaggerfallWorkshop
         public Material SetMaterial(DaggerfallUnity dfUnity, int archive, int record, int frame, bool dungeon)
         {
             Shader shader;
-            if (archive == 210 && dungeon) // Dungeon light billboards use unlit billboard shader
+            //if (archive == 210 && dungeon) // Dungeon light billboards use unlit billboard shader
+            if (archive == 210) // All light billboards use unlit billboard shader
                 shader = Shader.Find(dfUnity.MaterialReader.DefaultUnlitBillboardShaderName);
             else
                 shader = Shader.Find(dfUnity.MaterialReader.DefaultBillboardShaderName);

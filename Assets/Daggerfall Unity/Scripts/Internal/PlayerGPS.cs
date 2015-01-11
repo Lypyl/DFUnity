@@ -14,9 +14,9 @@ namespace DaggerfallWorkshop
     {
         // Default location is outside Privateer's Hold
         [Range(0, 32735232)]
-        public int WorldX = 3571712;            // Player X coordinate in Daggerfall world units
+        public int WorldX;                      // Player X coordinate in Daggerfall world units
         [Range(0, 16351232)]
-        public int WorldZ = 11173888;           // Player Z coordinate in Daggerfall world units
+        public int WorldZ;                      // Player Z coordinate in Daggerfall world units
 
         DaggerfallUnity dfUnity;
         int lastMapPixelX = -1;
@@ -57,6 +57,10 @@ namespace DaggerfallWorkshop
             get { return climateSettings; }
         }
 
+        void Start()
+        {
+        }
+
         void Update()
         {
             // Do nothing if not ready
@@ -64,7 +68,7 @@ namespace DaggerfallWorkshop
                 return;
 
             // Update local world information whenever player map pixel changes
-            DFPosition pos = MapsFile.WorldCoordToMapPixel(WorldX, WorldZ);
+            DFPosition pos = CurrentMapPixel;
             if (pos.X != lastMapPixelX || pos.Y != lastMapPixelY)
             {
                 UpdateWorldInfo(pos.X, pos.Y);

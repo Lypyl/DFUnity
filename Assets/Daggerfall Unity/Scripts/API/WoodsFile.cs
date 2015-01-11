@@ -24,10 +24,10 @@ namespace DaggerfallConnect.Arena2
         #region Class Variables
 
         /// <summary>Width of heightmap in bytes.</summary>
-        private const int mapWidthValue = 1000;
+        public const int mapWidthValue = 1000;
 
         /// <summary>Height of heightmap in bytes.</summary>
-        private const int mapHeightValue = 500;
+        public const int mapHeightValue = 500;
 
         /// <summary>Memory length of heightmap in bytes.</summary>
         private const int mapBufferLengthValue = mapWidthValue * mapHeightValue;
@@ -126,11 +126,12 @@ namespace DaggerfallConnect.Arena2
         }
 
         /// <summary>
-        /// Gets a copy of extracted heightmap data.
+        /// Gets or sets extracted heightmap data.
         /// </summary>
         public Byte[] Buffer
         {
             get { return heightMapBuffer; }
+            set { heightMapBuffer = value; }
         }
 
         #endregion
@@ -225,7 +226,6 @@ namespace DaggerfallConnect.Arena2
 
         /// <summary>
         /// Gets range of small height map data.
-        /// Also inverts Y order of height samples.
         /// </summary>
         /// <param name="mapPixelX">X position in heightmap. 0 to MapWidth-1.</param>
         /// <param name="mapPixelY">Y position in heightmap. 0 to MapHeight-1.</param>
@@ -238,7 +238,7 @@ namespace DaggerfallConnect.Arena2
             {
                 for (int x = 0; x < dim; x++)
                 {
-                    dstData[x, y] = GetHeightMapValue(mapPixelX + x, mapPixelY - y);
+                    dstData[x, y] = GetHeightMapValue(mapPixelX + x, mapPixelY + y);
                 }
             }
 

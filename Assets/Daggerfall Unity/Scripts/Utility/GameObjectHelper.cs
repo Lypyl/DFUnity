@@ -345,25 +345,36 @@ namespace DaggerfallWorkshop.Utility
             return go;
         }
 
-        public static GameObject CreateDaggerfallLocationGameObject(DaggerfallUnity dfUnity, string multiName, Transform parent)
+        public static bool FindMultiNameLocation(DaggerfallUnity dfUnity, string multiName, out DFLocation locationOut)
         {
+            locationOut = new DFLocation();
+
             if (string.IsNullOrEmpty(multiName))
-                return null;
+                return false;
 
             // Split combined name
             string[] parts = multiName.Split('/');
             if (parts.Length != 2)
             {
-                DaggerfallUnity.LogMessage(string.Format("Multi name '{0}' does not follow the structure RegionName/CityName.", multiName), true);
-                return null;
+                DaggerfallUnity.LogMessage(string.Format("Multi name '{0}' does not follow the structure RegionName/LocationName.", multiName), true);
+                return false;
             }
 
+            // Get location
+            if (!dfUnity.ContentReader.GetLocation(parts[0], parts[1], out locationOut))
+                return false;
+
+            return true;
+        }
+
+        public static GameObject CreateDaggerfallLocationGameObject(DaggerfallUnity dfUnity, string multiName, Transform parent)
+        {
             // Get city
             DFLocation location;
-            if (!dfUnity.ContentReader.GetLocation(parts[0], parts[1], out location))
+            if (!FindMultiNameLocation(dfUnity, multiName, out location))
                 return null;
 
-            GameObject go = new GameObject(string.Format("DaggerfallLocation [Region={0}, Name={1}]", parts[0], parts[1]));
+            GameObject go = new GameObject(string.Format("DaggerfallLocation [Region={0}, Name={1}]", location.RegionName, location.Name));
             if (parent) go.transform.parent = parent;
             DaggerfallLocation c = go.AddComponent<DaggerfallLocation>() as DaggerfallLocation;
             c.SetLocation(location);
@@ -373,20 +384,9 @@ namespace DaggerfallWorkshop.Utility
 
         public static GameObject CreateDaggerfallDungeonGameObject(DaggerfallUnity dfUnity, string multiName, Transform parent)
         {
-            if (string.IsNullOrEmpty(multiName))
-                return null;
-
-            // Split combined name
-            string[] parts = multiName.Split('/');
-            if (parts.Length != 2)
-            {
-                DaggerfallUnity.LogMessage(string.Format("Multi name '{0}' does not follow the structure RegionName/CityName.", multiName), true);
-                return null;
-            }
-
             // Get dungeon
             DFLocation location;
-            if (!dfUnity.ContentReader.GetLocation(parts[0], parts[1], out location))
+            if (!FindMultiNameLocation(dfUnity, multiName, out location))
                 return null;
 
             if (!location.HasDungeon)
@@ -395,7 +395,7 @@ namespace DaggerfallWorkshop.Utility
                 return null;
             }
 
-            GameObject go = new GameObject(string.Format("DaggerfallDungeon [Region={0}, Name={1}]", parts[0], parts[1]));
+            GameObject go = new GameObject(string.Format("DaggerfallDungeon [Region={0}, Name={1}]", location.RegionName, location.Name));
             if (parent) go.transform.parent = parent;
             DaggerfallDungeon c = go.AddComponent<DaggerfallDungeon>();
             c.SetDungeon(location);

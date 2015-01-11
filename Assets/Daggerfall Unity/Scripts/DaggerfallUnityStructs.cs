@@ -37,6 +37,7 @@ namespace DaggerfallWorkshop
         public float windowIntensity;           // Intensity of this window
         public Vector2[] recordSizes;           // Size of texture records
         public Vector2[] recordScales;          // Scale of texture records
+        public Vector2[] recordOffsets;         // Offset of texture records
         public int recordFrameCount;            // Number of frames in this textures record
     }
 
@@ -184,7 +185,7 @@ namespace DaggerfallWorkshop
         public bool inWorld;                    // True if map pixel is inside world area
         public int mapPixelX;                   // Map pixel X coordinate
         public int mapPixelY;                   // Map pixel Y coordinate
-        public int worldHeight;                 // Height of this pixel
+        public int worldHeight;                 // Height of this pixel (not scaled)
         public int worldClimate;                // Climate of this pixel
         public int worldPolitic;                // Politics of this pixel
         public bool hasLocation;                // True if location present
@@ -192,7 +193,8 @@ namespace DaggerfallWorkshop
         public int mapLocationIndex;            // Map location index (if location present)
         public int locationID;                  // Location ID (if location present)
         public string locationName;             // Location name (if location present)
-        public float locationHeight;            // Average height of terrain for location placement
+        public float averageHeight;             // Average height of terrain for location placement
+        public float maxHeight;                 // Max height of terrain for location placement
         public Rect locationRect;               // Rect of location tiles in sample are
         
         [HideInInspector]

@@ -93,13 +93,7 @@ namespace DaggerfallWorkshop
                 for (int x = 0; x < dim; x++)
                 {
                     // Height sample for ocean and beach tiles
-                    // Using dim-1 as height sample array smaller than tile sample array
-                    float height = float.MaxValue;
-                    if (x < dim - 1 && y < dim - 1)
-                    {
-                        int offset = y * (dim - 1) + x;
-                        height = mapData.samples[offset].scaledHeight;
-                    }
+                    float height = TerrainHelper.GetClampedHeight(ref mapData.samples, x, y);
 
                     // Ocean texture
                     if (height <= TerrainHelper.scaledOceanElevation)
@@ -109,7 +103,9 @@ namespace DaggerfallWorkshop
                     }
 
                     // Beach texture
-                    if (height <= TerrainHelper.scaledBeachElevation)
+                    // Adds a little +/- randomness to threshold so beach line isn't too regular
+                    // Might look better with perlin noise instead
+                    if (height <= TerrainHelper.scaledBeachElevation + UnityEngine.Random.Range(-1.5f, 1.5f))
                     {
                         tileData[x, y] = dirt;
                         continue;
@@ -124,7 +120,6 @@ namespace DaggerfallWorkshop
                     weight += NoiseWeight(latitude, longitude);
                     // TODO: Add other weights to influence texture tile generation
                     tileData[x, y] = GetWeightedRecord(weight);
-                    //tileData[x, y] = tile;
                 }
             }
         }

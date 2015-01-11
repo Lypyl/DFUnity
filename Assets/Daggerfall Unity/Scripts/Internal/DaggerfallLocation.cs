@@ -103,7 +103,7 @@ namespace DaggerfallWorkshop
             ApplyClimateSettings();
         }
 
-        public void SetLocation(DFLocation location)
+        public void SetLocation(DFLocation location, bool performLayout = true)
         {
             if (!ReadyCheck())
                 return;
@@ -141,8 +141,11 @@ namespace DaggerfallWorkshop
             CurrentNatureSet = summary.Nature;
 
             // Perform layout
-            LayoutLocation(ref location);
-            ApplyClimateSettings();
+            if (performLayout)
+            {
+                LayoutLocation(ref location);
+                ApplyClimateSettings();
+            }
 
             // Seal location
             isSet = true;
@@ -231,14 +234,6 @@ namespace DaggerfallWorkshop
             int width = location.Exterior.ExteriorData.Width;
             int height = location.Exterior.ExteriorData.Height;
 
-#if UNITY_EDITOR
-            // Start timing
-            System.Diagnostics.Stopwatch stopwatch = System.Diagnostics.Stopwatch.StartNew();
-            long startTime = stopwatch.ElapsedMilliseconds;
-            int total = width * height;
-            int count = 0;
-#endif
-
             // Import blocks
             for (int y = 0; y < height; y++)
             {
@@ -248,22 +243,8 @@ namespace DaggerfallWorkshop
                     GameObject go = RMBLayout.CreateGameObject(dfUnity, blockName);
                     go.transform.parent = this.transform;
                     go.transform.position = new Vector3((x * RMBLayout.RMBSide), 0, (y * RMBLayout.RMBSide));
-
-#if UNITY_EDITOR
-                    // Update status
-                    string status = string.Format("Importing RMB block {0}/{1}", count, total);
-                    EditorUtility.DisplayProgressBar("Importing City", status, (float)count / (float)total);
-                    count++;
-#endif
                 }
             }
-
-#if UNITY_EDITOR
-            // Show timer and clear status
-            long totalTime = stopwatch.ElapsedMilliseconds - startTime;
-            DaggerfallUnity.LogMessage(string.Format("Time to layout city: {0}ms", totalTime), true);
-            EditorUtility.ClearProgressBar();
-#endif
         }
 
         private bool ReadyCheck()

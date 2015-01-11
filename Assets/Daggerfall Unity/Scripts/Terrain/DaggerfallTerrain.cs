@@ -11,35 +11,9 @@ using DaggerfallWorkshop.Utility;
 namespace DaggerfallWorkshop
 {
     /// <summary>
-    /// Extends a Unity Terrain for use by StreamingWorld and CustomWorld.
+    /// Partners with a Unity Terrain for use by StreamingWorld.
     /// Each terrain is "self-assembling" based on position in world (1000x500 map pixels).
     /// Also serializes additional information about neighbour terrains.
-    /// Notes:
-    ///  - Neighbour information is not serialized by Unity Terrain and must
-    ///    be set on Start(). It is normal to see neighbour cracks in editor.
-    /// 
-    /// Using DaggerfallTerrain with CustomWorld:
-    ///  1. Place empty GameObject and attach CustomWorld component.
-    ///  2. Set MapPixelX, MapPixelY, and other options.
-    ///  3. Click "Update Terrain" to rebuild terrain children.
-    ///  4. Manually edit terrains and build scene as normal. All data is serialized to scene.
-    /// Notes:
-    ///  - Clicking "Update Terrain" will reset any terrain customisations and destroy
-    ///    new scene objects parented to CustomWorld. Do not parent custom objects to terrain.
-    /// 
-    /// Using DaggerfallTerrain manually (not recommended):
-    ///  1. Place empty GameObject and attach DaggerfallTerrain component.
-    ///  2. Set MapPixelX, MapPixelY, and other options.
-    ///  3. Repeat and place as many terrains as required for map area, ensuring to tile properly.
-    ///  4. Manually set neighbour terrains for proper stitching (all neighbours for all terrains).
-    ///  5. Click "Update Terrain" on each terrain to upate.
-    ///  6. Manually edit terrains and scene as desired. All data is serialized to scene.
-    /// Notes:
-    ///  - Clicking "Update Terrain" will reset any terrain customisations. Do not parent custom objects to terrain.
-    ///  - When placing manual terrains, the XZ dimension is MapsFile.WorldMapTerrainDim * MeshReader.GlobalScale.
-    ///    For default GlobalScale this is 32768.0 * 0.025 = 819.2
-    ///    X-positive is East, Z-positive is north. Origin is SW (bottom-left) corner.
-    ///  
     /// </summary>
     [RequireComponent(typeof(Terrain))]
     [RequireComponent(typeof(TerrainCollider))]
@@ -82,14 +56,16 @@ namespace DaggerfallWorkshop
         float[,] heights;
         Color32[] tileMap;
         int currentWorldClimate = -1;
+        bool ready;
         
         void Start()
         {
             UpdateNeighbours();
+            ready = false;
         }
 
         /// <summary>
-        /// This must be called from main thread when first creating terrain.
+        /// This must be called when first creating terrain or before updating terrain.
         /// Safe to call multiple times. Recreates expired volatile objects on subsequent calls.
         /// </summary>
         public void InstantiateTerrain()
@@ -115,11 +91,11 @@ namespace DaggerfallWorkshop
 
         /// <summary>
         /// Updates climate material based on current map pixel data.
-        /// Must be called from main thread.
         /// </summary>
         public void UpdateClimateMaterial()
         {
             // Update atlas texture if world climate changed
+            // TODO: Support season
             if (currentWorldClimate != MapData.worldClimate)
             {
                 // Get tileset material to "steal" atlas texture for our shader
@@ -138,7 +114,6 @@ namespace DaggerfallWorkshop
         /// <summary>
         /// Updates map pixel data based on current coordinates.
         /// Must be called before other data update methods.
-        /// This can be performed during thread load.
         /// </summary>
         public void UpdateMapPixelData(TerrainTexturing terrainTexturing = null)
         {
@@ -149,23 +124,22 @@ namespace DaggerfallWorkshop
             MapData = TerrainHelper.GetMapPixelData(dfUnity.ContentReader, MapPixelX, MapPixelY);
             TerrainHelper.GenerateSamples(dfUnity.ContentReader, ref MapData);
 
+            // Handle terrain with location
+            if (MapData.hasLocation)
+            {
+                TerrainHelper.SetLocationTiles(dfUnity.ContentReader, ref MapData);
+                TerrainHelper.FlattenLocationTerrain(dfUnity.ContentReader, ref MapData);
+            }
+
             // Set textures
             if (terrainTexturing != null)
             {
                 terrainTexturing.AssignTiles(ref MapData);
             }
-
-            // Handle terrain with location
-            if (MapData.hasLocation)
-            {
-                TerrainHelper.SetLocationTiles(dfUnity.ContentReader, ref MapData);
-                TerrainHelper.FlattenLocationTerrain(ref MapData);
-            }
         }
 
         /// <summary>
         /// Update tile map data based on current map pixel data.
-        /// This can be performed during thread load.
         /// </summary>
         public void UpdateTileMapData()
         {
@@ -204,7 +178,6 @@ namespace DaggerfallWorkshop
 
         /// <summary>
         /// Update heights from current map pixel data.
-        /// This can be called during thread load.
         /// </summary>
         public void UpdateHeightData()
         {
@@ -225,7 +198,7 @@ namespace DaggerfallWorkshop
 
         /// <summary>
         /// Promote data to live terrain.
-        /// This must be called from main thread after other processing complete.
+        /// This must be called after other processing complete.
         /// </summary>
         public void PromoteTerrainData()
         {
@@ -273,7 +246,6 @@ namespace DaggerfallWorkshop
 
         /// <summary>
         /// Updates neighbour terrains.
-        /// Can only be called from main thread.
         /// </summary>
         public void UpdateNeighbours()
         {
@@ -314,6 +286,9 @@ namespace DaggerfallWorkshop
 
         private bool ReadyCheck()
         {
+            if (ready)
+                return true;
+
             // Ensure we have a DaggerfallUnity reference
             if (dfUnity == null)
             {
@@ -330,6 +305,9 @@ namespace DaggerfallWorkshop
                 DaggerfallUnity.LogMessage("DaggerfallTerrain: DaggerfallUnity component is not ready. Have you set your Arena2 path?");
                 return false;
             }
+
+            // Raise ready flag
+            ready = true;
 
             return true;
         }

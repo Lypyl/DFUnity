@@ -41,7 +41,7 @@ namespace DaggerfallWorkshop
         //  4096 * 0.0254 = 104.0384 (harder to remember for manual editor layouts, more precision required).
         // This means world is slightly smaller over large distances (13107.2m error across entire map width).
         // If you desire exactly scaled layouts then use "true scale" below instead of "default scale".
-        // This may cause precision problems with streaming world and require additional wotk to resolve.
+        // This may cause precision problems with streaming world and require additional work to resolve.
         // NOTE: You must set scale before generating/importing any scene assets. Existing scenes will need to be recreated.
         //
         public static float GlobalScale = 0.025f;       // Default scale

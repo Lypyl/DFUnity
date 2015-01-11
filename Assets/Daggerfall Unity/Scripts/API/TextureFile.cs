@@ -348,7 +348,7 @@ namespace DaggerfallConnect.Arena2
         ///  for enlarging or shrinking the image.
         /// </summary>
         /// <param name="record">Index of record.</param>
-        /// <returns>Scale values for X and Y in Size object.</returns>
+        /// <returns>Scale values for X and Y in DFSize object.</returns>
         public DFSize GetScale(int record)
         {
             // Validate
@@ -356,6 +356,20 @@ namespace DaggerfallConnect.Arena2
                 return new DFSize(0, 0);
 
             return new DFSize(records[record].ScaleX, records[record].ScaleX);
+        }
+
+        /// <summary>
+        /// Gets the offset value of record.
+        /// </summary>
+        /// <param name="record">Index of record.</param>
+        /// <returns>Offset values for X and Y in DFSize object.</returns>
+        public DFSize GetOffset(int record)
+        {
+            // Validate
+            if (record < 0 || record >= header.RecordCount || records == null)
+                return new DFSize(0, 0);
+
+            return new DFSize(records[record].OffsetX, records[record].OffsetY);
         }
 
         /// <summary>

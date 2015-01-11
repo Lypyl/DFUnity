@@ -22,14 +22,14 @@ namespace DaggerfallConnect.Arena2
     {
         #region Class Variables
 
-        /// <summary>Number of PAK rows.</summary>
-        const int pakRowCountValue = 500;
-
         /// <summary>Length of each PAK row.</summary>
-        const int pakRowLengthValue = 1001;
+        public const int pakWidthValue = 1001;
+
+        /// <summary>Number of PAK rows.</summary>
+        public const int pakHeightValue = 500;
 
         /// <summary>Memory length of extracted PAK file.</summary>
-        const int pakBufferLengthValue = pakRowLengthValue * pakRowCountValue;
+        const int pakBufferLengthValue = pakWidthValue * pakHeightValue;
 
         /// <summary>Abstracts PAK file to a managed disk or memory stream.</summary>
         private FileProxy managedFile = new FileProxy();
@@ -42,11 +42,12 @@ namespace DaggerfallConnect.Arena2
         #region Public Properties
 
         /// <summary>
-        /// Obtain a copy of extracted PAK data.
+        /// Gets or sets extracted PAK data.
         /// </summary>
         public Byte[] Buffer
         {
             get { return pakExtractedBuffer; }
+            set { pakExtractedBuffer = value; }
         }
 
         /// <summary>
@@ -54,7 +55,7 @@ namespace DaggerfallConnect.Arena2
         /// </summary>
         public int PakRowCount
         {
-            get { return pakRowCountValue; }
+            get { return pakHeightValue; }
         }
 
         /// <summary>
@@ -62,7 +63,7 @@ namespace DaggerfallConnect.Arena2
         /// </summary>
         public int PakRowLength
         {
-            get { return pakRowLengthValue; }
+            get { return pakWidthValue; }
         }
 
         #endregion
@@ -108,16 +109,16 @@ namespace DaggerfallConnect.Arena2
             // Expand each row of PAK file into buffer
             BinaryReader offsetReader = managedFile.GetReader(0);
             BinaryReader rowReader = managedFile.GetReader();
-            for (int row = 0; row < pakRowCountValue; row++)
+            for (int row = 0; row < pakHeightValue; row++)
             {
                 // Get offsets
                 UInt32 offset = offsetReader.ReadUInt32();
-                int bufferPos = pakRowLengthValue * row;
+                int bufferPos = pakWidthValue * row;
                 rowReader.BaseStream.Position = offset;
 
                 // Unroll PAK row into buffer
                 int rowPos = 0;
-                while (rowPos < pakRowLengthValue)
+                while (rowPos < pakWidthValue)
                 {
                     // Get PakRun data
                     UInt16 count = rowReader.ReadUInt16();
@@ -145,9 +146,9 @@ namespace DaggerfallConnect.Arena2
         {
             DFBitmap DFBitmap = new DFBitmap();
             DFBitmap.Format = DFBitmap.Formats.Indexed;
-            DFBitmap.Width = pakRowLengthValue;
+            DFBitmap.Width = pakWidthValue;
             DFBitmap.Height = PakRowCount;
-            DFBitmap.Stride = pakRowLengthValue;
+            DFBitmap.Stride = pakWidthValue;
             DFBitmap.Data = pakExtractedBuffer;
             return DFBitmap;
         }

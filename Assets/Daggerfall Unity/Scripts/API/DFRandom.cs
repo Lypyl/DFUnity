@@ -17,7 +17,7 @@ namespace DaggerfallWorkshop
     /// closely as possible. This also ensures a consistent number progression
     /// in Unity across all platforms.
     /// </summary>
-    public class DFRandom
+    public static class DFRandom
     {
         static ulong next = 1;
 

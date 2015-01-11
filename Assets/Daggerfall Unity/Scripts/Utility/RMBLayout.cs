@@ -24,7 +24,11 @@ namespace DaggerfallWorkshop.Utility
 
         #region New Layout Methods
 
-        public static GameObject CreateGameObject(DaggerfallUnity dfUnity, string blockName)
+        public static GameObject CreateGameObject(
+            DaggerfallUnity dfUnity,
+            string blockName,
+            bool disableGround = false,
+            DaggerfallBillboardBatch natureBatch = null)
         {
             // Validate
             if (string.IsNullOrEmpty(blockName))
@@ -35,10 +39,14 @@ namespace DaggerfallWorkshop.Utility
             // Get block data
             DFBlock blockData = dfUnity.ContentReader.BlockFileReader.GetBlock(blockName);
 
-            return CreateGameObject(dfUnity, ref blockData);
+            return CreateGameObject(dfUnity, ref blockData, disableGround, natureBatch);
         }
 
-        public static GameObject CreateGameObject(DaggerfallUnity dfUnity, ref DFBlock blockData)
+        public static GameObject CreateGameObject(
+            DaggerfallUnity dfUnity,
+            ref DFBlock blockData,
+            bool disableGround = false,
+            DaggerfallBillboardBatch natureBatch = null)
         {
             // Create gameobject
             GameObject go = new GameObject(string.Format("DaggerfallBlock [Name={0}]", blockData.Name));
@@ -56,14 +64,19 @@ namespace DaggerfallWorkshop.Utility
             AddProps(dfUnity, ref blockData, combiner, modelsNode.transform);
             AddDoors(doors, go);
 
-            // Add flats
+            // Add block flats
             GameObject flatsNode = new GameObject("Flats");
             flatsNode.transform.parent = go.transform;
             AddBlockFlats(dfUnity, ref blockData, flatsNode.transform);
-            AddNatureFlats(dfUnity, ref blockData, flatsNode.transform);
+
+            // Add nature flats
+            if (natureBatch == null)
+                AddNatureFlats(dfUnity, ref blockData, flatsNode.transform);
+            else
+                AddNatureFlatsToBatch(natureBatch, ref blockData);
 
             // Add ground plane
-            if (dfUnity.Option_SimpleGroundPlane)
+            if (dfUnity.Option_SimpleGroundPlane && !disableGround)
                 AddSimpleGroundPlane(dfUnity, ref blockData, go.transform);
 
             // Apply combiner
@@ -223,6 +236,30 @@ namespace DaggerfallWorkshop.Utility
 
                         // Set transform
                         go.transform.position = billboardPosition;
+                    }
+                }
+            }
+        }
+
+        public static void AddNatureFlatsToBatch(
+            DaggerfallBillboardBatch batch,
+            ref DFBlock blockData)
+        {
+            for (int y = 0; y < 16; y++)
+            {
+                for (int x = 0; x < 16; x++)
+                {
+                    // Get scenery item
+                    DFBlock.RmbGroundScenery scenery = blockData.RmbBlock.FldHeader.GroundData.GroundScenery[x, 15 - y];
+
+                    // Ignore 0 as this appears to be a marker/waypoint of some kind
+                    if (scenery.TextureRecord > 0)
+                    {
+                        Vector3 billboardPosition = new Vector3(
+                            x * BlocksFile.TileDimension,
+                            NatureFlatsOffsetY,
+                            y * BlocksFile.TileDimension + BlocksFile.TileDimension) * MeshReader.GlobalScale;
+                        batch.AddItem(scenery.TextureRecord, billboardPosition);
                     }
                 }
             }

@@ -231,6 +231,14 @@ namespace DaggerfallConnect.Arena2
             get { return isReady; }
         }
 
+        /// <summary>
+        /// Gets internal climate data.
+        /// </summary>
+        public PakFile ClimateFile
+        {
+            get { return climatePak; }
+        }
+
         #endregion
 
         #region Static Properties
@@ -374,7 +382,7 @@ namespace DaggerfallConnect.Arena2
             // Set based on world climate
             switch (worldClimate)
             {
-                case 223:
+                case 223:   // Ocean
                     settings.ClimateType = DFLocation.ClimateBaseType.Swamp;
                     settings.GroundArchive = 402;
                     settings.NatureArchive = 502;
@@ -747,7 +755,7 @@ namespace DaggerfallConnect.Arena2
         /// <param name="mapPixelY">Map pixel Y position.</param>
         public int GetClimateIndex(int mapPixelX, int mapPixelY)
         {
-            // Map data appears to be offset X-1 relative to other maps
+            // Climate map data appears to be offset X-1 relative to other maps
             // Add +1 to X coordinate to line up with location
             mapPixelX += 1;
 

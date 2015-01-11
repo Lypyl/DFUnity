@@ -45,7 +45,7 @@ namespace DaggerfallWorkshop
         public string DefaultWeaponShaderName = "Unlit/Transparent";
         public const string _DaggerfallTilemapShaderName = "Daggerfall/Tilemap";
         public const string _DaggerfallTerrainTilemapShaderName = "Daggerfall/TerrainTilemap";
-        public const string _DaggerfallBillboardBatchShaderName = "Daggerfall/BillboardBatch/TransparentCutout";
+        public const string _DaggerfallBillboardBatchShaderName = "Daggerfall/BillboardBatch/TransparentCutoutForceForward";
 
         // Window settings
         public Color DayWindowColor = new Color32(89, 154, 178, 0xff);
@@ -175,8 +175,10 @@ namespace DaggerfallWorkshop
 
             DFSize size = textureReader.TextureFile.GetSize(record);
             DFSize scale = textureReader.TextureFile.GetScale(record);
-            Vector2[] recordSizes = new Vector2[1] {new Vector2(size.Width, size.Height)};
-            Vector2[] recordScales = new Vector2[1] {new Vector2(scale.Width, scale.Height)};
+            DFSize offset = textureReader.TextureFile.GetOffset(record);
+            Vector2[] recordSizes = new Vector2[1] { new Vector2(size.Width, size.Height) };
+            Vector2[] recordScales = new Vector2[1] { new Vector2(scale.Width, scale.Height) };
+            Vector2[] recordOffsets = new Vector2[1] { new Vector2(offset.Width, offset.Height) };
             CachedMaterial newcm = new CachedMaterial()
             {
                 key = key,
@@ -187,6 +189,7 @@ namespace DaggerfallWorkshop
                 isWindow = ClimateSwaps.IsExteriorWindow(archive, record),
                 recordSizes = recordSizes,
                 recordScales = recordScales,
+                recordOffsets = recordOffsets,
                 recordFrameCount = textureReader.TextureFile.GetFrameCount(record),
             };
             materialDict.Add(key, newcm);
@@ -252,7 +255,7 @@ namespace DaggerfallWorkshop
             if (shader == null)
                 shader = Shader.Find(DefaultShaderName);
 
-            Vector2[] sizesOut, scalesOut;
+            Vector2[] sizesOut, scalesOut, offsetsOut;
             Material material = new Material(shader);
             material.name = string.Format("TEXTURE.{0:000} [Atlas]", archive);
             Texture2D texture = textureReader.GetTexture2DAtlas(
@@ -264,6 +267,7 @@ namespace DaggerfallWorkshop
                 out indicesOut,
                 out sizesOut,
                 out scalesOut,
+                out offsetsOut,
                 border,
                 dilate,
                 shrinkUVs,
@@ -280,6 +284,7 @@ namespace DaggerfallWorkshop
             newcm.filterMode = MainFilterMode;
             newcm.recordSizes = sizesOut;
             newcm.recordScales = scalesOut;
+            newcm.recordOffsets = offsetsOut;
             materialDict.Add(key, newcm);
 
             return material;

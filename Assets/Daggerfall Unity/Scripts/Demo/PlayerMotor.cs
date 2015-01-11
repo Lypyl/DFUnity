@@ -231,10 +231,33 @@ namespace DaggerfallWorkshop.Demo
             {
                 activeGlobalPlatformPoint = transform.position;
                 activeLocalPlatformPoint = activePlatform.InverseTransformPoint(transform.position);
-                
+
                 // If you want to support moving platform rotation as well:
                 activeGlobalPlatformRotation = transform.rotation;
                 activeLocalPlatformRotation = Quaternion.Inverse(activePlatform.rotation) * transform.rotation;
+            }
+        }
+
+        // Reset moving platform logic to new player position
+        // Use when player has been teleported
+        public void ResyncPlatformLogic()
+        {
+            if (activePlatform != null)
+            {
+                activeGlobalPlatformPoint = transform.position;
+                activeLocalPlatformPoint = activePlatform.InverseTransformPoint(transform.position);
+            }
+        }
+
+        // Snap player to above ground
+        public void FixStanding()
+        {
+            RaycastHit hit;
+            Ray ray = new Ray(transform.position, Vector3.down);
+            if (Physics.Raycast(ray, out hit, controller.height * 2))
+            {
+                // Position player at hit position plus just over half controller height up
+                transform.position = hit.point + Vector3.up * (controller.height * 0.6f);
             }
         }
 

@@ -152,6 +152,7 @@ namespace DaggerfallWorkshop.Utility
             out RecordIndex[] indicesOut,
             out Vector2[] sizesOut,
             out Vector2[] scalesOut,
+            out Vector2[] offsetsOut,
             int border,
             bool dilate,
             int shrinkUVs = 0,
@@ -165,6 +166,7 @@ namespace DaggerfallWorkshop.Utility
                 indicesOut = null;
                 sizesOut = null;
                 scalesOut = null;
+                offsetsOut = null;
                 return null;
             }
 
@@ -177,11 +179,13 @@ namespace DaggerfallWorkshop.Utility
             List<RecordIndex> indices = new List<RecordIndex>();
             sizesOut = new Vector2[textureFile.RecordCount];
             scalesOut = new Vector2[textureFile.RecordCount];
+            offsetsOut = new Vector2[textureFile.RecordCount];
             for (int record = 0; record < textureFile.RecordCount; record++)
             {
                 int frames = textureFile.GetFrameCount(record);
                 DFSize size = textureFile.GetSize(record);
                 DFSize scale = textureFile.GetScale(record);
+                DFSize offset = textureFile.GetOffset(record);
                 RecordIndex ri = new RecordIndex()
                 {
                     startIndex = textures.Count,
@@ -197,6 +201,7 @@ namespace DaggerfallWorkshop.Utility
 
                 sizesOut[record] = new Vector2(size.Width, size.Height);
                 scalesOut[record] = new Vector2(scale.Width, scale.Height);
+                offsetsOut[record] = new Vector2(offset.Width, offset.Height);
             }
 
             // Pack textures into atlas

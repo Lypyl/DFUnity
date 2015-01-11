@@ -13,6 +13,9 @@ namespace DaggerfallWorkshop
     /// Draws a large number of atlased, non-animated billboards using a single mesh.
     /// Currently used for exterior nature billboards only (origin = centre-bottom).
     /// Support for dungeon billboards will be added later (origin = centre).
+    /// Tries to not recreate Mesh and Material where possible.
+    /// Generates some garbage when rebuilding mesh layout.
+    /// This can probably be improved.
     /// </summary>
     [RequireComponent(typeof(MeshFilter))]
     [RequireComponent(typeof(MeshRenderer))]
@@ -34,6 +37,9 @@ namespace DaggerfallWorkshop
         [SerializeField, HideInInspector]
         Mesh billboardMesh;
 
+        [NonSerialized, HideInInspector]
+        public Vector3 origin = Vector3.zero;
+
         [Range(500, 511)]
         public int NatureMaterial = 504;
         public bool CastShadows = true;
@@ -44,6 +50,7 @@ namespace DaggerfallWorkshop
         public float RandomSpacing = BlocksFile.TileDimension * MeshReader.GlobalScale;
 
         DaggerfallUnity dfUnity;
+        int currentArchive = -1;
 
         [Serializable]
         struct BillboardItem
@@ -57,10 +64,14 @@ namespace DaggerfallWorkshop
         /// This material is always atlased.
         /// </summary>
         /// <param name="archive">Archive index.</param>
-        public void SetMaterial(int archive)
+        public void SetMaterial(int archive, bool force = false)
         {
             if (!ReadyCheck())
-                return;     
+                return;
+
+            // Do nothing if this archive already set
+            if (archive == currentArchive && !force)
+                return;
 
             // Get standard atlas material
             // Just going to steal texture and settings
@@ -89,12 +100,13 @@ namespace DaggerfallWorkshop
             atlasMaterial.mainTexture = material.mainTexture;
 
             // Assign renderer properties
-            // Shadows not supported
+            // Turning off receive shadows to prevent self-shadowing
             renderer.sharedMaterial = atlasMaterial;
             renderer.castShadows = CastShadows;
             renderer.receiveShadows = false;
 
             NatureMaterial = archive;
+            currentArchive = archive;
         }
 
         /// <summary>
@@ -121,7 +133,7 @@ namespace DaggerfallWorkshop
             BillboardItem bi = new BillboardItem()
             {
                 record = record,
-                position = localPosition,
+                position = origin + localPosition,
             };
             billboardItems.Add(bi);
         }
@@ -183,7 +195,6 @@ namespace DaggerfallWorkshop
             Vector3[] normals = new Vector3[vertexCount];
             Vector4[] tangents = new Vector4[vertexCount];
             Vector2[] uv = new Vector2[vertexCount];
-            //Vector2[] uv1 = new Vector2[vertexCount];
             int[] indices = new int[indexCount];
             int currentIndex = 0;
             for (int billboard = 0; billboard < billboardItems.Count; billboard++)
@@ -193,9 +204,9 @@ namespace DaggerfallWorkshop
 
                 // Billboard size and origin
                 Vector2 finalSize = GetScaledBillboardSize(bi.record);
-                float hx = (finalSize.x / 2);
+                //float hx = (finalSize.x / 2);
                 float hy = (finalSize.y / 2);
-                Vector3 position = bi.position + new Vector3(hx, hy, 0);
+                Vector3 position = bi.position + new Vector3(0, hy, 0);
 
                 // Billboard UVs
                 Rect rect = atlasRects[atlasIndices[bi.record].startIndex];
@@ -235,8 +246,22 @@ namespace DaggerfallWorkshop
             }
 
             // Create mesh
-            billboardMesh = new Mesh();
-            billboardMesh.name = "BillboardBatchMesh";
+            if (billboardMesh == null)
+            {
+                // New mesh
+                billboardMesh = new Mesh();
+                billboardMesh.name = "BillboardBatchMesh";
+            }
+            else
+            {
+                // Existing mesh
+                if (billboardMesh.vertexCount == vertices.Length)
+                    billboardMesh.Clear(true);      // Same vertex layout
+                else
+                    billboardMesh.Clear(false);     // New vertex layout
+            }
+
+            // Assign mesh data
             billboardMesh.vertices = vertices;              // Each vertex is positioned at billboard origin
             billboardMesh.tangents = tangents;              // Tangent stores corners and size
             billboardMesh.triangles = indices;              // Standard indices

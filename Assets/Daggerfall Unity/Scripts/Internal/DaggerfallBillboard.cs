@@ -24,7 +24,7 @@ namespace DaggerfallWorkshop
         [SerializeField]
         BillboardSummary summary = new BillboardSummary();
 
-        Camera mainCamera = null;
+        GameObject player = null;
         MeshFilter meshFilter = null;
 
         bool restartAnims;
@@ -73,7 +73,8 @@ namespace DaggerfallWorkshop
                 }
 
                 // Get component references
-                mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+                player = GameObject.FindGameObjectWithTag("Player");
+
                 meshFilter = GetComponent<MeshFilter>();
 
                 // Start animation coroutine
@@ -100,9 +101,9 @@ namespace DaggerfallWorkshop
         void Update()
         {
             // Rotate to face camera in game
-            if (mainCamera && Application.isPlaying)
+            if (player && Application.isPlaying)
             {
-                Vector3 viewDirection = -new Vector3(mainCamera.transform.forward.x, 0, mainCamera.transform.forward.z);
+                Vector3 viewDirection = -new Vector3(player.transform.forward.x, 0, player.transform.forward.z);
                 transform.LookAt(transform.position + viewDirection);
             }
         }

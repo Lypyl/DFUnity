@@ -9,6 +9,7 @@ using DaggerfallConnect;
 using DaggerfallConnect.Utility;
 using DaggerfallConnect.Arena2;
 using DaggerfallWorkshop.Utility;
+using Daggerfall;
 
 namespace DaggerfallWorkshop
 {

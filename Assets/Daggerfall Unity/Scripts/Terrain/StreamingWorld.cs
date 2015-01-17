@@ -8,6 +8,7 @@ using DaggerfallConnect.Arena2;
 using DaggerfallConnect.Utility;
 using DaggerfallWorkshop.Demo;
 using DaggerfallWorkshop.Utility;
+using Daggerfall;
 
 namespace DaggerfallWorkshop
 {

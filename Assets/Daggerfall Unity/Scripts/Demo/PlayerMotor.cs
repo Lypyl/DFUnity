@@ -101,7 +101,7 @@ namespace DaggerfallWorkshop.Demo
             float inputModifyFactor = (inputX != 0.0f && inputY != 0.0f && limitDiagonalSpeed) ? .7071f : 1.0f;
 
             // Fly mode (by /u/lypyl on Reddit.com/r/DFTFU)
-            if (Input.GetAxis("Fly") > 0) {
+            /*if (Input.GetAxis("Fly") > 0) {
                 toggleFly = !toggleFly;
             }
 
@@ -114,6 +114,7 @@ namespace DaggerfallWorkshop.Demo
                 transform.Translate(ray.direction * inputY * flySpeed, Space.World);
                 return;
             }
+*/
 
             if (grounded)
             {

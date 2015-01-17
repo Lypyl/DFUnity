@@ -1,0 +1,75 @@
+Base path: F:/apps/programming/Unity/Data
+Pipe name: \\.\pipe\UnityShaderCompiler-4-4168
+Cmd: getPlatforms
+Cmd: compileSnippet
+  api=1 type=0 insize=5040 outsize=230 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_ON DIRLIGHTMAP_OFF ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=5040 outsize=1038 kw=DIRECTIONAL SHADOWS_SCREEN LIGHTMAP_OFF DIRLIGHTMAP_OFF ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=5040 outsize=544 kw=DIRECTIONAL SHADOWS_SCREEN LIGHTMAP_ON DIRLIGHTMAP_ON ok=1
+Cmd: compileSnippet
+  api=1 type=0 insize=5040 outsize=1200 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF VERTEXLIGHT_ON ok=1
+Cmd: compileSnippet
+  api=1 type=1 insize=5040 outsize=855 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_ON DIRLIGHTMAP_OFF ok=1
+Cmd: compileSnippet
+  error: 2 plat 0 at (47): function "tex2D" not supported in this profile; function "ddx" not supported in this profile; function "ddy" not supported in this profile (maybe you want #pragma glsl?)
+  api=0 type=1 insize=5040 outsize=0 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_ON DIRLIGHTMAP_ON ok=0
+Cmd: compileSnippet
+  error: 2 plat 0 at (47): function "tex2D" not supported in this profile; function "ddx" not supported in this profile; function "ddy" not supported in this profile (maybe you want #pragma glsl?)
+  api=0 type=1 insize=5040 outsize=0 kw=DIRECTIONAL SHADOWS_SCREEN LIGHTMAP_OFF DIRLIGHTMAP_OFF ok=0
+Cmd: compileSnippet
+  api=4 type=1 insize=5040 outsize=3094 kw=DIRECTIONAL SHADOWS_SCREEN LIGHTMAP_OFF DIRLIGHTMAP_OFF ok=1
+Cmd: compileSnippet
+  api=1 type=0 insize=3016 outsize=451 kw=POINT ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=3016 outsize=2875 kw=SPOT ok=1
+Cmd: compileSnippet
+  api=1 type=0 insize=3016 outsize=451 kw=POINT_COOKIE ok=1
+Cmd: compileSnippet
+  api=1 type=1 insize=3016 outsize=945 kw=DIRECTIONAL ok=1
+Cmd: compileSnippet
+  api=1 type=1 insize=3016 outsize=1214 kw=SPOT ok=1
+Cmd: compileSnippet
+  api=1 type=1 insize=3016 outsize=1123 kw=POINT_COOKIE ok=1
+Cmd: compileSnippet
+  api=1 type=0 insize=2512 outsize=212 kw= ok=1
+Cmd: compileSnippet
+  api=1 type=1 insize=2512 outsize=115 kw= ok=1
+Cmd: compileSnippet
+  api=1 type=0 insize=4725 outsize=579 kw=LIGHTMAP_ON DIRLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=4725 outsize=1883 kw=LIGHTMAP_ON DIRLIGHTMAP_ON HDR_LIGHT_PREPASS_OFF ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=4725 outsize=909 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF HDR_LIGHT_PREPASS_ON ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=4725 outsize=538 kw=LIGHTMAP_ON DIRLIGHTMAP_ON HDR_LIGHT_PREPASS_ON ok=1
+Cmd: compileSnippet
+  error: 2 plat 0 at (47): function "tex2D" not supported in this profile; function "ddx" not supported in this profile; function "ddy" not supported in this profile (maybe you want #pragma glsl?)
+  api=0 type=1 insize=4725 outsize=0 kw=LIGHTMAP_ON DIRLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF ok=0
+Cmd: compileSnippet
+  api=4 type=1 insize=4725 outsize=3655 kw=LIGHTMAP_ON DIRLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=4725 outsize=2728 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF HDR_LIGHT_PREPASS_ON ok=1
+Cmd: compileSnippet
+  api=1 type=1 insize=4725 outsize=912 kw=LIGHTMAP_ON DIRLIGHTMAP_ON HDR_LIGHT_PREPASS_ON ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=952 outsize=397 kw= ok=1
+Cmd: compileSnippet
+  error: 2 plat 0 at (47): function "tex2D" not supported in this profile; function "ddx" not supported in this profile; function "ddy" not supported in this profile (maybe you want #pragma glsl?)
+  api=0 type=1 insize=5040 outsize=0 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_ON DIRLIGHTMAP_ON ok=0
+Cmd: compileSnippet
+  error: 2 plat 0 at (47): function "tex2D" not supported in this profile; function "ddx" not supported in this profile; function "ddy" not supported in this profile (maybe you want #pragma glsl?)
+  api=0 type=1 insize=5040 outsize=0 kw=DIRECTIONAL SHADOWS_SCREEN LIGHTMAP_ON DIRLIGHTMAP_ON ok=0
+Cmd: compileSnippet
+  error: 2 plat 0 at (47): function "tex2D" not supported in this profile; function "ddx" not supported in this profile; function "ddy" not supported in this profile (maybe you want #pragma glsl?)
+  api=0 type=1 insize=3016 outsize=0 kw=SPOT ok=0
+Cmd: compileSnippet
+  error: 2 plat 0 at (47): function "tex2D" not supported in this profile; function "ddx" not supported in this profile; function "ddy" not supported in this profile (maybe you want #pragma glsl?)
+  api=0 type=1 insize=4725 outsize=0 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF HDR_LIGHT_PREPASS_ON ok=0
+Cmd: compileSnippet
+  error: 2 plat 0 at (47): function "tex2D" not supported in this profile; function "ddx" not supported in this profile; function "ddy" not supported in this profile (maybe you want #pragma glsl?)
+  api=0 type=1 insize=4725 outsize=0 kw=LIGHTMAP_ON DIRLIGHTMAP_ON HDR_LIGHT_PREPASS_ON ok=0
+Unhandled exception: Readfile from pipe failed. GLE=The pipe has been ended.
+
+
+Quitting shader compiler process

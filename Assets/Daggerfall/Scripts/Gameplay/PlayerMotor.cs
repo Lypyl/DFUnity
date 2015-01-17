@@ -2,8 +2,7 @@
 using System.Collections;
 using DaggerfallWorkshop;
 
-namespace Daggerfall.Gameplay
-{
+namespace Daggerfall.Gameplay {
     //
     // Using FPSWalkerEnhanced from below community wiki entry.
     // http://wiki.unity3d.com/index.php?title=FPSWalkerEnhanced
@@ -11,8 +10,7 @@ namespace Daggerfall.Gameplay
     // Extended for moving platforms, and ceiling hits, and other tweaks.
     //
     [RequireComponent(typeof(CharacterController))]
-    public class PlayerMotor : MonoBehaviour
-    {
+    public class PlayerMotor : MonoBehaviour {
         // Moving platform support
         Transform activePlatform;
         Vector3 activeLocalPlatformPoint;
@@ -58,7 +56,7 @@ namespace Daggerfall.Gameplay
         public float flySpeed = 1.0f;
         Camera ccamera;
         Ray ray;
-
+        public GameObject uiOwner;
 
         private Vector3 moveDirection = Vector3.zero;
         private bool grounded = false;
@@ -96,6 +94,7 @@ namespace Daggerfall.Gameplay
 
         void FixedUpdate()
         {
+            if (uiOwner.GetComponent<UIManager>().isUIOpen) return;
             float inputX = Input.GetAxis("Horizontal");
             float inputY = Input.GetAxis("Vertical");
             // If both horizontal and vertical are used simultaneously, limit speed (if allowed), so the total doesn't exceed normal move speed

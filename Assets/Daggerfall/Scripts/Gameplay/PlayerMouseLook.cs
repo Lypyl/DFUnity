@@ -2,14 +2,12 @@ using UnityEngine;
 using System.Collections;
 using DaggerfallWorkshop;
 
-namespace Daggerfall.Gameplay
-{
+namespace Daggerfall.Gameplay {
     // 
     // Thanks to FatiguedArtist in forum thread below for this code.
     // http://forum.unity3d.com/threads/a-free-simple-smooth-mouselook.73117/
     //
-    public class PlayerMouseLook : MonoBehaviour
-    {
+    public class PlayerMouseLook : MonoBehaviour {
         Vector2 _mouseAbsolute;
         Vector2 _smoothMouse;
 
@@ -24,6 +22,8 @@ namespace Daggerfall.Gameplay
         // Assign this if there's a parent object controlling motion, such as a Character Controller.
         // Yaw rotation will affect this object instead of the camera if set.
         public GameObject characterBody;
+        public bool enableMouseLook = true;
+        public GameObject uiOwner;
 
         void Start()
         {
@@ -48,10 +48,21 @@ namespace Daggerfall.Gameplay
             Screen.lockCursor = lockCursor;
 #endif
 
+            if (uiOwner.GetComponent<UIManager>().isUIOpen) {
+                enableMouseLook = false;
+            } else { 
+                enableMouseLook = true;
+            }
+
             // Suppress mouse look if fire2 is down
             // This means the player is swinging weapon
-            if (Input.GetButton("Fire2"))
+            if (!enableMouseLook || Input.GetButton("Fire2")) {
+                this.lockCursor = false;
                 return;
+            } else {
+                this.lockCursor = true;
+            }
+
 
             // Allow the script to clamp based on a desired target value.
             var targetOrientation = Quaternion.Euler(targetDirection);

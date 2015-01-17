@@ -7,10 +7,10 @@ namespace Daggerfall.Gameplay
     /// <summary>
     /// Example class to handle activation of doors, switches, etc. from Fire1 input.
     /// </summary>
-    public class PlayerActivate : MonoBehaviour
-    {
+    public class PlayerActivate : MonoBehaviour {
         PlayerEnterExit playerEnterExit;        // Example component to enter/exit buildings
         GameObject mainCamera;
+        public GameObject uiOwner;
 
         public float RayDistance = 2.0f;        // Distance of ray check, tune this to your scale and preference
 
@@ -22,12 +22,11 @@ namespace Daggerfall.Gameplay
 
         void Update()
         {
-            if (mainCamera == null)
+            if (mainCamera == null || uiOwner.GetComponent<UIManager>().isUIOpen)   
                 return;
 
             // Fire ray into scene
-            if (Input.GetButtonDown("Fire1"))
-            {
+            if (Input.GetButtonDown("Fire1")) {  
                 // Using RaycastAll as hits can be blocked by decorations or other models
                 // When this happens activation feels unresponsive to player
                 // Also processing hit detection in order of priority

@@ -147,6 +147,7 @@
      <Compile Include="Assets\Daggerfall Unity\Scripts\Utility\WeaponBasics.cs" />
      <Compile Include="Assets\Daggerfall\Scripts\Gameplay\AmbientEffectsPlayer.cs" />
      <Compile Include="Assets\Daggerfall\Scripts\Gameplay\AnimateTexture.cs" />
+     <Compile Include="Assets\Daggerfall\Scripts\Gameplay\DaggerfallPlayerController.cs" />
      <Compile Include="Assets\Daggerfall\Scripts\Gameplay\EnemyAttack.cs" />
      <Compile Include="Assets\Daggerfall\Scripts\Gameplay\EnemyBlood.cs" />
      <Compile Include="Assets\Daggerfall\Scripts\Gameplay\EnemyDeath.cs" />
@@ -156,6 +157,10 @@
      <Compile Include="Assets\Daggerfall\Scripts\Gameplay\EnemySounds.cs" />
      <Compile Include="Assets\Daggerfall\Scripts\Gameplay\FPSCrosshair.cs" />
      <Compile Include="Assets\Daggerfall\Scripts\Gameplay\FPSWeapon.cs" />
+     <Compile Include="Assets\Daggerfall\Scripts\Gameplay\Mobs\Attributes.cs" />
+     <Compile Include="Assets\Daggerfall\Scripts\Gameplay\Mobs\Creature.cs" />
+     <Compile Include="Assets\Daggerfall\Scripts\Gameplay\Mobs\DaggerfallPlayer.cs" />
+     <Compile Include="Assets\Daggerfall\Scripts\Gameplay\Mobs\Skills.cs" />
      <Compile Include="Assets\Daggerfall\Scripts\Gameplay\PlayerActivate.cs" />
      <Compile Include="Assets\Daggerfall\Scripts\Gameplay\PlayerEnterExit.cs" />
      <Compile Include="Assets\Daggerfall\Scripts\Gameplay\PlayerFootsteps.cs" />

@@ -22,6 +22,7 @@ public class Logger {
 
     private FileProxy managedFile = new FileProxy();
     private StreamWriter writer;
+    [System.NonSerialized] // Necessary to prevent errors when switching from edit mode to running in the Unity editor
     private GameObject uiOwner; 
 
     ~Logger() {
@@ -29,19 +30,16 @@ public class Logger {
     }
 
     public void log(string line) {
-        if (writer == null) return;
-        writer.WriteLine(System.DateTime.UtcNow + " *** " + line);
-        if (aggressiveFlushing) {
-            writer.Flush();
-        }
-        if (outputToDevConsole) {
-            //DevConsole.displayText(line);
-            //GameObject uiOwner = GameObject.FindGameObjectWithTag("UIOwner");
-            if (uiOwner != null) { 
-                uiOwner.SendMessage("devConsole_displayText", line);
-            }
+        if (uiOwner != null && outputToDevConsole) {
+            uiOwner.SendMessage("devConsole_displayText", line);
         }
 
+        if (writer != null) { 
+            writer.WriteLine(System.DateTime.UtcNow + " *** " + line);
+            if (aggressiveFlushing) {
+                writer.Flush();
+            }
+        }
     }
 
 	public bool Setup() { 

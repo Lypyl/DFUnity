@@ -29,6 +29,10 @@ public class Logger {
         writer.Close();
     }
 
+    public void log(string line, Object context) {
+        log(context + " " + line);
+    }
+
     public void log(string line) {
         if (uiOwner != null && outputToDevConsole) {
             uiOwner.SendMessage("devConsole_displayText", line);

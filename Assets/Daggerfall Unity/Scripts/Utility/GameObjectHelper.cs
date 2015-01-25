@@ -2,6 +2,7 @@
 using System.Collections;
 using DaggerfallConnect;
 using DaggerfallConnect.Arena2;
+using Daggerfall.Gameplay.Mobs;
 
 namespace DaggerfallWorkshop.Utility
 {
@@ -232,20 +233,39 @@ namespace DaggerfallWorkshop.Utility
 
         public static GameObject CreateDaggerfallEnemyGameObject(DaggerfallUnity dfUnity, MobileTypes type, Transform parent)
         {
-            GameObject go = new GameObject(string.Format("DaggerfallEnemy [{0}]", type.ToString()));
-            if (parent) go.transform.parent = parent;
-            go.transform.forward = Vector3.forward;
+            GameObject enemyPrefab = (GameObject)MonoBehaviour.Instantiate(Resources.Load("EnemyPrefab"));
+            Creature enemyCreature = enemyPrefab.GetComponent<Creature>();
+            enemyCreature.setCreatureType(type);
+            enemyCreature.setupMobile();
+
+            if (parent) { 
+                enemyPrefab.transform.parent = parent;
+                enemyPrefab.transform.position = parent.position;
+            }
+            enemyPrefab.transform.forward = Vector3.forward;
+
+            //TODO: Necessary?
+            //enemyPrefab.tag = dfUnity.Option_EnemyTag;
+            
+
+            // TODO: remove me
+            Logger.GetInstance().log(enemyCreature.printCreature());
+
+            //GameObject go = new GameObject(string.Format("DaggerfallEnemy [{0}]", type.ToString()));
+
+            //if (parent) go.transform.parent = parent;
+            //go.transform.forward = Vector3.forward;
 
             // Add custom tag and script
-            go.tag = dfUnity.Option_EnemyTag;
-#if UNITY_EDITOR
+            //go.tag = dfUnity.Option_EnemyTag;
+/*#if UNITY_EDITOR
             if (dfUnity.Option_CustomEnemyScript != null)
                 go.AddComponent(dfUnity.Option_CustomEnemyScript.GetClass());
 #endif
-
-            // Add child object for enemy billboard
+*/
+       /*     // Add child object for enemy billboard
             GameObject mobileObject = new GameObject("DaggerfallMobileUnit");
-            mobileObject.transform.parent = go.transform;
+            mobileObject.transform.parent = enemyPrefab.transform;
 
             // Add mobile enemy
             Vector2 size = Vector2.one;
@@ -321,9 +341,9 @@ namespace DaggerfallWorkshop.Utility
                     enemySounds.BarkSound = (SoundClips)dfMobile.Summary.Enemy.BarkSound;
                     enemySounds.AttackSound = (SoundClips)dfMobile.Summary.Enemy.AttackSound;
                 }
-            }
+            }*/
 
-            return go;
+            return enemyPrefab;
         }
 
         public static GameObject CreateDaggerfallBlockGameObject(DaggerfallUnity dfUnity, string blockName, Transform parent)

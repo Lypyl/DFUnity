@@ -10,24 +10,11 @@ namespace DaggerfallWorkshop.Game {
     // Call displayText(...) to append a message to the log
     public class DevConsole : MonoBehaviour {
         public Text outputTextField;
-        /*public static DevConsole instance { get; private set; }
-
-        void Awake() {
-            instance = this;
-        }*/
              
         DaggerfallUnity dfUnity;
         float deltaTime = 0.0f;
         static string _outputText = "";
         string _userCommand = "";
-
-        /*public static void displayText(string text, bool newline = true) {
-            // TODO: can string.concat ever buffer overflow?
-            _outputText += System.DateTime.UtcNow + " *** " + text;
-            if (newline) { 
-                _outputText += "\n";
-            }
-        }*/
 
         public void displayText(string text, bool newline = true) {
             // TODO: can string.concat ever buffer overflow?
@@ -67,16 +54,45 @@ namespace DaggerfallWorkshop.Game {
             drawFPS();
         }
 
-        void dispatchCommand() {
-            //string[] args = _userCommand.Split(' ');
+/*        void dispatchCommand() {
+            string[] args = _userCommand.Split(' ');
             displayText("> " + _userCommand);
             _userCommand = "";
+            if (args.Length > 0) {
+                parseCommand(args);
+            }
+        }*/
+
+        bool parseCommand(string[] args) {
+            bool handled = false;
+            
+            switch(args[0]) { 
+                case ("spawn_enemy"):
+                    if (args.Length == 2) {
+                        int mobileType = System.Convert.ToInt32(args[1]);
+                        if (mobileType > -1 && mobileType < 147) {
+                            Logger.GetInstance().log("Spawning enemy of type " + (MobileTypes)mobileType + ".\n");
+                            GameObject.FindGameObjectWithTag("EnemySpawner").SendMessage("SpawnEnemy", mobileType); 
+                            handled = true;
+                        }
+                    }
+                    break;
+
+                default:
+                    break;
+            }
+
+
+            return handled;
         }
 
-        public void dispatchCommand(string command) { 
+        public void dispatchCommand(string command) {
+            string[] args = command.Split(' ');
             displayText("> " + command);
+            if (args.Length > 0) {
+                parseCommand(args);
+            }
         }
-
         void drawFPS() {
             int w = Screen.width, h = Screen.height;
             Vector2 scrollPosition = Vector2.zero;

@@ -11,7 +11,6 @@ namespace Daggerfall.Gameplay {
             player = new DaggerfallPlayer();
             string output = player.printDaggerfallPlayer();
             Logger.GetInstance().log("Created a new Daggerfall Player.");
-            Logger.GetInstance().log(output);
         }
         
         // Update is called once per frame

@@ -1,7 +1,7 @@
 ﻿// Project:         Daggerfall Unity -- A game built with Daggerfall Tools For Unity
 // Description:     This is a modified version of a script provided by Daggerfall Tools for Unity
 // License:         MIT License (http://www.opensource.org/licenses/mit-license.php)
-// Project Page:    https://github.com/DKoestler/DFUnity -- https://code.google.com/p/daggerfall-unity/
+// Project Page:    https://github.com/EBFEh/DFUnity -- https://code.google.com/p/daggerfall-unity/
 
 using UnityEngine;
 using System;

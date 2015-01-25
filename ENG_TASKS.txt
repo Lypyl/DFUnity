@@ -1,0 +1,20 @@
+<h1>Localization:</h1>
+<p>1/25/15</p>
+<p>
+We can adapt the following workflow for supporting multi-language localization:
+
+    A hierarchical XML file that contains all the in-game text in English. This file is sent out to localization teams that translate the text to any number of languages. They return a binary file that's basically just a dict for lookups. We can make the tools for them to do this, but the teams will have to be people who speak the languages and can go line by line translating them.
+
+    The code loads the binary dict at runtime and performs lookups as needed. Something like
+
+     translate("Daggerfall/UI/MainMenu/NewGame", "New Game"). 
+
+The first string is a key that matches what's in the dict file (taken from the XML file). The second string is a default that's used if the first isn't found in the binary file. It also greatly aids readability in the code.
+
+For our purposes we're going to have text streaming in from two places: strings in the translation dict and strings that come from Daggerfall's assets. For the latter, I assume the French team has branched the assets and basically has a package that is fully translated? In that case maybe we can just say something like: "Pick an ARENA2 folder that contains translated material" as well as providing the translated dict.
+
+Of course, we're going to have some extensive worrying to do if we want to support Unicode, especially if the API expects ASCII strings. Another, possibly better option is to tokenize everything in the ARENA2 assets and then perform lookups for everything by using the dict. This would probably be the only way to go if we want to support Unicode languages and, heaven forbid, if we're crazy enough to tackle right-to-left support. (Shudder.)
+</p>
+
+
+

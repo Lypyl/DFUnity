@@ -1,25 +1,125 @@
-﻿using Daggerfall.Gameplay;
+﻿using UnityEngine;
+using Daggerfall.Gameplay;
+using DaggerfallWorkshop.Utility;
+using System.Collections.Generic;
+using DaggerfallWorkshop;
 
 namespace Daggerfall.Gameplay.Mobs { 
-    public class Creature {
+    public class Creature : MonoBehaviour { 
+        // TODO: Just use what's in the EnemyBasics class
         public const int CREATURE_ID_DAGGERFALL_PLAYER = 1;
 
         public const int MAX_LEVEL = 100;
         protected Attributes attributes;
-        public bool enabled = false; // a disabled creture shouldn't be considered for some game logic and UI updates
+        //public bool enabled = false; // a disabled creture shouldn't be considered for some game logic and UI updates
 
         System.Guid _UUID;
-        int creatureID;
+        MobileTypes creatureType;
+        MobileBehaviour behaviour;
+        DaggerfallUnity dfUnity;
 
-        /**
-         * Creates a new creature. Creature.enabled will be false until you set it
-         *
-         * @param _creatureID This creature's ID (not UUID)
-         **/
-        public Creature(int _creatureID = -1) {
+        void Start() { 
+
+        }
+
+        void Awake() {
             attributes = new Attributes();
             _UUID = System.Guid.NewGuid();
-            creatureID = _creatureID;
+
+            // TODO: Sane defaults?
+            creatureType = MobileTypes.Acrobat;
+            behaviour = MobileBehaviour.General;
+
+            DaggerfallUnity.FindDaggerfallUnity(out dfUnity);
+            //setupMobile();
+        }
+
+
+        public void setupMobile() { 
+            name = string.Format("DaggerfallEnemy [{0}]", creatureType.ToString());
+
+            // Add child object for enemy billboard
+            GameObject mobileObject = new GameObject("DaggerfallMobileUnit");
+            mobileObject.transform.parent = this.transform;
+
+            // Add mobile enemy
+            Vector2 size = Vector2.one;
+            DaggerfallMobileUnit dfMobile = mobileObject.AddComponent<DaggerfallMobileUnit>();
+            try {
+                dfMobile.SetEnemy(dfUnity, dfUnity.EnemyDict[(int)creatureType]);
+                size = dfMobile.Summary.RecordSizes[0];
+            } catch(System.Exception e) {
+                string message = string.Format("Failed to set enemy type (int)type={0}. '{1}'", (int)creatureType, e.Message);
+                // TODO: Change logging
+                DaggerfallUnity.LogMessage(message);
+                GameObject.DestroyImmediate(dfMobile);
+            }
+
+            // Add character controller
+            if (dfUnity.Option_EnemyCharacterController) {
+                CharacterController controller = gameObject.AddComponent<CharacterController>();
+                controller.radius = dfUnity.Option_EnemyRadius;
+                controller.height = size.y;
+                controller.slopeLimit = dfUnity.Option_EnemySlopeLimit;
+                controller.stepOffset = dfUnity.Option_EnemyStepOffset;
+
+                // Reduce height of flying creatures as their wing animation makes them taller than desired
+                // This helps them get through doors while aiming for player eye height
+                if (dfMobile.Summary.Enemy.Behaviour == MobileBehaviour.Flying)
+                    controller.height /= 2f;
+
+                // Limit maximum height to ensure controller can fit through doors
+                // For some reason Unity 4.5 doesn't let you set SkinWidth from code >.<
+                if (controller.height > 1.9f)
+                    controller.height = 1.9f;
+            }
+
+            // Add rigidbody
+            if (dfUnity.Option_EnemyRigidbody) {
+                Rigidbody rigidbody = gameObject.AddComponent<Rigidbody>();
+                rigidbody.useGravity = dfUnity.Option_EnemyUseGravity;
+                rigidbody.isKinematic = dfUnity.Option_EnemyIsKinematic;
+            }
+
+            // Add capsule collider
+            if (dfUnity.Option_EnemyCapsuleCollider) {
+                CapsuleCollider collider = gameObject.AddComponent<CapsuleCollider>();
+                collider.radius = dfUnity.Option_EnemyRadius;
+                collider.height = size.y;
+            }
+
+            // Add navmesh agent
+            if (dfUnity.Option_EnemyNavMeshAgent) {
+                NavMeshAgent agent = gameObject.AddComponent<NavMeshAgent>();
+                agent.radius = dfUnity.Option_EnemyRadius;
+                agent.height = size.y;
+                agent.baseOffset = size.y * 0.5f;
+            }
+
+            // Add example AI
+            if (dfUnity.Option_EnemyExampleAI)
+            {
+                // EnemyMotor will also add other required components
+                gameObject.AddComponent<DaggerfallWorkshop.Demo.EnemyMotor>();
+
+                // Set sounds
+                DaggerfallWorkshop.Demo.EnemySounds enemySounds = gameObject.GetComponent<DaggerfallWorkshop.Demo.EnemySounds>();
+                if (enemySounds)
+                {
+                    enemySounds.MoveSound = (SoundClips)dfMobile.Summary.Enemy.MoveSound;
+                    enemySounds.BarkSound = (SoundClips)dfMobile.Summary.Enemy.BarkSound;
+                    enemySounds.AttackSound = (SoundClips)dfMobile.Summary.Enemy.AttackSound;
+                }
+            }
+        }
+
+        void Update() { 
+
+        }
+
+        public Creature(MobileTypes _creatureType = MobileTypes.Acrobat) {
+            //attributes = new Attributes();
+            //creatureType = _creatureType;
         }
 
         /** 
@@ -86,17 +186,17 @@ namespace Daggerfall.Gameplay.Mobs {
             }
         }
 
-        public int getCreatureID() {
-            return creatureID;
+        public MobileTypes getCreatureType() {
+            return creatureType;
         }
 
         /**
-         * Sets the creatureID for this creature. You should set this at creation time and might not want to do this.
+         * Sets the creatureType for this creature. You should set this at creation time and might not want to do this.
          *
-         *  @param _creatureID The ID of this creature (different from the UUID, which you cannot set)
+         *  @param _creatureType The ID of this creature (different from the UUID, which you cannot set)
          **/
-        public void setCreatureID(int _creatureID) {
-            creatureID = _creatureID;
+        public void setCreatureType(MobileTypes _creatureType) {
+            creatureType = _creatureType;
         }
 
         /**
@@ -133,8 +233,8 @@ namespace Daggerfall.Gameplay.Mobs {
         /**
          * @returns a comprehensive string of information about this creature
          */
-        protected string printCreature() {
-            string s = "\n*** Creature ***\n UUID: " + _UUID.ToString() + "\n CreatureID: " + creatureID + "\n Enabled: " + enabled + "\n";
+        public string printCreature() {
+            string s = "\n*** Creature ***\n UUID: " + _UUID.ToString() + "\n CreatureID: " + creatureType.ToString() + "\n Enabled: " + enabled + "\n";
             s += attributes.printAttributes();
             return s;
         }

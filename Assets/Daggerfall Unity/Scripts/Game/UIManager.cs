@@ -2,6 +2,7 @@
 using System.Collections;
 using DaggerfallWorkshop.Demo;
 using DaggerfallWorkshop.Game;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
     private bool _isUIOpen = false;
@@ -32,11 +33,16 @@ public class UIManager : MonoBehaviour {
             if (!_isUIOpen) {
                 _isUIOpen = true;
                 DevConsole.enabled = true;
-                DevConsole.GetComponent<DevConsole>().enabled = true;
+                DevConsole devConsole = DevConsole.GetComponent<DevConsole>();
+                devConsole.enabled = true;
+                devConsole.inputField.enabled = true;
+                devConsole.inputField.Select();
             } else {
                 _isUIOpen = false;
                 DevConsole.enabled = false;
-                DevConsole.GetComponent<DevConsole>().enabled = false;
+                DevConsole devConsole = DevConsole.GetComponent<DevConsole>();
+                devConsole.enabled = false;
+                devConsole.inputField.enabled = false;
             }
         } else if (Input.GetButtonDown("PlayerSheet")) { 
             PlayerSheet.enabled = !PlayerSheet.enabled;

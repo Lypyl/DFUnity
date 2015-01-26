@@ -170,6 +170,7 @@
      <Compile Include="Assets\Daggerfall\Scripts\Gameplay\ShowPlayerDamage.cs" />
      <Compile Include="Assets\Daggerfall\Scripts\Gameplay\SunlightManager.cs" />
      <Compile Include="Assets\Daggerfall\Scripts\Gameplay\WeaponManager.cs" />
+     <Compile Include="Assets\Daggerfall\Scripts\Internal\CreatureSpawner.cs" />
      <Compile Include="Assets\Daggerfall\Scripts\Internal\PlayerGPS.cs" />
      <Compile Include="Assets\Daggerfall\Scripts\Internal\WorldTime.cs" />
      <Compile Include="Assets\Daggerfall\Scripts\Terrain\StreamingWorld.cs" />

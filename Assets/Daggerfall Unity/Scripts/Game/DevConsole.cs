@@ -3,6 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using DaggerfallWorkshop.Game;
 using UnityEngine.UI;
+using DaggerfallConnect;
+using DaggerfallConnect.Utility;
+using DaggerfallConnect.Arena2;
+using DaggerfallWorkshop.Utility;
 
 namespace DaggerfallWorkshop.Game {
 
@@ -10,6 +14,8 @@ namespace DaggerfallWorkshop.Game {
     // Call displayText(...) to append a message to the log
     public class DevConsole : MonoBehaviour {
         public Text outputTextField;
+        public InputField inputField;
+        public UIManager uiManager;
              
         DaggerfallUnity dfUnity;
         float deltaTime = 0.0f;
@@ -33,14 +39,15 @@ namespace DaggerfallWorkshop.Game {
         void Start () {
             displayText("Dev console created");
             enabled = false;
+            Check();
         }
 
         // Sanity check
         void Check() {
             if (!dfUnity) { 
                 if(!DaggerfallUnity.FindDaggerfallUnity(out dfUnity)) { 
-                    DaggerfallUnity.LogMessage(Error.ERROR_GAME_DAG_UNITY_NOT_FOUND);
-                    Application.Quit();
+                    Logger.GetInstance().log(Error.ERROR_GAME_DAG_UNITY_NOT_FOUND + "\n");
+                 
                 }
             }
         }
@@ -51,6 +58,8 @@ namespace DaggerfallWorkshop.Game {
         }
 
         void OnGUI() {
+            if (!uiManager.isUIOpen) return;
+            //inputField.enabled = true;
             drawFPS();
         }
 
@@ -77,7 +86,22 @@ namespace DaggerfallWorkshop.Game {
                         }
                     }
                     break;
-
+                case ("travel"):
+                    if (args.Length == 2) {
+                        DFLocation location;
+                        if (!GameObjectHelper.FindMultiNameLocation(dfUnity, args[1], out location)) {
+                            Logger.GetInstance().log("Unable to find location " + args[1] + ".\n");
+                        } else {
+                            Logger.GetInstance().log("Found location in " + location.RegionName + "!\n");
+                            int longitude = (int)location.MapTableData.Longitude;
+                            int latitude = (int)location.MapTableData.Latitude;
+                            DFPosition pos = MapsFile.MapPixelToWorldCoord(latitude, longitude);
+                            Daggerfall.PlayerGPS localPlayerGPS = GameObject.FindGameObjectWithTag("Player").GetComponent<Daggerfall.PlayerGPS>();
+                            localPlayerGPS.WorldX = pos.X;
+                            localPlayerGPS.WorldZ = pos.Y;
+                        }
+                    }
+                    break;
                 default:
                     break;
             }
@@ -92,7 +116,9 @@ namespace DaggerfallWorkshop.Game {
             if (args.Length > 0) {
                 parseCommand(args);
             }
+            inputField.Select();
         }
+
         void drawFPS() {
             int w = Screen.width, h = Screen.height;
             Vector2 scrollPosition = Vector2.zero;

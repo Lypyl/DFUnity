@@ -5758,3 +5758,1396 @@ Strength 1 -- Intelligence 1 -- Willpower 1 -- Agility 1 -- Endurance 1 -- Perso
   Sleeping: False 
   Sneaking: False 
 
+1/18/2015 7:23:58 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/18/2015 7:23:58 AM *** DFUnity started in editor
+
+1/18/2015 7:51:00 PM *** Logging started
+1/18/2015 7:51:00 PM *** DFUnity started in editor
+
+1/18/2015 7:51:01 PM *** Created a new Daggerfall Player.
+1/18/2015 7:51:01 PM *** 
+*** Creature ***
+ UUID: 7814c5b2-28fe-43ca-bbc3-6cf5c7d0de33
+ CreatureID: 1
+ Enabled: False
+  Health 1/1
+  Mana 1/1 
+  Stamina 1/1
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 1 -- Intelligence 1 -- Willpower 1 -- Agility 1 -- Endurance 1 -- Personality 1 -- Speed 1 -- Luck 1 -- Level 1
+  Sleeping: False 
+  Sneaking: False 
+
+1/18/2015 7:51:55 PM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/18/2015 7:51:55 PM *** DFUnity started in editor
+
+1/18/2015 7:52:59 PM *** Logging started
+1/18/2015 7:52:59 PM *** DFUnity started in editor
+
+1/18/2015 7:52:59 PM *** Created a new Daggerfall Player.
+1/18/2015 7:52:59 PM *** 
+*** Creature ***
+ UUID: e5b702b4-5321-4d0e-9d31-fbdbc71e9227
+ CreatureID: 1
+ Enabled: False
+  Health 1/1
+  Mana 1/1 
+  Stamina 1/1
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 1 -- Intelligence 1 -- Willpower 1 -- Agility 1 -- Endurance 1 -- Personality 1 -- Speed 1 -- Luck 1 -- Level 1
+  Sleeping: False 
+  Sneaking: False 
+
+1/18/2015 7:59:07 PM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/18/2015 7:59:07 PM *** DFUnity started in editor
+
+1/18/2015 8:07:02 PM *** Logging started
+1/18/2015 8:07:02 PM *** DFUnity started in editor
+
+1/18/2015 8:07:03 PM *** Created a Daggerfall enemy GameObject.
+
+1/18/2015 8:07:03 PM *** Created a new Daggerfall Player.
+1/18/2015 8:07:03 PM *** 
+*** Creature ***
+ UUID: 576da3fd-3387-4817-b413-bb547a22da69
+ CreatureID: 1
+ Enabled: False
+  Health 1/1
+  Mana 1/1 
+  Stamina 1/1
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 1 -- Intelligence 1 -- Willpower 1 -- Agility 1 -- Endurance 1 -- Personality 1 -- Speed 1 -- Luck 1 -- Level 1
+  Sleeping: False 
+  Sneaking: False 
+
+1/18/2015 8:07:05 PM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/18/2015 8:07:05 PM *** DFUnity started in editor
+
+1/18/2015 8:07:20 PM *** Logging started
+1/18/2015 8:07:20 PM *** DFUnity started in editor
+
+1/18/2015 8:07:20 PM *** Created a Daggerfall enemy GameObject.
+
+1/18/2015 8:07:20 PM *** Created a new Daggerfall Player.
+1/18/2015 8:07:20 PM *** 
+*** Creature ***
+ UUID: 7826c868-141e-43a6-a189-b9a5696c1a58
+ CreatureID: 1
+ Enabled: False
+  Health 1/1
+  Mana 1/1 
+  Stamina 1/1
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 1 -- Intelligence 1 -- Willpower 1 -- Agility 1 -- Endurance 1 -- Personality 1 -- Speed 1 -- Luck 1 -- Level 1
+  Sleeping: False 
+  Sneaking: False 
+
+1/18/2015 8:07:23 PM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/18/2015 8:07:23 PM *** DFUnity started in editor
+
+1/18/2015 8:07:31 PM *** Logging started
+1/18/2015 8:07:31 PM *** DFUnity started in editor
+
+1/18/2015 8:07:31 PM *** Created a new Daggerfall Player.
+1/18/2015 8:07:31 PM *** 
+*** Creature ***
+ UUID: cfdc9c1e-8747-409b-8138-f6fb96b1580f
+ CreatureID: 1
+ Enabled: False
+  Health 1/1
+  Mana 1/1 
+  Stamina 1/1
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 1 -- Intelligence 1 -- Willpower 1 -- Agility 1 -- Endurance 1 -- Personality 1 -- Speed 1 -- Luck 1 -- Level 1
+  Sleeping: False 
+  Sneaking: False 
+
+1/18/2015 8:07:33 PM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/18/2015 8:07:33 PM *** DFUnity started in editor
+
+1/18/2015 8:08:08 PM *** Logging started
+1/18/2015 8:08:08 PM *** DFUnity started in editor
+
+1/18/2015 8:08:08 PM *** Created a Daggerfall enemy GameObject.
+
+1/18/2015 8:08:08 PM *** Created a new Daggerfall Player.
+1/18/2015 8:08:08 PM *** 
+*** Creature ***
+ UUID: 8cf053c5-34e6-4dec-874e-7dc2c58bd5bb
+ CreatureID: 1
+ Enabled: False
+  Health 1/1
+  Mana 1/1 
+  Stamina 1/1
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 1 -- Intelligence 1 -- Willpower 1 -- Agility 1 -- Endurance 1 -- Personality 1 -- Speed 1 -- Luck 1 -- Level 1
+  Sleeping: False 
+  Sneaking: False 
+
+1/18/2015 8:08:22 PM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/18/2015 8:08:22 PM *** DFUnity started in editor
+
+1/18/2015 8:10:52 PM *** Logging started
+1/18/2015 8:10:52 PM *** DFUnity started in editor
+
+1/18/2015 8:10:52 PM *** Created a Daggerfall enemy GameObject.
+
+1/18/2015 8:10:52 PM *** Created a new Daggerfall Player.
+1/18/2015 8:10:52 PM *** 
+*** Creature ***
+ UUID: 13acdb0e-b4b0-4d22-82a1-e26658e12302
+ CreatureID: 1
+ Enabled: False
+  Health 1/1
+  Mana 1/1 
+  Stamina 1/1
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 1 -- Intelligence 1 -- Willpower 1 -- Agility 1 -- Endurance 1 -- Personality 1 -- Speed 1 -- Luck 1 -- Level 1
+  Sleeping: False 
+  Sneaking: False 
+
+1/18/2015 8:10:56 PM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/18/2015 8:10:56 PM *** DFUnity started in editor
+
+1/18/2015 8:11:02 PM *** Logging started
+1/18/2015 8:11:02 PM *** DFUnity started in editor
+
+1/18/2015 8:11:02 PM *** Created a Daggerfall enemy GameObject.
+
+1/18/2015 8:11:02 PM *** Created a new Daggerfall Player.
+1/18/2015 8:11:02 PM *** 
+*** Creature ***
+ UUID: e330bea0-8fed-4b23-a18f-198d6d309e12
+ CreatureID: 1
+ Enabled: False
+  Health 1/1
+  Mana 1/1 
+  Stamina 1/1
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 1 -- Intelligence 1 -- Willpower 1 -- Agility 1 -- Endurance 1 -- Personality 1 -- Speed 1 -- Luck 1 -- Level 1
+  Sleeping: False 
+  Sneaking: False 
+
+1/18/2015 8:12:55 PM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/18/2015 8:12:55 PM *** DFUnity started in editor
+
+1/18/2015 8:13:01 PM *** Logging started
+1/18/2015 8:13:01 PM *** DFUnity started in editor
+
+1/18/2015 8:13:01 PM *** Created a Daggerfall enemy GameObject.
+
+1/18/2015 8:13:01 PM *** Created a new Daggerfall Player.
+1/18/2015 8:13:01 PM *** 
+*** Creature ***
+ UUID: 0dfb9f1e-804c-4446-a385-1ae007bb527a
+ CreatureID: 1
+ Enabled: False
+  Health 1/1
+  Mana 1/1 
+  Stamina 1/1
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 1 -- Intelligence 1 -- Willpower 1 -- Agility 1 -- Endurance 1 -- Personality 1 -- Speed 1 -- Luck 1 -- Level 1
+  Sleeping: False 
+  Sneaking: False 
+
+1/18/2015 8:13:11 PM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/18/2015 8:13:11 PM *** DFUnity started in editor
+
+1/18/2015 8:13:13 PM *** Logging started
+1/18/2015 8:13:13 PM *** DFUnity started in editor
+
+1/18/2015 8:13:13 PM *** Created a Daggerfall enemy GameObject.
+
+1/18/2015 8:13:13 PM *** Created a new Daggerfall Player.
+1/18/2015 8:13:13 PM *** 
+*** Creature ***
+ UUID: acd23ad0-8263-4262-b5bb-91d368f1605b
+ CreatureID: 1
+ Enabled: False
+  Health 1/1
+  Mana 1/1 
+  Stamina 1/1
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 1 -- Intelligence 1 -- Willpower 1 -- Agility 1 -- Endurance 1 -- Personality 1 -- Speed 1 -- Luck 1 -- Level 1
+  Sleeping: False 
+  Sneaking: False 
+
+1/18/2015 8:14:39 PM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/18/2015 8:14:39 PM *** DFUnity started in editor
+
+1/18/2015 8:15:48 PM *** Logging started
+1/18/2015 8:15:48 PM *** DFUnity started in editor
+
+1/18/2015 8:15:49 PM *** Created a Daggerfall enemy GameObject.
+
+1/18/2015 8:15:49 PM *** Created a new Daggerfall Player.
+1/18/2015 8:15:49 PM *** 
+*** Creature ***
+ UUID: 7109cda2-ce3c-4a5f-9189-572bc098ad18
+ CreatureID: 1
+ Enabled: False
+  Health 1/1
+  Mana 1/1 
+  Stamina 1/1
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 1 -- Intelligence 1 -- Willpower 1 -- Agility 1 -- Endurance 1 -- Personality 1 -- Speed 1 -- Luck 1 -- Level 1
+  Sleeping: False 
+  Sneaking: False 
+
+1/18/2015 8:16:56 PM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/18/2015 8:16:56 PM *** DFUnity started in editor
+
+1/23/2015 4:26:18 AM *** Logging started
+1/23/2015 4:26:18 AM *** DFUnity started in editor
+
+1/23/2015 5:01:55 AM *** Logging started
+1/23/2015 5:01:55 AM *** DFUnity started in editor
+
+1/23/2015 5:01:55 AM *** Created a new Daggerfall Player.
+1/23/2015 5:01:55 AM *** 
+*** Creature ***
+ UUID: dcd94b69-6ce6-46e9-b6d0-eaf5730b0bf7
+ CreatureID: 1
+ Enabled: False
+  Health 1/1
+  Mana 1/1 
+  Stamina 1/1
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 1 -- Intelligence 1 -- Willpower 1 -- Agility 1 -- Endurance 1 -- Personality 1 -- Speed 1 -- Luck 1 -- Level 1
+  Sleeping: False 
+  Sneaking: False 
+
+1/23/2015 5:04:00 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/23/2015 5:04:00 AM *** DFUnity started in editor
+
+1/24/2015 1:04:17 AM *** Logging started
+1/24/2015 1:04:17 AM *** DFUnity started in editor
+
+1/24/2015 1:04:17 AM *** Created a Daggerfall enemy GameObject.
+
+1/24/2015 1:04:17 AM *** Created a new Daggerfall Player.
+1/24/2015 1:04:17 AM *** 
+*** Creature ***
+ UUID: 14e6b0c1-6861-4446-8a7e-9f8ddbf98433
+ CreatureID: 1
+ Enabled: False
+  Health 1/1
+  Mana 1/1 
+  Stamina 1/1
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 1 -- Intelligence 1 -- Willpower 1 -- Agility 1 -- Endurance 1 -- Personality 1 -- Speed 1 -- Luck 1 -- Level 1
+  Sleeping: False 
+  Sneaking: False 
+
+1/24/2015 1:05:33 AM *** Logging started
+1/24/2015 1:05:33 AM *** DFUnity started in editor
+
+1/24/2015 1:06:35 AM *** Logging started
+1/24/2015 1:06:35 AM *** DFUnity started in editor
+
+1/24/2015 1:06:35 AM *** Created a Daggerfall enemy GameObject.
+
+1/24/2015 1:06:35 AM *** Created a new Daggerfall Player.
+1/24/2015 1:07:00 AM *** Logging started
+1/24/2015 1:07:00 AM *** DFUnity started in editor
+
+1/24/2015 1:17:28 AM *** Logging started
+1/24/2015 1:17:28 AM *** DFUnity started in editor
+
+1/24/2015 1:17:29 AM *** Created a Daggerfall enemy GameObject.
+
+1/24/2015 1:19:32 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/24/2015 1:19:32 AM *** DFUnity started in editor
+
+1/24/2015 4:46:34 AM *** Logging started
+1/24/2015 4:46:34 AM *** DFUnity started in editor
+
+1/24/2015 4:48:18 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/24/2015 4:48:18 AM *** DFUnity started in editor
+
+1/24/2015 4:48:20 AM *** Logging started
+1/24/2015 4:48:20 AM *** DFUnity started in editor
+
+1/24/2015 4:48:20 AM *** Creating a Daggerfall enemy GameObject.
+
+1/24/2015 4:48:32 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/24/2015 4:48:32 AM *** DFUnity started in editor
+
+1/24/2015 4:48:34 AM *** Logging started
+1/24/2015 4:48:34 AM *** DFUnity started in editor
+
+1/24/2015 4:48:35 AM *** Creating a Daggerfall enemy GameObject.
+
+1/24/2015 4:49:17 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/24/2015 4:49:17 AM *** DFUnity started in editor
+
+1/24/2015 4:49:20 AM *** Logging started
+1/24/2015 4:49:20 AM *** DFUnity started in editor
+
+1/24/2015 4:49:20 AM *** Creating a Daggerfall enemy GameObject.
+
+1/24/2015 4:49:20 AM *** Created a Daggerfall enemy GameObject.
+
+1/24/2015 4:49:20 AM *** Created a new creature!
+
+1/24/2015 4:49:20 AM *** 
+*** Creature ***
+ UUID: aa27754e-cc97-40bf-ab7e-9d608ea91dfd
+ CreatureID: -1
+ Enabled: True
+  Health 0/0
+  Mana 0/0 
+  Stamina 0/0
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Personality 0 -- Speed 0 -- Luck 0 -- Level 0
+  Sleeping: False 
+  Sneaking: False 
+
+1/24/2015 4:49:20 AM *** Created a new creature!
+
+1/24/2015 4:49:20 AM *** 
+*** Creature ***
+ UUID: 7900d46b-6495-4394-948c-d171ada0eddc
+ CreatureID: -1
+ Enabled: True
+  Health 0/0
+  Mana 0/0 
+  Stamina 0/0
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Personality 0 -- Speed 0 -- Luck 0 -- Level 0
+  Sleeping: False 
+  Sneaking: False 
+
+1/24/2015 4:50:17 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/24/2015 4:50:17 AM *** DFUnity started in editor
+
+1/24/2015 4:50:34 AM *** Logging started
+1/24/2015 4:50:34 AM *** DFUnity started in editor
+
+1/24/2015 4:50:34 AM *** Creating a Daggerfall enemy GameObject.
+
+1/24/2015 4:50:34 AM *** Created a Daggerfall enemy GameObject.
+
+1/24/2015 4:50:34 AM *** Created a new creature!
+
+1/24/2015 4:50:34 AM *** 
+*** Creature ***
+ UUID: a8f9d5ec-7e2d-4f81-b399-b8c6e688f838
+ CreatureID: -1
+ Enabled: True
+  Health 0/0
+  Mana 0/0 
+  Stamina 0/0
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Personality 0 -- Speed 0 -- Luck 0 -- Level 0
+  Sleeping: False 
+  Sneaking: False 
+
+1/24/2015 4:50:34 AM *** Created a new creature!
+
+1/24/2015 4:50:34 AM *** 
+*** Creature ***
+ UUID: 5e39e741-7336-4baa-8052-2025860ac313
+ CreatureID: -1
+ Enabled: True
+  Health 0/0
+  Mana 0/0 
+  Stamina 0/0
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Personality 0 -- Speed 0 -- Luck 0 -- Level 0
+  Sleeping: False 
+  Sneaking: False 
+
+1/24/2015 4:51:10 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/24/2015 4:51:10 AM *** DFUnity started in editor
+
+1/24/2015 4:51:12 AM *** Logging started
+1/24/2015 4:51:12 AM *** DFUnity started in editor
+
+1/24/2015 4:51:12 AM *** Creating a Daggerfall enemy GameObject.
+
+1/24/2015 4:51:12 AM *** Created a Daggerfall enemy GameObject.
+
+1/24/2015 4:51:12 AM *** Created a new creature!
+
+1/24/2015 4:51:12 AM *** 
+*** Creature ***
+ UUID: fae8f658-1a50-45f2-93c9-bc51670ebb83
+ CreatureID: -1
+ Enabled: True
+  Health 0/0
+  Mana 0/0 
+  Stamina 0/0
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Personality 0 -- Speed 0 -- Luck 0 -- Level 0
+  Sleeping: False 
+  Sneaking: False 
+
+1/24/2015 4:51:12 AM *** Created a new creature!
+
+1/24/2015 4:51:12 AM *** 
+*** Creature ***
+ UUID: 0e0d548d-4680-40d2-8d75-f6916d9c4ea6
+ CreatureID: -1
+ Enabled: True
+  Health 0/0
+  Mana 0/0 
+  Stamina 0/0
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Personality 0 -- Speed 0 -- Luck 0 -- Level 0
+  Sleeping: False 
+  Sneaking: False 
+
+1/24/2015 4:51:45 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/24/2015 4:51:45 AM *** DFUnity started in editor
+
+1/24/2015 4:51:47 AM *** Logging started
+1/24/2015 4:51:47 AM *** DFUnity started in editor
+
+1/24/2015 4:51:47 AM *** Creating a Daggerfall enemy GameObject.
+
+1/24/2015 4:51:47 AM *** Created a Daggerfall enemy GameObject.
+
+1/24/2015 4:51:47 AM *** Created a new Daggerfall Player.
+1/24/2015 4:51:47 AM *** Created a new creature!
+
+1/24/2015 4:51:47 AM *** 
+*** Creature ***
+ UUID: 5ab1e0ce-48dc-4a1f-b56c-fb2543df5e05
+ CreatureID: -1
+ Enabled: False
+  Health 0/0
+  Mana 0/0 
+  Stamina 0/0
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Personality 0 -- Speed 0 -- Luck 0 -- Level 0
+  Sleeping: False 
+  Sneaking: False 
+
+1/24/2015 4:51:47 AM *** Created a new creature!
+
+1/24/2015 4:51:47 AM *** 
+*** Creature ***
+ UUID: a23a82e3-380f-4995-9f7b-8f44e7ad53a3
+ CreatureID: -1
+ Enabled: False
+  Health 0/0
+  Mana 0/0 
+  Stamina 0/0
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Personality 0 -- Speed 0 -- Luck 0 -- Level 0
+  Sleeping: False 
+  Sneaking: False 
+
+1/24/2015 4:52:02 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/24/2015 4:52:02 AM *** DFUnity started in editor
+
+1/24/2015 4:52:10 AM *** Logging started
+1/24/2015 4:52:10 AM *** DFUnity started in editor
+
+1/24/2015 4:52:10 AM *** Creating a Daggerfall enemy GameObject.
+
+1/24/2015 4:52:10 AM *** Created a Daggerfall enemy GameObject.
+
+1/24/2015 4:52:10 AM *** Created a new Daggerfall Player.
+1/24/2015 4:52:10 AM *** Created a new creature!
+
+1/24/2015 4:52:10 AM *** 
+*** Creature ***
+ UUID: 4483718d-0043-4a4d-b43e-61921ab393e4
+ CreatureID: -1
+ Enabled: False
+  Health 0/0
+  Mana 0/0 
+  Stamina 0/0
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Personality 0 -- Speed 0 -- Luck 0 -- Level 0
+  Sleeping: False 
+  Sneaking: False 
+
+1/24/2015 4:52:10 AM *** Created a new creature!
+
+1/24/2015 4:52:10 AM *** 
+*** Creature ***
+ UUID: 5a5d5adf-c1af-4bf3-a1ba-cc85a4d2e4f8
+ CreatureID: -1
+ Enabled: False
+  Health 0/0
+  Mana 0/0 
+  Stamina 0/0
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Personality 0 -- Speed 0 -- Luck 0 -- Level 0
+  Sleeping: False 
+  Sneaking: False 
+
+1/24/2015 4:52:22 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/24/2015 4:52:22 AM *** DFUnity started in editor
+
+1/24/2015 5:19:02 AM *** Logging started
+1/24/2015 5:19:02 AM *** DFUnity started in editor
+
+1/24/2015 5:19:02 AM *** Creating a Daggerfall enemy GameObject.
+
+1/24/2015 5:19:02 AM *** Created a Daggerfall enemy GameObject.
+
+1/24/2015 5:19:02 AM *** Created a new creature!
+
+1/24/2015 5:19:02 AM *** 
+*** Creature ***
+ UUID: a838200b-8f2a-4dd2-b39f-ed458c370975
+ CreatureID: -1
+ Enabled: False
+  Health 0/0
+  Mana 0/0 
+  Stamina 0/0
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Personality 0 -- Speed 0 -- Luck 0 -- Level 0
+  Sleeping: False 
+  Sneaking: False 
+
+1/24/2015 5:19:02 AM *** Created a new creature!
+
+1/24/2015 5:19:02 AM *** 
+*** Creature ***
+ UUID: 3f3da85b-7f01-4606-b33e-dc2a80fb2288
+ CreatureID: -1
+ Enabled: False
+  Health 0/0
+  Mana 0/0 
+  Stamina 0/0
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Personality 0 -- Speed 0 -- Luck 0 -- Level 0
+  Sleeping: False 
+  Sneaking: False 
+
+1/24/2015 5:20:34 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/24/2015 5:20:34 AM *** DFUnity started in editor
+
+1/24/2015 5:20:36 AM *** Logging started
+1/24/2015 5:20:36 AM *** DFUnity started in editor
+
+1/24/2015 5:20:43 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/24/2015 5:20:43 AM *** DFUnity started in editor
+
+1/24/2015 5:22:45 AM *** Logging started
+1/24/2015 5:22:45 AM *** DFUnity started in editor
+
+1/24/2015 5:22:49 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/24/2015 5:22:49 AM *** DFUnity started in editor
+
+1/24/2015 5:23:04 AM *** Logging started
+1/24/2015 5:23:04 AM *** DFUnity started in editor
+
+1/24/2015 5:23:04 AM *** Creating a Daggerfall enemy GameObject.
+
+1/24/2015 5:23:04 AM *** Created a new creature!
+
+1/24/2015 5:23:04 AM *** 
+*** Creature ***
+ UUID: c512a8e0-91ac-43b5-b25c-b73aa65e453b
+ CreatureID: -1
+ Enabled: False
+  Health 0/0
+  Mana 0/0 
+  Stamina 0/0
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Personality 0 -- Speed 0 -- Luck 0 -- Level 0
+  Sleeping: False 
+  Sneaking: False 
+
+1/24/2015 5:23:04 AM *** Created a new creature!
+
+1/24/2015 5:23:04 AM *** 
+*** Creature ***
+ UUID: 395d5553-7d6c-4735-8582-b55b7745cd16
+ CreatureID: -1
+ Enabled: False
+  Health 0/0
+  Mana 0/0 
+  Stamina 0/0
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Personality 0 -- Speed 0 -- Luck 0 -- Level 0
+  Sleeping: False 
+  Sneaking: False 
+
+1/24/2015 5:23:04 AM *** Created a Daggerfall enemy GameObject.
+
+1/24/2015 5:23:10 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/24/2015 5:23:10 AM *** DFUnity started in editor
+
+1/24/2015 5:23:20 AM *** Logging started
+1/24/2015 5:23:20 AM *** DFUnity started in editor
+
+1/24/2015 5:23:20 AM *** Creating a Daggerfall enemy GameObject.
+
+1/24/2015 5:23:20 AM *** Created a new creature!
+
+1/24/2015 5:23:20 AM *** 
+*** Creature ***
+ UUID: 8590fdce-1355-47cf-8fed-8fd92223e2e3
+ CreatureID: -1
+ Enabled: False
+  Health 0/0
+  Mana 0/0 
+  Stamina 0/0
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Personality 0 -- Speed 0 -- Luck 0 -- Level 0
+  Sleeping: False 
+  Sneaking: False 
+
+1/24/2015 5:23:20 AM *** Created a new creature!
+
+1/24/2015 5:23:20 AM *** 
+*** Creature ***
+ UUID: 5b570f38-6829-4564-b7b3-b9c15a1c1ab5
+ CreatureID: -1
+ Enabled: False
+  Health 0/0
+  Mana 0/0 
+  Stamina 0/0
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Personality 0 -- Speed 0 -- Luck 0 -- Level 0
+  Sleeping: False 
+  Sneaking: False 
+
+1/24/2015 5:23:20 AM *** Created a Daggerfall enemy GameObject.
+
+1/24/2015 5:27:07 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/24/2015 5:27:07 AM *** DFUnity started in editor
+
+1/24/2015 5:27:09 AM *** Logging started
+1/24/2015 5:27:09 AM *** DFUnity started in editor
+
+1/24/2015 5:27:09 AM *** Creating a Daggerfall enemy GameObject.
+
+1/24/2015 5:27:39 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/24/2015 5:27:39 AM *** DFUnity started in editor
+
+1/24/2015 5:27:41 AM *** Logging started
+1/24/2015 5:27:41 AM *** DFUnity started in editor
+
+1/24/2015 5:27:41 AM *** Creating a Daggerfall enemy GameObject.
+
+1/24/2015 5:27:41 AM *** 
+*** Creature ***
+ UUID: f5894f0e-5800-4594-b8ff-8e6fc4f0341d
+ CreatureID: -1
+ Enabled: False
+  Health 0/0
+  Mana 0/0 
+  Stamina 0/0
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Personality 0 -- Speed 0 -- Luck 0 -- Level 0
+  Sleeping: False 
+  Sneaking: False 
+
+1/24/2015 5:27:41 AM *** Created a Daggerfall enemy GameObject.
+
+1/24/2015 5:29:20 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/24/2015 5:29:20 AM *** DFUnity started in editor
+
+1/24/2015 5:29:22 AM *** Logging started
+1/24/2015 5:29:22 AM *** DFUnity started in editor
+
+1/24/2015 5:29:22 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Creating a Daggerfall enemy GameObject.
+
+1/24/2015 5:29:22 AM *** 
+*** Creature ***
+ UUID: 6cdf8399-27ba-4e65-b44c-1354fb4cd016
+ CreatureID: -1
+ Enabled: False
+  Health 0/0
+  Mana 0/0 
+  Stamina 0/0
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Personality 0 -- Speed 0 -- Luck 0 -- Level 0
+  Sleeping: False 
+  Sneaking: False 
+
+1/24/2015 5:29:23 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Created a Daggerfall enemy GameObject.
+
+1/24/2015 5:29:39 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/24/2015 5:29:39 AM *** DFUnity started in editor
+
+1/24/2015 5:33:17 AM *** Logging started
+1/24/2015 5:33:17 AM *** DFUnity started in editor
+
+1/24/2015 5:33:18 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Creating a Daggerfall enemy GameObject.
+
+1/24/2015 5:33:18 AM *** 
+*** Creature ***
+ UUID: 4216e3bb-012a-4063-8708-43bbc01c63ce
+ CreatureID: -1
+ Enabled: False
+  Health 0/0
+  Mana 0/0 
+  Stamina 0/0
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Personality 0 -- Speed 0 -- Luck 0 -- Level 0
+  Sleeping: False 
+  Sneaking: False 
+
+1/24/2015 5:33:18 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Created a Daggerfall enemy GameObject.
+
+1/24/2015 5:38:20 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/24/2015 5:38:20 AM *** DFUnity started in editor
+
+1/24/2015 5:38:33 AM *** Logging started
+1/24/2015 5:38:33 AM *** DFUnity started in editor
+
+1/24/2015 5:38:33 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Creating a Daggerfall enemy GameObject.
+
+1/24/2015 5:38:33 AM *** 
+*** Creature ***
+ UUID: 5b960093-17d5-472e-a231-aac8cecb2ff1
+ CreatureID: Acrobat
+ Enabled: False
+  Health 0/0
+  Mana 0/0 
+  Stamina 0/0
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Personality 0 -- Speed 0 -- Luck 0 -- Level 0
+  Sleeping: False 
+  Sneaking: False 
+
+1/24/2015 5:38:33 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Created a Daggerfall enemy GameObject.
+
+1/24/2015 5:55:42 AM *** Logging started
+1/24/2015 5:55:42 AM *** DFUnity started in editor
+
+1/24/2015 5:55:52 AM *** Logging started
+1/24/2015 5:55:52 AM *** DFUnity started in editor
+
+1/24/2015 5:55:52 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Creating a Daggerfall enemy GameObject.
+
+1/24/2015 5:55:53 AM *** 
+*** Creature ***
+ UUID: 4ccb6bc2-24ff-46e8-84e3-5866e20166ac
+ CreatureID: Acrobat
+ Enabled: False
+  Health 0/0
+  Mana 0/0 
+  Stamina 0/0
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Personality 0 -- Speed 0 -- Luck 0 -- Level 0
+  Sleeping: False 
+  Sneaking: False 
+
+1/24/2015 5:55:53 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Created a Daggerfall enemy GameObject.
+
+1/24/2015 5:57:02 AM *** Logging started
+1/24/2015 5:57:02 AM *** DFUnity started in editor
+
+1/24/2015 5:57:04 AM *** Logging started
+1/24/2015 5:57:04 AM *** DFUnity started in editor
+
+1/24/2015 5:57:05 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Creating a Daggerfall enemy GameObject.
+
+1/24/2015 5:57:05 AM *** 
+*** Creature ***
+ UUID: f9f43a38-6b95-4937-9deb-2a2ecc544577
+ CreatureID: AncientLich
+ Enabled: False
+  Health 0/0
+  Mana 0/0 
+  Stamina 0/0
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Personality 0 -- Speed 0 -- Luck 0 -- Level 0
+  Sleeping: False 
+  Sneaking: False 
+
+1/24/2015 5:57:05 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Created a Daggerfall enemy GameObject.
+
+1/24/2015 5:58:03 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/24/2015 5:58:03 AM *** DFUnity started in editor
+
+1/24/2015 5:58:05 AM *** Logging started
+1/24/2015 5:58:05 AM *** DFUnity started in editor
+
+1/24/2015 5:58:05 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Creating a Daggerfall enemy GameObject.
+
+1/24/2015 5:58:05 AM *** 
+*** Creature ***
+ UUID: b06f5cbd-4756-4915-a8d0-0fdd5da244c1
+ CreatureID: AncientLich
+ Enabled: True
+  Health 0/0
+  Mana 0/0 
+  Stamina 0/0
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Personality 0 -- Speed 0 -- Luck 0 -- Level 0
+  Sleeping: False 
+  Sneaking: False 
+
+1/24/2015 5:58:05 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Created a Daggerfall enemy GameObject.
+
+1/24/2015 6:01:11 AM *** Logging started
+1/24/2015 6:01:11 AM *** DFUnity started in editor
+
+1/24/2015 6:01:12 AM *** Logging started
+1/24/2015 6:01:12 AM *** DFUnity started in editor
+
+1/24/2015 6:01:13 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Creating a Daggerfall enemy GameObject.
+
+1/24/2015 6:01:13 AM *** 
+*** Creature ***
+ UUID: 34d6a040-4a9d-4361-945d-f22fb3d80457
+ CreatureID: AncientLich
+ Enabled: True
+  Health 0/0
+  Mana 0/0 
+  Stamina 0/0
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Personality 0 -- Speed 0 -- Luck 0 -- Level 0
+  Sleeping: False 
+  Sneaking: False 
+
+1/24/2015 6:01:13 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Created a Daggerfall enemy GameObject.
+
+1/24/2015 6:02:17 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/24/2015 6:02:17 AM *** DFUnity started in editor
+
+1/24/2015 6:02:43 AM *** Logging started
+1/24/2015 6:02:43 AM *** DFUnity started in editor
+
+1/24/2015 6:02:43 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Creating a Daggerfall enemy GameObject.
+
+1/24/2015 6:02:43 AM *** 
+*** Creature ***
+ UUID: 6a5a34b1-c6bb-4cc1-aee5-a4e783cd8d21
+ CreatureID: AncientLich
+ Enabled: True
+  Health 0/0
+  Mana 0/0 
+  Stamina 0/0
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Personality 0 -- Speed 0 -- Luck 0 -- Level 0
+  Sleeping: False 
+  Sneaking: False 
+
+1/24/2015 6:02:43 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Created a Daggerfall enemy GameObject.
+
+1/24/2015 6:07:35 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/24/2015 6:07:35 AM *** DFUnity started in editor
+
+1/24/2015 6:07:44 AM *** Logging started
+1/24/2015 6:07:44 AM *** DFUnity started in editor
+
+1/24/2015 6:07:45 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Creating a Daggerfall enemy GameObject.
+
+1/24/2015 6:07:45 AM *** 
+*** Creature ***
+ UUID: b8f26509-b6f4-4738-bdd7-706c8ddd264b
+ CreatureID: AncientLich
+ Enabled: True
+  Health 0/0
+  Mana 0/0 
+  Stamina 0/0
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Personality 0 -- Speed 0 -- Luck 0 -- Level 0
+  Sleeping: False 
+  Sneaking: False 
+
+1/24/2015 6:07:45 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Created a Daggerfall enemy GameObject.
+
+1/24/2015 6:10:42 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/24/2015 6:10:42 AM *** DFUnity started in editor
+
+1/24/2015 6:10:56 AM *** Logging started
+1/24/2015 6:10:56 AM *** DFUnity started in editor
+
+1/24/2015 6:10:56 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Creating a Daggerfall enemy GameObject.
+
+1/24/2015 6:10:56 AM *** 
+*** Creature ***
+ UUID: 0a830a97-c1a9-4590-9b3c-255c109bbc28
+ CreatureID: AncientLich
+ Enabled: True
+  Health 0/0
+  Mana 0/0 
+  Stamina 0/0
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Personality 0 -- Speed 0 -- Luck 0 -- Level 0
+  Sleeping: False 
+  Sneaking: False 
+
+1/24/2015 6:10:56 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Created a Daggerfall enemy GameObject.
+
+1/24/2015 6:25:17 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/24/2015 6:25:17 AM *** DFUnity started in editor
+
+1/25/2015 6:03:37 AM *** Logging started
+1/25/2015 6:03:37 AM *** DFUnity started in editor
+
+1/25/2015 6:14:20 AM *** Logging started
+1/25/2015 6:14:20 AM *** DFUnity started in editor
+
+1/25/2015 6:14:21 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Creating a Daggerfall enemy GameObject.
+
+1/25/2015 6:14:21 AM *** 
+*** Creature ***
+ UUID: e1750dab-3aa6-439b-81ad-32dc33d8d330
+ CreatureID: Acrobat
+ Enabled: True
+  Health 0/0
+  Mana 0/0 
+  Stamina 0/0
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Personality 0 -- Speed 0 -- Luck 0 -- Level 0
+  Sleeping: False 
+  Sneaking: False 
+
+1/25/2015 6:14:21 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Created a Daggerfall enemy GameObject.
+
+1/25/2015 6:16:24 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/25/2015 6:16:24 AM *** DFUnity started in editor
+
+1/25/2015 6:21:14 AM *** Logging started
+1/25/2015 6:21:14 AM *** DFUnity started in editor
+
+1/25/2015 6:21:14 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Creating a Daggerfall enemy GameObject.
+
+1/25/2015 6:21:15 AM *** 
+*** Creature ***
+ UUID: c7ea96d4-b7f0-4310-a2b4-f52f8df43c0f
+ CreatureID: Acrobat
+ Enabled: True
+  Health 0/0
+  Mana 0/0 
+  Stamina 0/0
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Personality 0 -- Speed 0 -- Luck 0 -- Level 0
+  Sleeping: False 
+  Sneaking: False 
+
+1/25/2015 6:21:15 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Created a Daggerfall enemy GameObject.
+
+1/25/2015 6:23:18 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/25/2015 6:23:18 AM *** DFUnity started in editor
+
+1/25/2015 6:23:24 AM *** Logging started
+1/25/2015 6:23:24 AM *** DFUnity started in editor
+
+1/25/2015 6:23:24 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Creating a Daggerfall enemy GameObject.
+
+1/25/2015 6:23:24 AM *** 
+*** Creature ***
+ UUID: 1bdde31a-c41a-4958-85ca-f526457874ac
+ CreatureID: Acrobat
+ Enabled: True
+  Health 0/0
+  Mana 0/0 
+  Stamina 0/0
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Personality 0 -- Speed 0 -- Luck 0 -- Level 0
+  Sleeping: False 
+  Sneaking: False 
+
+1/25/2015 6:23:24 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Created a Daggerfall enemy GameObject.
+
+1/25/2015 6:23:29 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/25/2015 6:23:29 AM *** DFUnity started in editor
+
+1/25/2015 6:23:41 AM *** Logging started
+1/25/2015 6:23:41 AM *** DFUnity started in editor
+
+1/25/2015 6:23:42 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Creating a Daggerfall enemy GameObject.
+
+1/25/2015 6:23:42 AM *** 
+*** Creature ***
+ UUID: 9362a8df-9dc7-47b9-93da-282fc1d1ba48
+ CreatureID: Acrobat
+ Enabled: True
+  Health 0/0
+  Mana 0/0 
+  Stamina 0/0
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Personality 0 -- Speed 0 -- Luck 0 -- Level 0
+  Sleeping: False 
+  Sneaking: False 
+
+1/25/2015 6:23:42 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Created a Daggerfall enemy GameObject.
+
+1/25/2015 6:23:52 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/25/2015 6:23:52 AM *** DFUnity started in editor
+
+1/25/2015 6:24:11 AM *** Logging started
+1/25/2015 6:24:11 AM *** DFUnity started in editor
+
+1/25/2015 6:24:11 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Creating a Daggerfall enemy GameObject.
+
+1/25/2015 6:24:11 AM *** 
+*** Creature ***
+ UUID: 1226090c-66cf-4752-b752-1741e61feddb
+ CreatureID: Acrobat
+ Enabled: True
+  Health 0/0
+  Mana 0/0 
+  Stamina 0/0
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Personality 0 -- Speed 0 -- Luck 0 -- Level 0
+  Sleeping: False 
+  Sneaking: False 
+
+1/25/2015 6:24:11 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Created a Daggerfall enemy GameObject.
+
+1/25/2015 6:24:30 AM *** Spawning enemy of type GrizzlyBear.
+
+1/25/2015 6:25:14 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/25/2015 6:25:14 AM *** DFUnity started in editor
+
+1/25/2015 6:26:57 AM *** Logging started
+1/25/2015 6:26:57 AM *** DFUnity started in editor
+
+1/25/2015 6:27:01 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Creating a Daggerfall enemy GameObject.
+
+1/25/2015 6:27:01 AM *** 
+*** Creature ***
+ UUID: fd45c7cd-6c4c-46e2-9bc8-c88d461ebc9c
+ CreatureID: Acrobat
+ Enabled: True
+  Health 0/0
+  Mana 0/0 
+  Stamina 0/0
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Personality 0 -- Speed 0 -- Luck 0 -- Level 0
+  Sleeping: False 
+  Sneaking: False 
+
+1/25/2015 6:27:01 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Created a Daggerfall enemy GameObject.
+
+1/25/2015 6:27:07 AM *** Spawning enemy of type GrizzlyBear.
+
+1/25/2015 6:27:11 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Creating a Daggerfall enemy GameObject.
+
+1/25/2015 6:27:11 AM *** 
+*** Creature ***
+ UUID: 89b93379-fe74-4a03-9b90-9c931b48ed6b
+ CreatureID: GrizzlyBear
+ Enabled: True
+  Health 0/0
+  Mana 0/0 
+  Stamina 0/0
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Personality 0 -- Speed 0 -- Luck 0 -- Level 0
+  Sleeping: False 
+  Sneaking: False 
+
+1/25/2015 6:27:12 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Created a Daggerfall enemy GameObject.
+
+1/25/2015 6:28:11 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/25/2015 6:28:11 AM *** DFUnity started in editor
+
+1/25/2015 6:28:49 AM *** Logging started
+1/25/2015 6:28:49 AM *** DFUnity started in editor
+
+1/25/2015 6:28:49 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Creating a Daggerfall enemy GameObject.
+
+1/25/2015 6:28:50 AM *** 
+*** Creature ***
+ UUID: dda044bb-d951-4cb7-91a5-6135472f6ccb
+ CreatureID: Acrobat
+ Enabled: True
+  Health 0/0
+  Mana 0/0 
+  Stamina 0/0
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Personality 0 -- Speed 0 -- Luck 0 -- Level 0
+  Sleeping: False 
+  Sneaking: False 
+
+1/25/2015 6:28:50 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Created a Daggerfall enemy GameObject.
+
+1/25/2015 6:29:30 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/25/2015 6:29:30 AM *** DFUnity started in editor
+
+1/25/2015 6:29:33 AM *** Logging started
+1/25/2015 6:29:33 AM *** DFUnity started in editor
+
+1/25/2015 6:29:41 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Creating a Daggerfall enemy GameObject.
+
+1/25/2015 6:29:41 AM *** 
+*** Creature ***
+ UUID: 94953d67-953a-45ef-90a4-43aefe865c86
+ CreatureID: Acrobat
+ Enabled: True
+  Health 0/0
+  Mana 0/0 
+  Stamina 0/0
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Personality 0 -- Speed 0 -- Luck 0 -- Level 0
+  Sleeping: False 
+  Sneaking: False 
+
+1/25/2015 6:29:41 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Created a Daggerfall enemy GameObject.
+
+1/25/2015 6:31:10 AM *** Logging started
+1/25/2015 6:31:10 AM *** DFUnity started in editor
+
+1/25/2015 6:31:14 AM *** Logging started
+1/25/2015 6:31:14 AM *** DFUnity started in editor
+
+1/25/2015 6:31:22 AM *** Spawning enemy of type GrizzlyBear.
+
+1/25/2015 6:31:22 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Creating a Daggerfall enemy GameObject.
+
+1/25/2015 6:32:06 AM *** 
+*** Creature ***
+ UUID: 5f171f77-5743-41ea-ba7c-c34457ded154
+ CreatureID: GrizzlyBear
+ Enabled: True
+  Health 0/0
+  Mana 0/0 
+  Stamina 0/0
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Personality 0 -- Speed 0 -- Luck 0 -- Level 0
+  Sleeping: False 
+  Sneaking: False 
+
+1/25/2015 6:32:06 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Created a Daggerfall enemy GameObject.
+
+1/25/2015 6:32:33 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/25/2015 6:32:33 AM *** DFUnity started in editor
+
+1/25/2015 6:34:21 AM *** Logging started
+1/25/2015 6:34:21 AM *** DFUnity started in editor
+
+1/25/2015 6:34:32 AM *** Spawning enemy of type GrizzlyBear.
+
+1/25/2015 6:34:34 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Creating a Daggerfall enemy GameObject.
+
+1/25/2015 6:34:34 AM *** 
+*** Creature ***
+ UUID: 591a8252-12e6-4190-ae8a-dff37e2b974b
+ CreatureID: GrizzlyBear
+ Enabled: True
+  Health 0/0
+  Mana 0/0 
+  Stamina 0/0
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Personality 0 -- Speed 0 -- Luck 0 -- Level 0
+  Sleeping: False 
+  Sneaking: False 
+
+1/25/2015 6:34:34 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Created a Daggerfall enemy GameObject.
+
+1/25/2015 6:35:50 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/25/2015 6:35:50 AM *** DFUnity started in editor
+
+1/25/2015 6:35:54 AM *** Logging started
+1/25/2015 6:35:54 AM *** DFUnity started in editor
+
+1/25/2015 6:36:00 AM *** Spawning enemy of type GrizzlyBear.
+
+1/25/2015 6:36:00 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Creating a Daggerfall enemy GameObject.
+
+1/25/2015 6:36:00 AM *** 
+*** Creature ***
+ UUID: 8ea4e321-9b36-4634-9ebd-7d435038a2ff
+ CreatureID: GrizzlyBear
+ Enabled: True
+  Health 0/0
+  Mana 0/0 
+  Stamina 0/0
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Personality 0 -- Speed 0 -- Luck 0 -- Level 0
+  Sleeping: False 
+  Sneaking: False 
+
+1/25/2015 6:36:00 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Created a Daggerfall enemy GameObject.
+
+1/25/2015 6:37:17 AM *** Spawning enemy of type GrizzlyBear.
+
+1/25/2015 6:37:17 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Creating a Daggerfall enemy GameObject.
+
+1/25/2015 6:37:17 AM *** 
+*** Creature ***
+ UUID: 3e924d8f-8b63-4429-9a06-cefc580c6c99
+ CreatureID: GrizzlyBear
+ Enabled: True
+  Health 0/0
+  Mana 0/0 
+  Stamina 0/0
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Personality 0 -- Speed 0 -- Luck 0 -- Level 0
+  Sleeping: False 
+  Sneaking: False 
+
+1/25/2015 6:37:17 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Created a Daggerfall enemy GameObject.
+
+1/25/2015 6:37:56 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/25/2015 6:37:56 AM *** DFUnity started in editor
+
+1/25/2015 6:39:51 AM *** Logging started
+1/25/2015 6:39:51 AM *** DFUnity started in editor
+
+1/25/2015 6:40:44 AM *** Spawning enemy of type GrizzlyBear.
+
+1/25/2015 6:40:44 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Creating a Daggerfall enemy GameObject.
+
+1/25/2015 6:40:45 AM *** 
+*** Creature ***
+ UUID: 1799bc35-d2c6-46aa-b20c-16c6d773cc96
+ CreatureID: GrizzlyBear
+ Enabled: True
+  Health 0/0
+  Mana 0/0 
+  Stamina 0/0
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Personality 0 -- Speed 0 -- Luck 0 -- Level 0
+  Sleeping: False 
+  Sneaking: False 
+
+1/25/2015 6:40:45 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Created a Daggerfall enemy GameObject.
+
+1/25/2015 6:41:17 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/25/2015 6:41:17 AM *** DFUnity started in editor
+
+1/25/2015 6:41:48 AM *** Logging started
+1/25/2015 6:41:48 AM *** DFUnity started in editor
+
+1/25/2015 6:44:58 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/25/2015 6:44:58 AM *** DFUnity started in editor
+
+1/25/2015 7:03:06 PM *** Logging started
+1/25/2015 7:03:06 PM *** DFUnity started in editor
+
+1/25/2015 7:03:16 PM *** Unable to find location Daggerfall.
+
+1/25/2015 7:03:21 PM *** Found location in Daggerfall!
+
+1/25/2015 7:03:27 PM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/25/2015 7:03:27 PM *** DFUnity started in editor
+
+1/25/2015 7:05:42 PM *** Logging started
+1/25/2015 7:05:42 PM *** DFUnity started in editor
+
+1/25/2015 7:05:48 PM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/25/2015 7:05:48 PM *** DFUnity started in editor
+
+1/25/2015 7:06:12 PM *** Logging started
+1/25/2015 7:06:12 PM *** DFUnity started in editor
+
+1/25/2015 7:06:18 PM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/25/2015 7:06:18 PM *** DFUnity started in editor
+
+1/25/2015 7:06:27 PM *** Logging started
+1/25/2015 7:06:27 PM *** DFUnity started in editor
+
+1/25/2015 7:06:33 PM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/25/2015 7:06:33 PM *** DFUnity started in editor
+
+1/25/2015 7:10:18 PM *** Logging started
+1/25/2015 7:10:18 PM *** DFUnity started in editor
+
+1/25/2015 7:10:24 PM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/25/2015 7:10:24 PM *** DFUnity started in editor
+
+1/25/2015 7:11:26 PM *** Logging started
+1/25/2015 7:11:26 PM *** DFUnity started in editor
+
+1/25/2015 7:11:33 PM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/25/2015 7:11:33 PM *** DFUnity started in editor
+
+1/25/2015 7:12:03 PM *** Logging started
+1/25/2015 7:12:03 PM *** DFUnity started in editor
+
+1/25/2015 7:12:09 PM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/25/2015 7:12:09 PM *** DFUnity started in editor
+
+1/25/2015 7:14:20 PM *** Logging started
+1/25/2015 7:14:20 PM *** DFUnity started in editor
+
+1/25/2015 7:14:46 PM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/25/2015 7:14:46 PM *** DFUnity started in editor
+
+1/25/2015 7:16:20 PM *** Logging started
+1/25/2015 7:16:20 PM *** DFUnity started in editor
+
+1/25/2015 7:18:23 PM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/25/2015 7:18:23 PM *** DFUnity started in editor
+
+1/25/2015 7:18:25 PM *** Logging started
+1/25/2015 7:18:25 PM *** DFUnity started in editor
+
+1/25/2015 7:18:42 PM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/25/2015 7:18:42 PM *** DFUnity started in editor
+
+1/25/2015 7:19:24 PM *** Logging started
+1/25/2015 7:19:24 PM *** DFUnity started in editor
+
+1/25/2015 7:20:11 PM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/25/2015 7:20:11 PM *** DFUnity started in editor
+
+1/25/2015 7:20:14 PM *** Logging started
+1/25/2015 7:20:14 PM *** DFUnity started in editor
+
+1/25/2015 7:20:33 PM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/25/2015 7:20:33 PM *** DFUnity started in editor
+
+1/25/2015 7:25:59 PM *** Logging started
+1/25/2015 7:25:59 PM *** DFUnity started in editor
+
+1/25/2015 7:26:07 PM *** Found location in Daggerfall!
+
+1/25/2015 7:26:43 PM *** Unable to find location derp.
+
+1/25/2015 7:26:53 PM *** Found location in Sentinel!
+
+1/25/2015 7:26:55 PM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/25/2015 7:26:55 PM *** DFUnity started in editor
+

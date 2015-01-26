@@ -1633,8 +1633,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9fc44ba0875fa1468a4f7d0e774d666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WorldX: 6782976
-  WorldZ: 9371648
+  WorldX: 6422528
+  WorldZ: 9207808
 --- !u!143 &322528713
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1722,7 +1722,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 322528708}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d39d33a86ddfb740821c84e72484e9b, type: 3}
   m_Name: 
@@ -3513,8 +3513,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LocalPlayerGPS: {fileID: 322528712}
   TerrainDistance: 1
-  MapPixelX: 207
-  MapPixelY: 213
+  MapPixelX: 196
+  MapPixelY: 218
   TerrainScale: 1.5
   EditorFindLocationString: Daggerfall/Privateer's Hold
 --- !u!1 &1005403698
@@ -3936,6 +3936,45 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1042354265}
+--- !u!1 &1058416877
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1058416879}
+  - 114: {fileID: 1058416878}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: EnemySpawner
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1058416878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1058416877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb8461ae82bf62d4daac6af8b432005f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1058416879
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1058416877}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
 --- !u!1 &1062151083
 GameObject:
   m_ObjectHideFlags: 0
@@ -4795,38 +4834,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '12/17/2014 4:59:55 AM *** Dev console created
+  m_Text: '1/25/2015 6:03:37 AM *** Logging started
 
-    12/17/2014 4:59:55 AM *** Logging started
+    1/25/2015 6:03:37 AM *** DFUnity started in editor
 
-    12/17/2014 4:59:55 AM *** DFUnity version 1.1.0 started in editor
-
-
-    12/17/2014 4:59:55 AM *** Loading a new conf file reader
-
-    12/17/2014 4:59:55 AM *** read in path=
-
-    12/17/2014 4:59:55 AM *** Loading BSA file path: F:/dropbox/Dropbox/Games/dosbox/drive/DAGGER/ARENA2\BLOCKS.BSA
-
-    12/17/2014 4:59:55 AM *** Loading MapsFile path: F:/dropbox/Dropbox/Games/dosbox/drive/DAGGER/ARENA2\MAPS.BSA
-
-    12/17/2014 4:59:55 AM *** Loading MonsterFile path: F:/dropbox/Dropbox/Games/dosbox/drive/DAGGER/ARENA2\MONSTER.BSA
-
-    12/17/2014 5:00:01 AM *** Exception caught when trying to open the log file. e:
-    Sharing violation on path F:\docs\unity\Project2\dfunity.log
-
-    12/17/2014 5:00:01 AM *** DFUnity version 1.1.0 started in editor
-
-
-    12/17/2014 5:00:01 AM *** Loading a new conf file reader
-
-    12/17/2014 5:00:01 AM *** read in path=
-
-    12/17/2014 5:00:01 AM *** Loading BSA file path: F:/dropbox/Dropbox/Games/dosbox/drive/DAGGER/ARENA2\BLOCKS.BSA
-
-    12/17/2014 5:00:01 AM *** Loading MapsFile path: F:/dropbox/Dropbox/Games/dosbox/drive/DAGGER/ARENA2\MAPS.BSA
-
-    12/17/2014 5:00:01 AM *** Loading MonsterFile path: F:/dropbox/Dropbox/Games/dosbox/drive/DAGGER/ARENA2\MONSTER.BSA
 
 '
 --- !u!222 &1209927337

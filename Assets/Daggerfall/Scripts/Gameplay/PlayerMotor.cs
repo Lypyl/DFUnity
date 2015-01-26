@@ -23,6 +23,7 @@ namespace Daggerfall.Gameplay {
         //Vector3 lastPlatformVelocity;
         Quaternion activeLocalPlatformRotation;
         Quaternion activeGlobalPlatformRotation;
+        
 
         public float walkSpeed = 6.0f;
 
@@ -62,6 +63,7 @@ namespace Daggerfall.Gameplay {
         Camera ccamera;
         Ray ray;
         public GameObject uiOwner;
+        public UIManager uiManager;
 
         private Vector3 moveDirection = Vector3.zero;
         private bool grounded = false;
@@ -99,7 +101,7 @@ namespace Daggerfall.Gameplay {
 
         void FixedUpdate()
         {
-            if (uiOwner.GetComponent<UIManager>().isUIOpen) return;
+            if (uiManager.isUIOpen) return;
             float inputX = Input.GetAxis("Horizontal");
             float inputY = Input.GetAxis("Vertical");
             // If both horizontal and vertical are used simultaneously, limit speed (if allowed), so the total doesn't exceed normal move speed

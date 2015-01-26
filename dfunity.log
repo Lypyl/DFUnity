@@ -7151,3 +7151,12 @@ Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Perso
 1/25/2015 7:26:55 PM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
 1/25/2015 7:26:55 PM *** DFUnity started in editor
 
+1/26/2015 5:34:30 AM *** Logging started
+1/26/2015 5:34:30 AM *** DFUnity started in editor
+
+1/26/2015 5:34:34 AM *** Logging started
+1/26/2015 5:34:34 AM *** DFUnity started in editor
+
+1/26/2015 5:34:41 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/26/2015 5:34:41 AM *** DFUnity started in editor
+

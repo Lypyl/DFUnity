@@ -11,13 +11,9 @@ using DaggerfallWorkshop.Utility;
 namespace DaggerfallWorkshop
 {
     /// <summary>
-    /// Implementation of Daggerfall's sky backgrounds.
-    /// Works in both forward and deferred rendering paths (but cannot change between them at runtime).
-    /// Forward path sets MainCamera to depth-only clear and draws sky directly into scene (uses custom texture clear for solid colour).
-    /// Deferred path uses two cameras and OnPostRender in local camera for sky drawing (uses normal camera solid colour clear).
-    /// Sets own camera depth to MainCamera.depth-1 so sky is drawn first in deferred path.
-    /// 
-    /// Single-threaded. Use this for web builds or similar where threading not available.
+    /// Implementation of Daggerfall's sky backgrounds. Works in both forward and deferred rendering paths.
+    /// Uses two cameras and OnPostRender in local camera for sky drawing (uses normal camera solid colour clear).
+    /// Sets own camera depth to MainCamera.depth-1 so sky is drawn first.
     /// 
     /// DO NOT ATTACH THIS SCRIPT TO MAINCAMERA GAMEOBJECT.
     /// Attach to an empty GameObject or use the prefab provided.
@@ -28,7 +24,7 @@ namespace DaggerfallWorkshop
         #region Fields
 
         // Maximum timescale supported by SetByWorldTime()
-        //public static float MaxTimeScale = 1000;
+        public static float MaxTimeScale = 2000;
 
         public PlayerGPS LocalPlayerGPS;                                    // Set to local PlayerGPS
         [Range(0, 31)]
@@ -39,12 +35,13 @@ namespace DaggerfallWorkshop
         public bool ShowStars = true;                                       // Draw stars onto night skies
         public Color SkyTintColor = new Color(0.5f, 0.5f, 0.5f, 1.0f);      // Modulates output texture colour
         public float SkyColorScale = 1.0f;                                  // Scales sky color brighter or darker
+        public WeatherStyle WeatherStyle = WeatherStyle.Normal;             // Style of weather for texture changes
 
         const int skyNativeWidth = 512;         // Native image width of sky image
         const int skyNativeHalfWidth = 256;     // Half native image width
         const int skyNativeHeight = 220;        // Native image height
-        const float skyScale = 1.2f;            // Scale of sky image relative to display area
-        const float skyHorizon = 0.30f;         // Higher the value lower the horizon
+        const float skyScale = 1.3f;            // Scale of sky image relative to display area
+        const float skyHorizon = 0.20f;         // Higher the value lower the horizon
 
         DaggerfallUnity dfUnity;
         public SkyFile skyFile;
@@ -53,7 +50,6 @@ namespace DaggerfallWorkshop
         Camera myCamera;
         Texture2D westTexture;
         Texture2D eastTexture;
-        Texture2D clearTexture;
         Color cameraClearColor;
         Rect fullTextureRect = new Rect(0, 0, 1, 1);
         int lastSkyIndex = -1;
@@ -71,7 +67,6 @@ namespace DaggerfallWorkshop
         {
             public Color32[] west;
             public Color32[] east;
-            public Color32[] clear;
             public Color clearColor;
         }
 
@@ -170,23 +165,12 @@ namespace DaggerfallWorkshop
                 lastSkyFrame = SkyFrame;
                 lastNightFlag = IsNight;
             }
-
-            // Forward paths are drawn here
-            if (myCamera.renderingPath != RenderingPath.DeferredLighting)
-            {
-                UpdateSkyRects();
-                DrawSky(false);
-            }
         }
 
         void OnPostRender()
         {
-            // Deferred path is drawn here
-            if (myCamera.renderingPath == RenderingPath.DeferredLighting)
-            {
-                UpdateSkyRects();
-                DrawSky(true);
-            }
+            UpdateSkyRects();
+            DrawSky();
         }
 
         #region Private Methods
@@ -257,29 +241,13 @@ namespace DaggerfallWorkshop
             eastRect = new Rect(eastOffset + scrollX, scrollY, width, height);
         }
 
-        private void DrawSky(bool deferred)
+        private void DrawSky()
         {
             if (!westTexture || !eastTexture)
                 return;
 
             GL.PushMatrix();
             GL.LoadPixelMatrix(0, Screen.width, Screen.height, 0);
-
-            // Clear display
-            if (deferred)
-            {
-                // My camera just clears to solid colour in deferred mode
-                // Reproduces tinting and scaling for clear colour
-                myCamera.backgroundColor = ((cameraClearColor * SkyTintColor) * 2f) * SkyColorScale;
-            }
-            else
-            {
-                // Custom clear in forward mode using fullscreen texture
-                Color finalColor = SkyTintColor * SkyColorScale;
-                finalColor.a = 1f;
-                Rect screenRect = new Rect(0, 0, Screen.width, Screen.height);
-                Graphics.DrawTexture(screenRect, clearTexture, fullTextureRect, 0, 0, 0, 0, finalColor, null);
-            }
 
             // Draw sky hemispheres
             Graphics.DrawTexture(westRect, westTexture, fullTextureRect, 0, 0, 0, 0, SkyTintColor * SkyColorScale, null);
@@ -294,7 +262,6 @@ namespace DaggerfallWorkshop
             const int dayHeight = 220;
             const int nightWidth = 512;
             const int nightHeight = 219;
-            const int clearDim = 16;
 
             // Destroy old textures
             Destroy(westTexture);
@@ -311,7 +278,6 @@ namespace DaggerfallWorkshop
                 westTexture = new Texture2D(nightWidth, nightHeight, TextureFormat.RGB24, false);
                 eastTexture = new Texture2D(nightWidth, nightHeight, TextureFormat.RGB24, false);
             }
-            clearTexture = new Texture2D(clearDim, clearDim, TextureFormat.RGB24, false);
 
             // Set pixels, flipping hemisphere if required
             if (!flip)
@@ -341,13 +307,12 @@ namespace DaggerfallWorkshop
             }
 
             // Apply changes
-            clearTexture.SetPixels32(colors.clear);
             westTexture.Apply(false, true);
             eastTexture.Apply(false, true);
-            clearTexture.Apply(false, true);
 
             // Set camera clear colour
             cameraClearColor = colors.clearColor;
+            myCamera.backgroundColor = ((cameraClearColor * SkyTintColor) * 2f) * SkyColorScale;
 
             // Assign colour to fog
             UnityEngine.RenderSettings.fogColor = cameraClearColor;
@@ -356,12 +321,29 @@ namespace DaggerfallWorkshop
         private void ApplyTimeAndSpace()
         {
             // Do nothing if timescale too fast or we'll be thrashing texture loads
-            //if (dfUnity.WorldTime.TimeScale > MaxTimeScale)
-            //    return;
+            if (dfUnity.WorldTime.TimeScale > MaxTimeScale)
+                return;
 
-            // Adjust sky index for climate and season
-            // Season value enum ordered same as sky indices
-            SkyIndex = LocalPlayerGPS.ClimateSettings.SkyBase + (int)dfUnity.WorldTime.SeasonValue;
+            // Set sky index by climate, season, and weather
+            switch (WeatherStyle)
+            {
+                case DaggerfallWorkshop.WeatherStyle.Rain1:
+                    SkyIndex = LocalPlayerGPS.ClimateSettings.SkyBase + (int)WeatherStyle.Rain1;
+                    break;
+                case DaggerfallWorkshop.WeatherStyle.Rain2:
+                    SkyIndex = LocalPlayerGPS.ClimateSettings.SkyBase + (int)WeatherStyle.Rain2;
+                    break;
+                case DaggerfallWorkshop.WeatherStyle.Snow1:
+                    SkyIndex = LocalPlayerGPS.ClimateSettings.SkyBase + (int)WeatherStyle.Snow1;
+                    break;
+                case DaggerfallWorkshop.WeatherStyle.Snow2:
+                    SkyIndex = LocalPlayerGPS.ClimateSettings.SkyBase + (int)WeatherStyle.Snow2;
+                    break;
+                default:
+                    // Season value enum ordered same as sky indices
+                    SkyIndex = LocalPlayerGPS.ClimateSettings.SkyBase + (int)dfUnity.WorldTime.SeasonValue;
+                    break;
+            }
 
             // Set night flag
             IsNight = dfUnity.WorldTime.IsNight;
@@ -396,7 +378,6 @@ namespace DaggerfallWorkshop
             skyColors.east = skyFile.GetColors32(0, frame);
             skyColors.west = skyFile.GetColors32(1, frame);
             skyColors.clearColor = skyColors.west[0];
-            skyColors.clear = CreateClearColors(skyColors.clearColor);
         }
 
         private void LoadNightSky()
@@ -450,22 +431,6 @@ namespace DaggerfallWorkshop
             skyColors.west = colors;
             skyColors.east = colors;
             skyColors.clearColor = skyColors.west[0];
-            skyColors.clear = CreateClearColors(skyColors.clearColor);
-        }
-
-        private Color32[] CreateClearColors(Color clearColor)
-        {
-            const int dim = 16;
-
-            // Create clear colour array for small clear texture
-            // Used to clear sky background in forward rendering
-            Color32[] clearColors = new Color32[dim * dim];
-            for (int i = 0; i < clearColors.Length; i++)
-            {
-                clearColors[i] = clearColor;
-            }
-
-            return clearColors;
         }
 
         private void SetupCameras()
@@ -474,20 +439,11 @@ namespace DaggerfallWorkshop
             if (!mainCamera || !myCamera)
                 return;
 
-            myCamera.renderingPath = mainCamera.renderingPath;
-            if (myCamera.renderingPath == RenderingPath.DeferredLighting)
-            {
-                myCamera.enabled = true;
-                myCamera.depth = mainCamera.depth - 1;
-                myCamera.cullingMask = 0;
-                myCamera.clearFlags = CameraClearFlags.SolidColor;
-                mainCamera.clearFlags = CameraClearFlags.Nothing;
-            }
-            else
-            {
-                myCamera.enabled = false;
-                mainCamera.clearFlags = CameraClearFlags.Depth;
-            }
+            myCamera.enabled = true;
+            myCamera.depth = mainCamera.depth - 1;
+            myCamera.cullingMask = 0;
+            myCamera.clearFlags = CameraClearFlags.SolidColor;
+            mainCamera.clearFlags = CameraClearFlags.Nothing;
         }
 
         private bool ReadyCheck()

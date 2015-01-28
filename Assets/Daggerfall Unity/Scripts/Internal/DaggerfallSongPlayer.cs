@@ -97,6 +97,10 @@ namespace DaggerfallWorkshop
             Play(Song.ToString());
         }
 
+        public void SetSong(string enumName)
+        {
+        }
+
         /// <summary>
         /// Play current song.
         /// </summary>

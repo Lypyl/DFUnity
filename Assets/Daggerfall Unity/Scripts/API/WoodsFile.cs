@@ -215,12 +215,21 @@ namespace DaggerfallConnect.Arena2
 
         /// <summary>
         /// Gets value for specified position in heightmap.
+        /// Clamps range to ensure not outside array bounds.
         /// </summary>
         /// <param name="mapPixelX">X position in heightmap. 0 to MapWidth-1.</param>
         /// <param name="mapPixelY">Y position in heightmap. 0 to MapHeight-1.</param>
         /// <returns>Value of heightmap data.</returns>
         public Byte GetHeightMapValue(int mapPixelX, int mapPixelY)
         {
+            // Clamp X
+            if (mapPixelX < 0) mapPixelX = 0;
+            if (mapPixelX >= MapWidth - 1) mapPixelX = MapWidth - 1;
+
+            // Clamp Y
+            if (mapPixelY < 0) mapPixelY = 0;
+            if (mapPixelY >= MapHeight - 1) mapPixelY = MapHeight - 1;
+
             return Buffer[(mapPixelY * mapWidthValue) + mapPixelX];
         }
 
@@ -254,6 +263,14 @@ namespace DaggerfallConnect.Arena2
         /// <returns>5x5 grid of map data.</returns>
         public Byte[,] GetLargeMapData(int mapPixelX, int mapPixelY)
         {
+            // Clamp X
+            if (mapPixelX < 0) mapPixelX = 0;
+            if (mapPixelX >= MapWidth - 1) mapPixelX = MapWidth - 1;
+
+            // Clamp Y
+            if (mapPixelY < 0) mapPixelY = 0;
+            if (mapPixelY >= MapHeight - 1) mapPixelY = MapHeight - 1;
+
             // Offset directly to this pixel data
             BinaryReader reader = managedFile.GetReader();
             reader.BaseStream.Position = dataOffsets[mapPixelY * mapWidthValue + mapPixelX] + 22;

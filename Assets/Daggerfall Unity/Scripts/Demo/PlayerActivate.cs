@@ -62,13 +62,13 @@ namespace DaggerfallWorkshop.Demo
                             StaticDoor door;
                             if (doors.HasHit(hits[i].point, out door))
                             {
-                                if (door.doorType == DoorTypes.Building && !playerEnterExit.PlayerInside)
+                                if (door.doorType == DoorTypes.Building && !playerEnterExit.IsPlayerInside)
                                 {
                                     // Hit door while outside, transition inside
                                     playerEnterExit.TransitionInterior(doorOwner, door);
                                     return;
                                 }
-                                else if (door.doorType == DoorTypes.Building && playerEnterExit.PlayerInside)
+                                else if (door.doorType == DoorTypes.Building && playerEnterExit.IsPlayerInside)
                                 {
                                     // Hit door while inside, transition outside
                                     playerEnterExit.TransitionExterior();

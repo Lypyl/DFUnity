@@ -18,7 +18,7 @@ namespace DaggerfallWorkshop
     [RequireComponent(typeof(MeshRenderer))]
     public class DaggerfallBillboard : MonoBehaviour
     {
-        public int FramesPerSecond = 8;     // General FPS
+        public int FramesPerSecond = 5;     // General FPS
         public bool OneShot = false;        // Plays animation once then destroys GameObject
 
         [SerializeField]
@@ -31,7 +31,7 @@ namespace DaggerfallWorkshop
 
         // Just using a simple animation speed for simple billboard anims
         // You can adjust this or extend as needed
-        const int animalFps = 8;
+        const int animalFps = 5;
         const int lightFps = 12;
 
         public BillboardSummary Summary
@@ -139,9 +139,8 @@ namespace DaggerfallWorkshop
         }
 
         /// <summary>
-        /// Sets extended data about billboard from flat resource.
+        /// Sets extended data about billboard from RDB flat resource data.
         /// </summary>
-        /// <param name="resource"></param>
         public void SetResourceData(DFBlock.RdbFlatResource resource)
         {
             // Fixed mobile types
@@ -234,6 +233,10 @@ namespace DaggerfallWorkshop
             summary.Archive = archive;
             summary.Record = record;
             summary.Size = size;
+
+            // Set editor flat types
+            if (summary.FlatType == FlatTypes.Editor)
+                summary.EditorFlatType = MaterialReader.GetEditorFlatType(summary.Record);
 
             // Assign mesh and material
             MeshFilter meshFilter = GetComponent<MeshFilter>();

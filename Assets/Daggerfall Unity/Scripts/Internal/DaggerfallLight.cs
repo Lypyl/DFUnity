@@ -26,11 +26,29 @@ namespace DaggerfallWorkshop
         float startRange;
         float targetRange;
         bool stepping;
+        bool restartAnims;
 
         void Start()
         {
-            if (light != null)
+            // Start animation coroutine
+            if (light != null && Animate)
                 StartCoroutine(AnimateLight());
+        }
+
+        void OnDisable()
+        {
+            restartAnims = true;
+        }
+
+        void OnEnable()
+        {
+            // Restart animation coroutine if not running
+            if (restartAnims)
+            {
+                if (light != null && Animate)
+                    StartCoroutine(AnimateLight());
+                restartAnims = false;
+            }
         }
 
         void Update()

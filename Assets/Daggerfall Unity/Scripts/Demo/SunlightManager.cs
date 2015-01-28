@@ -71,6 +71,12 @@ namespace DaggerfallWorkshop.Demo
                 else
                     scale = 1f - ((lerp - 0.5f) * 2f);
 
+                // Winter is less bright than summer
+                if (dfUnity.WorldTime.SeasonValue == WorldTime.Seasons.Winter)
+                {
+                    scale *= 0.65f;
+                }
+
                 //float scale = (lerp < 0.5f) ? lerp * 2f :  -lerp * 2f;
                 SetLightIntensity(scale);
             }

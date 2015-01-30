@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 
 namespace DaggerfallWorkshop.Demo
@@ -58,6 +59,8 @@ namespace DaggerfallWorkshop.Demo
         Camera ccamera;
         Ray ray;
 
+        [HideInInspector, NonSerialized]
+        public CharacterController controller;
 
         private Vector3 moveDirection = Vector3.zero;
         private bool grounded = false;
@@ -260,26 +263,24 @@ namespace DaggerfallWorkshop.Demo
         }
 
         // Reset moving platform logic to new player position
-        // Use when player has been teleported
-        public void ResyncPlatformLogic()
+        public void ClearActivePlatform()
         {
-            if (activePlatform != null)
-            {
-                activeGlobalPlatformPoint = transform.position;
-                activeLocalPlatformPoint = activePlatform.InverseTransformPoint(transform.position);
-            }
+            activePlatform = null;
         }
 
-        // Snap player to above ground
-        public void FixStanding()
+        // Snap player to ground
+        public bool FixStanding(float extraHeight = 0, float extraDistance = 0)
         {
             RaycastHit hit;
-            Ray ray = new Ray(transform.position, Vector3.down);
-            if (Physics.Raycast(ray, out hit, controller.height * 2))
+            Ray ray = new Ray(transform.position + (Vector3.up * extraHeight), Vector3.down);
+            if (Physics.Raycast(ray, out hit, (controller.height * 2) + extraHeight + extraDistance))
             {
                 // Position player at hit position plus just over half controller height up
                 transform.position = hit.point + Vector3.up * (controller.height * 0.6f);
+                return true;
             }
+
+            return false;
         }
 
         void Update()

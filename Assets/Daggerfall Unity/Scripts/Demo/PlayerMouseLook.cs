@@ -24,6 +24,7 @@ namespace DaggerfallWorkshop.Demo
         public Vector2 smoothing = new Vector2(3, 3);
         public Vector2 targetDirection;
         public Vector2 targetCharacterDirection;
+        public bool enableMouseLook = true;
 
         // Assign this if there's a parent object controlling motion, such as a Character Controller.
         // Yaw rotation will affect this object instead of the camera if set.
@@ -51,6 +52,16 @@ namespace DaggerfallWorkshop.Demo
 #else
             Screen.lockCursor = lockCursor;
 #endif
+
+            // Enable/disable mouse look when capturing/uncapturing mouse
+            // Thanks LypyL!
+            if (Input.GetKeyDown(KeyCode.Escape))
+                enableMouseLook = !enableMouseLook;
+            if (!enableMouseLook && Input.GetMouseButtonDown(0) || !enableMouseLook && Input.GetMouseButtonDown(1))
+                enableMouseLook = true;
+
+            if (!enableMouseLook)
+                return;
 
             // Suppress mouse look if fire2 is down
             // This means the player is swinging weapon

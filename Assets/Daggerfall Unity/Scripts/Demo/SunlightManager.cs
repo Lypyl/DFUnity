@@ -66,12 +66,17 @@ namespace DaggerfallWorkshop.Demo
                 light.transform.rotation = Quaternion.Euler(xrot, Angle, 0);
 
                 // Set light intensity
-
                 float scale;
                 if (lerp < 0.5f)
                     scale = lerp * 2f;
                 else
                     scale = 1f - ((lerp - 0.5f) * 2f);
+
+                // Winter is less bright than summer
+                if (dfUnity.WorldTime.SeasonValue == WorldTime.Seasons.Winter)
+                {
+                    scale *= 0.65f;
+                }
 
                 //float scale = (lerp < 0.5f) ? lerp * 2f :  -lerp * 2f;
                 SetLightIntensity(scale);
@@ -82,24 +87,17 @@ namespace DaggerfallWorkshop.Demo
 
         private bool ReadyCheck()
         {
+            if (!dfUnity)
+                dfUnity = DaggerfallUnity.Instance;
+
             // Must have a light component
             if (!light)
                 return false;
 
-            // Ensure we have a DaggerfallUnity reference
-            if (dfUnity == null)
-            {
-                if (!DaggerfallUnity.FindDaggerfallUnity(out dfUnity))
-                {
-                    DaggerfallUnity.LogMessage("SunlightAngle: Could not get DaggerfallUnity component.");
-                    return false;
-                }
-            }
-
             // Do nothing if DaggerfallUnity not ready
             if (!dfUnity.IsReady)
             {
-                DaggerfallUnity.LogMessage("SunlightAngle: DaggerfallUnity component is not ready. Have you set your Arena2 path?");
+                DaggerfallUnity.LogMessage("SunlightManager: DaggerfallUnity component is not ready. Have you set your Arena2 path?");
                 return false;
             }
 

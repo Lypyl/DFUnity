@@ -26,11 +26,29 @@ namespace DaggerfallWorkshop
         float startRange;
         float targetRange;
         bool stepping;
+        bool restartAnims;
 
         void Start()
         {
-            if (light != null)
+            // Start animation coroutine
+            if (light != null && Animate)
                 StartCoroutine(AnimateLight());
+        }
+
+        void OnDisable()
+        {
+            restartAnims = true;
+        }
+
+        void OnEnable()
+        {
+            // Restart animation coroutine if not running
+            if (restartAnims)
+            {
+                if (light != null && Animate)
+                    StartCoroutine(AnimateLight());
+                restartAnims = false;
+            }
         }
 
         void Update()
@@ -93,11 +111,7 @@ namespace DaggerfallWorkshop
             // Ensure we have a DaggerfallUnity reference
             if (dfUnity == null)
             {
-                if (!DaggerfallUnity.FindDaggerfallUnity(out dfUnity))
-                {
-                    DaggerfallUnity.LogMessage("DaggerfallLight: Could not get DaggerfallUnity component.");
-                    return false;
-                }
+                dfUnity = DaggerfallUnity.Instance;
 
                 // Force first update to set lights
                 lastCityLightsFlag = !dfUnity.WorldTime.CityLightsOn;

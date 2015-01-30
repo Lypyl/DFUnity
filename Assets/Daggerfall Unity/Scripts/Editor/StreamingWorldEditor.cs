@@ -79,6 +79,7 @@ namespace DaggerfallWorkshop
                     EditorUtility.SetDirty(streamingWorld.LocalPlayerGPS);
                 }
             });
+
             //if (GUILayout.Button("Refresh Preview"))
             //{
             //    streamingWorld.__EditorRefreshPreview();

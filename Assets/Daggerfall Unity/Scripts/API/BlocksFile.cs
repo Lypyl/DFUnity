@@ -1131,7 +1131,11 @@ namespace DaggerfallConnect.Arena2
             rdbObject.Resources.FlatResource.TextureRecord = rdbObject.Resources.FlatResource.TextureBitfield & 0x7f;
             rdbObject.Resources.FlatResource.Gender = (DFBlock.RdbFlatGenders)reader.ReadUInt16();
             rdbObject.Resources.FlatResource.FactionMobileId = reader.ReadUInt16();
-            rdbObject.Resources.FlatResource.Unknown1 = reader.ReadBytes(5);
+            rdbObject.Resources.FlatResource.FlatData.Unknown1 = reader.ReadByte();
+            rdbObject.Resources.FlatResource.FlatData.Unknown2 = reader.ReadByte();
+            rdbObject.Resources.FlatResource.FlatData.Unknown3 = reader.ReadByte();
+            rdbObject.Resources.FlatResource.FlatData.Unknown4 = reader.ReadByte();
+            rdbObject.Resources.FlatResource.FlatData.Reaction = reader.ReadByte();
         }
 
         private void ReadRdbLightResource(BinaryReader reader, ref DFBlock.RdbObject rdbObject)

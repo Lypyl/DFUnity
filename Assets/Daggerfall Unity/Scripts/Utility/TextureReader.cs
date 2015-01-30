@@ -347,6 +347,14 @@ namespace DaggerfallWorkshop.Utility
             return atlas;
         }
 
+#if UNITY_EDITOR && !UNITY_WEBPLAYER
+        public void SaveTextureToPNG(Texture2D source, string path)
+        {
+            byte[] bytes = source.EncodeToPNG();
+            File.WriteAllBytes(path, bytes);
+        }
+#endif
+
         #region Private Methods
 
         private bool ReadyCheck()

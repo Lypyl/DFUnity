@@ -10,7 +10,6 @@ using DaggerfallConnect;
 using DaggerfallConnect.Arena2;
 using DaggerfallConnect.Utility;
 using DaggerfallWorkshop.Utility;
-using Daggerfall;
 
 namespace DaggerfallWorkshop
 {
@@ -27,13 +26,11 @@ namespace DaggerfallWorkshop
     public class DaggerfallUnity : MonoBehaviour
     {
         [NonSerialized]
-        public const string Version = "1.2.10";
+        public const string Version = "1.2.25";
 
         #region Fields
 
         bool isReady = false;
-        DaggerfallUnity instance;
-        Dictionary<int, MobileEnemy> enemyDict;
         ContentReader reader;
 
         WorldTime worldTime;
@@ -66,8 +63,8 @@ namespace DaggerfallWorkshop
         public bool Option_CloseCityGates = false;
 
         // Light options
-        public bool Option_ImportPointLights = false;
-        public bool Option_AnimatedPointLights = false;
+        public bool Option_ImportPointLights = true;
+        public bool Option_AnimatedPointLights = true;
         public string Option_PointLightTag = "Untagged";
 #if UNITY_EDITOR
         public MonoScript Option_CustomPointLightScript = null;
@@ -79,7 +76,7 @@ namespace DaggerfallWorkshop
         public bool Option_EnemyRigidbody = false;
         public bool Option_EnemyCapsuleCollider = false;
         public bool Option_EnemyNavMeshAgent = false;
-        public bool Option_EnemyExampleAI = false;
+        public bool Option_EnemyExampleAI = true;
         public string Option_EnemyTag = "Untagged";
         public float Option_EnemyRadius = 0.4f;
         public float Option_EnemySlopeLimit = 80f;
@@ -142,9 +139,34 @@ namespace DaggerfallWorkshop
             }
         }
 
-        public Dictionary<int, MobileEnemy> EnemyDict
+        #endregion
+
+        #region Singleton
+
+        static DaggerfallUnity instance = null;
+        public static DaggerfallUnity Instance
         {
-            get { return enemyDict; }
+            get
+            {
+                if (instance == null)
+                {
+                    if (!FindDaggerfallUnity(out instance))
+                    {
+                        GameObject go = new GameObject();
+                        go.name = "DaggerfallUnity";
+                        instance = go.AddComponent<DaggerfallUnity>();
+                    }
+                }
+                return instance;
+            }
+        }
+
+        public static bool HasInstance
+        {
+            get
+            {
+                return (instance != null);
+            }
         }
 
         #endregion
@@ -188,6 +210,9 @@ namespace DaggerfallWorkshop
                 Logger.GetInstance().log("DFUnity started in editor\n");
                 if (!Application.isPlaying)
                 {
+                    // Attempt to autoload path
+                    LoadDeveloperArena2Path();
+
                     // Must have a path set
                     if (string.IsNullOrEmpty(Arena2Path))
                         return false;
@@ -257,8 +282,27 @@ namespace DaggerfallWorkshop
             {
                 if (reader == null)
                     reader = new ContentReader(Arena2Path, this);
-                if (enemyDict == null)
-                    enemyDict = EnemyBasics.GetEnemyDict();
+            }
+        }
+
+        private void LoadDeveloperArena2Path()
+        {
+            const string devArena2Path = "devArena2Path";
+
+            // Do nothing if path already set
+            if (!string.IsNullOrEmpty(Arena2Path))
+                return;
+
+            // Attempt to load persistent dev path from Resources
+            TextAsset path = Resources.Load<TextAsset>(devArena2Path);
+            if (path)
+            {
+                if (Directory.Exists(path.text))
+                {
+                    // If it looks valid set this is as our path
+                    if (ValidateArena2Path(path.text))
+                        Arena2Path = path.text;
+                }
             }
         }
 
@@ -285,16 +329,16 @@ namespace DaggerfallWorkshop
 
         #endregion
 
-        #region Editor Asset Export
-#if UNITY_EDITOR
-        public void ExportTerrainTextureAtlases()
-        {
-            if (MaterialReader.IsReady)
-            {
-                TerrainAtlasBuilder.ExportTerrainAtlasTextureResources(materialReader.TextureReader, Option_MyResourcesFolder, Option_TerrainAtlasesSubFolder);
-            }
-        }
-#endif
-        #endregion
+//        #region Editor Asset Export
+//#if UNITY_EDITOR && !UNITY_WEBPLAYER
+//        public void ExportTerrainTextureAtlases()
+//        {
+//            if (MaterialReader.IsReady)
+//            {
+//                TerrainAtlasBuilder.ExportTerrainAtlasTextureResources(materialReader.TextureReader, Option_MyResourcesFolder, Option_TerrainAtlasesSubFolder);
+//            }
+//        }
+//#endif
+//        #endregion
     }
 }

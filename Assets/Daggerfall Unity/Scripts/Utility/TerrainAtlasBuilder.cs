@@ -62,7 +62,7 @@ namespace DaggerfallWorkshop.Utility
 
         #region Editor Methods
 
-#if UNITY_EDITOR
+#if UNITY_EDITOR && !UNITY_WEBPLAYER
         /// <summary>
         /// Exports terrain atlas textures to Resources folder.
         /// </summary>

@@ -4,6 +4,7 @@ using UnityEditor;
 #endif
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using DaggerfallConnect;
 using DaggerfallConnect.Utility;
@@ -34,9 +35,22 @@ namespace DaggerfallWorkshop
         WorldTime.Seasons lastSeason;
         bool lastCityLightsFlag;
 
+        // Start markers
+        [SerializeField]
+        List<GameObject> startMarkers = new List<GameObject>();
+
         public LocationSummary Summary
         {
             get { return summary; }
+        }
+
+        public GameObject[] StartMarkers
+        {
+            get
+            {
+                if (startMarkers.Count == 0) EnumerateStartMarkers();
+                return startMarkers.ToArray();
+            }
         }
 
         [Serializable]
@@ -227,6 +241,23 @@ namespace DaggerfallWorkshop
             }
         }
 
+        /// <summary>
+        /// Rebuild start markers.
+        /// </summary>
+        public void EnumerateStartMarkers()
+        {
+            // Process all DaggerfallBillboard child components
+            DaggerfallBillboard[] billboardArray = GetComponentsInChildren<DaggerfallBillboard>();
+            startMarkers.Clear();
+            foreach (var db in billboardArray)
+            {
+                if (db.Summary.FlatType == FlatTypes.Editor && db.Summary.EditorFlatType == EditorFlatTypes.Start)
+                {
+                    startMarkers.Add(db.gameObject);
+                }
+            }
+        }
+
         #region Private Methods
 
         private void LayoutLocation(ref DFLocation location)
@@ -246,6 +277,9 @@ namespace DaggerfallWorkshop
                     go.transform.position = new Vector3((x * RMBLayout.RMBSide), 0, (y * RMBLayout.RMBSide));
                 }
             }
+
+            // Enumerate start marker game objects
+            EnumerateStartMarkers();
         }
 
         private bool ReadyCheck()
@@ -253,11 +287,7 @@ namespace DaggerfallWorkshop
             // Ensure we have a DaggerfallUnity reference
             if (dfUnity == null)
             {
-                if (!DaggerfallUnity.FindDaggerfallUnity(out dfUnity))
-                {
-                    DaggerfallUnity.LogMessage("DaggerfallLocation: Could not get DaggerfallUnity component.");
-                    return false;
-                }
+                dfUnity = DaggerfallUnity.Instance;
             }
 
             // Do nothing if DaggerfallUnity not ready

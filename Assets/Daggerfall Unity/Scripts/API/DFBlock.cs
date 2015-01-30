@@ -102,6 +102,15 @@ namespace DaggerfallConnect
             Start,
         }
 
+        public enum EnemyReactionTypes
+        {
+            /// <summary>Enemy will attack player on sight.</summary>
+            Hostile = 0,
+
+            /// <summary>Enemy will only attack when provoked (e.g. guards in castles).</summary>
+            Passive = 99,
+        }
+
         #endregion
 
         #region RMB Structures
@@ -865,8 +874,22 @@ namespace DaggerfallConnect
             /// </summary>
             public UInt16 FactionMobileId;
 
-            /// <summary>Internal.</summary>
-            internal Byte[] Unknown1;
+            /// <summary>Further data about this flat resource.</summary>
+            public RdbFlatData FlatData;
+        }
+
+        /// <summary>
+        /// Mostly unknown data about an RDB flat resource.
+        /// </summary>
+        public struct RdbFlatData
+        {
+            public Byte Unknown1;
+            public Byte Unknown2;
+            public Byte Unknown3;
+            public Byte Unknown4;
+
+            /// <summary>0 = Hostile, 99 = Passive (e.g. guards in castles).</summary>
+            public Byte Reaction;
         }
 
         /// <summary>

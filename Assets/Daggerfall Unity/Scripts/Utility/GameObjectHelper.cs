@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using DaggerfallConnect;
 using DaggerfallConnect.Arena2;
 using Daggerfall.Gameplay.Mobs;
@@ -11,8 +12,12 @@ namespace DaggerfallWorkshop.Utility
     /// </summary>
     public static class GameObjectHelper
     {
-        public static void AssignAnimateTextureComponent(DaggerfallUnity dfUnity, CachedMaterial[] cachedMaterials, GameObject go)
+        static Dictionary<int, MobileEnemy> enemyDict;
+
+        public static void AssignAnimateTextureComponent(CachedMaterial[] cachedMaterials, GameObject go)
         {
+            DaggerfallUnity dfUnity = DaggerfallUnity.Instance;
+
             // Look for any animated textures in this material set
             for (int i = 0; i < cachedMaterials.Length; i++)
             {
@@ -52,11 +57,12 @@ namespace DaggerfallWorkshop.Utility
         }
 
         public static GameObject CreateDaggerfallMeshGameObject(
-            DaggerfallUnity dfUnity,
             uint modelID,
             Transform parent,
             bool makeStatic = false)
         {
+            DaggerfallUnity dfUnity = DaggerfallUnity.Instance;
+
             // Create gameobject
             GameObject go = new GameObject(string.Format("DaggerfallMesh [ID={0}]", modelID));
             if (parent)
@@ -82,7 +88,7 @@ namespace DaggerfallWorkshop.Utility
 
             // Assign animated materials component if required
             if (hasAnimations)
-                AssignAnimateTextureComponent(dfUnity, cachedMaterials, go);
+                AssignAnimateTextureComponent(cachedMaterials, go);
 
             // Assign mesh and materials
             if (mesh)
@@ -107,12 +113,13 @@ namespace DaggerfallWorkshop.Utility
         }
 
         public static GameObject CreateCombinedMeshGameObject(
-            DaggerfallUnity dfUnity,
             ModelCombiner combiner,
             string meshName,
             Transform parent,
             bool makeStatic = false)
         {
+            DaggerfallUnity dfUnity = DaggerfallUnity.Instance;
+
             // Create gameobject
             GameObject go = new GameObject(meshName);
             if (parent)
@@ -138,7 +145,7 @@ namespace DaggerfallWorkshop.Utility
 
             // Assign animated materials component if required
             if (hasAnimations)
-                AssignAnimateTextureComponent(dfUnity, cachedMaterials, go);
+                AssignAnimateTextureComponent(cachedMaterials, go);
 
             // Assign mesh and materials array
             if (mesh)
@@ -162,8 +169,10 @@ namespace DaggerfallWorkshop.Utility
             return go;
         }
 
-        public static GameObject CreateDaggerfallBillboardGameObject(DaggerfallUnity dfUnity, int archive, int record, Transform parent, bool dungeon = false)
+        public static GameObject CreateDaggerfallBillboardGameObject(int archive, int record, Transform parent, bool dungeon = false)
         {
+            DaggerfallUnity dfUnity = DaggerfallUnity.Instance;
+
             GameObject go = new GameObject(string.Format("DaggerfallBillboard [TEXTURE.{0:000}, Index={1}]", archive, record));
             if (parent) go.transform.parent = parent;
 
@@ -185,8 +194,10 @@ namespace DaggerfallWorkshop.Utility
             go.transform.position = new Vector3(hit.point.x, hit.point.y + size.y * 0.52f, hit.point.z);
         }
 
-        public static GameObject CreateDaggerfallRMBPointLight(DaggerfallUnity dfUnity, Transform parent)
+        public static GameObject CreateDaggerfallRMBPointLight(Transform parent)
         {
+            DaggerfallUnity dfUnity = DaggerfallUnity.Instance;
+
             GameObject go = new GameObject("DaggerfallLight [RMB]");
             if (parent) go.transform.parent = parent;
             go.tag = dfUnity.Option_PointLightTag;
@@ -202,8 +213,10 @@ namespace DaggerfallWorkshop.Utility
             return go;
         }
 
-        public static GameObject CreateDaggerfallRDBPointLight(DaggerfallUnity dfUnity, float range, Transform parent)
+        public static GameObject CreateDaggerfallRDBPointLight(float range, Transform parent)
         {
+            DaggerfallUnity dfUnity = DaggerfallUnity.Instance;
+
             GameObject go = new GameObject("DaggerfallLight [RDB]");
             if (parent) go.transform.parent = parent;
             go.tag = dfUnity.Option_PointLightTag;
@@ -219,8 +232,10 @@ namespace DaggerfallWorkshop.Utility
             return go;
         }
 
-        public static GameObject CreateDaggerfallInteriorPointLight(DaggerfallUnity dfUnity, float range, Transform parent)
+        public static GameObject CreateDaggerfallInteriorPointLight(float range, Transform parent)
         {
+            DaggerfallUnity dfUnity = DaggerfallUnity.Instance;
+
             GameObject go = new GameObject("DaggerfallLight [Interior]");
             if (parent) go.transform.parent = parent;
             go.tag = dfUnity.Option_PointLightTag;
@@ -346,8 +361,10 @@ namespace DaggerfallWorkshop.Utility
             return enemyPrefab;
         }
 
-        public static GameObject CreateDaggerfallBlockGameObject(DaggerfallUnity dfUnity, string blockName, Transform parent)
+        public static GameObject CreateDaggerfallBlockGameObject(string blockName, Transform parent)
         {
+            DaggerfallUnity dfUnity = DaggerfallUnity.Instance;
+
             if (string.IsNullOrEmpty(blockName))
                 return null;
 
@@ -365,8 +382,10 @@ namespace DaggerfallWorkshop.Utility
             return go;
         }
 
-        public static bool FindMultiNameLocation(DaggerfallUnity dfUnity, string multiName, out DFLocation locationOut)
+        public static bool FindMultiNameLocation(string multiName, out DFLocation locationOut)
         {
+            DaggerfallUnity dfUnity = DaggerfallUnity.Instance;
+
             locationOut = new DFLocation();
 
             if (string.IsNullOrEmpty(multiName))
@@ -387,11 +406,11 @@ namespace DaggerfallWorkshop.Utility
             return true;
         }
 
-        public static GameObject CreateDaggerfallLocationGameObject(DaggerfallUnity dfUnity, string multiName, Transform parent)
+        public static GameObject CreateDaggerfallLocationGameObject(string multiName, Transform parent)
         {
             // Get city
             DFLocation location;
-            if (!FindMultiNameLocation(dfUnity, multiName, out location))
+            if (!FindMultiNameLocation(multiName, out location))
                 return null;
 
             GameObject go = new GameObject(string.Format("DaggerfallLocation [Region={0}, Name={1}]", location.RegionName, location.Name));
@@ -402,11 +421,11 @@ namespace DaggerfallWorkshop.Utility
             return go;
         }
 
-        public static GameObject CreateDaggerfallDungeonGameObject(DaggerfallUnity dfUnity, string multiName, Transform parent)
+        public static GameObject CreateDaggerfallDungeonGameObject(string multiName, Transform parent)
         {
             // Get dungeon
             DFLocation location;
-            if (!FindMultiNameLocation(dfUnity, multiName, out location))
+            if (!FindMultiNameLocation(multiName, out location))
                 return null;
 
             if (!location.HasDungeon)

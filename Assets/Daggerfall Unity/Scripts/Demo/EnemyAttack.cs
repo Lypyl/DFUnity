@@ -12,6 +12,7 @@ namespace DaggerfallWorkshop.Demo
         public float MeleeAttackSpeed = 1.0f;       // Number of seconds between melee attacks
         public float MeleeDistance = 2.5f;          // Maximum distance for melee attack
 
+        EnemyMotor motor;
         EnemySenses senses;
         EnemySounds sounds;
         DaggerfallMobileUnit mobile;
@@ -20,6 +21,7 @@ namespace DaggerfallWorkshop.Demo
 
         void Start()
         {
+            motor = GetComponent<EnemyMotor>();
             senses = GetComponent<EnemySenses>();
             sounds = GetComponent<EnemySounds>();
             mobile = GetComponentInChildren<DaggerfallMobileUnit>();
@@ -60,6 +62,10 @@ namespace DaggerfallWorkshop.Demo
             // Are we in range and facing player? Then start attack.
             if (senses.DistanceToPlayer < MeleeDistance && senses.PlayerInSight)
             {
+                // Don't attack if not hostile
+                if (!motor.IsHostile)
+                    return;
+
                 // Set melee animation state
                 mobile.ChangeEnemyState(MobileStates.PrimaryAttack);
 

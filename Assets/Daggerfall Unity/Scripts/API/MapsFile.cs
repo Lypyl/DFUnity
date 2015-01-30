@@ -22,20 +22,20 @@ namespace DaggerfallConnect.Arena2
     {
         #region Class Variables
 
-        public static float WorldMapTerrainDim = 32768;
-        public static float WorldMapTileDim = 128;
-        public static int MinWorldCoordX = 0;
-        public static int MinWorldCoordZ = 0;
-        public static int MaxWorldCoordX = 32768000;
-        public static int MaxWorldCoordZ = 16384000;
-        public static int MinWorldTileCoordX = 0;
-        public static int MaxWorldTileCoordX = 128000;
-        public static int MinWorldTileCoordZ = 0;
-        public static int MaxWorldTileCoordZ = 64000;
-        public static int MinMapPixelX = 0;
-        public static int MinMapPixelY = 0;
-        public static int MaxMapPixelX = 1000;
-        public static int MaxMapPixelY = 500;
+        public const float WorldMapTerrainDim = 32768;
+        public const float WorldMapTileDim = 128;
+        public const int MinWorldCoordX = 0;
+        public const int MinWorldCoordZ = 0;
+        public const int MaxWorldCoordX = 32768000;
+        public const int MaxWorldCoordZ = 16384000;
+        public const int MinWorldTileCoordX = 0;
+        public const int MaxWorldTileCoordX = 128000;
+        public const int MinWorldTileCoordZ = 0;
+        public const int MaxWorldTileCoordZ = 64000;
+        public const int MinMapPixelX = 0;
+        public const int MinMapPixelY = 0;
+        public const int MaxMapPixelX = 1000;
+        public const int MaxMapPixelY = 500;
 
         /// <summary>
         /// All region names.
@@ -769,6 +769,7 @@ namespace DaggerfallConnect.Arena2
         /// <param name="mapPixelY">Map pixel Y position.</param>
         public int GetPoliticIndex(int mapPixelX, int mapPixelY)
         {
+            mapPixelX += 1;
             return politicPak.GetValue(mapPixelX, mapPixelY);
         }
 

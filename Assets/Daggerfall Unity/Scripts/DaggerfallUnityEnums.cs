@@ -72,6 +72,18 @@ namespace DaggerfallWorkshop
     }
 
     /// <summary>
+    /// Weather texture modifiers.
+    /// </summary>
+    public enum WeatherStyle
+    {
+        Normal = 0,
+        Rain1 = 4,
+        Rain2 = 5,
+        Snow1 = 6,
+        Snow2 = 7,
+    }
+
+    /// <summary>
     /// Texture sets for nature flats.
     /// Note: Snow sets are only assigned by climate processing.
     /// </summary>

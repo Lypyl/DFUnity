@@ -124,7 +124,7 @@ namespace DaggerfallWorkshop.Utility
             if (dfUnity.Option_CombineRDB)
             {
                 layout.combiner.Apply();
-                GameObjectHelper.CreateCombinedMeshGameObject(dfUnity, layout.combiner, "CombinedMeshes", layout.staticModelsNode.transform, dfUnity.Option_SetStaticFlags);
+                GameObjectHelper.CreateCombinedMeshGameObject(layout.combiner, "CombinedMeshes", layout.staticModelsNode.transform, dfUnity.Option_SetStaticFlags);
             }
 
             // Fix enemy standing positions for this block
@@ -272,7 +272,7 @@ namespace DaggerfallWorkshop.Utility
             else
             {
                 // Spawn mesh gameobject
-                GameObject go = GameObjectHelper.CreateDaggerfallMeshGameObject(dfUnity, modelId, parent, isStatic);
+                GameObject go = GameObjectHelper.CreateDaggerfallMeshGameObject(modelId, parent, isStatic);
 
                 // Apply transforms
                 go.transform.Rotate(0, degreesY, 0, Space.World);
@@ -305,7 +305,7 @@ namespace DaggerfallWorkshop.Utility
             int record = obj.Resources.FlatResource.TextureRecord;
 
             // Spawn billboard gameobject
-            GameObject go = GameObjectHelper.CreateDaggerfallBillboardGameObject(dfUnity, archive, record, parent, true);
+            GameObject go = GameObjectHelper.CreateDaggerfallBillboardGameObject(archive, record, parent, true);
             Vector3 billboardPosition = new Vector3(obj.XPos, -obj.YPos, obj.ZPos) * MeshReader.GlobalScale;
 
             // Add RDB data to billboard
@@ -354,7 +354,7 @@ namespace DaggerfallWorkshop.Utility
 
             // Spawn light gameobject
             float radius = obj.Resources.LightResource.Radius * MeshReader.GlobalScale;
-            GameObject go = GameObjectHelper.CreateDaggerfallRDBPointLight(dfUnity, radius, parent);
+            GameObject go = GameObjectHelper.CreateDaggerfallRDBPointLight(radius, parent);
             Vector3 lightPosition = new Vector3(obj.XPos, -obj.YPos, obj.ZPos) * MeshReader.GlobalScale;
 
             // Add component
@@ -376,8 +376,13 @@ namespace DaggerfallWorkshop.Utility
             // Cast to enum
             MobileTypes type = (MobileTypes)(obj.Resources.FlatResource.FactionMobileId & 0xff);
 
+            // Get default reaction
+            MobileReactions reaction = MobileReactions.Hostile;
+            if (obj.Resources.FlatResource.FlatData.Reaction == (int)DFBlock.EnemyReactionTypes.Passive)
+                reaction = MobileReactions.Passive;
+
             // Spawn enemy gameobject
-            GameObject go = GameObjectHelper.CreateDaggerfallEnemyGameObject(dfUnity, type, enemiesNode.transform);
+            GameObject go = GameObjectHelper.CreateDaggerfallEnemyGameObject(type, enemiesNode.transform, reaction);
             if (go == null)
                 return;
 

@@ -5,6 +5,7 @@ namespace DaggerfallWorkshop.Demo
 {
     /// <summary>
     /// Support for mouse attack gestures, weapon state firing, and damage transfer.
+    /// Should only be attached to player game object.
     /// </summary>
     public class WeaponManager : MonoBehaviour
     {
@@ -21,6 +22,7 @@ namespace DaggerfallWorkshop.Demo
         int actionCount = 0;                        // Number of times in a row action has been registered
         bool alternateAttack;                       // Flag to flip weapons on alternating attacks
 
+        GameObject player;
         GameObject mainCamera;
         bool isAttacking;
         int lastAttackHand = 0;                     // 0-left-hand, 1=right-hand, -1=no weapon
@@ -44,6 +46,7 @@ namespace DaggerfallWorkshop.Demo
         void Start()
         {
             mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+            player = transform.gameObject;
         }
 
         void Update()
@@ -279,7 +282,7 @@ namespace DaggerfallWorkshop.Demo
                     {
                         // Connected
                         weapon.PlayHitSound();
-                        enemyHealth.RemoveHealth(Random.Range(weapon.MinDamage, weapon.MaxDamage), hit.point);
+                        enemyHealth.RemoveHealth(player, Random.Range(weapon.MinDamage, weapon.MaxDamage), hit.point);
                     }
                 }
             }

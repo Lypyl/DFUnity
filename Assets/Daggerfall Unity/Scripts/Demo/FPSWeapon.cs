@@ -52,6 +52,7 @@ namespace DaggerfallWorkshop.Demo
 
         void Start()
         {
+            dfUnity = DaggerfallUnity.Instance;
             dfAudioSource = GetComponent<DaggerfallAudioSource>();
             StartCoroutine(AnimateWeapon());
         }
@@ -266,16 +267,6 @@ namespace DaggerfallWorkshop.Demo
 
         private bool ReadyCheck()
         {
-            // Ensure we have a DaggerfallUnity reference
-            if (dfUnity == null)
-            {
-                if (!DaggerfallUnity.FindDaggerfallUnity(out dfUnity))
-                {
-                    DaggerfallUnity.LogMessage("FPSWeapon: Could not get DaggerfallUnity component.");
-                    return false;
-                }
-            }
-
             // Do nothing if DaggerfallUnity not ready
             if (!dfUnity.IsReady)
             {

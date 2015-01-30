@@ -261,26 +261,15 @@ namespace DaggerfallWorkshop
         {
             // Ensure we have a DaggerfallUnity reference
             if (dfUnity == null)
-            {
-                if (!DaggerfallUnity.FindDaggerfallUnity(out dfUnity))
-                {
-                    DaggerfallUnity.LogMessage("DaggerfallAudioClip: Could not get DaggerfallUnity component.");
-                    return false;
-                }
-            }
-
-            // Do nothing if DaggerfallUnity not ready
+                dfUnity = DaggerfallUnity.Instance;
             if (!dfUnity.IsReady)
-            {
-                DaggerfallUnity.LogMessage("DaggerfallAudioClip: DaggerfallUnity component is not ready. Have you set your Arena2 path?");
                 return false;
-            }
 
             // Get audio source
             audioSource = GetComponent<AudioSource>();
             if (audioSource == null)
             {
-                DaggerfallUnity.LogMessage("DaggerfallAudioClip: Could not find AudioSource component.");
+                DaggerfallUnity.LogMessage("DaggerfallAudioSource: Could not find AudioSource component.");
                 return false;
             }
 

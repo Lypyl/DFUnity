@@ -56,6 +56,7 @@
      <Compile Include="Assets\Daggerfall Unity\Scripts\Editor\DaggerfallInteriorEditor.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Editor\DaggerfallLocationEditor.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Editor\DaggerfallMeshEditor.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Editor\DaggerfallSongPlayerEditor.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Editor\DaggerfallTerrainEditor.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Editor\DaggerfallUnityEditor.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Editor\GUILayoutHelper.cs" />
@@ -71,17 +72,25 @@
      <None Include="Assets\Plugins\x86_64\donotdelete.txt" />
      <None Include="Assets\Daggerfall Unity\Shaders\DaggerfallBillboardBatchTransparentCutoutForceForward.shader" />
      <None Include="Assets\OVR\Shaders\TextShader3D.shader" />
+     <None Include="Assets\Daggerfall Unity\Resources\Songs\tracklisting.txt" />
      <None Include="Assets\Daggerfall Unity\todo.txt" />
      <None Include="Assets\Daggerfall Unity\Shaders\DaggerfallBillboardBatchTransparentCutout.shader" />
+     <None Include="Assets\Daggerfall Unity\Licenses\DaggerfallConnect.txt" />
+     <None Include="Assets\Daggerfall Unity\Resources\devArena2Path.txt" />
+     <None Include="Assets\Daggerfall Unity\Licenses\Daggerfall Tools for Unity.txt" />
      <None Include="Assets\OVR\Shaders\OVRGUIShader.shader" />
      <None Include="Assets\Plugins\x86\donotdelete.txt" />
      <None Include="Assets\Daggerfall Unity\Shaders\DaggerfallTerrainTilemap.shader" />
+     <None Include="Assets\Daggerfall Unity\Licenses\C# Synth Project.txt" />
      <None Include="Assets\Daggerfall Unity\Shaders\DaggerfallTilemap.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>F:/apps/programming/Unity/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
  <HintPath>F:/apps/programming/Unity/Data/UnityExtensions/Unity/GUISystem/4.6.1/Editor/UnityEditor.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="AudioSynthesis">
+ <HintPath>F:/docs/unity/Project2/Assets/Daggerfall Unity/Resources/AudioSynthesis.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Graphs">
  <HintPath>F:/apps/programming/Unity/Data/Managed/UnityEditor.Graphs.dll</HintPath>

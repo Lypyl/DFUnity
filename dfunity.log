@@ -7160,3 +7160,80 @@ Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Perso
 1/26/2015 5:34:41 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
 1/26/2015 5:34:41 AM *** DFUnity started in editor
 
+1/30/2015 2:23:35 AM *** Logging started
+1/30/2015 2:23:35 AM *** DFUnity started in editor
+
+1/30/2015 2:37:58 AM *** Logging started
+1/30/2015 2:37:58 AM *** DFUnity started in editor
+
+1/30/2015 2:40:37 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/30/2015 2:40:37 AM *** DFUnity started in editor
+
+1/30/2015 2:41:54 AM *** Logging started
+1/30/2015 2:41:54 AM *** DFUnity started in editor
+
+1/30/2015 2:42:21 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/30/2015 2:42:21 AM *** DFUnity started in editor
+
+1/30/2015 2:42:26 AM *** Logging started
+1/30/2015 2:42:26 AM *** DFUnity started in editor
+
+1/30/2015 2:45:43 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/30/2015 2:45:43 AM *** DFUnity started in editor
+
+1/30/2015 2:45:52 AM *** Logging started
+1/30/2015 2:45:52 AM *** DFUnity started in editor
+
+1/30/2015 2:53:22 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/30/2015 2:53:22 AM *** DFUnity started in editor
+
+1/30/2015 2:53:26 AM *** Logging started
+1/30/2015 2:53:26 AM *** DFUnity started in editor
+
+1/30/2015 2:56:31 AM *** Logging started
+1/30/2015 2:56:31 AM *** DFUnity started in editor
+
+1/30/2015 2:57:53 AM *** Logging started
+1/30/2015 2:57:53 AM *** DFUnity started in editor
+
+1/30/2015 3:01:50 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/30/2015 3:01:50 AM *** DFUnity started in editor
+
+1/30/2015 3:07:06 AM *** Logging started
+1/30/2015 3:07:06 AM *** DFUnity started in editor
+
+1/30/2015 3:07:37 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/30/2015 3:07:37 AM *** DFUnity started in editor
+
+1/30/2015 3:07:52 AM *** Logging started
+1/30/2015 3:07:52 AM *** DFUnity started in editor
+
+1/30/2015 3:08:02 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/30/2015 3:08:02 AM *** DFUnity started in editor
+
+1/30/2015 3:27:48 AM *** Logging started
+1/30/2015 3:27:48 AM *** DFUnity started in editor
+
+1/30/2015 3:28:00 AM *** Spawning enemy of type Spriggan.
+
+1/30/2015 3:28:00 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Creating a Daggerfall enemy GameObject.
+
+1/30/2015 3:28:00 AM *** 
+*** Creature ***
+ UUID: d3b8060e-be03-408e-a74c-d756ae71432f
+ CreatureID: Spriggan
+ Enabled: True
+  Health 0/0
+  Mana 0/0 
+  Stamina 0/0
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Personality 0 -- Speed 0 -- Luck 0 -- Level 0
+  Sleeping: False 
+  Sneaking: False 
+
+1/30/2015 3:28:00 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Created a Daggerfall enemy GameObject.
+
+1/30/2015 3:28:15 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/30/2015 3:28:15 AM *** DFUnity started in editor
+

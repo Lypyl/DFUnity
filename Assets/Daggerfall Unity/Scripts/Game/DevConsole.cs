@@ -89,7 +89,7 @@ namespace DaggerfallWorkshop.Game {
                 case ("travel"):
                     if (args.Length == 2) {
                         DFLocation location;
-                        if (!GameObjectHelper.FindMultiNameLocation(dfUnity, args[1], out location)) {
+                        if (!GameObjectHelper.FindMultiNameLocation(args[1], out location)) {
                             Logger.GetInstance().log("Unable to find location " + args[1] + ".\n");
                         } else {
                             Logger.GetInstance().log("Found location in " + location.RegionName + "!\n");

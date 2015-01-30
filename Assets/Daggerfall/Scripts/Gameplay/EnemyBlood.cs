@@ -23,7 +23,7 @@ namespace Daggerfall.Gameplay
             DaggerfallUnity dfUnity;
             if (DaggerfallUnity.FindDaggerfallUnity(out dfUnity))
             {
-                GameObject go = GameObjectHelper.CreateDaggerfallBillboardGameObject(dfUnity, bloodArchive, bloodIndex, null, true);
+                GameObject go = GameObjectHelper.CreateDaggerfallBillboardGameObject(bloodArchive, bloodIndex, null, true);
                 go.name = "BloodSplash";
                 DaggerfallBillboard c = go.GetComponent<DaggerfallBillboard>();
                 go.transform.position = bloodPosition + transform.forward * 0.02f;

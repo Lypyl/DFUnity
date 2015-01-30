@@ -368,7 +368,7 @@ namespace DaggerfallConnect.Utility
             BinaryReader reader = GetReader();
             reader.BaseStream.Position = position;
             return ReadCString(reader, readLength);
-        }2
+        }
 
         /// <summary>
         /// Reads a UTF8 string of length bytes from the binary reader.

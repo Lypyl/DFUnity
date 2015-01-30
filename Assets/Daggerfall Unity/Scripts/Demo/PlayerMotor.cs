@@ -64,7 +64,6 @@ namespace DaggerfallWorkshop.Demo
 
         private Vector3 moveDirection = Vector3.zero;
         private bool grounded = false;
-        private CharacterController controller;
         private Transform myTransform;
         private float speed;
         private RaycastHit hit;

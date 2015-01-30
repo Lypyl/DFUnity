@@ -246,11 +246,12 @@ namespace DaggerfallWorkshop.Utility
             return go;
         }
 
-        public static GameObject CreateDaggerfallEnemyGameObject(DaggerfallUnity dfUnity, MobileTypes type, Transform parent)
+        public static GameObject CreateDaggerfallEnemyGameObject(MobileTypes type, Transform parent, MobileReactions reaction)
         {
             GameObject enemyPrefab = (GameObject)MonoBehaviour.Instantiate(Resources.Load("EnemyPrefab"));
             Creature enemyCreature = enemyPrefab.GetComponent<Creature>();
             enemyCreature.setCreatureType(type);
+            enemyCreature.setMobileReaction(reaction);
             enemyCreature.setupMobile();
 
             if (parent) { 

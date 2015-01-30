@@ -744,7 +744,7 @@ namespace Daggerfall {
         public void __EditorFindLocation()
         {
             DFLocation location;
-            if (!GameObjectHelper.FindMultiNameLocation(dfUnity, EditorFindLocationString, out location))
+            if (!GameObjectHelper.FindMultiNameLocation(EditorFindLocationString, out location))
             {
                 DaggerfallUnity.LogMessage(string.Format("Could not find location [Region={0}, Name={1}]", location.RegionName, location.Name), true);
                 return;

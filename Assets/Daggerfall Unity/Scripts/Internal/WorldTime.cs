@@ -30,9 +30,11 @@ namespace DaggerfallWorkshop
         public float Second = 0;
         public float TimeScale = 10f;
         public bool ShowDebugString = false;
+        public UIManager uiManager;
 
         void Update()
         {
+            if (uiManager.isUIOpen) return;
             RaiseTime(Time.deltaTime * TimeScale);
         }
 

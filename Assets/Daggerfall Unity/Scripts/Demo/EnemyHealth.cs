@@ -11,11 +11,13 @@ namespace DaggerfallWorkshop.Demo
     {
         public float Health = 100f;
 
+        EnemyMotor motor;
         DaggerfallMobileUnit mobile;
         EnemyBlood blood;
 
         void Start()
         {
+            motor = GetComponent<EnemyMotor>();
             mobile = GetComponentInChildren<DaggerfallMobileUnit>();
             blood = GetComponent<EnemyBlood>();
         }
@@ -23,11 +25,15 @@ namespace DaggerfallWorkshop.Demo
         /// <summary>
         /// Enemy has been damaged.
         /// </summary>
-        public void RemoveHealth(float amount, Vector3 hitPosition)
+        public void RemoveHealth(GameObject sendingPlayer, float amount, Vector3 hitPosition)
         {
             Health -= amount;
             if (Health < 0)
                 SendMessage("Die");
+
+            // Aggro this enemy
+            // To enhance, use a script that "shouts" to other enemies in range and make them hostile to player also
+            motor.MakeEnemyHostileToPlayer(sendingPlayer);
 
             if (mobile != null)
             {

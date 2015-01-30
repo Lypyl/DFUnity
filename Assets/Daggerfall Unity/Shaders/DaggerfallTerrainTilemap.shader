@@ -27,6 +27,7 @@
 		CGPROGRAM
 		#pragma target 3.0
 		#pragma surface surf Lambert
+		#pragma glsl
 
 		sampler2D _TileAtlasTex;
 		sampler2D _TilemapTex;

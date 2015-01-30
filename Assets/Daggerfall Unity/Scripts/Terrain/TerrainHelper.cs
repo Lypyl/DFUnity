@@ -444,6 +444,8 @@ namespace DaggerfallWorkshop
 
             // Get terrain data
             TerrainData terrainData = terrain.terrainData;
+            if (!terrainData)
+                return;
 
             // Remove exiting billboards
             dfBillboardBatch.Clear();
@@ -547,6 +549,13 @@ namespace DaggerfallWorkshop
         public static int MakeTerrainKey(int mapPixelX, int mapPixelY)
         {
             return ((short)mapPixelY << 16) + (short)mapPixelX;
+        }
+
+        // Reverse terrain key back to map pixel coordinates
+        public static void ReverseTerrainKey(int key, out int mapPixelX, out int mapPixelY)
+        {
+            mapPixelY = key >> 16;
+            mapPixelX = key & 0xffff;
         }
 
         // Gets fast gradient value from heights

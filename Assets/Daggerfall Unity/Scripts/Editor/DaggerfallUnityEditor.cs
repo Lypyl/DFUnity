@@ -245,7 +245,7 @@ namespace DaggerfallWorkshop
                         propModelID.intValue = EditorGUILayout.IntField(propModelID.intValue);
                         if (GUILayout.Button("Import"))
                         {
-                            GameObjectHelper.CreateDaggerfallMeshGameObject((target as DaggerfallUnity), (uint)propModelID.intValue, null);
+                            GameObjectHelper.CreateDaggerfallMeshGameObject((uint)propModelID.intValue, null);
                         }
                     });
 
@@ -257,7 +257,7 @@ namespace DaggerfallWorkshop
                         propBlockName.stringValue = EditorGUILayout.TextField(propBlockName.stringValue.Trim().ToUpper());
                         if (GUILayout.Button("Import"))
                         {
-                            GameObjectHelper.CreateDaggerfallBlockGameObject((target as DaggerfallUnity), propBlockName.stringValue, null);
+                            GameObjectHelper.CreateDaggerfallBlockGameObject(propBlockName.stringValue, null);
                         }
                     });
 
@@ -269,7 +269,7 @@ namespace DaggerfallWorkshop
                         propCityName.stringValue = EditorGUILayout.TextField(propCityName.stringValue.Trim());
                         if (GUILayout.Button("Import"))
                         {
-                            GameObjectHelper.CreateDaggerfallLocationGameObject((target as DaggerfallUnity), propCityName.stringValue, null);
+                            GameObjectHelper.CreateDaggerfallLocationGameObject(propCityName.stringValue, null);
                         }
                     });
 
@@ -281,7 +281,7 @@ namespace DaggerfallWorkshop
                         propDungeonName.stringValue = EditorGUILayout.TextField(propDungeonName.stringValue.Trim());
                         if (GUILayout.Button("Import"))
                         {
-                            GameObjectHelper.CreateDaggerfallDungeonGameObject((target as DaggerfallUnity), propDungeonName.stringValue, null);
+                            GameObjectHelper.CreateDaggerfallDungeonGameObject(propDungeonName.stringValue, null);
                         }
                     });
                 });
@@ -306,7 +306,9 @@ namespace DaggerfallWorkshop
                     propTerrainAtlasesSubFolder.stringValue = EditorGUILayout.TextField(new GUIContent("Terrain Atlas SubFolder", "Sub-folder for terrain atlas textures."), propTerrainAtlasesSubFolder.stringValue);
                     if (GUILayout.Button("Update"))
                     {
-                        dfUnity.ExportTerrainTextureAtlases();
+//#if UNITY_EDITOR && !UNITY_WEBPLAYER
+//                        dfUnity.ExportTerrainTextureAtlases();
+//#endif
                     }
                 });
             });

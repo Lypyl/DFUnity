@@ -7,17 +7,13 @@ using DaggerfallConnect;
 using DaggerfallConnect.Arena2;
 using DaggerfallConnect.Utility;
 using DaggerfallWorkshop.Utility;
-using Daggerfall;
 
 namespace DaggerfallWorkshop
 {
     /// <summary>
-    /// Implementation of Daggerfall's sky backgrounds.
-    /// Works in both forward and deferred rendering paths (but cannot change between them at runtime).
-    /// Forward path sets MainCamera to depth-only clear and draws sky directly into scene (uses custom texture clear for solid colour).
-    /// Deferred path uses two cameras and OnPostRender in local camera for sky drawing (uses normal camera solid colour clear).
-    /// Sets own camera depth to MainCamera.depth-1 so sky is drawn first in deferred path.
-    /// Thread-loads sky Color32[] arrays.
+    /// Implementation of Daggerfall's sky backgrounds. Works in both forward and deferred rendering paths.
+    /// Uses two cameras and OnPostRender in local camera for sky drawing (uses normal camera solid colour clear).
+    /// Sets own camera depth to MainCamera.depth-1 so sky is drawn first.
     /// 
     /// DO NOT ATTACH THIS SCRIPT TO MAINCAMERA GAMEOBJECT.
     /// Attach to an empty GameObject or use the prefab provided.
@@ -28,7 +24,7 @@ namespace DaggerfallWorkshop
         #region Fields
 
         // Maximum timescale supported by SetByWorldTime()
-        //public static float MaxTimeScale = 1000;
+        public static float MaxTimeScale = 2000;
 
         public PlayerGPS LocalPlayerGPS;                                    // Set to local PlayerGPS
         [Range(0, 31)]
@@ -39,19 +35,21 @@ namespace DaggerfallWorkshop
         public bool ShowStars = true;                                       // Draw stars onto night skies
         public Color SkyTintColor = new Color(0.5f, 0.5f, 0.5f, 1.0f);      // Modulates output texture colour
         public float SkyColorScale = 1.0f;                                  // Scales sky color brighter or darker
+        public WeatherStyle WeatherStyle = WeatherStyle.Normal;             // Style of weather for texture changes
 
         const int skyNativeWidth = 512;         // Native image width of sky image
         const int skyNativeHalfWidth = 256;     // Half native image width
         const int skyNativeHeight = 220;        // Native image height
-        const float skyScale = 1.2f;            // Scale of sky image relative to display area
-        const float skyHorizon = 0.30f;         // Higher the value lower the horizon
+        const float skyScale = 1.3f;            // Scale of sky image relative to display area
+        const float skyHorizon = 0.20f;         // Higher the value lower the horizon
 
         DaggerfallUnity dfUnity;
+        public SkyFile skyFile;
+        public ImgFile imgFile;
         Camera mainCamera;
         Camera myCamera;
         Texture2D westTexture;
         Texture2D eastTexture;
-        Texture2D clearTexture;
         Color cameraClearColor;
         Rect fullTextureRect = new Rect(0, 0, 1, 1);
         int lastSkyIndex = -1;
@@ -59,14 +57,25 @@ namespace DaggerfallWorkshop
         bool lastNightFlag = false;
         Rect westRect, eastRect;
         CameraClearFlags initialClearFlags;
+        System.Random random = new System.Random(0);
 
-        LoadSkyJob job;
-        bool loadInProgress;
+        SkyColors skyColors = new SkyColors();
+        float starChance = 0.004f;
+        byte[] starColorIndices = new byte[] { 16, 32, 74, 105, 112, 120 };     // Some random sky colour indices
+
+        public struct SkyColors
+        {
+            public Color32[] west;
+            public Color32[] east;
+            public Color clearColor;
+        }
 
         #endregion
 
         void Start()
         {
+            dfUnity = DaggerfallUnity.Instance;
+
             // Try to find local player GPS if not set
             if (LocalPlayerGPS == null)
             {
@@ -138,66 +147,30 @@ namespace DaggerfallWorkshop
             if (dfUnity.Option_AutomateSky && LocalPlayerGPS)
                 ApplyTimeAndSpace();
 
-            // Update sky textures if frame changed
-            if ((lastSkyFrame != SkyFrame || lastNightFlag != IsNight) && job != null)
+            // Update sky textures if index or frame changed
+            if ((lastSkyIndex != SkyIndex || lastSkyFrame != SkyFrame || lastNightFlag != IsNight))
             {
-                if (job.SkyColorsOut != null)
+                // Get target frame index based on am/pm
+                int targetFrame = SkyFrame;
+                bool flip = false;
+                if (!IsNight && SkyFrame >= 32)
                 {
-                    // Promote to texture if loaded
-                    int targetFrame = SkyFrame;
-                    bool flip = false;
-                    if (SkyFrame >= 32)
-                    {
-                        targetFrame = 63 - SkyFrame;
-                        flip = true;
-                    }
-                    if (!IsNight && job.SkyColorsOut[targetFrame].loaded)
-                    {
-                        PromoteToTexture(job.SkyColorsOut[targetFrame], flip);
-                        lastSkyFrame = SkyFrame;
-                        lastNightFlag = IsNight;
-                    }
-                    else if (IsNight && job.NightSkyColorsOut.loaded)
-                    {
-                        PromoteToTexture(job.NightSkyColorsOut);
-                        lastSkyFrame = SkyFrame;
-                        lastNightFlag = IsNight;
-                    }
+                    targetFrame = 63 - SkyFrame;
+                    flip = true;
                 }
-            }
 
-            // Check if job complete
-            if (job != null && loadInProgress)
-            {
-                if (job.Update())
-                {
-                    loadInProgress = false;
-                    lastSkyIndex = SkyIndex;
-                }
-            }
-
-            // Load new sky set if index changed
-            if (lastSkyIndex != SkyIndex && !loadInProgress)
-            {
-                StartThreadLoad();
-            }
-
-            // Forward paths are drawn here
-            if (myCamera.renderingPath != RenderingPath.DeferredLighting)
-            {
-                UpdateSkyRects();
-                DrawSky(false);
+                LoadCurrentSky(targetFrame);
+                PromoteToTexture(skyColors, flip);
+                lastSkyIndex = SkyIndex;
+                lastSkyFrame = SkyFrame;
+                lastNightFlag = IsNight;
             }
         }
 
         void OnPostRender()
         {
-            // Deferred path is drawn here
-            if (myCamera.renderingPath == RenderingPath.DeferredLighting)
-            {
-                UpdateSkyRects();
-                DrawSky(true);
-            }
+            UpdateSkyRects();
+            DrawSky();
         }
 
         #region Private Methods
@@ -268,29 +241,13 @@ namespace DaggerfallWorkshop
             eastRect = new Rect(eastOffset + scrollX, scrollY, width, height);
         }
 
-        private void DrawSky(bool deferred)
+        private void DrawSky()
         {
             if (!westTexture || !eastTexture)
                 return;
 
             GL.PushMatrix();
             GL.LoadPixelMatrix(0, Screen.width, Screen.height, 0);
-
-            // Clear display
-            if (deferred)
-            {
-                // My camera just clears to solid colour in deferred mode
-                // Reproduces tinting and scaling for clear colour
-                myCamera.backgroundColor = ((cameraClearColor * SkyTintColor) * 2f) * SkyColorScale;
-            }
-            else
-            {
-                // Custom clear in forward mode using fullscreen texture
-                Color finalColor = SkyTintColor * SkyColorScale;
-                finalColor.a = 1f;
-                Rect screenRect = new Rect(0, 0, Screen.width, Screen.height);
-                Graphics.DrawTexture(screenRect, clearTexture, fullTextureRect, 0, 0, 0, 0, finalColor, null);
-            }
 
             // Draw sky hemispheres
             Graphics.DrawTexture(westRect, westTexture, fullTextureRect, 0, 0, 0, 0, SkyTintColor * SkyColorScale, null);
@@ -299,13 +256,12 @@ namespace DaggerfallWorkshop
             GL.PopMatrix();
         }
 
-        private void PromoteToTexture(LoadSkyJob.SkyColors colors, bool flip = false)
+        private void PromoteToTexture(SkyColors colors, bool flip = false)
         {
             const int dayWidth = 512;
             const int dayHeight = 220;
             const int nightWidth = 512;
             const int nightHeight = 219;
-            const int clearDim = 16;
 
             // Destroy old textures
             Destroy(westTexture);
@@ -322,7 +278,6 @@ namespace DaggerfallWorkshop
                 westTexture = new Texture2D(nightWidth, nightHeight, TextureFormat.RGB24, false);
                 eastTexture = new Texture2D(nightWidth, nightHeight, TextureFormat.RGB24, false);
             }
-            clearTexture = new Texture2D(clearDim, clearDim, TextureFormat.RGB24, false);
 
             // Set pixels, flipping hemisphere if required
             if (!flip)
@@ -352,13 +307,12 @@ namespace DaggerfallWorkshop
             }
 
             // Apply changes
-            clearTexture.SetPixels32(colors.clear);
             westTexture.Apply(false, true);
             eastTexture.Apply(false, true);
-            clearTexture.Apply(false, true);
 
             // Set camera clear colour
             cameraClearColor = colors.clearColor;
+            myCamera.backgroundColor = ((cameraClearColor * SkyTintColor) * 2f) * SkyColorScale;
 
             // Assign colour to fog
             UnityEngine.RenderSettings.fogColor = cameraClearColor;
@@ -367,12 +321,29 @@ namespace DaggerfallWorkshop
         private void ApplyTimeAndSpace()
         {
             // Do nothing if timescale too fast or we'll be thrashing texture loads
-            //if (dfUnity.WorldTime.TimeScale > MaxTimeScale)
-            //    return;
+            if (dfUnity.WorldTime.TimeScale > MaxTimeScale)
+                return;
 
-            // Adjust sky index for climate and season
-            // Season value enum ordered same as sky indices
-            SkyIndex = LocalPlayerGPS.ClimateSettings.SkyBase + (int)dfUnity.WorldTime.SeasonValue;
+            // Set sky index by climate, season, and weather
+            switch (WeatherStyle)
+            {
+                case DaggerfallWorkshop.WeatherStyle.Rain1:
+                    SkyIndex = LocalPlayerGPS.ClimateSettings.SkyBase + (int)WeatherStyle.Rain1;
+                    break;
+                case DaggerfallWorkshop.WeatherStyle.Rain2:
+                    SkyIndex = LocalPlayerGPS.ClimateSettings.SkyBase + (int)WeatherStyle.Rain2;
+                    break;
+                case DaggerfallWorkshop.WeatherStyle.Snow1:
+                    SkyIndex = LocalPlayerGPS.ClimateSettings.SkyBase + (int)WeatherStyle.Snow1;
+                    break;
+                case DaggerfallWorkshop.WeatherStyle.Snow2:
+                    SkyIndex = LocalPlayerGPS.ClimateSettings.SkyBase + (int)WeatherStyle.Snow2;
+                    break;
+                default:
+                    // Season value enum ordered same as sky indices
+                    SkyIndex = LocalPlayerGPS.ClimateSettings.SkyBase + (int)dfUnity.WorldTime.SeasonValue;
+                    break;
+            }
 
             // Set night flag
             IsNight = dfUnity.WorldTime.IsNight;
@@ -385,13 +356,34 @@ namespace DaggerfallWorkshop
                 float frame = minute / divisor;
                 SkyFrame = (int)frame;
             }
+            else
+            {
+                SkyFrame = 0;
+            }
         }
 
-        private void StartThreadLoad()
+        private void LoadCurrentSky(int targetFrame)
         {
-            // Do nothing if load already in progress
-            if (loadInProgress)
-                return;
+            if (!IsNight)
+                LoadDaySky(targetFrame);
+            else
+                LoadNightSky();
+        }
+
+        private void LoadDaySky(int frame)
+        {
+            skyFile = new SkyFile(Path.Combine(dfUnity.Arena2Path, SkyFile.IndexToFileName(SkyIndex)), FileUsage.UseMemory, true);
+
+            skyFile.Palette = skyFile.GetDFPalette(frame);
+            skyColors.east = skyFile.GetColors32(0, frame);
+            skyColors.west = skyFile.GetColors32(1, frame);
+            skyColors.clearColor = skyColors.west[0];
+        }
+
+        private void LoadNightSky()
+        {
+            const int width = 512;
+            const int height = 219;
 
             // Get night sky matching sky index
             int nightSky;
@@ -404,36 +396,54 @@ namespace DaggerfallWorkshop
             else
                 nightSky = 0;
 
-            // Load source binary data (this doesn't take long)
             string filename = string.Format("NITE{0:00}I0.IMG", nightSky);
-            SkyFile skyFile = new SkyFile(Path.Combine(dfUnity.Arena2Path, SkyFile.IndexToFileName(SkyIndex)), FileUsage.UseMemory, true);
-            ImgFile imgFile = new ImgFile(Path.Combine(dfUnity.Arena2Path, filename), FileUsage.UseMemory, true);
+            imgFile = new ImgFile(Path.Combine(dfUnity.Arena2Path, filename), FileUsage.UseMemory, true);
             imgFile.Palette.Load(Path.Combine(dfUnity.Arena2Path, imgFile.PaletteName));
 
-            // Use threaded job to convert images (this is the expensive part)
-            job = new LoadSkyJob();
-            job.SkyFile = skyFile;
-            job.ImgFile = imgFile;
-            job.ShowStars = ShowStars;
+            // Get sky bitmap
+            DFBitmap dfBitmap = imgFile.GetDFBitmap(0, 0);
 
-            // Set priority
-            if (IsNight)
+            // Draw stars
+            if (ShowStars)
             {
-                job.PriorityNight = true;
-                job.PriorityFrame = -1;
-            }
-            else
-            {
-                job.PriorityNight = false;
-                if (SkyFrame >= 32)
-                    job.PriorityFrame = 63 - SkyFrame;   
-                else
-                    job.PriorityFrame = SkyFrame;
+                for (int i = 0; i < dfBitmap.Data.Length; i++)
+                {
+                    // Stars should only be drawn over clear sky indices
+                    int index = dfBitmap.Data[i];
+                    if (index > 16 && index < 32)
+                    {
+                        if (random.NextDouble() < starChance)
+                            dfBitmap.Data[i] = starColorIndices[random.Next(0, starColorIndices.Length)];
+                    }
+                }
             }
 
-            // Start job
-            job.Start();
-            loadInProgress = true;
+            // Get sky colour array
+            Color32[] colors = imgFile.GetColors32(ref dfBitmap);
+
+            // Fix seam on right side of night skies
+            for (int y = 0; y < height; y++)
+            {
+                int pos = y * width + width - 2;
+                colors[pos + 1] = colors[pos];
+            }
+
+            skyColors.west = colors;
+            skyColors.east = colors;
+            skyColors.clearColor = skyColors.west[0];
+        }
+
+        private void SetupCameras()
+        {
+            // Must have both cameras
+            if (!mainCamera || !myCamera)
+                return;
+
+            myCamera.enabled = true;
+            myCamera.depth = mainCamera.depth - 1;
+            myCamera.cullingMask = 0;
+            myCamera.clearFlags = CameraClearFlags.SolidColor;
+            mainCamera.clearFlags = CameraClearFlags.Nothing;
         }
 
         private bool ReadyCheck()
@@ -441,16 +451,6 @@ namespace DaggerfallWorkshop
             // Must have both world and sky cameras to draw
             if (!mainCamera || !myCamera)
                 return false;
-
-            // Ensure we have a DaggerfallUnity reference
-            if (dfUnity == null)
-            {
-                if (!DaggerfallUnity.FindDaggerfallUnity(out dfUnity))
-                {
-                    DaggerfallUnity.LogMessage("DaggerfallSky: Could not get DaggerfallUnity component.");
-                    return false;
-                }
-            }
 
             // Do nothing if DaggerfallUnity not ready
             if (!dfUnity.IsReady)
@@ -460,173 +460,6 @@ namespace DaggerfallWorkshop
             }
 
             return true;
-        }
-
-        private void SetupCameras()
-        {
-            // Must have both cameras
-            if (!mainCamera || !myCamera)
-                return;
-
-            myCamera.renderingPath = mainCamera.renderingPath;
-            if (myCamera.renderingPath == RenderingPath.DeferredLighting)
-            {
-                myCamera.enabled = true;
-                myCamera.depth = mainCamera.depth - 1;
-                myCamera.cullingMask = 0;
-                myCamera.clearFlags = CameraClearFlags.SolidColor;
-                mainCamera.clearFlags = CameraClearFlags.Nothing;
-            }
-            else
-            {
-                myCamera.enabled = false;
-                mainCamera.clearFlags = CameraClearFlags.Depth;
-            }
-        }
-
-        #endregion
-
-        #region Threaded Loading
-
-        /// <summary>
-        /// Pixel converting a sky from Daggerfall's palettized format to Color32[] array
-        /// is an expensive operation which creates noticeable lag when frames ticks over.
-        /// This class will thread-load sky images from binary when main class is
-        /// instantiated or when SkyIndex changes and a new sky is required.
-        /// All the main thread has to do is promote the cached Color32[] array to Material
-        /// when loading a new frame.
-        /// </summary>
-        public class LoadSkyJob : ThreadedJob
-        {
-            public SkyFile SkyFile;
-            public ImgFile ImgFile;
-            public int PriorityFrame = -1;
-            public bool PriorityNight = false;
-            public bool ShowStars = true;
-
-            public SkyColors[] SkyColorsOut;
-            public SkyColors NightSkyColorsOut;
-
-            System.Random random = new System.Random();
-            float starChance = 0.004f;
-            byte[] starColorIndices = new byte[] { 16, 32, 74, 105, 112, 120 };     // Some random sky colour indices
-
-            //long totalTime;
-
-            public struct SkyColors
-            {
-                public Color32[] west;
-                public Color32[] east;
-                public Color32[] clear;
-                public Color clearColor;
-                public bool loaded;
-            }
-
-            protected override void ThreadFunction()
-            {
-                //System.Diagnostics.Stopwatch stopwatch = System.Diagnostics.Stopwatch.StartNew();
-                //long startTime = stopwatch.ElapsedMilliseconds;
-
-                const int frameCount = 32;
-
-                // Create outgoing data
-                SkyColorsOut = new SkyColors[frameCount];
-                NightSkyColorsOut = new SkyColors();
-
-                // Load priority sky
-                if (PriorityNight)
-                    LoadSingleNightSky();
-                else if (PriorityFrame >= 0)
-                    LoadSingleSky(PriorityFrame);
-
-                // Read day sky images
-                for (int frame = 0; frame < frameCount; frame++)
-                {
-                    LoadSingleSky(frame);
-                }
-
-                // Read night sky image
-                LoadSingleNightSky();
-
-                //totalTime = stopwatch.ElapsedMilliseconds - startTime;
-            }
-
-            protected override void OnFinished()
-            {
-                //Debug.Log("Total time to load sky images: " + totalTime.ToString());
-            }
-
-            private void LoadSingleSky(int frame)
-            {
-                if (SkyColorsOut[frame].loaded)
-                    return;
-
-                SkyFile.Palette = SkyFile.GetDFPalette(frame);
-                SkyColorsOut[frame].east = SkyFile.GetColors32(0, frame);
-                SkyColorsOut[frame].west = SkyFile.GetColors32(1, frame);
-                SkyColorsOut[frame].clearColor = SkyColorsOut[frame].west[0];
-                SkyColorsOut[frame].clear = CreateClearColors(SkyColorsOut[frame].clearColor);
-                SkyColorsOut[frame].loaded = true;
-            }
-
-            private void LoadSingleNightSky()
-            {
-                const int width = 512;
-                const int height = 219;
-
-                if (NightSkyColorsOut.loaded)
-                    return;
-
-                // Get sky bitmap
-                DFBitmap dfBitmap = ImgFile.GetDFBitmap(0, 0);
-
-                // Draw stars
-                if (ShowStars)
-                {
-                    for (int i = 0; i < dfBitmap.Data.Length; i++)
-                    {
-                        // Stars should only be drawn over clear sky indices
-                        int index = dfBitmap.Data[i];
-                        if (index > 16 && index < 32)
-                        {
-                            if (random.NextDouble() < starChance)
-                                dfBitmap.Data[i] = starColorIndices[random.Next(0, starColorIndices.Length)];
-                        }
-                    }
-                }
-
-                // Get sky colour array
-                Color32[] colors = ImgFile.GetColors32(ref dfBitmap);
-
-                // Fix seam on right side of night skies
-                for (int y = 0; y < height; y++)
-                {
-                    int pos = y * width + width - 2;
-                    colors[pos + 1] = colors[pos];
-                }
-
-                NightSkyColorsOut.west = colors;
-                NightSkyColorsOut.east = colors;
-                NightSkyColorsOut.clearColor = NightSkyColorsOut.west[0];
-                NightSkyColorsOut.clear = CreateClearColors(NightSkyColorsOut.clearColor);
-
-                NightSkyColorsOut.loaded = true;
-            }
-
-            private Color32[] CreateClearColors(Color clearColor)
-            {
-                const int dim = 16;
-
-                // Create clear colour array for small clear texture
-                // Used to clear sky background in forward rendering
-                Color32[] clearColors = new Color32[dim * dim];
-                for (int i = 0; i < clearColors.Length; i++)
-                {
-                    clearColors[i] = clearColor;
-                }
-
-                return clearColors;
-            }
         }
 
         #endregion

@@ -28,18 +28,34 @@ namespace DaggerfallWorkshop.Demo
         float stopDistance = 1.7f;                  // Used to prevent orbiting
         Vector3 lastTargetPos;                      // Target from previous update
         float giveUpTimer;                          // Timer before enemy gives up
+        bool isHostile;                             // Is enemy hostile to player
+
+        public bool IsHostile { get { return isHostile; } }
 
         void Start()
         {
             senses = GetComponent<EnemySenses>();
             controller = GetComponent<CharacterController>();
             mobile = GetComponentInChildren<DaggerfallMobileUnit>();
+            isHostile = (mobile.Summary.Enemy.Reactions == MobileReactions.Hostile);
         }
 
         void Update()
         {
             Move();
             OpenDoors();
+        }
+
+        /// <summary>
+        /// Immediately become hostile towards player.
+        /// </summary>
+        public void MakeEnemyHostileToPlayer(GameObject player)
+        {
+            if (player)
+            {
+                senses.LastKnownPlayerPos = player.transform.position;
+            }
+            isHostile = true;
         }
 
         #region Private Methods
@@ -50,8 +66,8 @@ namespace DaggerfallWorkshop.Demo
             if (mobile.IsPlayingOneShot())
                 return;
 
-            // Remain idle when player not acquired
-            if (senses.LastKnownPlayerPos == EnemySenses.ResetPlayerPos)
+            // Remain idle when player not acquired or not hostile
+            if (senses.LastKnownPlayerPos == EnemySenses.ResetPlayerPos || !isHostile)
             {
                 mobile.ChangeEnemyState(MobileStates.Idle);
                 return;

@@ -56,6 +56,7 @@ namespace DaggerfallWorkshop
         float[,] heights;
         Color32[] tileMap;
         int currentWorldClimate = -1;
+        WorldTime.Seasons season = WorldTime.Seasons.Summer;
         bool ready;
         
         void Start()
@@ -96,12 +97,20 @@ namespace DaggerfallWorkshop
         {
             // Update atlas texture if world climate changed
             // TODO: Support season
-            if (currentWorldClimate != MapData.worldClimate)
+            if (currentWorldClimate != MapData.worldClimate || dfUnity.WorldTime.SeasonValue != season)
             {
+                // Get current climate and ground archive
+                DFLocation.ClimateSettings climate = MapsFile.GetWorldClimateSettings(MapData.worldClimate);
+                int groundArchive = climate.GroundArchive;
+                if (dfUnity.WorldTime.SeasonValue == WorldTime.Seasons.Winter)
+                {
+                    // Offset to snow textures
+                    groundArchive++;
+                }
+
                 // Get tileset material to "steal" atlas texture for our shader
                 // TODO: Improve material system to handle custom shaders
-                DFLocation.ClimateSettings climate = MapsFile.GetWorldClimateSettings(MapData.worldClimate);
-                Material tileSetMaterial = dfUnity.MaterialReader.GetTerrainTilesetMaterial(climate.GroundArchive);
+                Material tileSetMaterial = dfUnity.MaterialReader.GetTerrainTilesetMaterial(groundArchive);
                 currentWorldClimate = MapData.worldClimate;
 
                 // Assign textures
@@ -210,20 +219,17 @@ namespace DaggerfallWorkshop
             if (terrain.terrainData == null)
             {
                 // Calculate width and length of terrain in world units
-                // TODO:
-                //  Work out why size must be divided to reach correct world size after creation
-                //  This does not happen when creating manually in editor
-                //  Unity documentation around Terrain is fairly minimal regarding procedural use
-                float terrainSize = (MapsFile.WorldMapTerrainDim * MeshReader.GlobalScale) / 4f;
+                float terrainSize = (MapsFile.WorldMapTerrainDim * MeshReader.GlobalScale);
 
                 // Setup terrain data
+                // Must set terrainData.heightmapResolution before size (thanks Nystul!)
                 TerrainData terrainData = new TerrainData();
                 terrainData.name = "TerrainData";
+                terrainData.heightmapResolution = heightmapResolution;
                 terrainData.size = new Vector3(terrainSize, TerrainHelper.maxTerrainHeight, terrainSize);
                 terrainData.SetDetailResolution(detailResolution, resolutionPerPatch);
                 terrainData.alphamapResolution = detailResolution;
                 terrainData.baseMapResolution = detailResolution;
-                terrainData.heightmapResolution = heightmapResolution;
 
                 // Apply terrain data
                 terrain.terrainData = terrainData;
@@ -292,11 +298,7 @@ namespace DaggerfallWorkshop
             // Ensure we have a DaggerfallUnity reference
             if (dfUnity == null)
             {
-                if (!DaggerfallUnity.FindDaggerfallUnity(out dfUnity))
-                {
-                    DaggerfallUnity.LogMessage("DaggerfallTerrain: Could not get DaggerfallUnity component.");
-                    return false;
-                }
+                dfUnity = DaggerfallUnity.Instance;
             }
 
             // Do nothing if DaggerfallUnity not ready

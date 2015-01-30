@@ -16,7 +16,7 @@ namespace Daggerfall.Internal {
         public void SpawnEnemy(MobileTypes mobileType) { 
             if (DaggerfallUnity.FindDaggerfallUnity(out dfUnity)) { 
                 Logger.GetInstance().log("Creating a Daggerfall enemy GameObject.\n", this);
-                tmpEnemy = GameObjectHelper.CreateDaggerfallEnemyGameObject(dfUnity, mobileType, this.transform);
+                tmpEnemy = GameObjectHelper.CreateDaggerfallEnemyGameObject(mobileType, this.transform, MobileReactions.Hostile);
                 Logger.GetInstance().log("Created a Daggerfall enemy GameObject.\n", this);
             }
         }

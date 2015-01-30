@@ -15,6 +15,7 @@
 		LOD 200
 		
 		CGPROGRAM
+		#pragma target 3.0
 		#pragma surface surf Lambert alphatest:_Cutoff vertex:vert addshadow exclude_path:prepass
 
 		sampler2D _MainTex;

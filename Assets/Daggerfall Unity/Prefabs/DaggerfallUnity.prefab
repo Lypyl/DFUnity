@@ -57,8 +57,8 @@ MonoBehaviour:
   Option_DefaultSounds: 1
   Option_SimpleGroundPlane: 1
   Option_CloseCityGates: 0
-  Option_ImportPointLights: 0
-  Option_AnimatedPointLights: 0
+  Option_ImportPointLights: 1
+  Option_AnimatedPointLights: 1
   Option_PointLightTag: Untagged
   Option_CustomPointLightScript: {fileID: 0}
   Option_ImportEnemies: 1
@@ -66,7 +66,7 @@ MonoBehaviour:
   Option_EnemyRigidbody: 0
   Option_EnemyCapsuleCollider: 0
   Option_EnemyNavMeshAgent: 0
-  Option_EnemyExampleAI: 0
+  Option_EnemyExampleAI: 1
   Option_EnemyTag: Untagged
   Option_EnemyRadius: .400000006
   Option_EnemySlopeLimit: 80
@@ -126,7 +126,7 @@ MonoBehaviour:
   AtlasTextures: 1
   CompressSkyTextures: 0
   MainFilterMode: 0
-  SkyFilterMode: 0
+  SkyFilterMode: 2
   MipMaps: 1
   DefaultShaderName: Diffuse
   DefaultSelfIlluminShaderName: Self-Illumin/Diffuse

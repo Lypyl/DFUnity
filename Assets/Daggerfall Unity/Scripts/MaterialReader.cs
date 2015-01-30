@@ -466,6 +466,17 @@ namespace DaggerfallWorkshop
             return FlatTypes.Decoration;
         }
 
+        public static EditorFlatTypes GetEditorFlatType(int record)
+        {
+            switch (record)
+            {
+                case 10:
+                    return EditorFlatTypes.Start;
+                default:
+                    return EditorFlatTypes.Other;
+            }
+        }
+
         #endregion
 
         #region Private Methods
@@ -483,12 +494,7 @@ namespace DaggerfallWorkshop
             // Ensure we have a DaggerfallUnity reference
             if (dfUnity == null)
             {
-                dfUnity = GetComponent<DaggerfallUnity>();
-                if (!dfUnity)
-                {
-                    DaggerfallUnity.LogMessage("MaterialReader: Could not get DaggerfallUnity component.");
-                    return false;
-                }
+                dfUnity = DaggerfallUnity.Instance;
             }
 
             // Do nothing if DaggerfallUnity not ready

@@ -86,7 +86,6 @@ namespace DaggerfallWorkshop.Utility
                 {
                     combiner.Apply();
                     GameObjectHelper.CreateCombinedMeshGameObject(
-                        dfUnity,
                         combiner,
                         "CombinedModels",
                         modelsNode.transform,
@@ -179,7 +178,7 @@ namespace DaggerfallWorkshop.Utility
             foreach (DFBlock.RmbBlockFlatObjectRecord obj in blockData.RmbBlock.MiscFlatObjectRecords)
             {
                 // Spawn billboard gameobject
-                GameObject go = GameObjectHelper.CreateDaggerfallBillboardGameObject(dfUnity, obj.TextureArchive, obj.TextureRecord, parent);
+                GameObject go = GameObjectHelper.CreateDaggerfallBillboardGameObject(obj.TextureArchive, obj.TextureRecord, parent);
                 go.transform.position = new Vector3(
                     obj.XPos,
                     -obj.YPos + BlockFlatsOffsetY,
@@ -190,7 +189,7 @@ namespace DaggerfallWorkshop.Utility
                 {
                     // Spawn light gameobject
                     Vector2 size = dfUnity.MeshReader.GetScaledBillboardSize(210, obj.TextureRecord);
-                    GameObject lightgo = GameObjectHelper.CreateDaggerfallRMBPointLight(dfUnity, go.transform);
+                    GameObject lightgo = GameObjectHelper.CreateDaggerfallRMBPointLight(go.transform);
                     lightgo.transform.position = new Vector3(
                         obj.XPos,
                         -obj.YPos + size.y,
@@ -228,7 +227,7 @@ namespace DaggerfallWorkshop.Utility
                     if (scenery.TextureRecord > 0)
                     {
                         // Spawn billboard gameobject
-                        GameObject go = GameObjectHelper.CreateDaggerfallBillboardGameObject(dfUnity, archive, scenery.TextureRecord, parent);
+                        GameObject go = GameObjectHelper.CreateDaggerfallBillboardGameObject(archive, scenery.TextureRecord, parent);
                         Vector3 billboardPosition = new Vector3(
                             x * BlocksFile.TileDimension,
                             NatureFlatsOffsetY,
@@ -320,7 +319,7 @@ namespace DaggerfallWorkshop.Utility
             uint modelID = (uint)modelData.DFMesh.ObjectId;
 
             // Add GameObject
-            GameObject go = GameObjectHelper.CreateDaggerfallMeshGameObject(dfUnity, modelID, parent, dfUnity.Option_SetStaticFlags);
+            GameObject go = GameObjectHelper.CreateDaggerfallMeshGameObject(modelID, parent, dfUnity.Option_SetStaticFlags);
             go.transform.position = matrix.GetColumn(3);
             go.transform.rotation = GameObjectHelper.QuaternionFromMatrix(matrix);
 

@@ -26,11 +26,11 @@ namespace DaggerfallWorkshop.Demo
             EnemyBasics.ReverseCorpseTexture(mobile.Summary.Enemy.CorpseTexture, out archive, out record);
 
             // Leave corpse marker
-            DaggerfallUnity dfUnity;
-            if (DaggerfallUnity.FindDaggerfallUnity(out dfUnity))
+            DaggerfallUnity dfUnity = DaggerfallUnity.Instance;
+            if (dfUnity)
             {
                 // Spawn marker
-                GameObject go = GameObjectHelper.CreateDaggerfallBillboardGameObject(dfUnity, archive, record, transform.parent, true);
+                GameObject go = GameObjectHelper.CreateDaggerfallBillboardGameObject(archive, record, transform.parent, true);
                 go.transform.position = transform.position;
 
                 // Align to ground. Be generous with distance as flying enemies might have a way to drop.

@@ -44,7 +44,7 @@ namespace DaggerfallWorkshop
         // This may cause precision problems with streaming world and require additional work to resolve.
         // NOTE: You must set scale before generating/importing any scene assets. Existing scenes will need to be recreated.
         //
-        public static float GlobalScale = 0.025f;       // Default scale
+        public const float GlobalScale = 0.025f;       // Default scale
         //public static float GlobalScale = 0.0254f;      // True scale
 
         public bool AddMeshTangents = true;
@@ -512,12 +512,7 @@ namespace DaggerfallWorkshop
             // Ensure we have a DaggerfallUnity reference
             if (dfUnity == null)
             {
-                dfUnity = GetComponent<DaggerfallUnity>();
-                if (!dfUnity)
-                {
-                    DaggerfallUnity.LogMessage("MeshReader: Could not get DaggerfallUnity component.");
-                    return false;
-                }
+                dfUnity = DaggerfallUnity.Instance;
             }
 
             // Do nothing if DaggerfallUnity not ready
@@ -562,7 +557,6 @@ namespace DaggerfallWorkshop
                 // Check if this is a door archive
                 bool doorFound = false;
                 DoorTypes doorType = DoorTypes.None;
-                //int archive = (dfSubMesh.TextureArchive > 100) ? (int)ClimateSwaps.GetClimateSet(dfSubMesh.TextureArchive) : dfSubMesh.TextureArchive;
                 ClimateTextureInfo ci = ClimateSwaps.GetClimateTextureInfo(dfSubMesh.TextureArchive);
                 int archive = (dfSubMesh.TextureArchive > 100) ? (int)ci.textureSet : dfSubMesh.TextureArchive;
                 switch(archive)

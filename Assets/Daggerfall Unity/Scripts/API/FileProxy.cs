@@ -372,57 +372,30 @@ namespace DaggerfallConnect.Utility
 
         /// <summary>
         /// Reads a UTF8 string of length bytes from the binary reader.
+        /// String may or may not be null terminated.
         /// </summary>
         /// <param name="reader">Source reader.</param>
-        /// <param name="readLength">Number of bytes to read (length=0 for null-terminated).</param>
-        /// <returns>String composed from bytes read (all NULLs are discarded).</returns>
+        /// <param name="readLength">Number of bytes to read (0 for null-terminated).</param>
+        /// <returns>String composed from bytes read.</returns>
         public string ReadCString(BinaryReader reader, int readLength)
         {
-            // End position must be less than length of stream
-            if (reader.BaseStream.Position + readLength > reader.BaseStream.Length) return string.Empty;
-
-            string str = string.Empty;
-            try
+            // Find null terminator as Encoding.UTF8.GetString(bytes[]) does not null terminate
+            if (readLength == 0)
             {
-                if (readLength > 0)
-                {
-                    // Specified length, dropping nulls
-                    for (int i = 0; i < readLength; i++)
-                    {
-                        char c = reader.ReadChar();
-                        if (c != 0) str += c;
-                    }
-                }
-                else
-                {
-                    // Null terminated
-                    while (reader.PeekChar() != 0)
-                    {
-                        str += reader.ReadChar();
-                    }
-
-                    // Consume null char from reader to advance to next position
-                    reader.ReadChar();
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                str = string.Empty;
+                long pos = reader.BaseStream.Position;
+                while (reader.ReadByte() != 0) readLength++;
+                reader.BaseStream.Position = pos;
             }
 
-            return str;
+            return Encoding.UTF8.GetString(reader.ReadBytes(readLength));
         }
 
         /// <summary>
-        /// Reads a UTF8 string of ReadLength bytes from the binary reader, then sets reader position to start + SkipLength.
-        ///  This handles a special case where a character buffer may be null-terminated, but still be of a fixed length.
-        ///  The remaining chars after the null may be filled with garbage. This method will read the
-        ///  specified number of characters, then skip to Reader.BaseStream.Position + SkipLength.
-        ///  When ReadLength=0, the string will be truncated at SkipLength if no null is found.
+        /// Reads a UTF8 string from binary reader then sets reader position to start + skipLength.
+        /// Handles a special case where string may be null terminated but still require fixed byte stride.
         /// </summary>
         /// <param name="reader">Source reader.</param>
-        /// <param name="readLength">Number of bytes to read (length=0 for null-terminated).</param>
+        /// <param name="readLength">Number of bytes to read (0 for null-terminated).</param>
         /// <param name="skipLength">Number of bytes to skip from start position after read.</param>
         /// <returns>String composed from bytes read (all NULLs are discarded).</returns>
         public string ReadCStringSkip(BinaryReader reader, int readLength, int skipLength)
@@ -430,9 +403,7 @@ namespace DaggerfallConnect.Utility
             long pos = reader.BaseStream.Position;
             string str = ReadCString(reader, readLength);
             reader.BaseStream.Position = pos + skipLength;
-            if (readLength == 0 && str.Length >= skipLength)
-                str = str.Substring(0, skipLength);
-            
+
             return str;
         }
 
@@ -563,7 +534,6 @@ namespace DaggerfallConnect.Utility
                 {
                     myLastException = e;
                     Console.WriteLine(e.Message);
-                    Logger.GetInstance().log("FileProxy: Unhandled exception while reading: " + e.Message);
                     return false;
                 }
             }

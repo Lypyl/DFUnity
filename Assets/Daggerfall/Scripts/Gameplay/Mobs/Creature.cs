@@ -17,6 +17,7 @@ namespace Daggerfall.Gameplay.Mobs {
         MobileTypes creatureType;
         MobileBehaviour behaviour;
         DaggerfallUnity dfUnity;
+        MobileReactions reaction;
 
         void Start() { 
 
@@ -46,7 +47,8 @@ namespace Daggerfall.Gameplay.Mobs {
             Vector2 size = Vector2.one;
             DaggerfallMobileUnit dfMobile = mobileObject.AddComponent<DaggerfallMobileUnit>();
             try {
-                dfMobile.SetEnemy(dfUnity, dfUnity.EnemyDict[(int)creatureType]);
+                Dictionary<int,MobileEnemy> enemyDict = EnemyBasics.GetEnemyDict();
+                dfMobile.SetEnemy(dfUnity, enemyDict[(int)creatureType], reaction);
                 size = dfMobile.Summary.RecordSizes[0];
             } catch(System.Exception e) {
                 string message = string.Format("Failed to set enemy type (int)type={0}. '{1}'", (int)creatureType, e.Message);
@@ -199,6 +201,9 @@ namespace Daggerfall.Gameplay.Mobs {
             creatureType = _creatureType;
         }
 
+        public void setMobileReaction(MobileReactions _reaction) {
+            reaction = _reaction;
+        }
         /**
          * @returns Returns a string representation of the UUID (System.GUID) of this creature
          **/

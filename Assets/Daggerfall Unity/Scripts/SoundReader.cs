@@ -170,12 +170,7 @@ namespace DaggerfallWorkshop
             // Ensure we have a DaggerfallUnity reference
             if (dfUnity == null)
             {
-                dfUnity = GetComponent<DaggerfallUnity>();
-                if (!dfUnity)
-                {
-                    DaggerfallUnity.LogMessage("SoundReader: Could not get DaggerfallUnity component.");
-                    return false;
-                }
+                dfUnity = DaggerfallUnity.Instance;
             }
 
             // Do nothing if DaggerfallUnity not ready

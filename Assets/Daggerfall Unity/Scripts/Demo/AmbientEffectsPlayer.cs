@@ -4,7 +4,8 @@ using System.Collections;
 namespace DaggerfallWorkshop.Demo
 {
     /// <summary>
-    /// Plays different ambient effects at random intervals.
+    /// Plays different ambient effects, both audible and visual, at random intervals.
+    /// Certain effects such as lightning are timed to each other.
     /// </summary>
     [RequireComponent(typeof(DaggerfallAudioSource))]
     public class AmbientEffectsPlayer : MonoBehaviour
@@ -13,8 +14,8 @@ namespace DaggerfallWorkshop.Demo
         public int MaxWaitTime = 35;            // Max wait time in seconds before next sound
         public AmbientSoundPresets Presets;     // Ambient sound preset
         public bool PlayLightningEffect;        // Play a lightning effect where appropriate
-        public DaggerfallSky SkyForLightning;   // Sky to receive lightning effect
-        public Light LightForLightning;         // Light to receive lightning effect
+        public DaggerfallSky SkyForEffects;     // Sky to receive effects
+        public Light LightForEffects;           // Light to receive effects
 
         System.Random random;
         DaggerfallAudioSource dfAudioSource;
@@ -26,8 +27,9 @@ namespace DaggerfallWorkshop.Demo
 
         public enum AmbientSoundPresets
         {
-            None,                   // No ambient sounds
+            None,                   // No ambience
             Dungeon,                // Dungeon ambience
+            Rain,                   // Just raining
             Storm,                  // Storm ambience
         }
 
@@ -40,9 +42,13 @@ namespace DaggerfallWorkshop.Demo
             StartWaiting();
         }
 
+        void OnDisable()
+        {
+            rainLoop = null;
+        }
+
         void OnEnable()
         {
-            // Ensures storm loop is rebooted after exiting interior
             rainLoop = null;
         }
 
@@ -52,12 +58,13 @@ namespace DaggerfallWorkshop.Demo
             if (Presets != lastPresets)
             {
                 lastPresets = Presets;
+                rainLoop = null;
                 ApplyPresets();
                 StartWaiting();
             }
 
-            // Start storm loop if not running
-            if (Presets == AmbientSoundPresets.Storm && rainLoop == null)
+            // Start rain loop if not running
+            if ((Presets == AmbientSoundPresets.Rain || Presets == AmbientSoundPresets.Storm) && rainLoop == null)
             {
                 rainLoop = dfAudioSource.GetAudioClip((int)SoundClips.AmbientRaining, false);
                 dfAudioSource.AudioSource.clip = rainLoop;
@@ -108,10 +115,10 @@ namespace DaggerfallWorkshop.Demo
             float randomSkip = 0.6f;
 
             // Store starting values
-            float startLightIntensity = 1f;
             float startSkyScale = 1f;
-            if (SkyForLightning) startSkyScale = SkyForLightning.SkyColorScale;
-            if (LightForLightning) startLightIntensity = LightForLightning.intensity;
+            float startLightIntensity = 1f;
+            if (SkyForEffects) startSkyScale = SkyForEffects.SkyColorScale;
+            if (LightForEffects) startLightIntensity = LightForEffects.intensity;
 
             SoundClips clip = ambientSounds[index];
             if (clip == SoundClips.StormLightningShort)
@@ -148,20 +155,20 @@ namespace DaggerfallWorkshop.Demo
                 if (Random.value < randomSkip)
                 {
                     // Flash on
-                    if (SkyForLightning) SkyForLightning.SkyColorScale = 2f;
-                    if (LightForLightning) LightForLightning.intensity = 2f;
+                    if (SkyForEffects) SkyForEffects.SkyColorScale = 2f;
+                    if (LightForEffects) LightForEffects.intensity = 2f;
                     yield return new WaitForEndOfFrame();
                 }
 
                 // Flash off
-                if (SkyForLightning) SkyForLightning.SkyColorScale = startSkyScale;
-                if (LightForLightning) LightForLightning.intensity = startLightIntensity;
+                if (SkyForEffects) SkyForEffects.SkyColorScale = startSkyScale;
+                if (LightForEffects) LightForEffects.intensity = startLightIntensity;
                 yield return new WaitForEndOfFrame();
             }
 
             // Reset values just to be sure
-            if (SkyForLightning) SkyForLightning.SkyColorScale = startSkyScale;
-            if (LightForLightning) LightForLightning.intensity = startLightIntensity;
+            if (SkyForEffects) SkyForEffects.SkyColorScale = startSkyScale;
+            if (LightForEffects) LightForEffects.intensity = startLightIntensity;
 
             // Delay for sound effect
             if (soundDelay > 0)

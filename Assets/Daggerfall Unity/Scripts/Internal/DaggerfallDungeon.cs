@@ -60,7 +60,10 @@ namespace DaggerfallWorkshop
             summary.DungeonType = location.MapTableData.DungeonType;
 
             // Perform layout
-            LayoutDungeon(ref location);
+            if (location.Name == "Orsinium")
+                LayoutOrsinium(ref location);
+            else
+                LayoutDungeon(ref location);
 
             // Seal location
             isSet = true;
@@ -132,16 +135,27 @@ namespace DaggerfallWorkshop
             DaggerfallUnity.LogMessage(string.Format("Time to layout dungeon: {0}ms", totalTime), true);
         }
 
+        // Orsinium defines two blocks at [-1,-1]
+        private void LayoutOrsinium(ref DFLocation location)
+        {
+            // Create dungeon layout and handle misplaced block
+            foreach (var block in location.Dungeon.Blocks)
+            {
+                if (block.X == -1 && block.Z == -1 && block.BlockName == "N0000065.RDB")
+                    continue;
+
+                GameObject go = RDBLayout.CreateGameObject(dfUnity, block.BlockName);
+                go.transform.parent = this.transform;
+                go.transform.position = new Vector3(block.X * RDBLayout.RDBSide, 0, block.Z * RDBLayout.RDBSide);
+            }
+        }
+
         private bool ReadyCheck()
         {
             // Ensure we have a DaggerfallUnity reference
             if (dfUnity == null)
             {
-                if (!DaggerfallUnity.FindDaggerfallUnity(out dfUnity))
-                {
-                    DaggerfallUnity.LogMessage("DaggerfallDungeon: Could not get DaggerfallUnity component.");
-                    return false;
-                }
+                dfUnity = DaggerfallUnity.Instance;
             }
 
             // Do nothing if DaggerfallUnity not ready

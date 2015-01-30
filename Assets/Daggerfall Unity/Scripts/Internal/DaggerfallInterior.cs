@@ -48,6 +48,11 @@ namespace DaggerfallWorkshop
             get { return entryDoor; }
         }
 
+        void Start()
+        {
+            dfUnity = DaggerfallUnity.Instance;
+        }
+
         /// <summary>
         /// Layout interior based on data in exterior door and optional location for climate settings.
         /// </summary>
@@ -57,9 +62,8 @@ namespace DaggerfallWorkshop
         /// <returns>True if successful.</returns>
         public bool DoLayout(Transform doorOwner, StaticDoor door, DaggerfallLocation location = null)
         {
-            // Attempt to get DaggerfallUnity
-            if (!DaggerfallUnity.FindDaggerfallUnity(out dfUnity))
-                return false;
+            if (dfUnity == null)
+                dfUnity = DaggerfallUnity.Instance;
 
             // Use location climate
             if (location != null)
@@ -177,7 +181,7 @@ namespace DaggerfallWorkshop
                 else
                 {
                     // Add GameObject
-                    GameObject go = GameObjectHelper.CreateDaggerfallMeshGameObject(dfUnity, obj.ModelIdNum, node.transform, dfUnity.Option_SetStaticFlags);
+                    GameObject go = GameObjectHelper.CreateDaggerfallMeshGameObject(obj.ModelIdNum, node.transform, dfUnity.Option_SetStaticFlags);
                     go.transform.position = modelMatrix.GetColumn(3);
                     go.transform.rotation = GameObjectHelper.QuaternionFromMatrix(modelMatrix);
 
@@ -193,7 +197,7 @@ namespace DaggerfallWorkshop
                 if (combiner.VertexCount > 0)
                 {
                     combiner.Apply();
-                    GameObject go = GameObjectHelper.CreateCombinedMeshGameObject(dfUnity, combiner, "CombinedModels", node.transform, dfUnity.Option_SetStaticFlags);
+                    GameObject go = GameObjectHelper.CreateCombinedMeshGameObject(combiner, "CombinedModels", node.transform, dfUnity.Option_SetStaticFlags);
 
                     // Update climate
                     DaggerfallMesh dfMesh = go.GetComponent<DaggerfallMesh>();
@@ -219,7 +223,7 @@ namespace DaggerfallWorkshop
             foreach (DFBlock.RmbBlockFlatObjectRecord obj in recordData.Interior.BlockFlatObjectRecords)
             {
                 // Spawn billboard gameobject
-                GameObject go = GameObjectHelper.CreateDaggerfallBillboardGameObject(dfUnity, obj.TextureArchive, obj.TextureRecord, node.transform);
+                GameObject go = GameObjectHelper.CreateDaggerfallBillboardGameObject(obj.TextureArchive, obj.TextureRecord, node.transform);
                 go.transform.position = new Vector3(obj.XPos, -obj.YPos, obj.ZPos) * MeshReader.GlobalScale;
 
                 // Add to enter marker list, which is TEXTURE.199, index 8.
@@ -243,7 +247,7 @@ namespace DaggerfallWorkshop
             foreach (DFBlock.RmbBlockPeopleRecord obj in recordData.Interior.BlockPeopleRecords)
             {
                 // Spawn billboard gameobject
-                GameObject go = GameObjectHelper.CreateDaggerfallBillboardGameObject(dfUnity, obj.TextureArchive, obj.TextureRecord, node.transform);
+                GameObject go = GameObjectHelper.CreateDaggerfallBillboardGameObject(obj.TextureArchive, obj.TextureRecord, node.transform);
                 go.transform.position = new Vector3(obj.XPos, -obj.YPos, obj.ZPos) * MeshReader.GlobalScale;
             }
         }
@@ -263,7 +267,7 @@ namespace DaggerfallWorkshop
                 Vector3 modelPosition = new Vector3(obj.XPos, -obj.YPos, obj.ZPos) * MeshReader.GlobalScale;
 
                 // Add GameObject
-                GameObject go = GameObjectHelper.CreateDaggerfallMeshGameObject(dfUnity, doorModelId, node.transform);
+                GameObject go = GameObjectHelper.CreateDaggerfallMeshGameObject(doorModelId, node.transform);
                 go.transform.rotation = Quaternion.Euler(modelRotation);
                 go.transform.position = modelPosition;
 
@@ -293,7 +297,7 @@ namespace DaggerfallWorkshop
             {
                 if (obj.TextureArchive == 210)
                 {
-                    GameObject go = GameObjectHelper.CreateDaggerfallInteriorPointLight(dfUnity, 8f, node.transform);
+                    GameObject go = GameObjectHelper.CreateDaggerfallInteriorPointLight(8f, node.transform);
                     go.transform.position = new Vector3(obj.XPos, -obj.YPos, obj.ZPos) * MeshReader.GlobalScale;
                 }
             }

@@ -9,7 +9,6 @@ using DaggerfallConnect;
 using DaggerfallConnect.Utility;
 using DaggerfallConnect.Arena2;
 using DaggerfallWorkshop.Utility;
-using Daggerfall.Gameplay.Mobs;
 
 namespace DaggerfallWorkshop
 {
@@ -105,11 +104,12 @@ namespace DaggerfallWorkshop
         /// </summary>
         /// <param name="dfUnity">DaggerfallUnity singleton. Required for content readers and settings.</param>
         /// <param name="enemyType">Enemy type.</param>
-        public void SetEnemy(DaggerfallUnity dfUnity, MobileEnemy enemy)
+        public void SetEnemy(DaggerfallUnity dfUnity, MobileEnemy enemy, MobileReactions reaction)
         {
             // Initial enemy settings
             summary.Enemy = enemy;
             summary.EnemyState = MobileStates.Idle;
+            summary.Enemy.Reactions = reaction;
 
             // Load enemy content
             int archive = GetTextureArchive();

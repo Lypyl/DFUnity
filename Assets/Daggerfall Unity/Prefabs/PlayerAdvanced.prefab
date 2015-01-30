@@ -555,7 +555,7 @@ MonoBehaviour:
   RunStepInterval: 1.79999995
   PitchVariance: .300000012
   GroundDistance: 1.79999995
-  FootstepVolumeScale: .5
+  FootstepVolumeScale: .600000024
   FootstepSound: 309
   FallHardSound: 92
   FallDamageSound: 91

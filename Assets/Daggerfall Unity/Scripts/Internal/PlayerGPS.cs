@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using DaggerfallConnect;
 using DaggerfallConnect.Arena2;
 using DaggerfallConnect.Utility;
+using DaggerfallWorkshop.Utility;
 
 namespace DaggerfallWorkshop
 {
@@ -23,7 +24,9 @@ namespace DaggerfallWorkshop
         int lastMapPixelY = -1;
         int currentClimate;
         int currentPolitic;
+        DFLocation currentLocation;
         DFLocation.ClimateSettings climateSettings;
+        string regionName;
 
         /// <summary>
         /// Gets current player map pixel.
@@ -50,11 +53,36 @@ namespace DaggerfallWorkshop
         }
 
         /// <summary>
+        /// Gets region index based on player world position.
+        /// </summary>
+        public int CurrentRegion
+        {
+            get { return currentPolitic - 128; }
+        }
+
+        /// <summary>
         /// Gets climate properties based on player world position.
         /// </summary>
         public DFLocation.ClimateSettings ClimateSettings
         {
             get { return climateSettings; }
+        }
+
+        /// <summary>
+        /// Gets location data based on player world position.
+        /// Location may be empty, check for Loaded=true.
+        /// </summary>
+        public DFLocation CurrentLocation
+        {
+            get { return currentLocation; }
+        }
+
+        /// <summary>
+        /// Gets current region name based on world position.
+        /// </summary>
+        public string CurrentRegionName
+        {
+            get { return regionName; }
         }
 
         void Start()
@@ -81,9 +109,27 @@ namespace DaggerfallWorkshop
 
         private void UpdateWorldInfo(int x, int y)
         {
+            // Get climate and politic data
             currentClimate = dfUnity.ContentReader.MapFileReader.GetClimateIndex(x, y);
             currentPolitic = dfUnity.ContentReader.MapFileReader.GetPoliticIndex(x, y);
             climateSettings = MapsFile.GetWorldClimateSettings(currentClimate);
+            if (currentPolitic > 128)
+                regionName = dfUnity.ContentReader.MapFileReader.GetRegionName(currentPolitic - 128);
+            else if (currentPolitic == 64)
+                regionName = "Ocean";
+            else
+                regionName = "Unknown";
+
+            // Get location data
+            ContentReader.MapSummary mapSummary;
+            if (dfUnity.ContentReader.HasLocation(x, y, out mapSummary))
+            {
+                currentLocation = dfUnity.ContentReader.MapFileReader.GetLocation(mapSummary.RegionIndex, mapSummary.MapIndex);
+            }
+            else
+            {
+                currentLocation = new DFLocation();
+            }
         }
 
         private bool ReadyCheck()
@@ -91,11 +137,7 @@ namespace DaggerfallWorkshop
             // Ensure we have a DaggerfallUnity reference
             if (dfUnity == null)
             {
-                if (!DaggerfallUnity.FindDaggerfallUnity(out dfUnity))
-                {
-                    DaggerfallUnity.LogMessage("PlayerGPS: Could not get DaggerfallUnity component.");
-                    return false;
-                }
+                dfUnity = DaggerfallUnity.Instance;
             }
 
             // Do nothing if DaggerfallUnity not ready

@@ -12,7 +12,7 @@ namespace DaggerfallWorkshop.Demo
     {
         DaggerfallUnity dfUnity;
         CharacterController controller;
-        bool playerInside = false;
+        bool isPlayerInside = false;
         DaggerfallInterior interior;
         GameObject mainCamera;
 
@@ -23,13 +23,14 @@ namespace DaggerfallWorkshop.Demo
         /// <summary>
         /// True when player is inside, otherwise false.
         /// </summary>
-        public bool PlayerInside
+        public bool IsPlayerInside
         {
-            get { return playerInside; }
+            get { return isPlayerInside; }
         }
 
         void Start()
         {
+            dfUnity = DaggerfallUnity.Instance;
             mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         }
 
@@ -83,7 +84,7 @@ namespace DaggerfallWorkshop.Demo
             SetStanding();
 
             // Player is now inside building
-            playerInside = true;
+            isPlayerInside = true;
         }
 
         /// <summary>
@@ -93,7 +94,7 @@ namespace DaggerfallWorkshop.Demo
         public void TransitionExterior()
         {
             // Exit if missing required components or not currently inside
-            if (!ReferenceComponents() || !interior || !playerInside)
+            if (!ReferenceComponents() || !interior || !isPlayerInside)
                 return;
 
             // Find closest exterior door
@@ -134,7 +135,7 @@ namespace DaggerfallWorkshop.Demo
             }
 
             // Player is now outside building
-            playerInside = false;
+            isPlayerInside = false;
         }
 
         private void SetFacing(Vector3 forward)
@@ -165,8 +166,6 @@ namespace DaggerfallWorkshop.Demo
         private bool ReferenceComponents()
         {
             // Look for required components
-            if (dfUnity == null)
-                DaggerfallUnity.FindDaggerfallUnity(out dfUnity);
             if (controller == null)
                 controller = GetComponent<CharacterController>();
             

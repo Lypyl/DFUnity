@@ -1635,8 +1635,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9fc44ba0875fa1468a4f7d0e774d666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WorldX: 6422528
-  WorldZ: 9207808
+  WorldX: 6782976
+  WorldZ: 9371648
 --- !u!143 &322528713
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1987,9 +1987,9 @@ GameObject:
   - 114: {fileID: 425314575}
   - 114: {fileID: 425314574}
   - 114: {fileID: 425314573}
-  - 114: {fileID: 425314571}
   - 114: {fileID: 425314570}
   - 114: {fileID: 425314572}
+  - 114: {fileID: 425314571}
   m_Layer: 0
   m_Name: DaggerfallUnity
   m_TagString: Untagged
@@ -2050,13 +2050,12 @@ MonoBehaviour:
 --- !u!114 &425314571
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400004, guid: 0811f78212229814d8c469c916304789,
-    type: 2}
-  m_PrefabInternal: {fileID: 1558403440}
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 425314569}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13e5361fed4c6d44999e5bc6862f9fc6, type: 3}
+  m_Script: {fileID: 11500000, guid: e32ff9ae38e4afd4ba1a9abe052b57bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Year: 405
@@ -2065,9 +2064,9 @@ MonoBehaviour:
   Hour: 12
   Minute: 0
   Second: 0
-  TimeScale: 1
+  TimeScale: 10
   ShowDebugString: 0
-  uiOwner: {fileID: 338791045}
+  uiManager: {fileID: 338791047}
 --- !u!114 &425314572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2123,7 +2122,7 @@ MonoBehaviour:
   AtlasTextures: 1
   CompressSkyTextures: 0
   MainFilterMode: 0
-  SkyFilterMode: 0
+  SkyFilterMode: 2
   MipMaps: 1
   DefaultShaderName: Diffuse
   DefaultSelfIlluminShaderName: Self-Illumin/Diffuse
@@ -3518,10 +3517,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LocalPlayerGPS: {fileID: 322528712}
   TerrainDistance: 1
-  MapPixelX: 196
-  MapPixelY: 218
+  MapPixelX: 207
+  MapPixelY: 213
   TerrainScale: 1.5
-  EditorFindLocationString: Daggerfall/Privateer's Hold
+  EditorFindLocationString: Daggerfall/Daggerfall
 --- !u!1 &1005403698
 GameObject:
   m_ObjectHideFlags: 0
@@ -4839,20 +4838,27 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '1/30/2015 3:35:58 AM *** Logging started
-
-    1/30/2015 3:35:58 AM *** DFUnity started in editor
-
-
-    1/30/2015 3:35:58 AM *** Dev console created
-
-    1/30/2015 3:36:25 AM *** Exception caught when trying to open the log file. e:
-    Sharing violation on path F:\docs\unity\Project2\dfunity.log
-
-    1/30/2015 3:36:25 AM *** DFUnity started in editor
-
-
-'
+  m_Text: "1/30/2015 3:27:48 AM *** Logging started\n1/30/2015 3:27:48 AM *** DFUnity
+    started in editor\n\n1/30/2015 3:27:48 AM *** Dev console created\n1/30/2015 3:27:54
+    AM *** > spawn 2\n1/30/2015 3:27:58 AM *** > `\n1/30/2015 3:28:00 AM *** > spawn_enemy
+    2\n1/30/2015 3:28:00 AM *** Spawning enemy of type Spriggan.\n\n1/30/2015 3:28:00
+    AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Creating a Daggerfall
+    enemy GameObject.\n\n1/30/2015 3:28:00 AM *** \n*** Creature ***\n UUID: d3b8060e-be03-408e-a74c-d756ae71432f\n
+    CreatureID: Spriggan\n Enabled: True\n  Health 0/0\n  Mana 0/0 \n  Stamina 0/0\n\nAlteration:
+    1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian:
+    1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% --
+    Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% --
+    Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% --
+    Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1%
+    -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1%
+    -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth:
+    1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- \nStrength 0 -- Intelligence
+    0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Personality 0 -- Speed 0 -- Luck
+    0 -- Level 0\n  Sleeping: False \n  Sneaking: False \n\n1/30/2015 3:28:00 AM ***
+    GameObject (Daggerfall.Internal.CreatureSpawner) Created a Daggerfall enemy GameObject.\n\n1/30/2015
+    3:28:15 AM *** Exception caught when trying to open the log file. e: Sharing violation
+    on path F:\\docs\\unity\\Project2\\dfunity.log\n1/30/2015 3:28:15 AM *** DFUnity
+    started in editor\n\n"
 --- !u!222 &1209927337
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5865,7 +5871,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1420469443}
   - 108: {fileID: 1420469445}
-  - 114: {fileID: 1420469444}
   m_Layer: 0
   m_Name: SunlightRig
   m_TagString: Untagged
@@ -5888,19 +5893,6 @@ Transform:
   - {fileID: 294513472}
   m_Father: {fileID: 258663721}
   m_RootOrder: 0
---- !u!114 &1420469444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1420469442}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ad42a6ae133d274c9d4b094186582db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Angle: -90
-  OtherLights: []
 --- !u!108 &1420469445
 Light:
   m_ObjectHideFlags: 0
@@ -6208,7 +6200,8 @@ Prefab:
       propertyPath: uiOwner
       value: 
       objectReference: {fileID: 338791045}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11400004, guid: 0811f78212229814d8c469c916304789, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 0811f78212229814d8c469c916304789, type: 2}
   m_RootGameObject: {fileID: 425314569}
   m_IsPrefabParent: 0

@@ -14,10 +14,10 @@ namespace DaggerfallWorkshop.Demo
         public void ShowBloodSplash(int bloodIndex, Vector3 bloodPosition)
         {
             // Create oneshot animated billboard for blood effect
-            DaggerfallUnity dfUnity;
-            if (DaggerfallUnity.FindDaggerfallUnity(out dfUnity))
+            DaggerfallUnity dfUnity = DaggerfallUnity.Instance;
+            if (dfUnity)
             {
-                GameObject go = GameObjectHelper.CreateDaggerfallBillboardGameObject(dfUnity, bloodArchive, bloodIndex, null, true);
+                GameObject go = GameObjectHelper.CreateDaggerfallBillboardGameObject(bloodArchive, bloodIndex, null, true);
                 go.name = "BloodSplash";
                 DaggerfallBillboard c = go.GetComponent<DaggerfallBillboard>();
                 go.transform.position = bloodPosition + transform.forward * 0.02f;

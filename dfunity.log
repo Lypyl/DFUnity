@@ -7237,26 +7237,20 @@ Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Perso
 1/30/2015 3:28:15 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
 1/30/2015 3:28:15 AM *** DFUnity started in editor
 
-1/30/2015 3:35:44 AM *** Logging started
-1/30/2015 3:35:44 AM *** DFUnity started in editor
+1/30/2015 3:43:07 AM *** Logging started
+1/30/2015 3:43:07 AM *** DFUnity started in editor
 
-1/30/2015 3:35:58 AM *** Logging started
-1/30/2015 3:35:58 AM *** DFUnity started in editor
+1/30/2015 3:44:44 AM *** Logging started
+1/30/2015 3:44:44 AM *** DFUnity started in editor
 
-1/30/2015 3:36:25 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
-1/30/2015 3:36:25 AM *** DFUnity started in editor
+1/30/2015 3:44:51 AM *** Spawning enemy of type GrizzlyBear.
 
-1/30/2015 3:36:36 AM *** Logging started
-1/30/2015 3:36:36 AM *** DFUnity started in editor
+1/30/2015 3:44:51 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Creating a Daggerfall enemy GameObject.
 
-1/30/2015 3:36:44 AM *** Spawning enemy of type GiantBat.
-
-1/30/2015 3:36:44 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Creating a Daggerfall enemy GameObject.
-
-1/30/2015 3:36:44 AM *** 
+1/30/2015 3:44:51 AM *** 
 *** Creature ***
- UUID: a41168a0-500a-49ce-a4f0-735de19ad867
- CreatureID: GiantBat
+ UUID: 3c0e0beb-1277-44ca-ba1d-206c9753748b
+ CreatureID: GrizzlyBear
  Enabled: True
   Health 0/0
   Mana 0/0 
@@ -7267,14 +7261,8 @@ Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Perso
   Sleeping: False 
   Sneaking: False 
 
-1/30/2015 3:36:44 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Created a Daggerfall enemy GameObject.
+1/30/2015 3:44:51 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Created a Daggerfall enemy GameObject.
 
-1/30/2015 3:36:50 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
-1/30/2015 3:36:50 AM *** DFUnity started in editor
-
-1/30/2015 3:37:01 AM *** Logging started
-1/30/2015 3:37:01 AM *** DFUnity started in editor
-
-1/30/2015 3:37:07 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
-1/30/2015 3:37:07 AM *** DFUnity started in editor
+1/30/2015 3:44:54 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/30/2015 3:44:54 AM *** DFUnity started in editor
 

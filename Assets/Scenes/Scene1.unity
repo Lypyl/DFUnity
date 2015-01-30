@@ -829,6 +829,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outputTextField: {fileID: 1209927336}
+  inputField: {fileID: 1326234084}
+  uiManager: {fileID: 338791047}
 --- !u!1 &143967658
 GameObject:
   m_ObjectHideFlags: 0
@@ -1662,6 +1664,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outputTextField: {fileID: 0}
+  inputField: {fileID: 0}
+  uiManager: {fileID: 0}
 --- !u!114 &322528715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1703,6 +1707,7 @@ MonoBehaviour:
   toggleFly: 0
   flySpeed: 1
   uiOwner: {fileID: 338791045}
+  uiManager: {fileID: 338791047}
 --- !u!114 &322528717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4834,9 +4839,17 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '1/25/2015 6:03:37 AM *** Logging started
+  m_Text: '1/30/2015 3:35:58 AM *** Logging started
 
-    1/25/2015 6:03:37 AM *** DFUnity started in editor
+    1/30/2015 3:35:58 AM *** DFUnity started in editor
+
+
+    1/30/2015 3:35:58 AM *** Dev console created
+
+    1/30/2015 3:36:25 AM *** Exception caught when trying to open the log file. e:
+    Sharing violation on path F:\docs\unity\Project2\dfunity.log
+
+    1/30/2015 3:36:25 AM *** DFUnity started in editor
 
 
 '

@@ -7237,3 +7237,44 @@ Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Perso
 1/30/2015 3:28:15 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
 1/30/2015 3:28:15 AM *** DFUnity started in editor
 
+1/30/2015 3:35:44 AM *** Logging started
+1/30/2015 3:35:44 AM *** DFUnity started in editor
+
+1/30/2015 3:35:58 AM *** Logging started
+1/30/2015 3:35:58 AM *** DFUnity started in editor
+
+1/30/2015 3:36:25 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/30/2015 3:36:25 AM *** DFUnity started in editor
+
+1/30/2015 3:36:36 AM *** Logging started
+1/30/2015 3:36:36 AM *** DFUnity started in editor
+
+1/30/2015 3:36:44 AM *** Spawning enemy of type GiantBat.
+
+1/30/2015 3:36:44 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Creating a Daggerfall enemy GameObject.
+
+1/30/2015 3:36:44 AM *** 
+*** Creature ***
+ UUID: a41168a0-500a-49ce-a4f0-735de19ad867
+ CreatureID: GiantBat
+ Enabled: True
+  Health 0/0
+  Mana 0/0 
+  Stamina 0/0
+
+Alteration: 1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian: 1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% -- Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% -- Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% -- Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1% -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1% -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth: 1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- 
+Strength 0 -- Intelligence 0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Personality 0 -- Speed 0 -- Luck 0 -- Level 0
+  Sleeping: False 
+  Sneaking: False 
+
+1/30/2015 3:36:44 AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Created a Daggerfall enemy GameObject.
+
+1/30/2015 3:36:50 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/30/2015 3:36:50 AM *** DFUnity started in editor
+
+1/30/2015 3:37:01 AM *** Logging started
+1/30/2015 3:37:01 AM *** DFUnity started in editor
+
+1/30/2015 3:37:07 AM *** Exception caught when trying to open the log file. e: Sharing violation on path F:\docs\unity\Project2\dfunity.log
+1/30/2015 3:37:07 AM *** DFUnity started in editor
+

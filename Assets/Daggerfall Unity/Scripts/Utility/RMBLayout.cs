@@ -1,4 +1,11 @@
-﻿using UnityEngine;
+﻿// Project:         Daggerfall Tools For Unity
+// Copyright:       Copyright (C) 2009-2015 Gavin Clayton
+// License:         MIT License (http://www.opensource.org/licenses/mit-license.php)
+// Web Site:        http://www.dfworkshop.net
+// Contact:         Gavin Clayton (interkarma@dfworkshop.net)
+// Project Page:    https://github.com/Interkarma/daggerfall-unity
+
+using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -57,12 +64,22 @@ namespace DaggerfallWorkshop.Utility
             if (dfUnity.Option_CombineRMB)
                 combiner = new ModelCombiner();
 
-            // Add models and doors
+            // Lists to receive any doors found in this block
+            List<StaticDoor> modelDoors;
+            List<StaticDoor> propDoors;
+
+            // Add models and props
             GameObject modelsNode = new GameObject("Models");
             modelsNode.transform.parent = go.transform;
-            StaticDoor[] doors = AddModels(dfUnity, ref blockData, combiner, modelsNode.transform);
-            AddProps(dfUnity, ref blockData, combiner, modelsNode.transform);
-            AddDoors(doors, go);
+            AddModels(dfUnity, ref blockData, out modelDoors, combiner, modelsNode.transform);
+            AddProps(dfUnity, ref blockData, out propDoors, combiner, modelsNode.transform);
+
+            // Add doors
+            List<StaticDoor> allDoors = new List<StaticDoor>();
+            if (modelDoors.Count > 0) allDoors.AddRange(modelDoors);
+            if (propDoors.Count > 0) allDoors.AddRange(propDoors);
+            if (allDoors.Count > 0)
+                AddDoors(allDoors.ToArray(), go);
 
             // Add block flats
             GameObject flatsNode = new GameObject("Flats");
@@ -96,13 +113,14 @@ namespace DaggerfallWorkshop.Utility
             return go;
         }
 
-        public static StaticDoor[] AddModels(
+        public static void AddModels(
             DaggerfallUnity dfUnity,
             ref DFBlock blockData,
+            out List<StaticDoor> doorsOut,
             ModelCombiner combiner = null,
             Transform parent = null)
         {
-            List<StaticDoor> doors = new List<StaticDoor>();
+            doorsOut = new List<StaticDoor>();
 
             // Iterate through all subrecords
             int recordCount = 0;
@@ -127,7 +145,7 @@ namespace DaggerfallWorkshop.Utility
 
                     // Does this model have doors?
                     if (modelData.Doors != null)
-                        doors.AddRange(GameObjectHelper.GetStaticDoors(ref modelData, blockData.Index, recordCount, modelMatrix));
+                        doorsOut.AddRange(GameObjectHelper.GetStaticDoors(ref modelData, blockData.Index, recordCount, modelMatrix));
 
                     // Add or combine
                     if (combiner == null || IsCityGate(obj.ModelIdNum))
@@ -139,16 +157,17 @@ namespace DaggerfallWorkshop.Utility
                 // Increment record count
                 recordCount++;
             }
-
-            return doors.ToArray();
         }
 
         public static void AddProps(
             DaggerfallUnity dfUnity,
             ref DFBlock blockData,
+            out List<StaticDoor> doorsOut,
             ModelCombiner combiner = null,
             Transform parent = null)
         {
+             doorsOut = new List<StaticDoor>();
+
             // Iterate through all misc records
             foreach (DFBlock.RmbBlock3dObjectRecord obj in blockData.RmbBlock.Misc3dObjectRecords)
             {
@@ -160,6 +179,10 @@ namespace DaggerfallWorkshop.Utility
                 // Get model data
                 ModelData modelData;
                 dfUnity.MeshReader.GetModelData(obj.ModelIdNum, out modelData);
+
+                // Does this model have doors?
+                if (modelData.Doors != null)
+                    doorsOut.AddRange(GameObjectHelper.GetStaticDoors(ref modelData, blockData.Index, 0, modelMatrix));
 
                 // Add or combine
                 if (combiner == null)

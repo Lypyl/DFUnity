@@ -1,10 +1,9 @@
 ﻿// Project:         Daggerfall Tools For Unity
-// Description:     Read data from Daggerfall's file formats into Unity3D.
-// Copyright:       Copyright (C) 2009-2014 Gavin Clayton
+// Copyright:       Copyright (C) 2009-2015 Gavin Clayton
 // License:         MIT License (http://www.opensource.org/licenses/mit-license.php)
 // Web Site:        http://www.dfworkshop.net
 // Contact:         Gavin Clayton (interkarma@dfworkshop.net)
-// Project Page:    https://code.google.com/p/daggerfall-unity/
+// Project Page:    https://github.com/Interkarma/daggerfall-unity
 
 #region Using Statements
 using System;
@@ -18,7 +17,6 @@ namespace DaggerfallConnect.Utility
         #region Fields
 
         public int X;
-
         public int Y;
 
         #endregion

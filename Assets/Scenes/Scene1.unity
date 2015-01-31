@@ -1569,12 +1569,12 @@ GameObject:
   - 143: {fileID: 322528713}
   - 114: {fileID: 322528711}
   - 136: {fileID: 322528710}
-  - 114: {fileID: 322528712}
   - 114: {fileID: 322528716}
   - 114: {fileID: 322528714}
   - 114: {fileID: 322528717}
   - 114: {fileID: 322528715}
   - 114: {fileID: 322528718}
+  - 114: {fileID: 322528712}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1632,7 +1632,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 322528708}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9fc44ba0875fa1468a4f7d0e774d666, type: 3}
+  m_Script: {fileID: 11500000, guid: 12e531286826ff44e9d880d9de35257e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   WorldX: 6782976
@@ -1677,9 +1677,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a87139e1dfd9f1b4da7acf30b0c8f23f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Location: {fileID: 0}
   ExteriorParent: {fileID: 258663720}
   InteriorParent: {fileID: 41968001}
+  DungeonParent: {fileID: 0}
 --- !u!114 &322528716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2078,9 +2078,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a87139e1dfd9f1b4da7acf30b0c8f23f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Location: {fileID: 0}
   ExteriorParent: {fileID: 0}
   InteriorParent: {fileID: 0}
+  DungeonParent: {fileID: 0}
 --- !u!114 &425314573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2681,7 +2681,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeTime: 2
   fadeColor: {r: .00999999978, g: .00999999978, b: .00999999978, a: 1}
-  fadeShader: {fileID: 30, guid: 0000000000000000f000000000000000, type: 0}
+  fadeShader: {fileID: 30, guid: 0000000000000000f000000000000000, type: 3}
 --- !u!20 &660417900
 Camera:
   m_ObjectHideFlags: 0
@@ -3512,15 +3512,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 950444267}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86b88e4688332c64c94a6bbcd353cb93, type: 3}
+  m_Script: {fileID: 11500000, guid: ab61802efb5887c4395c406f282ed9bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   LocalPlayerGPS: {fileID: 322528712}
-  TerrainDistance: 1
+  TerrainDistance: 3
   MapPixelX: 207
   MapPixelY: 213
   TerrainScale: 1.5
   EditorFindLocationString: Daggerfall/Daggerfall
+  AddLocationBeacon: 0
+  ShowDebugString: 0
 --- !u!1 &1005403698
 GameObject:
   m_ObjectHideFlags: 0
@@ -4187,7 +4189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeTime: 2
   fadeColor: {r: .00999999978, g: .00999999978, b: .00999999978, a: 1}
-  fadeShader: {fileID: 30, guid: 0000000000000000f000000000000000, type: 0}
+  fadeShader: {fileID: 30, guid: 0000000000000000f000000000000000, type: 3}
 --- !u!20 &1066253583
 Camera:
   m_ObjectHideFlags: 0

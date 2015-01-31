@@ -1,4 +1,11 @@
-﻿using UnityEngine;
+﻿// Project:         Daggerfall Tools For Unity
+// Copyright:       Copyright (C) 2009-2015 Gavin Clayton
+// License:         MIT License (http://www.opensource.org/licenses/mit-license.php)
+// Web Site:        http://www.dfworkshop.net
+// Contact:         Gavin Clayton (interkarma@dfworkshop.net)
+// Project Page:    https://github.com/Interkarma/daggerfall-unity
+
+using UnityEngine;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
@@ -362,7 +369,7 @@ namespace DaggerfallWorkshop.Utility
             // Arena2 path must be set
             if (string.IsNullOrEmpty(Arena2Path))
             {
-                DaggerfallUnity.LogMessage("TextureReader: Arena2Path not set.");
+                DaggerfallUnity.LogMessage("TextureReader: Arena2Path not set.", true);
                 return false;
             }
 
@@ -372,7 +379,7 @@ namespace DaggerfallWorkshop.Utility
                 textureFile = new TextureFile();
                 if (!textureFile.Palette.Load(Path.Combine(Arena2Path, textureFile.PaletteName)))
                 {
-                    DaggerfallUnity.LogMessage("TextureReader: Failed to load palette file, is Arena2Path correct?");
+                    DaggerfallUnity.LogMessage("TextureReader: Failed to load palette file, is Arena2Path correct?", true);
                     textureFile = null;
                     return false;
                 }

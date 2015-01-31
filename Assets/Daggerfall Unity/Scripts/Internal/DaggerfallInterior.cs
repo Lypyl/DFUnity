@@ -1,4 +1,11 @@
-﻿using UnityEngine;
+﻿// Project:         Daggerfall Tools For Unity
+// Copyright:       Copyright (C) 2009-2015 Gavin Clayton
+// License:         MIT License (http://www.opensource.org/licenses/mit-license.php)
+// Web Site:        http://www.dfworkshop.net
+// Contact:         Gavin Clayton (interkarma@dfworkshop.net)
+// Project Page:    https://github.com/Interkarma/daggerfall-unity
+
+using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -58,19 +65,14 @@ namespace DaggerfallWorkshop
         /// </summary>
         /// <param name="doorOwner">Parent transform owning door array.</param>
         /// <param name="door">Exterior door player clicked on.</param>
-        /// <param name="location">DaggerfallLocation component of parent city.</param>
         /// <returns>True if successful.</returns>
-        public bool DoLayout(Transform doorOwner, StaticDoor door, DaggerfallLocation location = null)
+        public bool DoLayout(Transform doorOwner, StaticDoor door, ClimateBases climateBase)
         {
             if (dfUnity == null)
                 dfUnity = DaggerfallUnity.Instance;
 
-            // Use location climate
-            if (location != null)
-            {
-                climateBase = location.CurrentClimate;
-                climateSeason = location.CurrentSeason;
-            }
+            // Use specified climate
+            this.climateBase = climateBase;
 
             // Save exterior information
             this.entryDoor = door;

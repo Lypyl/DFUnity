@@ -1,4 +1,11 @@
-﻿using UnityEngine;
+﻿// Project:         Daggerfall Tools For Unity
+// Copyright:       Copyright (C) 2009-2015 Gavin Clayton
+// License:         MIT License (http://www.opensource.org/licenses/mit-license.php)
+// Web Site:        http://www.dfworkshop.net
+// Contact:         Gavin Clayton (interkarma@dfworkshop.net)
+// Project Page:    https://github.com/Interkarma/daggerfall-unity
+
+using UnityEngine;
 using System.IO;
 using System.Collections;
 using DaggerfallWorkshop;
@@ -30,9 +37,10 @@ namespace DaggerfallWorkshop.Demo
             mainCamera = Camera.main;
 
             // Adjust scale based on resolution
-            if (Screen.currentResolution.height > 1080)
+            // You can plug in your own UI scaling here instead
+            if (Screen.currentResolution.height >= 1080 && Screen.currentResolution.height < 1440)
                 scale = 3;
-            if (Screen.currentResolution.height > 1440)
+            if (Screen.currentResolution.height >= 1440)
                 scale = 4;
         }
 
@@ -69,6 +77,7 @@ namespace DaggerfallWorkshop.Demo
                 ImgFile file = new ImgFile(Path.Combine(dfUnity.Arena2Path, compassFilename), FileUsage.UseMemory, true);
                 file.LoadPalette(Path.Combine(dfUnity.Arena2Path, file.PaletteName));
                 compassTexture = GetTextureFromImg(file);
+                compassTexture.filterMode = dfUnity.MaterialReader.MainFilterMode;
             }
 
             if (!compassBoxTexture)
@@ -76,6 +85,7 @@ namespace DaggerfallWorkshop.Demo
                 ImgFile file = new ImgFile(Path.Combine(dfUnity.Arena2Path, compassBoxFilename), FileUsage.UseMemory, true);
                 file.LoadPalette(Path.Combine(dfUnity.Arena2Path, file.PaletteName));
                 compassBoxTexture = GetTextureFromImg(file);
+                compassBoxTexture.filterMode = dfUnity.MaterialReader.MainFilterMode;
             }
 
             assetsLoaded = true;
@@ -93,11 +103,13 @@ namespace DaggerfallWorkshop.Demo
 
         void DrawCompass()
         {
-            const int boxOutlineSize = 2;
+            const int boxOutlineSize = 2;       // Pixel width of box outline
+            const int boxInterior = 64;         // Pixel width of box interior
+            const int nonWrappedPart = 258;     // Pixel width of non-wrapped part of compass strip
 
             // Calculate displacement
             float percent = mainCamera.transform.eulerAngles.y / 360f;
-            int scroll = (int)((float)258 * percent);
+            int scroll = (int)((float)nonWrappedPart * percent);
 
             // Compass box rect
             Rect compassBoxRect = new Rect();
@@ -110,7 +122,7 @@ namespace DaggerfallWorkshop.Demo
             Rect compassSrcRect = new Rect();
             compassSrcRect.xMin = scroll / (float)compassTexture.width;
             compassSrcRect.yMin = 0;
-            compassSrcRect.xMax = compassSrcRect.xMin + 64f / (float)compassTexture.width;
+            compassSrcRect.xMax = compassSrcRect.xMin + (float)boxInterior / (float)compassTexture.width;
             compassSrcRect.yMax = 1;
 
             // Compass strip destination
@@ -120,8 +132,8 @@ namespace DaggerfallWorkshop.Demo
             compassDstRect.width = compassBoxRect.width - (boxOutlineSize * 2) * scale;
             compassDstRect.height = compassTexture.height * scale;
 
-            GUI.DrawTexture(compassBoxRect, compassBoxTexture, ScaleMode.StretchToFill, false);
-            GUI.DrawTextureWithTexCoords(compassDstRect, compassTexture, compassSrcRect, true);
+            GUI.DrawTextureWithTexCoords(compassDstRect, compassTexture, compassSrcRect, false);
+            GUI.DrawTexture(compassBoxRect, compassBoxTexture, ScaleMode.StretchToFill, true);
         }
 
         #endregion

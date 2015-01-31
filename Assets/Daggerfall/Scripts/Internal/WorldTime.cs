@@ -2,6 +2,7 @@
 using System.Collections;
 using System;
 using DaggerfallWorkshop;
+using Daggerfall.Game;
 
 namespace Daggerfall { 
     /// <summary>

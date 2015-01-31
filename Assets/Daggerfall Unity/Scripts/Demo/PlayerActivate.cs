@@ -1,4 +1,11 @@
-﻿using UnityEngine;
+﻿// Project:         Daggerfall Tools For Unity
+// Copyright:       Copyright (C) 2009-2015 Gavin Clayton
+// License:         MIT License (http://www.opensource.org/licenses/mit-license.php)
+// Web Site:        http://www.dfworkshop.net
+// Contact:         Gavin Clayton (interkarma@dfworkshop.net)
+// Project Page:    https://github.com/Interkarma/daggerfall-unity
+
+using UnityEngine;
 using System.Collections;
 
 namespace DaggerfallWorkshop.Demo
@@ -8,6 +15,7 @@ namespace DaggerfallWorkshop.Demo
     /// </summary>
     public class PlayerActivate : MonoBehaviour
     {
+        PlayerGPS playerGPS;
         PlayerEnterExit playerEnterExit;        // Example component to enter/exit buildings
         GameObject mainCamera;
 
@@ -15,6 +23,7 @@ namespace DaggerfallWorkshop.Demo
 
         void Start()
         {
+            playerGPS = GetComponent<PlayerGPS>();
             playerEnterExit = GetComponent<PlayerEnterExit>();
             mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         }
@@ -73,6 +82,19 @@ namespace DaggerfallWorkshop.Demo
                                     // Hit door while inside, transition outside
                                     playerEnterExit.TransitionExterior();
                                     return;
+                                }
+                                else if (door.doorType == DoorTypes.DungeonEntrance && !playerEnterExit.IsPlayerInside)
+                                {
+                                    if (playerGPS)
+                                    {
+                                        // Hit dungeon door while outside, transition inside
+                                        playerEnterExit.TransitionDungeonInterior(doorOwner, door, playerGPS.CurrentLocation);
+                                        return;
+                                    }
+                                }
+                                else if (door.doorType == DoorTypes.DungeonExit && playerEnterExit.IsPlayerInside)
+                                {
+                                    // TODO: Hit dungeon exit while inside, transtion outside
                                 }
                             }
                         }

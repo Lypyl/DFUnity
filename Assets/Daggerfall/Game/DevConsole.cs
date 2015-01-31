@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using DaggerfallWorkshop.Game;
 using UnityEngine.UI;
 using DaggerfallConnect;
 using DaggerfallConnect.Utility;
 using DaggerfallConnect.Arena2;
 using DaggerfallWorkshop.Utility;
+using DaggerfallWorkshop;
 
-namespace DaggerfallWorkshop.Game {
+namespace Daggerfall.Game {
 
     // Displays internal game messages and allows the user to execute internal game commands
     // Call displayText(...) to append a message to the log
@@ -96,7 +96,7 @@ namespace DaggerfallWorkshop.Game {
                             int longitude = (int)location.MapTableData.Longitude;
                             int latitude = (int)location.MapTableData.Latitude;
                             DFPosition pos = MapsFile.MapPixelToWorldCoord(latitude, longitude);
-                            Daggerfall.PlayerGPS localPlayerGPS = GameObject.FindGameObjectWithTag("Player").GetComponent<Daggerfall.PlayerGPS>();
+                            PlayerGPS localPlayerGPS = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerGPS>();
                             localPlayerGPS.WorldX = pos.X;
                             localPlayerGPS.WorldZ = pos.Y;
                         }

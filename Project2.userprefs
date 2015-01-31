@@ -1,8 +1,16 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Daggerfall Unity\Scripts\Game\DevConsole.cs">
+    <Files>
+      <File FileName="Assets\Daggerfall Unity\Scripts\Game\DevConsole.cs" Line="80" Column="1" />
+      <File FileName="Assets\Daggerfall Unity\Scripts\Game\Logger.cs" Line="49" Column="15" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="F:\docs\unity\Project2\Assets\Daggerfall Unity\Scripts\Game\DevConsole.cs" line="79" />
+      <Breakpoint file="F:\docs\unity\Project2\Assets\Daggerfall Unity\Scripts\Game\Logger.cs" line="50" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

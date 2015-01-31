@@ -83,6 +83,7 @@
      <Compile Include="Assets\Daggerfall Unity\Scripts\DaggerfallUnityStructs.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Demo\AmbientEffectsPlayer.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Demo\AnimateTexture.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Demo\ConstrainYRotation.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Demo\EnemyAttack.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Demo\EnemyBlood.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Demo\EnemyDeath.cs" />
@@ -90,6 +91,8 @@
      <Compile Include="Assets\Daggerfall Unity\Scripts\Demo\EnemyMotor.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Demo\EnemySenses.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Demo\EnemySounds.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Demo\ExitGame.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Demo\ExplorerMode.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Demo\FPSCrosshair.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Demo\FPSWeapon.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Demo\PlayerActivate.cs" />
@@ -101,13 +104,10 @@
      <Compile Include="Assets\Daggerfall Unity\Scripts\Demo\PlayerMouseLook.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Demo\PlayerWeather.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Demo\ShowPlayerDamage.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Demo\ShowTitleScreen.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Demo\SunlightManager.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Demo\WeaponManager.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\External\iTween.cs" />
-     <Compile Include="Assets\Daggerfall Unity\Scripts\Game\DevConsole.cs" />
-     <Compile Include="Assets\Daggerfall Unity\Scripts\Game\Error.cs" />
-     <Compile Include="Assets\Daggerfall Unity\Scripts\Game\Logger.cs" />
-     <Compile Include="Assets\Daggerfall Unity\Scripts\Game\UIManager.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Internal\DaggerfallAction.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Internal\DaggerfallActionDoor.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Internal\DaggerfallAudioSource.cs" />
@@ -152,6 +152,10 @@
      <Compile Include="Assets\Daggerfall Unity\Scripts\Utility\TextureReader.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Utility\ThreadedJob.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Utility\WeaponBasics.cs" />
+     <Compile Include="Assets\Daggerfall\Game\DevConsole.cs" />
+     <Compile Include="Assets\Daggerfall\Game\Error.cs" />
+     <Compile Include="Assets\Daggerfall\Game\Logger.cs" />
+     <Compile Include="Assets\Daggerfall\Game\UIManager.cs" />
      <Compile Include="Assets\Daggerfall\Scripts\Gameplay\AmbientEffectsPlayer.cs" />
      <Compile Include="Assets\Daggerfall\Scripts\Gameplay\AnimateTexture.cs" />
      <Compile Include="Assets\Daggerfall\Scripts\Gameplay\DaggerfallPlayerController.cs" />
@@ -178,9 +182,8 @@
      <Compile Include="Assets\Daggerfall\Scripts\Gameplay\SunlightManager.cs" />
      <Compile Include="Assets\Daggerfall\Scripts\Gameplay\WeaponManager.cs" />
      <Compile Include="Assets\Daggerfall\Scripts\Internal\CreatureSpawner.cs" />
-     <Compile Include="Assets\Daggerfall\Scripts\Internal\PlayerGPS.cs" />
+     <Compile Include="Assets\Daggerfall\Scripts\Internal\DFUnityInit.cs" />
      <Compile Include="Assets\Daggerfall\Scripts\Internal\WorldTime.cs" />
-     <Compile Include="Assets\Daggerfall\Scripts\Terrain\StreamingWorld.cs" />
      <Compile Include="Assets\OVR\Scripts\OVRCameraRig.cs" />
      <Compile Include="Assets\OVR\Scripts\OVRCommon.cs" />
      <Compile Include="Assets\OVR\Scripts\OVRDisplay.cs" />
@@ -202,6 +205,7 @@
      <None Include="Assets\Daggerfall Unity\Shaders\DaggerfallBillboardBatchTransparentCutoutForceForward.shader" />
      <None Include="Assets\OVR\Shaders\TextShader3D.shader" />
      <None Include="Assets\Daggerfall Unity\Resources\Songs\tracklisting.txt" />
+     <None Include="Assets\Daggerfall Unity\Licenses\Daggerfall Connect.txt" />
      <None Include="Assets\Daggerfall Unity\todo.txt" />
      <None Include="Assets\Daggerfall Unity\Shaders\DaggerfallBillboardBatchTransparentCutout.shader" />
      <None Include="Assets\Daggerfall Unity\Licenses\DaggerfallConnect.txt" />

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using DaggerfallConnect.Utility;
-using DaggerfallWorkshop.Game;
+using DaggerfallWorkshop;
 using System.IO;
 
 public class Logger {

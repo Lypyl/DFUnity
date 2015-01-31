@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Editor\DaggerfallAtlas.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Editor\DaggerfallAudioSourceEditor.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Editor\DaggerfallBillboardBatchEditor.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Editor\DaggerfallBillboardEditor.cs" />
@@ -73,6 +74,7 @@
      <None Include="Assets\Daggerfall Unity\Shaders\DaggerfallBillboardBatchTransparentCutoutForceForward.shader" />
      <None Include="Assets\OVR\Shaders\TextShader3D.shader" />
      <None Include="Assets\Daggerfall Unity\Resources\Songs\tracklisting.txt" />
+     <None Include="Assets\Daggerfall Unity\Licenses\Daggerfall Connect.txt" />
      <None Include="Assets\Daggerfall Unity\todo.txt" />
      <None Include="Assets\Daggerfall Unity\Shaders\DaggerfallBillboardBatchTransparentCutout.shader" />
      <None Include="Assets\Daggerfall Unity\Licenses\DaggerfallConnect.txt" />

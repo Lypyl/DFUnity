@@ -1,4 +1,11 @@
-﻿#if UNITY_EDITOR
+﻿// Project:         Daggerfall Tools For Unity
+// Copyright:       Copyright (C) 2009-2015 Gavin Clayton
+// License:         MIT License (http://www.opensource.org/licenses/mit-license.php)
+// Web Site:        http://www.dfworkshop.net
+// Contact:         Gavin Clayton (interkarma@dfworkshop.net)
+// Project Page:    https://github.com/Interkarma/daggerfall-unity
+
+#if UNITY_EDITOR
 using UnityEditor;
 #endif
 using UnityEngine;
@@ -26,7 +33,7 @@ namespace DaggerfallWorkshop
     public class DaggerfallUnity : MonoBehaviour
     {
         [NonSerialized]
-        public const string Version = "1.2.25";
+        public const string Version = "1.2.30";
 
         #region Fields
 
@@ -206,8 +213,6 @@ namespace DaggerfallWorkshop
             if (!isReady)
             {
 #if UNITY_EDITOR
-                Logger.GetInstance().Setup();
-                Logger.GetInstance().log("DFUnity started in editor\n");
                 if (!Application.isPlaying)
                 {
                     // Attempt to autoload path
@@ -237,13 +242,6 @@ namespace DaggerfallWorkshop
                     SetupContentReaders();
                 }
 #else
-                Logger.GetInstance().Setup();
-                Logger.GetInstance().log("DFUnity started in standalone mode.\nArgs: ");
-
-                foreach (string arg in System.Environment.GetCommandLineArgs()) {
-                    Logger.GetInstance().log(arg);
-                }
-
                 SetupSingleton();
                 SetupContentReaders();
 #endif
@@ -285,6 +283,7 @@ namespace DaggerfallWorkshop
             }
         }
 
+#if UNITY_EDITOR && !UNITY_WEBPLAYER
         private void LoadDeveloperArena2Path()
         {
             const string devArena2Path = "devArena2Path";
@@ -301,10 +300,14 @@ namespace DaggerfallWorkshop
                 {
                     // If it looks valid set this is as our path
                     if (ValidateArena2Path(path.text))
+                    {
                         Arena2Path = path.text;
+                        EditorUtility.SetDirty(this);
+                    }
                 }
             }
         }
+#endif
 
         #endregion
 

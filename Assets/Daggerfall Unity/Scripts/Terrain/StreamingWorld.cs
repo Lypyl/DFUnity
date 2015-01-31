@@ -1,4 +1,11 @@
-﻿using UnityEngine;
+﻿// Project:         Daggerfall Tools For Unity
+// Copyright:       Copyright (C) 2009-2015 Gavin Clayton
+// License:         MIT License (http://www.opensource.org/licenses/mit-license.php)
+// Web Site:        http://www.dfworkshop.net
+// Contact:         Gavin Clayton (interkarma@dfworkshop.net)
+// Project Page:    https://github.com/Interkarma/daggerfall-unity
+
+using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,7 +15,6 @@ using DaggerfallConnect.Arena2;
 using DaggerfallConnect.Utility;
 using DaggerfallWorkshop.Demo;
 using DaggerfallWorkshop.Utility;
-using Daggerfall;
 
 namespace DaggerfallWorkshop
 {
@@ -34,7 +40,7 @@ namespace DaggerfallWorkshop
         // 1 : ( 2 * 1 + 1 ) * ( 2 * 1 + 1 ) = 9 tiles
         // 3 : ( 2 * 3 + 1 ) * ( 2 * 3 + 1 ) = 49 tiles
         [Range(1, 3)]
-        public int TerrainDistance = 1;
+        public int TerrainDistance = 3;
 
         // This controls central map pixel for streaming world
         // Synced to PlayerGPS at runtime
@@ -53,7 +59,7 @@ namespace DaggerfallWorkshop
         public string EditorFindLocationString = "Daggerfall/Privateer's Hold";
 
         public bool AddLocationBeacon = false;
-        public bool ShowDebugString = true;
+        public bool ShowDebugString = false;
 
         // List of terrain objects
         // Terrains all have the same format and will be endlessly recycled

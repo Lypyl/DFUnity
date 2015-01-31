@@ -1,4 +1,11 @@
-﻿using UnityEngine;
+﻿// Project:         Daggerfall Tools For Unity
+// Copyright:       Copyright (C) 2009-2015 Gavin Clayton
+// License:         MIT License (http://www.opensource.org/licenses/mit-license.php)
+// Web Site:        http://www.dfworkshop.net
+// Contact:         Gavin Clayton (interkarma@dfworkshop.net)
+// Project Page:    https://github.com/Interkarma/daggerfall-unity
+
+using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -21,14 +28,6 @@ namespace DaggerfallWorkshop
     [RequireComponent(typeof(DaggerfallUnity))]
     public class MaterialReader : MonoBehaviour
     {
-        #region Fields
-
-        DaggerfallUnity dfUnity;
-        TextureReader textureReader;
-        Dictionary<int, CachedMaterial> materialDict = new Dictionary<int, CachedMaterial>();
-
-        #endregion
-
         #region Fields
 
         // General settings
@@ -69,6 +68,10 @@ namespace DaggerfallWorkshop
         public const int TileMapKeyGroup = 3072;
         public const int UnusedKeyGroup2 = 3584;
         public const int UnusedKeyGroup3 = 4096;
+
+        DaggerfallUnity dfUnity;
+        TextureReader textureReader;
+        Dictionary<int, CachedMaterial> materialDict = new Dictionary<int, CachedMaterial>();
 
         #endregion
 

@@ -1,4 +1,11 @@
-﻿using UnityEngine;
+﻿// Project:         Daggerfall Tools For Unity
+// Copyright:       Copyright (C) 2009-2015 Gavin Clayton
+// License:         MIT License (http://www.opensource.org/licenses/mit-license.php)
+// Web Site:        http://www.dfworkshop.net
+// Contact:         Gavin Clayton (interkarma@dfworkshop.net)
+// Project Page:    https://github.com/Interkarma/daggerfall-unity
+
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using DaggerfallConnect;
@@ -429,8 +436,14 @@ namespace DaggerfallWorkshop.Utility
             if (!FindMultiNameLocation(multiName, out location))
                 return null;
 
+            return CreateDaggerfallDungeonGameObject(location, parent);
+        }
+
+        public static GameObject CreateDaggerfallDungeonGameObject(DFLocation location, Transform parent)
+        {
             if (!location.HasDungeon)
             {
+                string multiName = string.Format("{0}/{1}", location.RegionName, location.Name);
                 DaggerfallUnity.LogMessage(string.Format("Location '{0}' does not contain a dungeon map", multiName), true);
                 return null;
             }

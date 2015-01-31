@@ -425,6 +425,7 @@ MonoBehaviour:
   smoothing: {x: 3, y: 3}
   targetDirection: {x: 0, y: 0}
   targetCharacterDirection: {x: 0, y: 0}
+  enableMouseLook: 1
   characterBody: {fileID: 2085610154}
 --- !u!81 &1100502291
 AudioListener:

@@ -1,4 +1,11 @@
-﻿using UnityEngine;
+﻿// Project:         Daggerfall Tools For Unity
+// Copyright:       Copyright (C) 2009-2015 Gavin Clayton
+// License:         MIT License (http://www.opensource.org/licenses/mit-license.php)
+// Web Site:        http://www.dfworkshop.net
+// Contact:         Gavin Clayton (interkarma@dfworkshop.net)
+// Project Page:    https://github.com/Interkarma/daggerfall-unity
+
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System;
@@ -84,7 +91,10 @@ namespace DaggerfallWorkshop
                     out atlasRects,
                     out atlasIndices,
                     4,
-                    true);
+                    true,
+                    0,
+                    false,
+                    Shader.Find(dfUnity.MaterialReader.DefaultBillboardShaderName));
 
             // Cache size and scale for each record
             // This is required to properly calculate world size of billboard

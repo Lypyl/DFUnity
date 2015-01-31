@@ -437,6 +437,7 @@ MonoBehaviour:
   smoothing: {x: 3, y: 3}
   targetDirection: {x: 0, y: 0}
   targetCharacterDirection: {x: 0, y: 0}
+  enableMouseLook: 1
   characterBody: {fileID: 100000}
 --- !u!114 &11400002
 MonoBehaviour:

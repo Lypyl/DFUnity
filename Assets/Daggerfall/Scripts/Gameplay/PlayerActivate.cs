@@ -6,13 +6,16 @@
 using UnityEngine;
 using System.Collections;
 using DaggerfallWorkshop;
+using Daggerfall.Game;
 
 namespace Daggerfall.Gameplay
 {
     /// <summary>
     /// Example class to handle activation of doors, switches, etc. from Fire1 input.
     /// </summary>
-    public class PlayerActivate : MonoBehaviour {
+    public class PlayerActivate : MonoBehaviour
+    {
+        PlayerGPS playerGPS;
         PlayerEnterExit playerEnterExit;        // Example component to enter/exit buildings
         GameObject mainCamera;
         public GameObject uiOwner;
@@ -21,6 +24,7 @@ namespace Daggerfall.Gameplay
 
         void Start()
         {
+            playerGPS = GetComponent<PlayerGPS>();
             playerEnterExit = GetComponent<PlayerEnterExit>();
             mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         }
@@ -67,17 +71,30 @@ namespace Daggerfall.Gameplay
                             StaticDoor door;
                             if (doors.HasHit(hits[i].point, out door))
                             {
-                                if (door.doorType == DoorTypes.Building && !playerEnterExit.PlayerInside)
+                                if (door.doorType == DoorTypes.Building && !playerEnterExit.IsPlayerInside)
                                 {
                                     // Hit door while outside, transition inside
                                     playerEnterExit.TransitionInterior(doorOwner, door);
                                     return;
                                 }
-                                else if (door.doorType == DoorTypes.Building && playerEnterExit.PlayerInside)
+                                else if (door.doorType == DoorTypes.Building && playerEnterExit.IsPlayerInside)
                                 {
                                     // Hit door while inside, transition outside
                                     playerEnterExit.TransitionExterior();
                                     return;
+                                }
+                                else if (door.doorType == DoorTypes.DungeonEntrance && !playerEnterExit.IsPlayerInside)
+                                {
+                                    if (playerGPS)
+                                    {
+                                        // Hit dungeon door while outside, transition inside
+                                        playerEnterExit.TransitionDungeonInterior(doorOwner, door, playerGPS.CurrentLocation);
+                                        return;
+                                    }
+                                }
+                                else if (door.doorType == DoorTypes.DungeonExit && playerEnterExit.IsPlayerInside)
+                                {
+                                    // TODO: Hit dungeon exit while inside, transtion outside
                                 }
                             }
                         }

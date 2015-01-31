@@ -79,6 +79,7 @@ MonoBehaviour:
   ShowStars: 1
   SkyTintColor: {r: .5, g: .5, b: .5, a: 1}
   SkyColorScale: 1
+  WeatherStyle: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -1,4 +1,11 @@
-﻿using UnityEngine;
+﻿// Project:         Daggerfall Tools For Unity
+// Copyright:       Copyright (C) 2009-2015 Gavin Clayton
+// License:         MIT License (http://www.opensource.org/licenses/mit-license.php)
+// Web Site:        http://www.dfworkshop.net
+// Contact:         Gavin Clayton (interkarma@dfworkshop.net)
+// Project Page:    https://github.com/Interkarma/daggerfall-unity
+
+using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -535,6 +542,7 @@ namespace DaggerfallWorkshop
         {
             const int BuildingDoors = 74;
             const int DungeonEnterDoors = 56;
+            const int DungeonRuinEnterDoors = 331;
             const int DungeonExitDoors = 95;
 
             // Allocate arrays
@@ -554,12 +562,21 @@ namespace DaggerfallWorkshop
                 dfUnity.MaterialReader.GetCachedMaterial(dfSubMesh.TextureArchive, dfSubMesh.TextureRecord, 0, out cm);
                 Vector2 sz = cm.recordSizes[0];
 
+                // Get base climate archive for door check
+                // All base door textures are < 100, except dungeon ruins doors
+                int doorArchive = dfSubMesh.TextureArchive;
+                if (doorArchive > 100 && doorArchive != DungeonRuinEnterDoors)
+                {
+                    // Reduce to base texture set
+                    // This shifts all building climate doors to the same index
+                    ClimateTextureInfo ci = ClimateSwaps.GetClimateTextureInfo(dfSubMesh.TextureArchive);
+                    doorArchive = (int)ci.textureSet;
+                }
+
                 // Check if this is a door archive
                 bool doorFound = false;
                 DoorTypes doorType = DoorTypes.None;
-                ClimateTextureInfo ci = ClimateSwaps.GetClimateTextureInfo(dfSubMesh.TextureArchive);
-                int archive = (dfSubMesh.TextureArchive > 100) ? (int)ci.textureSet : dfSubMesh.TextureArchive;
-                switch(archive)
+                switch (doorArchive)
                 {
                     case BuildingDoors:
                         doorFound = true;
@@ -568,6 +585,13 @@ namespace DaggerfallWorkshop
                     case DungeonEnterDoors:
                         doorFound = true;
                         doorType = DoorTypes.DungeonEntrance;
+                        break;
+                    case DungeonRuinEnterDoors:
+                        if (dfSubMesh.TextureRecord > 0)    // Dungeon ruins index 0 is just a stone texture
+                        {
+                            doorFound = true;
+                            doorType = DoorTypes.DungeonEntrance;
+                        }
                         break;
                     case DungeonExitDoors:
                         doorFound = true;

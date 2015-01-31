@@ -6,6 +6,7 @@
 using UnityEngine;
 using System.Collections;
 using DaggerfallWorkshop;
+using Daggerfall.Game;
 
 namespace Daggerfall.Gameplay {
     //

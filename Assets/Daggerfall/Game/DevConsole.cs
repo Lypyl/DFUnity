@@ -16,11 +16,14 @@ namespace Daggerfall.Game {
         public Text outputTextField;
         public InputField inputField;
         public UIManager uiManager;
+        public StreamingWorld streamingWorldOwner;
              
         DaggerfallUnity dfUnity;
         float deltaTime = 0.0f;
         static string _outputText = "";
         string _userCommand = "";
+
+        private const string TRAVEL_CMD = "travel";
 
         public void displayText(string text, bool newline = true) {
             // TODO: can string.concat ever buffer overflow?
@@ -63,15 +66,6 @@ namespace Daggerfall.Game {
             drawFPS();
         }
 
-/*        void dispatchCommand() {
-            string[] args = _userCommand.Split(' ');
-            displayText("> " + _userCommand);
-            _userCommand = "";
-            if (args.Length > 0) {
-                parseCommand(args);
-            }
-        }*/
-
         bool parseCommand(string[] args) {
             bool handled = false;
             
@@ -86,19 +80,22 @@ namespace Daggerfall.Game {
                         }
                     }
                     break;
-                case ("travel"):
-                    if (args.Length == 2) {
+                case (TRAVEL_CMD):
+                    if (args.Length >= 2) {
                         DFLocation location;
-                        if (!GameObjectHelper.FindMultiNameLocation(args[1], out location)) {
-                            Logger.GetInstance().log("Unable to find location " + args[1] + ".\n");
+                        string nameWithPossibleSpaces = string.Join(" ", args);
+                        nameWithPossibleSpaces = nameWithPossibleSpaces.Substring(TRAVEL_CMD.Length + 1);
+                        if (!GameObjectHelper.FindMultiNameLocation(nameWithPossibleSpaces, out location)) {
+                            Logger.GetInstance().log("Unable to find location " + nameWithPossibleSpaces + ".\n");
                         } else {
                             Logger.GetInstance().log("Found location in " + location.RegionName + "!\n");
-                            int longitude = (int)location.MapTableData.Longitude;
-                            int latitude = (int)location.MapTableData.Latitude;
-                            DFPosition pos = MapsFile.MapPixelToWorldCoord(latitude, longitude);
-                            PlayerGPS localPlayerGPS = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerGPS>();
-                            localPlayerGPS.WorldX = pos.X;
-                            localPlayerGPS.WorldZ = pos.Y;
+                            DFPosition mapPos = MapsFile.LongitudeLatitudeToMapPixel((int)location.MapTableData.Longitude, (int)location.MapTableData.Latitude);
+                            if (mapPos.X >= TerrainHelper.minMapPixelX || mapPos.X < TerrainHelper.maxMapPixelX ||
+                                mapPos.Y >= TerrainHelper.minMapPixelY || mapPos.Y < TerrainHelper.maxMapPixelY) {
+                                    streamingWorldOwner.TeleportToCoordinates(mapPos.X, mapPos.Y);
+                            } else {
+                                Logger.GetInstance().log("Requested location is out of bounds!\n");
+                            }
                         }
                     }
                     break;

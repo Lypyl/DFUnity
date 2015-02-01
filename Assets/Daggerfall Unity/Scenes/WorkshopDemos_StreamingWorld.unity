@@ -1192,7 +1192,7 @@ MonoBehaviour:
   ShowWeapon: 1
   LeftHand: 1
   WeaponType: 4
-  MetalType: 5
+  MetalType: 8
   Range: 2.5
   MinDamage: 5
   MaxDamage: 25
@@ -1447,6 +1447,127 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!1 &209798074
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 209798075}
+  - 82: {fileID: 209798078}
+  - 114: {fileID: 209798077}
+  - 114: {fileID: 209798076}
+  m_Layer: 0
+  m_Name: DungeonEffects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &209798075
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 209798074}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1920237257}
+  m_RootOrder: 0
+--- !u!114 &209798076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 209798074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dabc17f4241c40241806071e34afbd7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MinWaitTime: 4
+  MaxWaitTime: 35
+  Presets: 1
+  PlayLightningEffect: 0
+  SkyForEffects: {fileID: 0}
+  LightForEffects: {fileID: 0}
+--- !u!114 &209798077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 209798074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 690f9fc186518d14baebdc1716a8686c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Preset: 1
+  SoundIndex: -1
+  PreviewIndex: 0
+  PreviewID: 3
+  PreviewClip: 0
+--- !u!82 &209798078
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 209798074}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &362727384
 GameObject:
   m_ObjectHideFlags: 0
@@ -2724,10 +2845,6 @@ Prefab:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11400004, guid: 53a45b46ca97a974f8e677f68c2a85e6, type: 2}
-      propertyPath: walkSpeed
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400004, guid: 53a45b46ca97a974f8e677f68c2a85e6, type: 2}
       propertyPath: runSpeed
       value: 19
       objectReference: {fileID: 0}
@@ -2766,6 +2883,22 @@ Prefab:
     - target: {fileID: 11400020, guid: 53a45b46ca97a974f8e677f68c2a85e6, type: 2}
       propertyPath: AttackSpeedScale
       value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400024, guid: 53a45b46ca97a974f8e677f68c2a85e6, type: 2}
+      propertyPath: MetalType
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400020, guid: 53a45b46ca97a974f8e677f68c2a85e6, type: 2}
+      propertyPath: MetalType
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000000, guid: 53a45b46ca97a974f8e677f68c2a85e6, type: 2}
+      propertyPath: m_RenderingPath
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 53a45b46ca97a974f8e677f68c2a85e6, type: 2}
+      propertyPath: walkSpeed
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 53a45b46ca97a974f8e677f68c2a85e6, type: 2}
@@ -2879,6 +3012,8 @@ GameObject:
   - 92: {fileID: 929037826}
   - 81: {fileID: 929037825}
   - 114: {fileID: 929037824}
+  - 114: {fileID: 929037829}
+  - 114: {fileID: 929037830}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -2976,6 +3111,30 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
+--- !u!114 &929037829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 929037822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60b93046470e29645aa3a17e40cf24d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TitleScreenTexture: {fileID: 2800000, guid: 8172cd5fb80a03b41b730bc34e24f80d, type: 3}
+  ShowTitle: 0
+--- !u!114 &929037830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 929037822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e5afd74465639f489212dfd4f4e2108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1091154507
 Prefab:
   m_ObjectHideFlags: 0
@@ -3237,6 +3396,7 @@ GameObject:
   - 114: {fileID: 1382254931}
   - 114: {fileID: 1382254933}
   - 114: {fileID: 1382254934}
+  - 114: {fileID: 1382254935}
   m_Layer: 0
   m_Name: PlayerAdvanced
   m_TagString: Player
@@ -3428,9 +3588,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a74170804e6d352478261ba9f1283472, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Location: {fileID: 0}
   ExteriorParent: {fileID: 1620593797}
   InteriorParent: {fileID: 1539316432}
+  DungeonParent: {fileID: 1920237256}
 --- !u!114 &1382254926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3483,7 +3643,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c9bfb03a8545a343883f7d2606b5814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 8
+  walkSpeed: 7
   runSpeed: 19
   limitDiagonalSpeed: 1
   toggleRun: 0
@@ -3496,8 +3656,6 @@ MonoBehaviour:
   airControl: 0
   antiBumpFactor: .75
   antiBunnyHopFactor: 1
-  toggleFly: 0
-  flySpeed: 1
 --- !u!143 &1382254930
 CharacterController:
   m_ObjectHideFlags: 0
@@ -3524,8 +3682,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 325fb3a3c023cd64488bf55fc1429150, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LocalPlayer: {fileID: 0}
-  VerticalOffset: {x: 0, y: 50, z: 0}
   RainParticles: {fileID: 2081120534}
   SnowParticles: {fileID: 2087518288}
   WeatherType: 0
@@ -3562,6 +3718,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97e9ebe717f036a49ba9d82d788529de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1382254935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1382254916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ec53d1512a2df443a6132a648eee8d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerTorch: {fileID: 1308324992}
 --- !u!1 &1485768737
 GameObject:
   m_ObjectHideFlags: 0
@@ -3637,7 +3805,7 @@ MonoBehaviour:
   ShowWeapon: 1
   LeftHand: 0
   WeaponType: 4
-  MetalType: 5
+  MetalType: 8
   Range: 2.5
   MinDamage: 5
   MaxDamage: 25
@@ -4016,7 +4184,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 209798075}
   m_Father: {fileID: 0}
   m_RootOrder: 4
 --- !u!1 &1941108522
@@ -6353,6 +6522,10 @@ Prefab:
     - target: {fileID: 11400000, guid: 0811f78212229814d8c469c916304789, type: 2}
       propertyPath: Arena2Path
       value: C:\Daggerfall\arena2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 0811f78212229814d8c469c916304789, type: 2}
+      propertyPath: DungeonImporter_DungeonName
+      value: Daggerfall/Privateer's Hold
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0811f78212229814d8c469c916304789, type: 2}

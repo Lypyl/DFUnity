@@ -26,6 +26,7 @@ namespace DaggerfallWorkshop.Utility
         ModelCombiner combiner = new ModelCombiner();
         DaggerfallUnity dfUnity;
         DFBlock blockData;
+        List<GameObject> startMarkers = new List<GameObject>();
 
         int groupIndex = 0;                     // Keeps count of RDB group index during build to reference action records
 
@@ -69,7 +70,7 @@ namespace DaggerfallWorkshop.Utility
 
             // Create gameobject
             GameObject go = new GameObject(string.Format("DaggerfallBlock [Name={0}]", blockName));
-            go.AddComponent<DaggerfallBlock>();
+            DaggerfallBlock dfBlock = go.AddComponent<DaggerfallBlock>();
 
             // Start new layout
             RDBLayout layout = new RDBLayout(dfUnity, blockName);
@@ -87,6 +88,9 @@ namespace DaggerfallWorkshop.Utility
             layout.flatsNode.transform.parent = go.transform;
             layout.lightsNode.transform.parent = go.transform;
             layout.enemiesNode.transform.parent = go.transform;
+
+            // List to receive any exit doors found
+            List<StaticDoor> allDoors = new List<StaticDoor>();
             
             // Iterate object groups
             layout.groupIndex = 0;
@@ -101,13 +105,15 @@ namespace DaggerfallWorkshop.Utility
                 }
 
                 // Iterate objects in this group
+                List<StaticDoor> modelDoors;
                 foreach (DFBlock.RdbObject obj in group.RdbObjects)
                 {
                     // Handle by object type
                     switch (obj.Type)
                     {
                         case DFBlock.RdbResourceTypes.Model:
-                            layout.AddRDBModel(obj, layout.staticModelsNode.transform);
+                            layout.AddRDBModel(obj, out modelDoors, layout.staticModelsNode.transform);
+                            if (modelDoors.Count > 0) allDoors.AddRange(modelDoors);
                             break;
                         case DFBlock.RdbResourceTypes.Flat:
                             layout.AddRDBFlat(obj, layout.flatsNode.transform);
@@ -138,6 +144,13 @@ namespace DaggerfallWorkshop.Utility
             // Some enemies are floating in air or sunk into ground
             // Can only adjust this after geometry instantiated
             layout.FixEnemyStanding(go);
+
+            // Store start markers in block
+            dfBlock.SetStartMarkers(layout.startMarkers.ToArray());
+
+            // Add doors
+            if (allDoors.Count > 0)
+                layout.AddDoors(allDoors.ToArray(), go);
 
             return go;
         }
@@ -219,8 +232,10 @@ namespace DaggerfallWorkshop.Utility
 
         #region Private Methods
 
-        private void AddRDBModel(DFBlock.RdbObject obj, Transform parent)
+        private void AddRDBModel(DFBlock.RdbObject obj, out List<StaticDoor> doorsOut, Transform parent)
         {
+            doorsOut = new List<StaticDoor>();
+
             // Get model reference index and id
             int modelReference = obj.Resources.ModelResource.ModelIndex;
             uint modelId = blockData.RdbBlock.ModelReferenceList[modelReference].ModelIdNum;
@@ -247,9 +262,9 @@ namespace DaggerfallWorkshop.Utility
             ModelData modelData;
             dfUnity.MeshReader.GetModelData(modelId, out modelData);
 
-            //// Find dungeon exits
-            //if (dfUnity.Option_AddDoorTriggers)
-            //    AddDoorTriggers(ref modelData, modelMatrix, doorsNode.transform);
+            // Does this model have doors?
+            if (modelData.Doors != null)
+                doorsOut.AddRange(GameObjectHelper.GetStaticDoors(ref modelData, blockData.Index, 0, modelMatrix));
 
             // Hinged doors
             bool isActionDoor = IsActionDoor(blockData, obj, modelReference);
@@ -322,14 +337,20 @@ namespace DaggerfallWorkshop.Utility
             // Set transform
             go.transform.position = billboardPosition;
 
-            // Handle importing enemies in place with editor markers
+            // Handle supported editor flats
             if (dfUnity.Option_ImportEnemies && archive == 199)
             {
                 switch (record)
                 {
-                    case 16:
+                    case 10:                        // Start marker
+                        startMarkers.Add(go);
+                        break;
+                    case 15:                        // Random enemy
+                        // TODO:
+                        break;
+                    case 16:                        // Fixed enemy
                         AddFixedRDBEnemy(obj);
-                        go.SetActive(false);        // Disable marker
+                        go.SetActive(false);
                         break;
                 }
             }
@@ -489,7 +510,7 @@ namespace DaggerfallWorkshop.Utility
             c.AudioSource.dopplerLevel = 0;
             c.AudioSource.rolloffMode = AudioRolloffMode.Linear;
             c.AudioSource.maxDistance = 4f;
-            c.AudioSource.volume = 0.3f;
+            c.AudioSource.volume = 0.4f;
             c.SetSound(SoundClips.Burning, AudioPresets.LoopIfPlayerNear);
         }
 
@@ -506,6 +527,15 @@ namespace DaggerfallWorkshop.Utility
         {
             DaggerfallAudioSource c = go.AddComponent<DaggerfallAudioSource>();
             c.Preset = AudioPresets.OnDemand;
+        }
+
+        private void AddDoors(StaticDoor[] doors, GameObject target)
+        {
+            if (doors != null && target != null)
+            {
+                DaggerfallStaticDoors c = target.AddComponent<DaggerfallStaticDoors>();
+                c.Doors = doors;
+            }
         }
 
         #endregion

@@ -23,20 +23,33 @@ namespace DaggerfallWorkshop.Demo
         DaggerfallUnity dfUnity;
         CharacterController controller;
         bool isPlayerInside = false;
+        bool isPlayerInsideDungeon = false;
         DaggerfallInterior interior;
+        DaggerfallDungeon dungeon;
         GameObject mainCamera;
         PlayerGPS playerGPS;
+
+        Vector3 dungeonEntrancePosition;
+        Vector3 dungeonEntranceForward;
 
         public GameObject ExteriorParent;
         public GameObject InteriorParent;
         public GameObject DungeonParent;
 
         /// <summary>
-        /// True when player is inside, otherwise false.
+        /// True when player is inside any structure.
         /// </summary>
         public bool IsPlayerInside
         {
             get { return isPlayerInside; }
+        }
+
+        /// <summary>
+        /// True only when player is inside a dungeon.
+        /// </summary>
+        public bool IsPlayerInsideDungeon
+        {
+            get { return isPlayerInsideDungeon; }
         }
 
         void Start()
@@ -69,6 +82,7 @@ namespace DaggerfallWorkshop.Demo
             // Layout interior
             // This needs to be done first so we know where the enter markers are
             GameObject newInterior = new GameObject(string.Format("DaggerfallInterior [Block={0}, Record={1}]", door.blockIndex, door.recordIndex));
+            newInterior.hideFlags = HideFlags.HideAndDontSave;
             interior = newInterior.AddComponent<DaggerfallInterior>();
             interior.DoLayout(doorOwner, door, climateBase);
 
@@ -176,15 +190,20 @@ namespace DaggerfallWorkshop.Demo
 
             // Layout dungeon
             GameObject newDungeon = GameObjectHelper.CreateDaggerfallDungeonGameObject(location, DungeonParent.transform);
+            newDungeon.hideFlags = HideFlags.HideAndDontSave;
+            dungeon = newDungeon.GetComponent<DaggerfallDungeon>();
 
-            //// Position player above closest enter marker
-            //Vector3 marker;
-            //if (!interior.FindClosestEnterMarker(transform.position, out marker))
-            //{
-            //    // Could not find an enter marker, probably not a valid interior
-            //    Destroy(newInterior);
-            //    return;
-            //}
+            // Find start marker to position player
+            if (!dungeon.StartMarker)
+            {
+                // Could not find a start marker
+                Destroy(newDungeon);
+                return;
+            }
+
+            // Cache player starting position and facing to use on exit
+            dungeonEntrancePosition = transform.position;
+            dungeonEntranceForward = transform.forward;
 
             // Disable exterior parent
             if (ExteriorParent != null)
@@ -194,14 +213,47 @@ namespace DaggerfallWorkshop.Demo
             if (DungeonParent != null)
                 DungeonParent.SetActive(true);
 
-            //// Set player to marker position
-            //// Not sure how to set facing here as player transitions to a marker, not a door
-            //// Could always find closest door and use that
-            //transform.position = marker + Vector3.up * (controller.height * 0.6f);
-            //SetStanding();
+            // Set player to start position
+            // Not sure how to set facing here as player transitions to a marker, not a door
+            // Could always find closest exit door and use that
+            transform.position = dungeon.StartMarker.transform.position + Vector3.up * (controller.height * 0.6f);
+            SetStanding();
 
             // Player is now inside dungeon
             isPlayerInside = true;
+            isPlayerInsideDungeon = true;
+        }
+
+        /// <summary>
+        /// Player is leaving dungeon, transition them back outside.
+        /// </summary>
+        public void TransitionDungeonExterior()
+        {
+            if (!ReferenceComponents() || !dungeon || !isPlayerInsideDungeon)
+                return;
+
+            // Enable exterior parent
+            if (ExteriorParent != null)
+                ExteriorParent.SetActive(true);
+
+            // Disable dungeon parent
+            if (DungeonParent != null)
+                DungeonParent.SetActive(false);
+
+            // Destroy dungeon game object
+            Destroy(dungeon.gameObject);
+            dungeon = null;
+
+            // Set player outside exterior door position and set facing
+            transform.position = dungeonEntrancePosition;
+            SetFacing(-dungeonEntranceForward);
+            SetStanding();
+
+            // Player is now outside dungeon
+            isPlayerInside = false;
+            isPlayerInsideDungeon = false;
+
+            //Debug.Log("Player attempted to leave dungeon.");
         }
 
         #endregion

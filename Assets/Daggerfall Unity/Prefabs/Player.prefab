@@ -13,6 +13,8 @@ GameObject:
   - 114: {fileID: 11400006}
   - 136: {fileID: 13600000}
   - 114: {fileID: 11493348}
+  - 114: {fileID: 11495626}
+  - 114: {fileID: 11495628}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -219,8 +221,6 @@ MonoBehaviour:
   airControl: 0
   antiBumpFactor: .75
   antiBunnyHopFactor: 1
-  toggleFly: 0
-  flySpeed: 1
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -246,6 +246,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorldX: 3571712
   WorldZ: 11173888
+--- !u!114 &11495626
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c69e8292036a13498bf8d5749391b75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11495628
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683bab6683318224bbee6fbb395469ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!124 &12400000
 Behaviour:
   m_ObjectHideFlags: 1

@@ -16,5 +16,16 @@ namespace DaggerfallWorkshop
 {
     public class DaggerfallBlock : MonoBehaviour
     {
+        GameObject[] startMarkers = null;
+
+        public GameObject[] StartMarkers
+        {
+            get { return startMarkers; }
+        }
+
+        public void SetStartMarkers(GameObject[] startMarkers)
+        {
+            this.startMarkers = startMarkers;
+        }
     }
 }

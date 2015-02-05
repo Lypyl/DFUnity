@@ -63,7 +63,6 @@ namespace Daggerfall.Gameplay {
         public float flySpeed = 1.0f;
         Camera ccamera;
         Ray ray;
-        public GameObject uiOwner;
         public UIManager uiManager;
 
         private Vector3 moveDirection = Vector3.zero;

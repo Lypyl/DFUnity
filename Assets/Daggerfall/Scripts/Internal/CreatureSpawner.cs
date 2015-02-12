@@ -18,6 +18,7 @@ namespace Daggerfall.Internal {
                 Logger.GetInstance().log("Creating a Daggerfall enemy GameObject.\n", this);
 
                 tmpEnemy = GameObjectHelper.CreateDaggerfallEnemyGameObject(mobileType, this.transform, MobileReactions.Hostile);
+                if (!tmpEnemy) return; 
 
                 GameObject mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
                 GameObject player = GameObject.FindGameObjectWithTag("Player");

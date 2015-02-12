@@ -239,7 +239,7 @@ namespace Daggerfall.Gameplay.Mobs {
          * @returns a comprehensive string of information about this creature
          */
         public string printCreature() {
-            string s = "\n*** Creature ***\n UUID: " + _UUID.ToString() + "\n CreatureID: " + creatureType.ToString() + "\n Enabled: " + enabled + "\n";
+            string s = "\n*** Creature (" + creatureType + ") ***\n UUID: " + _UUID.ToString() + "\n CreatureID: " + creatureType.ToString() + "\n Enabled: " + enabled + "\n";
             s += attributes.printAttributes();
             return s;
         }

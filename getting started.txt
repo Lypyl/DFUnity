@@ -1,0 +1,60 @@
+A. Preface:
+
+	* Definitions:
+
+		a. DFTFU is *Daggerfall Tools for Unity*, an API that's very easy to drop into Unity and start messing around with. Though you can use it to load towns, dungeons, and even explore the world of Daggerfall, it's not a game (nor is it intended to be)
+
+		b. DFUnity is an attempt to recreate Daggerfall inside of Unity by using DFTFU. It contains all the game logic and glue that allows you to actually play the game
+
+	* People: 
+
+		a. DFInterkarma/Interkarma - created DFTFU
+
+		b. InconsolableCellist/EBFEh - created DFUnity
+
+		c. Iypyl - is using DFTFU to create things like a multiplayer component and some other neat enhancements
+
+	* Places:
+
+		a. https://www.reddit.com/r/dftfu - central discussion point for all of this
+
+		b. https://github.com/Interkarma/daggerfall-unity - DFTFU
+
+		c. https://github.com/EBFEh/DFUnity - DFUnity
+
+		d. https://github.com/EBFEh/daggerfall-unity - My fork of DFTFU. Sometimes it's necessary to make changes to DFTFU for DFUnity. I try to get these changes upstream (into DFTFU), but until then they live here
+
+B. Prerequistes 
+
+	* Install Unity (the free version is fine)
+
+	* Install a git client of your choice. I prefer to work with git inside of Cygwin on Windows 8.1
+
+	* Install Daggerfall, or at least obtain the ARENA2 folder and put it somewhere. You can download it here: http://www.uesp.net/wiki/Daggerfall:Files 
+
+C. Fork DFUnity
+
+	So that you can easily contribute to DFUnity, it's necessary for you to fork it into your own account. You can then issue pull requests if you have upstream changes. (The main dev team will work on the main repo, but it'll be best if new developers start by forking it and working locally.)
+
+	* Go to https://github.com/EBFEh/DFUnity and click "Fork"
+
+	* Note the clone URL that starts with SSH or HTTPS
+
+D. Clone DFUnity
+
+	 * Inside of your preferred working directory, run: 
+	 	git clone https://github.com/<your user name>/daggerfall-unity.git DFUnity
+		
+	   where DFUnity is the name of the folder you want to be created. The URL you supply to git clone should match what you were told by github.com in step C
+
+E. Open DFUnity
+	
+	* Navigate to DFUnity/Assets/Scenes and open "Scene1.unity." Sorry for the non-descriptive name
+
+	Note that I'm currently checking in project files and other miscellaneous junk to source control. This should probably change at some point, so that the installation process involves downloading the code plus some project files from elsewhere
+
+	* Click DaggerfallUnity in the Object Hierarchy in the top left and scroll the Inspector window until you see "Arena2 Path" in the "Daggerfall Unity (script)" component
+	
+	* Set your Arena2 Path by using the file browser	
+
+	* Click the Play button at the top of the window to go from editor mode to play mode. The game should start up and place you outside the open gates at the city of Daggerfall

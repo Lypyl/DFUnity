@@ -50,7 +50,6 @@
      <Compile Include="Assets\Daggerfall Unity\Scripts\Editor\DaggerfallAudioSourceEditor.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Editor\DaggerfallBillboardBatchEditor.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Editor\DaggerfallBillboardEditor.cs" />
-     <Compile Include="Assets\Daggerfall Unity\Scripts\Editor\DaggerfallBlockEditor.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Editor\DaggerfallDungeonEditor.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Editor\DaggerfallGroundMeshEditor.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Editor\DaggerfallGroundPlaneEditor.cs" />
@@ -72,13 +71,14 @@
      <None Include="Assets\Plugins\donotdelete.txt" />
      <None Include="Assets\Plugins\x86_64\donotdelete.txt" />
      <None Include="Assets\Daggerfall Unity\Shaders\DaggerfallBillboardBatchTransparentCutoutForceForward.shader" />
+     <None Include="Assets\Daggerfall Unity\Resources\Fonts\Readme_TES_Fonts.txt" />
+     <None Include="Assets\Files\testquest.xml" />
      <None Include="Assets\OVR\Shaders\TextShader3D.shader" />
      <None Include="Assets\Daggerfall Unity\Resources\Songs\tracklisting.txt" />
      <None Include="Assets\Daggerfall Unity\Licenses\Daggerfall Connect.txt" />
      <None Include="Assets\Daggerfall Unity\todo.txt" />
      <None Include="Assets\Daggerfall Unity\Shaders\DaggerfallBillboardBatchTransparentCutout.shader" />
      <None Include="Assets\Daggerfall Unity\Licenses\DaggerfallConnect.txt" />
-     <None Include="Assets\Daggerfall Unity\Resources\devArena2Path.txt" />
      <None Include="Assets\Daggerfall Unity\Licenses\Daggerfall Tools for Unity.txt" />
      <None Include="Assets\OVR\Shaders\OVRGUIShader.shader" />
      <None Include="Assets\Plugins\x86\donotdelete.txt" />

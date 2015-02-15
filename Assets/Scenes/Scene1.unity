@@ -223,7 +223,7 @@ Transform:
   m_Children:
   - {fileID: 1216030546}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
 --- !u!1 &49995092
 GameObject:
   m_ObjectHideFlags: 0
@@ -619,7 +619,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!1 &132426348
 GameObject:
   m_ObjectHideFlags: 0
@@ -1371,7 +1371,7 @@ Transform:
   - {fileID: 950444268}
   - {fileID: 2004919215}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!114 &258663722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3347,7 +3347,6 @@ MonoBehaviour:
   Second: 0
   TimeScale: 10
   ShowDebugString: 0
-  uiManager: {fileID: 338791047}
 --- !u!114 &425314572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6357,7 +6356,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!1 &1062151083
 GameObject:
   m_ObjectHideFlags: 0
@@ -6862,161 +6861,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1089866129}
---- !u!1 &1117249649
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1117249655}
-  - 114: {fileID: 1117249654}
-  - 114: {fileID: 1117249653}
-  - 114: {fileID: 1117249652}
-  - 114: {fileID: 1117249651}
-  - 114: {fileID: 1117249650}
-  m_Layer: 0
-  m_Name: DaggerfallUnity
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1117249650
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1117249649}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 743257e53050c9344ab2b21bdbd5d8d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Arena2Path: 
-  ModelImporter_ModelID: 456
-  BlockImporter_BlockName: MAGEAA01.RMB
-  CityImporter_CityName: Daggerfall/Daggerfall
-  DungeonImporter_DungeonName: Daggerfall/Privateer's Hold
-  Option_CombineRMB: 1
-  Option_CombineRDB: 1
-  Option_BatchBillboards: 1
-  Option_SetStaticFlags: 1
-  Option_AddMeshColliders: 1
-  Option_AddNavmeshAgents: 1
-  Option_DefaultSounds: 1
-  Option_SimpleGroundPlane: 1
-  Option_CloseCityGates: 0
-  Option_ImportPointLights: 1
-  Option_AnimatedPointLights: 1
-  Option_PointLightTag: Untagged
-  Option_CustomPointLightScript: {fileID: 0}
-  Option_ImportEnemies: 1
-  Option_EnemyCharacterController: 0
-  Option_EnemyRigidbody: 0
-  Option_EnemyCapsuleCollider: 0
-  Option_EnemyNavMeshAgent: 0
-  Option_EnemyExampleAI: 1
-  Option_EnemyTag: Untagged
-  Option_EnemyRadius: .400000006
-  Option_EnemySlopeLimit: 80
-  Option_EnemyStepOffset: .400000006
-  Option_EnemyUseGravity: 0
-  Option_EnemyIsKinematic: 1
-  Option_CustomEnemyScript: {fileID: 0}
-  Option_AutomateTextureSwaps: 1
-  Option_AutomateSky: 1
-  Option_AutomateCityWindows: 1
-  Option_AutomateCityLights: 1
-  Option_AutomateCityGates: 0
-  Option_MyResourcesFolder: Daggerfall Unity/Resources
-  Option_TerrainAtlasesSubFolder: TerrainAtlases
---- !u!114 &1117249651
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1117249649}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c76f560fcfeb2f945a36da764400a281, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1117249652
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1117249649}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e32ff9ae38e4afd4ba1a9abe052b57bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Year: 405
-  Month: 8
-  Day: 16
-  Hour: 6
-  Minute: 0
-  Second: 0
-  TimeScale: 0
-  ShowDebugString: 0
-  uiManager: {fileID: 0}
---- !u!114 &1117249653
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1117249649}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa90c88382e6a0440bb268626863c5fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AtlasTextures: 1
-  CompressSkyTextures: 0
-  MainFilterMode: 0
-  SkyFilterMode: 0
-  MipMaps: 1
-  DefaultShaderName: Diffuse
-  DefaultSelfIlluminShaderName: Self-Illumin/Diffuse
-  DefaultBillboardShaderName: Transparent/Diffuse
-  DefaultUnlitBillboardShaderName: Unlit/Transparent
-  DefaultUnlitTextureShaderName: Unlit/Texture
-  DefaultWeaponShaderName: Unlit/Transparent
-  DayWindowColor: {r: .349019617, g: .603921592, b: .698039234, a: 1}
-  NightWindowColor: {r: 1, g: .713725507, b: .219607845, a: 1}
-  FogWindowColor: {r: .458823532, g: .458823532, b: .458823532, a: 1}
-  CustomWindowColor: {r: .784313738, g: 0, b: .784313738, a: 1}
-  DayWindowIntensity: .300000012
-  NightWindowIntensity: .600000024
-  FogWindowIntensity: .100000001
-  CustomWindowIntensity: .5
---- !u!114 &1117249654
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1117249649}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc1654648048f5e4ca76b2e9f99dd919, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AddMeshTangents: 1
-  AddMeshLightmapUVs: 0
---- !u!4 &1117249655
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1117249649}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
 --- !u!1 &1148820566
 GameObject:
   m_ObjectHideFlags: 0
@@ -7420,27 +7264,13 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "1/30/2015 3:27:48 AM *** Logging started\n1/30/2015 3:27:48 AM *** DFUnity
-    started in editor\n\n1/30/2015 3:27:48 AM *** Dev console created\n1/30/2015 3:27:54
-    AM *** > spawn 2\n1/30/2015 3:27:58 AM *** > `\n1/30/2015 3:28:00 AM *** > spawn_enemy
-    2\n1/30/2015 3:28:00 AM *** Spawning enemy of type Spriggan.\n\n1/30/2015 3:28:00
-    AM *** GameObject (Daggerfall.Internal.CreatureSpawner) Creating a Daggerfall
-    enemy GameObject.\n\n1/30/2015 3:28:00 AM *** \n*** Creature ***\n UUID: d3b8060e-be03-408e-a74c-d756ae71432f\n
-    CreatureID: Spriggan\n Enabled: True\n  Health 0/0\n  Mana 0/0 \n  Stamina 0/0\n\nAlteration:
-    1% -- Archery: 1% -- Axe: 1% -- Backstabbing: 1% -- Blunt Weapon: 1% -- Centaurian:
-    1% -- Climbing: 1% -- Critical Strike: 1% -- Daedric: 1% -- Destruction: 1% --
-    Disguise: 1% -- Dodging: 1% -- Dragonish: 1% -- Elvish: 1% -- Etiquette: 1% --
-    Faerie: 1% -- Giantish: 1% -- Hand-to-Hand: 1% -- Harpy: 1% -- Illusion: 1% --
-    Impish: 1% -- Jumping: 1% -- Lockpicking: 1% -- Long Blade: 1% -- Medical: 1%
-    -- Mercantile: 1% -- Mysticism: 1% -- Nymph: 1% -- Orcish: 1% -- Pickpocket: 1%
-    -- Restoration: 1% -- Running: 1% -- Short Blade: 1% -- Spriggan: 1% -- Stealth:
-    1% -- Streetwise: 1% -- Swimming: 1% -- Thaumaturgy: 1% -- \nStrength 0 -- Intelligence
-    0 -- Willpower 0 -- Agility 0 -- Endurance 0 -- Personality 0 -- Speed 0 -- Luck
-    0 -- Level 0\n  Sleeping: False \n  Sneaking: False \n\n1/30/2015 3:28:00 AM ***
-    GameObject (Daggerfall.Internal.CreatureSpawner) Created a Daggerfall enemy GameObject.\n\n1/30/2015
-    3:28:15 AM *** Exception caught when trying to open the log file. e: Sharing violation
-    on path F:\\docs\\unity\\Project2\\dfunity.log\n1/30/2015 3:28:15 AM *** DFUnity
-    started in editor\n\n"
+  m_Text: '2/15/2015 4:44:12 AM *** Dev console created
+
+    2/15/2015 4:44:12 AM *** Logging started
+
+    2/15/2015 4:44:20 AM *** DFTFU 1.2.41: Arena2 path validated.
+
+'
 --- !u!222 &1209927337
 CanvasRenderer:
   m_ObjectHideFlags: 0

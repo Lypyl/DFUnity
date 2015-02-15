@@ -42,7 +42,6 @@ namespace DaggerfallWorkshop
         public float Second = 0;
         public float TimeScale = 10f;
         public bool ShowDebugString = false;
-        public UIManager uiManager;
 
         public WorldTime(WorldTime oldTime) {
             this.Year = oldTime.Year; 
@@ -56,7 +55,6 @@ namespace DaggerfallWorkshop
 
         void Update()
         {
-            if (uiManager.isUIOpen) return;
             RaiseTime(Time.deltaTime * TimeScale);
         }
 

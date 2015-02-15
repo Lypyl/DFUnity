@@ -217,7 +217,7 @@
      <None Include="Assets\OVR\Shaders\TextShader3D.shader" />
      <None Include="Assets\Daggerfall Unity\Resources\Songs\tracklisting.txt" />
      <None Include="Assets\Daggerfall Unity\Licenses\Daggerfall Connect.txt" />
-     <None Include="Assets\Daggerfall Unity\todo.txt" />
+     <None Include="Assets\Daggerfall\todo.txt" />
      <None Include="Assets\Daggerfall Unity\Shaders\DaggerfallBillboardBatchTransparentCutout.shader" />
      <None Include="Assets\Daggerfall Unity\Licenses\DaggerfallConnect.txt" />
      <None Include="Assets\Daggerfall Unity\Licenses\Daggerfall Tools for Unity.txt" />

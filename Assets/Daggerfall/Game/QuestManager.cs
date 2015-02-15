@@ -49,18 +49,11 @@ namespace Daggerfall.Game {
                         } else { 
                             //l.log("<" + reader.Name + ">");
                         }
-                        while (reader.MoveToNextAttribute()) {
-                            //l.log(" " + reader.Name + "='" + reader.Value + "'");
-                        }
                         break;
                     case XmlNodeType.Text:
                         l.log(reader.Value);
                         break;
-                    case XmlNodeType.EndElement:
-                        //l.log("</" + reader.Name + ">");
-                        break;
                     case XmlNodeType.CDATA:
-                        //l.log("<![CDATA[" + reader.Value + "]]>");
                         q.cdata.Add(reader.Value);
                         break;
                     case XmlNodeType.Whitespace:
@@ -72,6 +65,7 @@ namespace Daggerfall.Game {
             }
 
             l.log(q.dumpQuest());
+            //q.createTimers();
 
         }
 

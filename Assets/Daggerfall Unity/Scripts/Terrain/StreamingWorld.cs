@@ -309,9 +309,7 @@ namespace DaggerfallWorkshop
                         natureBatchObject.transform.parent = locationObject.transform;
                         natureBatchObject.transform.localPosition = Vector3.zero;
                         DaggerfallBillboardBatch natureBatch = natureBatchObject.AddComponent<DaggerfallBillboardBatch>();
-                        int natureArchive = location.Climate.NatureArchive;
-                        if (dfUnity.WorldTime.SeasonValue == WorldTime.Seasons.Winter)
-                            natureArchive++;
+                        int natureArchive = ClimateSwaps.GetNatureArchive(LocalPlayerGPS.ClimateSettings.NatureSet, dfUnity.WorldTime.SeasonValue);
                         natureBatch.SetMaterial(natureArchive);
 
                         // RMB blocks are laid out in centre of terrain to align with ground
@@ -334,7 +332,7 @@ namespace DaggerfallWorkshop
 
                                 // Add block and yield
                                 string blockName = dfUnity.ContentReader.BlockFileReader.CheckName(dfUnity.ContentReader.MapFileReader.GetRmbBlockName(ref location, x, y));
-                                GameObject go = RMBLayout.CreateGameObject(dfUnity, blockName, true, natureBatch);
+                                GameObject go = RMBLayout.CreateGameObject(blockName, true, natureBatch);
                                 go.hideFlags = HideFlags.HideAndDontSave;
                                 go.transform.parent = locationObject.transform;
                                 go.transform.localPosition = blockOrigin;
@@ -731,14 +729,7 @@ namespace DaggerfallWorkshop
             if (dfTerrain && dfBillboardBatch)
             {
                 // Get current climate and nature archive
-                DFLocation.ClimateSettings climate = MapsFile.GetWorldClimateSettings(dfTerrain.MapData.worldClimate);
-                int natureArchive = climate.NatureArchive;
-                if (dfUnity.WorldTime.SeasonValue == WorldTime.Seasons.Winter)
-                {
-                    // Offset to snow textures
-                    natureArchive++;
-                }
-
+                int natureArchive = ClimateSwaps.GetNatureArchive(LocalPlayerGPS.ClimateSettings.NatureSet, dfUnity.WorldTime.SeasonValue);
                 dfBillboardBatch.SetMaterial(natureArchive);
                 TerrainHelper.LayoutNatureBillboards(dfTerrain, dfBillboardBatch, TerrainScale);
             }
@@ -822,7 +813,7 @@ namespace DaggerfallWorkshop
             // Randomly pick one side of location to spawn
             // A better implementation would base on previous coordinates
             // e.g. if new location is east of old location then player starts at west edge of new location
-            UnityEngine.Random.seed = UnityEngine.Time.renderedFrameCount;
+            UnityEngine.Random.seed = System.DateTime.Now.Millisecond;
             int side = UnityEngine.Random.Range(0, 4);
 
             // Get half width and height
@@ -830,7 +821,8 @@ namespace DaggerfallWorkshop
             float halfHeight = (float)mapHeight * 0.5f * RMBLayout.RMBSide;
             Vector3 centre = origin + new Vector3(halfWidth, 0, halfHeight);
 
-            // Extra distance is a fraction of one block
+            // Sometimes buildings are right up to edge of block
+            // Extra distance places player a little bit outside location area
             float extraDistance = RMBLayout.RMBSide * 0.1f;
 
             // Start player in position

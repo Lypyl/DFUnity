@@ -27,7 +27,7 @@ namespace DaggerfallWorkshop
         private DungeonSummary summary;
 
         // Dungeon texture swaps
-        public DungeonTextureUse DungeonTextureUse = DungeonTextureUse.Disabled;
+        public DungeonTextureUse DungeonTextureUse = DungeonTextureUse.UseLocation_PartiallyImplemented;
         public int[] DungeonTextureTable = new int[] { 119, 120, 122, 123, 124, 168 };
 
         GameObject startMarker = null;
@@ -48,6 +48,7 @@ namespace DaggerfallWorkshop
             public int ID;
             public string RegionName;
             public string LocationName;
+            public DFLocation LocationData;
             public DFRegion.LocationTypes LocationType;
             public DFRegion.DungeonTypes DungeonType;
         }
@@ -70,8 +71,13 @@ namespace DaggerfallWorkshop
             summary.ID = location.MapTableData.MapId;
             summary.RegionName = location.RegionName;
             summary.LocationName = location.Name;
+            summary.LocationData = location;
             summary.LocationType = location.MapTableData.Type;
             summary.DungeonType = location.MapTableData.DungeonType;
+
+            // Set texture table from location
+            if (DungeonTextureUse == DaggerfallWorkshop.DungeonTextureUse.UseLocation_PartiallyImplemented)
+                UseLocationDungeonTextureTable();
 
             // Perform layout
             startMarker = null;
@@ -97,19 +103,49 @@ namespace DaggerfallWorkshop
 
         public void RandomiseDungeonTextureTable()
         {
-            // Valid dungeon textures table indices
-            int[] valids = new int[]
-            {
-                019, 020, 022, 023, 024, 068,
-                119, 120, 122, 123, 124, 168,
-                319, 320, 322, 323, 324, 368,
-                419, 420, 422, 423, 424, 468,
-            };
+            DungeonTextureTable = StaticTextureTables.RandomTextureTable(UnityEngine.Random.Range(int.MinValue, int.MaxValue));
+            ApplyDungeonTextureTable();
+        }
 
-            // Repopulate table
-            for (int i = 0; i < DungeonTextureTable.Length; i++)
+        public void UseLocationDungeonTextureTable()
+        {
+            // Hard-coding location texture tables as missing information to generate at runtime
+            // This will be replaced with true implementation when possible
+            switch (Summary.ID)
             {
-                DungeonTextureTable[i] = valids[UnityEngine.Random.Range(0, valids.Length)];
+                case 187853213:         // Daggerfall/Privateer's Hold
+                    DungeonTextureTable = StaticTextureTables.PrivateersHold;
+                    break;
+                case 630439035:         // Wayrest/Wayrest
+                    DungeonTextureTable = StaticTextureTables.Wayrest;
+                    break;
+                case 1291010263:        // Daggerfall/Daggerfall
+                    DungeonTextureTable = StaticTextureTables.Daggerfall;
+                    break;
+                case 6634853:           // Sentinel/Sentinel
+                    DungeonTextureTable = StaticTextureTables.Sentinel;
+                    break;
+                case 19021260:          // Orsinium Area/Orsinium
+                    DungeonTextureTable = StaticTextureTables.Orsinium;
+                    break;
+                case 728811286:         // Wrothgarian Mountains/Shedungent
+                    DungeonTextureTable = StaticTextureTables.Shedungent;
+                    break;
+                case 701948302:         // Dragontail Mountains/Scourg Barrow
+                    DungeonTextureTable = StaticTextureTables.ScourgBarrow;
+                    break;
+                case 83032363:          // Wayrest/Woodborne Hall
+                    DungeonTextureTable = StaticTextureTables.WoodborneHall;
+                    break;
+                case 1001:              // High Rock sea coast/Mantellan Crux
+                    DungeonTextureTable = StaticTextureTables.MantellanCrux;
+                    break;
+                case 207828842:         // Menevia/Lysandus' Tomb
+                    DungeonTextureTable = StaticTextureTables.LysandusTomb;
+                    break;
+                default:                // Everywhere else - random table seeded from ID
+                    DungeonTextureTable = StaticTextureTables.RandomTextureTable(Summary.ID);
+                    break;
             }
 
             ApplyDungeonTextureTable();
@@ -125,31 +161,72 @@ namespace DaggerfallWorkshop
             DaggerfallMesh[] meshArray = GetComponentsInChildren<DaggerfallMesh>();
             foreach (var dm in meshArray)
             {
-                dm.SetDungeonTextures(dfUnity, DungeonTextureTable);
+                dm.SetDungeonTextures(DungeonTextureTable);
             }
+        }
+
+        public int GetPlayerBlockIndex(Vector3 playerPos)
+        {
+            if (!summary.LocationData.Loaded)
+                return -1;
+
+            // Check if player is inside any block of dungeon
+            // RDB blocks are laid out in 2D and have no vertical extents
+            // We can just check using rects, which is very fast
+            Rect rect = new Rect();
+            DFLocation.DungeonBlock block;
+            Vector2 pos = new Vector2(playerPos.x, playerPos.z);
+            for (int i = 0; i < summary.LocationData.Dungeon.Blocks.Length; i++)
+            {
+                block = summary.LocationData.Dungeon.Blocks[i];
+                rect.xMin = transform.position.x + block.X * RDBLayout.RDBSide;
+                rect.xMax = rect.xMin + RDBLayout.RDBSide;
+                rect.yMin = transform.position.y + block.Z * RDBLayout.RDBSide;
+                rect.yMax = rect.yMin + RDBLayout.RDBSide;
+
+                if (rect.Contains(pos))
+                    return i;
+            }
+
+            return -1;
+        }
+
+        public bool GetBlockData(int index, out DFLocation.DungeonBlock blockDataOut)
+        {
+            if (!summary.LocationData.Loaded)
+            {
+                blockDataOut = new DFLocation.DungeonBlock();
+                return false;
+            }
+
+            blockDataOut = summary.LocationData.Dungeon.Blocks[index];
+
+            return true;
         }
 
         #region Private Methods
 
         private void LayoutDungeon(ref DFLocation location)
         {
-            // Start timing
-            Stopwatch stopwatch = Stopwatch.StartNew();
-            long startTime = stopwatch.ElapsedMilliseconds;
+            //// Start timing
+            //Stopwatch stopwatch = Stopwatch.StartNew();
+            //long startTime = stopwatch.ElapsedMilliseconds;
 
             // Create dungeon layout
             foreach (var block in location.Dungeon.Blocks)
             {
-                GameObject go = RDBLayout.CreateGameObject(dfUnity, block.BlockName);
+                GameObject go = RDBLayout.CreateGameObject(block.BlockName, block.IsStartingBlock, DungeonTextureTable, Summary.DungeonType, Summary.ID);
                 go.transform.parent = this.transform;
                 go.transform.position = new Vector3(block.X * RDBLayout.RDBSide, 0, block.Z * RDBLayout.RDBSide);
+
+                DaggerfallRDBBlock daggerfallBlock = go.GetComponent<DaggerfallRDBBlock>();
                 if (block.IsStartingBlock)
-                    FindStartMarker(go.GetComponent<DaggerfallBlock>());
+                    FindStartMarker(daggerfallBlock);
             }
 
-            // Show timer
-            long totalTime = stopwatch.ElapsedMilliseconds - startTime;
-            DaggerfallUnity.LogMessage(string.Format("Time to layout dungeon: {0}ms", totalTime), true);
+            //// Show timer
+            //long totalTime = stopwatch.ElapsedMilliseconds - startTime;
+            //DaggerfallUnity.LogMessage(string.Format("Time to layout dungeon: {0}ms", totalTime), true);
         }
 
         // Orsinium defines two blocks at [-1,-1]
@@ -161,16 +238,18 @@ namespace DaggerfallWorkshop
                 if (block.X == -1 && block.Z == -1 && block.BlockName == "N0000065.RDB")
                     continue;
 
-                GameObject go = RDBLayout.CreateGameObject(dfUnity, block.BlockName);
+                GameObject go = RDBLayout.CreateGameObject(block.BlockName, block.IsStartingBlock, DungeonTextureTable, Summary.DungeonType, Summary.ID);
                 go.transform.parent = this.transform;
                 go.transform.position = new Vector3(block.X * RDBLayout.RDBSide, 0, block.Z * RDBLayout.RDBSide);
+
+                DaggerfallRDBBlock daggerfallBlock = go.GetComponent<DaggerfallRDBBlock>();
                 if (block.IsStartingBlock)
-                    FindStartMarker(go.GetComponent<DaggerfallBlock>());
+                    FindStartMarker(daggerfallBlock);
             }
         }
 
         // Finds start marker, should only be called for starting block
-        private void FindStartMarker(DaggerfallBlock dfBlock)
+        private void FindStartMarker(DaggerfallRDBBlock dfBlock)
         {
             if (!dfBlock)
                 throw new Exception("DaggerfallDungeon: dfBlock cannot be null.");

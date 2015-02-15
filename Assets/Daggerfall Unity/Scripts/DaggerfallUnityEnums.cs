@@ -114,8 +114,8 @@ namespace DaggerfallWorkshop
     {
         /// <summary>Don't change dungeon textures.</summary>
         Disabled,
-        /// <summary>Use dungeon location textures. Not implemented.</summary>
-        UseLocation_NotImplemented,
+        /// <summary>Use dungeon location textures. Partially implemented.</summary>
+        UseLocation_PartiallyImplemented,
         /// <summary>Use custom dungeon texture.</summary>
         Custom,
     }
@@ -191,8 +191,11 @@ namespace DaggerfallWorkshop
         Knight,
         Knight_CityWatch,           // Just called Knight in-game, but renamed CityWatch here for uniqueness. HALT!
 
-        // No enemy type
-        None = (int)0xffff,
+        None = (int)0xffff,  // No enemy type
+        MonstersIDsStart = (int)0,  // Current max valid values (for casting from ints)
+        MonstersIDsEnd = (int)42,
+        HumanIDsStart = (int)128,
+        HumanIDsEnd = (int)146
     }
 
     /// <summary>

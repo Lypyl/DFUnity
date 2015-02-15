@@ -24,6 +24,7 @@ namespace DaggerfallWorkshop.Demo
         CharacterController controller;
         bool isPlayerInside = false;
         bool isPlayerInsideDungeon = false;
+        bool isPlayerInsideDungeonPalace = false;
         DaggerfallInterior interior;
         DaggerfallDungeon dungeon;
         GameObject mainCamera;
@@ -35,6 +36,11 @@ namespace DaggerfallWorkshop.Demo
         public GameObject ExteriorParent;
         public GameObject InteriorParent;
         public GameObject DungeonParent;
+
+        int lastPlayerDungeonBlockIndex = -1;
+        DFLocation.DungeonBlock playerDungeonBlockData = new DFLocation.DungeonBlock();
+
+        DFLocation.BuildingTypes buildingType;
 
         /// <summary>
         /// True when player is inside any structure.
@@ -52,11 +58,72 @@ namespace DaggerfallWorkshop.Demo
             get { return isPlayerInsideDungeon; }
         }
 
+        /// <summary>
+        /// True only when player inside palace blocks of a dungeon.
+        /// For example, main hall in Daggerfall castle.
+        /// </summary>
+        public bool IsPlayerInsideDungeonPalace
+        {
+            get { return isPlayerInsideDungeonPalace; }
+        }
+
+        /// <summary>
+        /// Gets current player dungeon.
+        /// Only valid when player is inside a dungeon.
+        /// </summary>
+        public DaggerfallDungeon Dungeon
+        {
+            get { return dungeon; }
+        }
+
+        /// <summary>
+        /// Gets information about current player dungeon block.
+        /// Only valid when player is inside a dungeon.
+        /// </summary>
+        public DFLocation.DungeonBlock DungeonBlock
+        {
+            get { return playerDungeonBlockData; }
+        }
+
+        /// <summary>
+        /// Gets current building interior.
+        /// Only valid when player inside building.
+        /// </summary>
+        public DaggerfallInterior Interior
+        {
+            get { return interior; }
+        }
+
+        /// <summary>
+        /// Gets current building type.
+        /// Only valid when player inside building.
+        /// </summary>
+        public DFLocation.BuildingTypes BuildingType
+        {
+            get { return buildingType; }
+        }
+
         void Start()
         {
             dfUnity = DaggerfallUnity.Instance;
             mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
             playerGPS = GetComponent<PlayerGPS>();
+        }
+
+        void Update()
+        {
+            // Track which dungeon block player is inside of
+            if (dungeon && isPlayerInsideDungeon)
+            {
+                int playerBlockIndex = dungeon.GetPlayerBlockIndex(transform.position);
+                if (playerBlockIndex != lastPlayerDungeonBlockIndex)
+                {
+                    dungeon.GetBlockData(playerBlockIndex, out playerDungeonBlockData);
+                    lastPlayerDungeonBlockIndex = playerBlockIndex;
+                    PalaceCheck();
+                    //Debug.Log(string.Format("Player is now inside block {0}", playerDungeonBlockData.BlockName));
+                }
+            }
         }
 
         #region Building Transitions
@@ -111,6 +178,9 @@ namespace DaggerfallWorkshop.Demo
             // Enable interior parent
             if (InteriorParent != null)
                 InteriorParent.SetActive(true);
+
+            // Cache some information about this interior
+            buildingType = interior.BuildingData.BuildingType;
 
             // Set player to marker position
             // Not sure how to set facing here as player transitions to a marker, not a door
@@ -213,15 +283,39 @@ namespace DaggerfallWorkshop.Demo
             if (DungeonParent != null)
                 DungeonParent.SetActive(true);
 
-            // Set player to start position
-            // Not sure how to set facing here as player transitions to a marker, not a door
-            // Could always find closest exit door and use that
-            transform.position = dungeon.StartMarker.transform.position + Vector3.up * (controller.height * 0.6f);
-            SetStanding();
-
             // Player is now inside dungeon
             isPlayerInside = true;
             isPlayerInsideDungeon = true;
+
+            // Set to start position
+            MovePlayerToDungeonStart();
+        }
+
+        public void MovePlayerToDungeonStart(bool setFacing = false)
+        {
+            if (!isPlayerInsideDungeon)
+                return;
+
+            // Set player to start position
+            transform.position = dungeon.StartMarker.transform.position + Vector3.up * (controller.height * 0.6f);
+
+            // Fix player standing
+            SetStanding();
+
+            // TODO: Set player facing away from dungeon exit
+            if (setFacing)
+            {
+                //// Find closest exit door
+                //DaggerfallStaticDoors doors = newDungeon.GetComponent<DaggerfallStaticDoors>();
+                //if (doors)
+                //{
+                //    Vector3 doorPos;
+                //    int doorIndex;
+                //    if (doors.FindClosestDoorToPlayer(transform.position, 0, out doorPos, out doorIndex))
+                //    {
+                //    }
+                //}
+            }
         }
 
         /// <summary>
@@ -252,11 +346,38 @@ namespace DaggerfallWorkshop.Demo
             // Player is now outside dungeon
             isPlayerInside = false;
             isPlayerInsideDungeon = false;
-
-            //Debug.Log("Player attempted to leave dungeon.");
+            isPlayerInsideDungeonPalace = false;
+            lastPlayerDungeonBlockIndex = -1;
+            playerDungeonBlockData = new DFLocation.DungeonBlock();
         }
 
         #endregion
+
+        // Check if current block is a palace block
+        private void PalaceCheck()
+        {
+            if (!isPlayerInsideDungeon)
+            {
+                isPlayerInsideDungeonPalace = false;
+                return;
+            }
+
+            switch (playerDungeonBlockData.BlockName)
+            {
+                case "S0000020.RDB":    // Orsinium palace area
+                case "S0000040.RDB":    // Sentinel palace area
+                case "S0000041.RDB":
+                case "S0000042.RDB":
+                case "S0000080.RDB":    // Wayrest palace area
+                case "S0000081.RDB":
+                case "S0000160.RDB":    // Daggerfall palace area
+                    isPlayerInsideDungeonPalace = true;
+                    break;
+                default:
+                    isPlayerInsideDungeonPalace = false;
+                    break;
+            }
+        }
 
         private void SetFacing(Vector3 forward)
         {

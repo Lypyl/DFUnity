@@ -163,7 +163,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 0811f78212229814d8c469c916304789, type: 2}
       propertyPath: Arena2Path
-      value: C:\Daggerfall\arena2
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0811f78212229814d8c469c916304789, type: 2}
@@ -311,6 +311,8 @@ GameObject:
   - 114: {fileID: 356256935}
   - 136: {fileID: 356256934}
   - 114: {fileID: 356256933}
+  - 114: {fileID: 356256940}
+  - 114: {fileID: 356256939}
   - 114: {fileID: 356256932}
   - 114: {fileID: 356256931}
   m_Layer: 0
@@ -331,9 +333,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a74170804e6d352478261ba9f1283472, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Location: {fileID: 0}
   ExteriorParent: {fileID: 698491669}
   InteriorParent: {fileID: 683341440}
+  DungeonParent: {fileID: 420777013}
 --- !u!114 &356256932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -412,8 +414,6 @@ MonoBehaviour:
   airControl: 0
   antiBumpFactor: .75
   antiBunnyHopFactor: 1
-  toggleFly: 0
-  flySpeed: 1
 --- !u!143 &356256937
 CharacterController:
   m_ObjectHideFlags: 0
@@ -443,6 +443,30 @@ Transform:
   - {fileID: 342519946}
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!114 &356256939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11495628, guid: 5c205003e7fae5f4ea18254aca4fcacc,
+    type: 2}
+  m_PrefabInternal: {fileID: 1367067378}
+  m_GameObject: {fileID: 356256930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683bab6683318224bbee6fbb395469ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &356256940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11495626, guid: 5c205003e7fae5f4ea18254aca4fcacc,
+    type: 2}
+  m_PrefabInternal: {fileID: 1367067378}
+  m_GameObject: {fileID: 356256930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c69e8292036a13498bf8d5749391b75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &366407729
 GameObject:
   m_ObjectHideFlags: 0
@@ -681,6 +705,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Angle: -90
+  ScaleFactor: 1
   OtherLights:
   - {fileID: 1102083567}
   - {fileID: 385071969}
@@ -1308,7 +1333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 743257e53050c9344ab2b21bdbd5d8d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Arena2Path: C:\Daggerfall\arena2
+  Arena2Path: 
   ModelImporter_ModelID: 456
   BlockImporter_BlockName: MAGEAA01.RMB
   CityImporter_CityName: Daggerfall/Daggerfall

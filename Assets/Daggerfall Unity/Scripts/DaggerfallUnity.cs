@@ -33,7 +33,7 @@ namespace DaggerfallWorkshop
     public class DaggerfallUnity : MonoBehaviour
     {
         [NonSerialized]
-        public const string Version = "1.2.32";
+        public const string Version = "1.2.41";
 
         #region Fields
 
@@ -283,13 +283,13 @@ namespace DaggerfallWorkshop
             }
         }
 
-#if UNITY_EDITOR && !UNITY_WEBPLAYER
+#if UNITY_EDITOR
         private void LoadDeveloperArena2Path()
         {
             const string devArena2Path = "devArena2Path";
 
-            // Do nothing if path already set
-            if (!string.IsNullOrEmpty(Arena2Path))
+            // Do nothing if path already set or playing
+            if (!string.IsNullOrEmpty(Arena2Path) || Application.isPlaying)
                 return;
 
             // Attempt to load persistent dev path from Resources
@@ -315,7 +315,10 @@ namespace DaggerfallWorkshop
 
         public static void LogMessage(string message, bool showInEditor = false)
         {
-            if (showInEditor || Application.isPlaying) Debug.Log(string.Format("DaggerfallUnity {0}: {1}", Version, message));
+            if (showInEditor || Application.isPlaying) {
+                Debug.Log(string.Format("DFTFU {0}: {1}", Version, message));
+                Logger.GetInstance().log(string.Format("DFTFU {0}: {1}", Version, message));
+            }
         }
 
         public static bool FindDaggerfallUnity(out DaggerfallUnity dfUnityOut)

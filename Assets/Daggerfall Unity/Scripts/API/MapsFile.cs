@@ -23,6 +23,7 @@ namespace DaggerfallConnect.Arena2
 
         public const float WorldMapTerrainDim = 32768;
         public const float WorldMapTileDim = 128;
+        public const float WorldMapRMBDim = 4096;
         public const int MinWorldCoordX = 0;
         public const int MinWorldCoordZ = 0;
         public const int MaxWorldCoordX = 32768000;
@@ -384,7 +385,7 @@ namespace DaggerfallConnect.Arena2
                 case 223:   // Ocean
                     settings.ClimateType = DFLocation.ClimateBaseType.Swamp;
                     settings.GroundArchive = 402;
-                    settings.NatureArchive = 502;
+                    settings.NatureArchive = 504;
                     settings.SkyBase = 24;
                     break;
                 case 224:
@@ -747,10 +748,6 @@ namespace DaggerfallConnect.Arena2
         /// <param name="mapPixelY">Map pixel Y position.</param>
         public int GetClimateIndex(int mapPixelX, int mapPixelY)
         {
-            // Climate map data appears to be offset X-1 relative to other maps
-            // Add +1 to X coordinate to line up with location
-            mapPixelX += 1;
-
             return climatePak.GetValue(mapPixelX, mapPixelY);
         }
 
@@ -945,7 +942,7 @@ namespace DaggerfallConnect.Arena2
                 dfLocation.Exterior.Buildings[building].FactionId = reader.ReadUInt16();
                 dfLocation.Exterior.Buildings[building].Sector = reader.ReadInt16();
                 dfLocation.Exterior.Buildings[building].LocationId = reader.ReadUInt16();
-                dfLocation.Exterior.Buildings[building].BuildingType = reader.ReadByte();
+                dfLocation.Exterior.Buildings[building].BuildingType = (DFLocation.BuildingTypes)reader.ReadByte();
                 dfLocation.Exterior.Buildings[building].Quality = reader.ReadByte();
             }
 

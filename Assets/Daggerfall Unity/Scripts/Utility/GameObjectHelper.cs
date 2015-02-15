@@ -10,7 +10,6 @@ using System.Collections;
 using System.Collections.Generic;
 using DaggerfallConnect;
 using DaggerfallConnect.Arena2;
-using Daggerfall.Gameplay.Mobs;
 
 namespace DaggerfallWorkshop.Utility
 {
@@ -255,55 +254,32 @@ namespace DaggerfallWorkshop.Utility
 
         public static GameObject CreateDaggerfallEnemyGameObject(MobileTypes type, Transform parent, MobileReactions reaction)
         {
-            GameObject enemyPrefab = (GameObject)MonoBehaviour.Instantiate(Resources.Load("EnemyPrefab"));
-            Creature enemyCreature = enemyPrefab.GetComponent<Creature>();
-            enemyCreature.setCreatureType(type);
-            enemyCreature.setMobileReaction(reaction);
-            enemyCreature.setupMobile();
+            DaggerfallUnity dfUnity = DaggerfallUnity.Instance;
 
-            if (parent) { 
-                enemyPrefab.transform.parent = parent;
-                enemyPrefab.transform.position = parent.position;
-            }
-            enemyPrefab.transform.forward = Vector3.forward;
+            // Ensure enemy dict is loaded
+            if (enemyDict == null)
+                enemyDict = EnemyBasics.GetEnemyDict();
 
-            //TODO: Necessary?
-            //enemyPrefab.tag = dfUnity.Option_EnemyTag;
-            
-
-            // TODO: remove me
-            Logger.GetInstance().log(enemyCreature.printCreature());
-
-            //GameObject go = new GameObject(string.Format("DaggerfallEnemy [{0}]", type.ToString()));
-
-            //if (parent) go.transform.parent = parent;
-            //go.transform.forward = Vector3.forward;
+            GameObject go = new GameObject(string.Format("DaggerfallEnemy [{0}]", type.ToString()));
+            if (parent) go.transform.parent = parent;
+            go.transform.forward = Vector3.forward;
 
             // Add custom tag and script
-            //go.tag = dfUnity.Option_EnemyTag;
-/*#if UNITY_EDITOR
+            go.tag = dfUnity.Option_EnemyTag;
+#if UNITY_EDITOR
             if (dfUnity.Option_CustomEnemyScript != null)
                 go.AddComponent(dfUnity.Option_CustomEnemyScript.GetClass());
 #endif
-*/
-       /*     // Add child object for enemy billboard
+
+            // Add child object for enemy billboard
             GameObject mobileObject = new GameObject("DaggerfallMobileUnit");
-            mobileObject.transform.parent = enemyPrefab.transform;
+            mobileObject.transform.parent = go.transform;
 
             // Add mobile enemy
             Vector2 size = Vector2.one;
             DaggerfallMobileUnit dfMobile = mobileObject.AddComponent<DaggerfallMobileUnit>();
-            try
-            {
-                dfMobile.SetEnemy(dfUnity, dfUnity.EnemyDict[(int)type]);
-                size = dfMobile.Summary.RecordSizes[0];
-            }
-            catch(System.Exception e)
-            {
-                string message = string.Format("Failed to set enemy type (int)type={0}. '{1}'", (int)type, e.Message);
-                DaggerfallUnity.LogMessage(message);
-                GameObject.DestroyImmediate(dfMobile);
-            }
+            dfMobile.SetEnemy(dfUnity, enemyDict[(int)type], reaction);
+            size = dfMobile.Summary.RecordSizes[0];
 
             // Add character controller
             if (dfUnity.Option_EnemyCharacterController || dfUnity.Option_EnemyExampleAI)
@@ -364,24 +340,22 @@ namespace DaggerfallWorkshop.Utility
                     enemySounds.BarkSound = (SoundClips)dfMobile.Summary.Enemy.BarkSound;
                     enemySounds.AttackSound = (SoundClips)dfMobile.Summary.Enemy.AttackSound;
                 }
-            }*/
+            }
 
-            return enemyPrefab;
+            return go;
         }
 
         public static GameObject CreateDaggerfallBlockGameObject(string blockName, Transform parent)
         {
-            DaggerfallUnity dfUnity = DaggerfallUnity.Instance;
-
             if (string.IsNullOrEmpty(blockName))
                 return null;
 
             blockName = blockName.ToUpper();
             GameObject go = null;
             if (blockName.EndsWith(".RMB"))
-                go = RMBLayout.CreateGameObject(dfUnity, blockName);
+                go = RMBLayout.CreateGameObject(blockName);
             else if (blockName.EndsWith(".RDB"))
-                go = RDBLayout.CreateGameObject(dfUnity, blockName);
+                go = RDBLayout.CreateGameObject(blockName, false);
             else
                 return null;
 

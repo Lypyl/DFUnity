@@ -32,7 +32,6 @@ namespace DaggerfallWorkshop.Utility
         #region New Layout Methods
 
         public static GameObject CreateGameObject(
-            DaggerfallUnity dfUnity,
             string blockName,
             bool disableGround = false,
             DaggerfallBillboardBatch natureBatch = null)
@@ -41,6 +40,9 @@ namespace DaggerfallWorkshop.Utility
             if (string.IsNullOrEmpty(blockName))
                 return null;
             if (!blockName.ToUpper().EndsWith(".RMB"))
+                return null;
+            DaggerfallUnity dfUnity = DaggerfallUnity.Instance;
+            if (!dfUnity.IsReady)
                 return null;
 
             // Get block data
@@ -57,7 +59,7 @@ namespace DaggerfallWorkshop.Utility
         {
             // Create gameobject
             GameObject go = new GameObject(string.Format("DaggerfallBlock [Name={0}]", blockData.Name));
-            go.AddComponent<DaggerfallBlock>();
+            //go.AddComponent<DaggerfallBlock>();
 
             // Setup combiner
             ModelCombiner combiner = null;

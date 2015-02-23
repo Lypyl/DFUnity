@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{1D45277B-A47E-F56E-AB7D-9CA29A1739D3}</ProjectGuid>
+	<ProjectGuid>{0BB8DEB6-4F71-0B0B-115C-833BC00A6993}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -19,7 +19,7 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_4_6_1;UNITY_4_6;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_4_6_FEATURES;INCLUDE_WP_BLUE_SUPPORT;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN</DefineConstants>
+	<DefineConstants>DEBUG;TRACE;UNITY_4_6_2;UNITY_4_6;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_IL2CPP;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_4_6_FEATURES;INCLUDE_WP_BLUE_SUPPORT;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;UNITY5_SCRIPTING_IN_UNITY4;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -39,10 +39,10 @@
 	<Reference Include="System.Core" />
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
-	  <HintPath>F:/apps/programming/Unity/Data/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>C:/apps/programming/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>F:/apps/programming/Unity/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>C:/apps/programming/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
@@ -135,6 +135,7 @@
      <Compile Include="Assets\Daggerfall Unity\Scripts\Internal\DaggerfallStaticDoors.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Internal\PlayerGPS.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Internal\WorldTime.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Localization\RSCHelper.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\MaterialReader.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\MeshReader.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\SongFiles.cs" />
@@ -147,6 +148,7 @@
      <Compile Include="Assets\Daggerfall Unity\Scripts\Terrain\TerrainTexturing.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Utility\ClimateSwaps.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Utility\ContentReader.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Utility\DaggerfallDateTime.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Utility\EnemyBasics.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Utility\GameObjectHelper.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Utility\ImageProcessing.cs" />
@@ -159,6 +161,11 @@
      <Compile Include="Assets\Daggerfall Unity\Scripts\Utility\TextureReader.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Utility\ThreadedJob.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Utility\WeaponBasics.cs" />
+     <Compile Include="Assets\Daggerfall Unity\SmartLocalization\Examples\LoadAllLanguages.cs" />
+     <Compile Include="Assets\Daggerfall Unity\SmartLocalization\Scripts\NGUI\SL_NGUILabel.cs" />
+     <Compile Include="Assets\Daggerfall Unity\SmartLocalization\Scripts\NGUI\SL_NGUISpriteAtlas.cs" />
+     <Compile Include="Assets\Daggerfall Unity\SmartLocalization\Scripts\NGUI\SL_NGUISpriteName.cs" />
+     <Compile Include="Assets\Daggerfall Unity\SmartLocalization\Scripts\uGUI\LocalizedText.cs" />
      <Compile Include="Assets\Daggerfall\Game\DevConsole.cs" />
      <Compile Include="Assets\Daggerfall\Game\Error.cs" />
      <Compile Include="Assets\Daggerfall\Game\GameTimer.cs" />
@@ -223,14 +230,20 @@
      <None Include="Assets\Daggerfall Unity\Licenses\Daggerfall Tools for Unity.txt" />
      <None Include="Assets\OVR\Shaders\OVRGUIShader.shader" />
      <None Include="Assets\Plugins\x86\donotdelete.txt" />
+     <None Include="Assets\Daggerfall Unity\SmartLocalization\README.txt" />
+     <None Include="Assets\Daggerfall Unity\SmartLocalization\Resources\EmptyResourceHeader.txt" />
      <None Include="Assets\Daggerfall Unity\Shaders\DaggerfallTerrainTilemap.shader" />
+     <None Include="Assets\Daggerfall Unity\SmartLocalization\license.txt" />
      <None Include="Assets\Daggerfall Unity\Licenses\C# Synth Project.txt" />
      <None Include="Assets\Daggerfall Unity\Shaders\DaggerfallTilemap.shader" />
  <Reference Include="UnityEngine.UI">
- <HintPath>F:/apps/programming/Unity/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
+ <HintPath>C:/apps/programming/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.2/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="AudioSynthesis">
- <HintPath>F:/docs/unity/Project2/Assets/Daggerfall Unity/Resources/AudioSynthesis.dll</HintPath>
+ <HintPath>C:/Users/dan/Documents/unity/DFUnity/Assets/Daggerfall Unity/Resources/AudioSynthesis.dll</HintPath>
+ </Reference>
+ <Reference Include="SmartLocalization_Runtime">
+ <HintPath>C:/Users/dan/Documents/unity/DFUnity/Assets/Daggerfall Unity/SmartLocalization/SmartLocalization_Runtime.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

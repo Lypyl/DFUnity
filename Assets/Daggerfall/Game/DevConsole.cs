@@ -30,6 +30,7 @@ namespace Daggerfall.Game {
         private const string SPAWN_ENEMY_CMD = "spawn_enemy";
         private const string SNOW_COMMAND = "snow";
         private const string XML_DEBUG = "xml";
+        private const string TIME_DEBUG = "time";
 
         public void displayText(string text, bool newline = true) {
             // TODO: can string.concat ever buffer overflow?
@@ -53,11 +54,8 @@ namespace Daggerfall.Game {
 
         // Sanity check
         void Check() {
-            if (!dfUnity) { 
-                if(!DaggerfallUnity.FindDaggerfallUnity(out dfUnity)) { 
-                    Logger.GetInstance().log(Error.ERROR_GAME_DAG_UNITY_NOT_FOUND + "\n");
-                 
-                }
+            if (!dfUnity) {
+                dfUnity = DaggerfallUnity.Instance;
             }
         }
 
@@ -74,13 +72,14 @@ namespace Daggerfall.Game {
 
         bool parseCommand(string[] args) {
             bool handled = false;
+            Logger l = Logger.GetInstance();
             
             switch(args[0]) { 
                 case (SPAWN_ENEMY_CMD):
                     if (args.Length == 2) {
                         int mobileType = System.Convert.ToInt32(args[1]);
                         if (mobileType > -1 && mobileType < 147) {
-                            Logger.GetInstance().log("Spawning enemy of type " + (MobileTypes)mobileType + ".\n");
+                            l.log("Spawning enemy of type " + (MobileTypes)mobileType + ".\n");
                             GameObject.FindGameObjectWithTag("EnemySpawner").SendMessage("SpawnEnemy", mobileType); 
                             handled = true;
                         }
@@ -92,15 +91,15 @@ namespace Daggerfall.Game {
                         string nameWithPossibleSpaces = string.Join(" ", args);
                         nameWithPossibleSpaces = nameWithPossibleSpaces.Substring(TRAVEL_CMD.Length + 1);
                         if (!GameObjectHelper.FindMultiNameLocation(nameWithPossibleSpaces, out location)) {
-                            Logger.GetInstance().log("Unable to find location " + nameWithPossibleSpaces + ".\n");
+                            l.log("Unable to find location " + nameWithPossibleSpaces + ".\n");
                         } else {
-                            Logger.GetInstance().log("Found location in " + location.RegionName + "!\n");
+                            l.log("Found location in " + location.RegionName + "!\n");
                             DFPosition mapPos = MapsFile.LongitudeLatitudeToMapPixel((int)location.MapTableData.Longitude, (int)location.MapTableData.Latitude);
                             if (mapPos.X >= TerrainHelper.minMapPixelX || mapPos.X < TerrainHelper.maxMapPixelX ||
                                 mapPos.Y >= TerrainHelper.minMapPixelY || mapPos.Y < TerrainHelper.maxMapPixelY) {
                                     streamingWorldOwner.TeleportToCoordinates(mapPos.X, mapPos.Y);
                             } else {
-                                Logger.GetInstance().log("Requested location is out of bounds!\n");
+                                l.log("Requested location is out of bounds!\n");
                             }
                         }
                     }
@@ -114,6 +113,17 @@ namespace Daggerfall.Game {
                     break;
                 case (XML_DEBUG):
                     QuestManager.GetInstance().doDebugQuest();
+                    break;
+                case (TIME_DEBUG):
+                    l.log("The time is: " + dfUnity.WorldTime.Now.LongDateTimeString());
+                    ulong timeInSeconds = dfUnity.WorldTime.Now.ToSeconds();
+                    l.log("The time in seconds is: " + timeInSeconds.ToString());
+                    timeInSeconds -= 60 * 60 * 24;
+                    l.log("Setting the time 1 day in the past: " + timeInSeconds.ToString());
+                    dfUnity.WorldTime.Now.FromSeconds(timeInSeconds);
+                    l.log("The time is now: " + dfUnity.WorldTime.Now.LongDateTimeString());
+                    l.log("The time in seconds is now: " + dfUnity.WorldTime.Now.ToSeconds().ToString());
+
                     break;
                 default:
                     break;

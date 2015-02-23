@@ -36,7 +36,7 @@ namespace Daggerfall.Game {
                     string[] pieces = qbnItem.Value.Split(' ');
 
                     GameTimer timer = new GameTimer(worldTime);
-                    Logger.GetInstance().log(DaggerfallUnity.Instance.WorldTime.GetDebugDateString());
+                    //Logger.GetInstance().log(DaggerfallUnity.Instance.WorldTime.GetDebugDateString());
                     timer.id = pieces[1];
 
                     string[] durationPieces = pieces[2].Split(':');

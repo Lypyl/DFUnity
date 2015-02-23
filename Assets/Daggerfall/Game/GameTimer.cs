@@ -32,10 +32,12 @@ public class GameTimer : MonoBehaviour {
             outputString += "   unknown flag: " + information + "\n";
         }
 
+        /*
         if (running) { 
-            outputString += "   Started at: " + startedAt.GetDebugDateString() + "\n";
+            outputString += "   Started at: " + startedAtGetDebugDateString() + "\n";
         }
         outputString += " World Time is: " + worldTime.GetDebugDateString() + "\n";
+        */
 
         return outputString;
     }
@@ -51,7 +53,7 @@ public class GameTimer : MonoBehaviour {
     public bool start() {
         if (complete) return false;
 
-        startedAt = new WorldTime(worldTime);
+        //startedAt = new WorldTime(worldTime);
 
         running = true;
         return true;

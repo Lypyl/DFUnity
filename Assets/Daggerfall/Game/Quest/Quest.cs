@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using DaggerfallWorkshop;
 using System;
 
-namespace Daggerfall.Game { 
+namespace Daggerfall.Game.Quest { 
     public class Quest : MonoBehaviour {
         public Dictionary<string, string> resources = new Dictionary<string, string>();
         public List<KeyValuePair<string, string>> QBN = new List<KeyValuePair<string, string>>();
@@ -36,7 +36,7 @@ namespace Daggerfall.Game {
                     string[] pieces = qbnItem.Value.Split(' ');
 
                     GameTimer timer = new GameTimer(worldTime);
-                    //Logger.GetInstance().log(DaggerfallUnity.Instance.WorldTime.GetDebugDateString());
+                    Logger.GetInstance().log(DaggerfallUnity.Instance.WorldTime.Now.LongDateTimeString());
                     timer.id = pieces[1];
 
                     string[] durationPieces = pieces[2].Split(':');
@@ -46,7 +46,7 @@ namespace Daggerfall.Game {
                         timer.unknownInformation.Add(pieces[x]);
                     }
 
-                    //Logger.GetInstance().log(timer.dumpTimer());
+                    Logger.GetInstance().log(timer.dumpTimer());
                 }
             }
         }

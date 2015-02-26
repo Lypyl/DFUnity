@@ -1,43 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System.Xml;
 using DaggerfallConnect;
 using DaggerfallConnect.Utility;
-using System.Collections;
-using System.Collections.Generic;
 
-namespace Daggerfall.Game { 
-    public class QuestManager : MonoBehaviour {
+namespace Daggerfall.Game.Quest { 
+    public static class XMLQuestParser {
 
-        private static QuestManager instance;
-        public static QuestManager GetInstance() { 
-            if (instance == null) {
-                instance = new QuestManager();
-            }
-            return instance;
-        }
-
-        // Use this for initialization
-        void Start () {
-        
-        }
-        
-        // Update is called once per frame
-        void Update () {
-        
-        }
-
-        public void doDebugQuest() { 
-            FileProxy file = new FileProxy();
-            file.Load("Assets/Files/testquest.xml", FileUsage.UseMemory, true);
-            createQuestFromXMLFile(file);
-        }
-
-        private void createQuestFromXMLFile(FileProxy xmlFile) { 
+        public static void createQuestFromXMLFile(FileProxy xmlFile, out Quest q) { 
             XmlTextReader reader = new XmlTextReader(xmlFile.GetStreamReader());
-
+            q = new Quest();
             Logger l = Logger.GetInstance();
-            Quest q = new Quest();
 
             while (reader.Read()) {
                 switch (reader.NodeType) { 
@@ -64,8 +38,7 @@ namespace Daggerfall.Game {
                 }
             }
 
-            l.log(q.dumpQuest());
-            //q.createTimers();
+            q.createTimers();
 
         }
 
@@ -77,7 +50,7 @@ namespace Daggerfall.Game {
          * The function will dutifully insert invalid data
          * @returns a bool indicating whether invalid data was found
          **/
-        private bool parseQRC(XmlTextReader reader, out Dictionary<string, string> QRC) {
+        private static bool parseQRC(XmlTextReader reader, out Dictionary<string, string> QRC) {
             bool succ = true;
             bool hitEndingQRC = false;
 
@@ -117,10 +90,9 @@ namespace Daggerfall.Game {
             return succ;
         }
 
-        
         /** 
          **/
-        private bool parseQBN(XmlTextReader reader, out List<KeyValuePair<string, string>> QBN, out List<Task> tasks) {
+        private static bool parseQBN(XmlTextReader reader, out List<KeyValuePair<string, string>> QBN, out List<Task> tasks) {
             bool hitEndingQBN = false;
             bool succ = true;
             QBN = new List<KeyValuePair<string, string>>();
@@ -158,7 +130,7 @@ namespace Daggerfall.Game {
             return succ; 
         }
 
-        private Task parseTask(XmlTextReader reader) {
+        private static Task parseTask(XmlTextReader reader) {
             Task task = new Task();
             if (reader.HasAttributes) { 
                 while (reader.MoveToNextAttribute()) { 
@@ -189,4 +161,5 @@ namespace Daggerfall.Game {
             return task;
         }
     }
+
 }

@@ -8,6 +8,7 @@ using DaggerfallConnect.Arena2;
 using DaggerfallWorkshop.Utility;
 using DaggerfallWorkshop;
 using DaggerfallWorkshop.Demo;
+using Daggerfall.Game.Quest;
 using System.Xml;
 
 namespace Daggerfall.Game {

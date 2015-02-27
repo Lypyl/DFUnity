@@ -2,10 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using DaggerfallWorkshop;
+using DaggerfallWorkshop.Utility;
 
 public class GameTimer : MonoBehaviour {
 
-    WorldTime startedAt;
+    DaggerfallDateTime startedAt;
     WorldTime worldTime;
     public string id;
     public float durationSeconds;
@@ -32,12 +33,10 @@ public class GameTimer : MonoBehaviour {
             outputString += "   unknown flag: " + information + "\n";
         }
 
-        /*
         if (running) { 
-            outputString += "   Started at: " + startedAtGetDebugDateString() + "\n";
+            outputString += "   Started at: " + startedAt.LongDateTimeString() + "\n";
         }
-        outputString += " World Time is: " + worldTime.GetDebugDateString() + "\n";
-        */
+        outputString += "  World Time is: " + worldTime.Now.LongDateTimeString() + "\n";
 
         return outputString;
     }
@@ -53,7 +52,8 @@ public class GameTimer : MonoBehaviour {
     public bool start() {
         if (complete) return false;
 
-        //startedAt = new WorldTime(worldTime);
+        startedAt = new DaggerfallDateTime();
+        startedAt.FromSeconds(worldTime.Now.ToSeconds());
 
         running = true;
         return true;

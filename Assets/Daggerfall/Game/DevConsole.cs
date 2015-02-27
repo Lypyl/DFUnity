@@ -25,12 +25,12 @@ namespace Daggerfall.Game {
         DaggerfallUnity dfUnity;
         float deltaTime = 0.0f;
         static string _outputText = "";
-        string _userCommand = "";
 
         private const string TRAVEL_CMD = "travel";
         private const string SPAWN_ENEMY_CMD = "spawn_enemy";
         private const string SNOW_COMMAND = "snow";
         private const string XML_DEBUG = "xml";
+        private const string QUEST_DEBUG = "quest";
         private const string TIME_DEBUG = "time";
 
         public void displayText(string text, bool newline = true) {
@@ -114,6 +114,10 @@ namespace Daggerfall.Game {
                     break;
                 case (XML_DEBUG):
                     QuestManager.GetInstance().doDebugQuest();
+                    break;
+                case (QUEST_DEBUG):
+                    l.log("Dumping all quests:");
+                    QuestManager.GetInstance().dumpAllQuests();
                     break;
                 case (TIME_DEBUG):
                     l.log("The time is: " + dfUnity.WorldTime.Now.LongDateTimeString());

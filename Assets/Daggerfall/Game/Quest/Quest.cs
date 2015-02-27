@@ -13,8 +13,6 @@ namespace Daggerfall.Game.Quest {
 
         private Dictionary<string, GameTimer> timers;
 
-        WorldTime worldTime;
-        WorldTime startTime;
 
         public Quest() { 
             //worldTime = DaggerfallUnity.Instance.WorldTime;
@@ -31,12 +29,12 @@ namespace Daggerfall.Game.Quest {
         }
 
         public void createTimers() { 
+            timers = new Dictionary<string, GameTimer>();
             foreach (KeyValuePair<string, string> qbnItem in QBN) { 
                 if (qbnItem.Key == "clock") {
                     string[] pieces = qbnItem.Value.Split(' ');
 
-                    GameTimer timer = new GameTimer(worldTime);
-                    Logger.GetInstance().log(DaggerfallUnity.Instance.WorldTime.Now.LongDateTimeString());
+                    GameTimer timer = new GameTimer(DaggerfallUnity.Instance.WorldTime);
                     timer.id = pieces[1];
 
                     string[] durationPieces = pieces[2].Split(':');
@@ -45,9 +43,22 @@ namespace Daggerfall.Game.Quest {
                     for (int x=3; x<pieces.Length; x++) {
                         timer.unknownInformation.Add(pieces[x]);
                     }
+                    timers.Add(timer.id, timer);
 
-                    Logger.GetInstance().log(timer.dumpTimer());
+                    //Logger.GetInstance().log(timer.dumpTimer());
                 }
+            }
+        }
+
+        public void dumpAllTimers() { 
+            foreach (KeyValuePair<string, GameTimer> kvp in timers) {
+                Logger.GetInstance().log(kvp.Value.dumpTimer());
+            }
+        }
+
+        public void startAllTimers() { 
+            foreach (KeyValuePair<string, GameTimer> kvp in timers) {
+                kvp.Value.start();
             }
         }
 

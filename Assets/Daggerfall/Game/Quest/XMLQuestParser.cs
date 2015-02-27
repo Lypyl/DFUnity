@@ -39,7 +39,10 @@ namespace Daggerfall.Game.Quest {
             }
 
             q.createTimers();
-
+            l.log("Created all timers\n");
+            q.startAllTimers();
+            l.log("Started all timers\n");
+            q.dumpAllTimers();
         }
 
         /** 

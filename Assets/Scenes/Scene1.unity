@@ -14,8 +14,8 @@ SceneSettings:
 RenderSettings:
   m_Fog: 0
   m_FogColor: {r: .5, g: .5, b: .5, a: 1}
-  m_FogMode: 3
-  m_FogDensity: .00999999978
+  m_FogMode: 2
+  m_FogDensity: 4.99999987e-06
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientLight: {r: .200000003, g: .200000003, b: .200000003, a: 1}
@@ -754,10 +754,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1233097982}
-  - {fileID: 1209927335}
   - {fileID: 1326234083}
+  - {fileID: 258195059}
   m_Father: {fileID: 338791046}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -816,7 +816,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
 --- !u!114 &142213826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -828,7 +828,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08149df7ebe25fb48a8ee5fb2bfbf410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outputTextField: {fileID: 1209927336}
+  outputTextField: {fileID: 258195060}
   inputField: {fileID: 1326234084}
   uiManager: {fileID: 338791047}
   streamingWorldOwner: {fileID: 950444269}
@@ -870,7 +870,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: a866812cd1eb4d2418e5da2e414e31e4, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a866812cd1eb4d2418e5da2e414e31e4, type: 2}
@@ -1006,7 +1006,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 322528709}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!1 &193371938
 GameObject:
   m_ObjectHideFlags: 0
@@ -1313,7 +1313,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 11400010, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 2}
       propertyPath: Acceleration
@@ -1340,6 +1340,78 @@ Prefab:
   m_RootGameObject: {fileID: 1403717494}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &258195058
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 258195059}
+  - 222: {fileID: 258195061}
+  - 114: {fileID: 258195060}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &258195059
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 258195058}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 142213822}
+  m_RootOrder: 2
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: -1, y: 39.5}
+  m_SizeDelta: {x: 1086, y: 648}
+  m_Pivot: {x: .5, y: .5}
+--- !u!114 &258195060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 258195058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "2/28/2015 12:05:58 AM *** Dev console created\n2/28/2015 12:05:59 AM ***
+    Logging started\n2/28/2015 12:06:10 AM *** > \n2/28/2015 12:07:42 AM *** > travel
+    Daggerfall/Daggerfall\n2/28/2015 12:07:42 AM *** Found location in Daggerfall!\n\n2/28/2015
+    12:09:28 AM *** > travel Daggerfall/Daggerfall\n2/28/2015 12:09:28 AM *** Found
+    location in Daggerfall!\n\n2/28/2015 12:11:12 AM *** > \n2/28/2015 12:11:47 AM
+    *** > travel Wayrest/Wayrest\n2/28/2015 12:11:47 AM *** Found location in Wayrest!\n\n2/28/2015
+    12:12:15 AM *** DFTFU 1.3.0: Arena2 path validated.\n"
+--- !u!222 &258195061
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 258195058}
 --- !u!1 &258663720
 GameObject:
   m_ObjectHideFlags: 0
@@ -1698,6 +1770,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 846167343}
+  - {fileID: 1642839568}
   - {fileID: 154372594}
   - {fileID: 1403717495}
   - {fileID: 387171728}
@@ -1982,8 +2055,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1290164394}
   - {fileID: 142213822}
+  - {fileID: 1290164394}
   - {fileID: 1710277661}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -3123,7 +3196,7 @@ Transform:
   m_Children:
   - {fileID: 574477960}
   m_Father: {fileID: 322528709}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!1 &401297312
 GameObject:
   m_ObjectHideFlags: 0
@@ -3339,12 +3412,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e32ff9ae38e4afd4ba1a9abe052b57bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Year: 405
-  Month: 5
-  Day: 0
-  Hour: 12
-  Minute: 0
-  Second: 0
+  WorldDateTime:
+    Year: 405
+    Month: 5
+    Day: 0
+    Hour: 12
+    Minute: 0
+    Second: 0
   TimeScale: 10
   ShowDebugString: 0
 --- !u!114 &425314572
@@ -5507,14 +5581,14 @@ Camera:
     width: 1
     height: 1
   near clip plane: .0700000003
-  far clip plane: 1000
+  far clip plane: 5000
   field of view: 60
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4294959103
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -5861,6 +5935,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 950444268}
   - 114: {fileID: 950444269}
+  - 114: {fileID: 950444270}
   m_Layer: 0
   m_Name: StreamingWorldOwner
   m_TagString: Untagged
@@ -5899,6 +5974,20 @@ MonoBehaviour:
   EditorFindLocationString: Daggerfall/Daggerfall
   AddLocationBeacon: 0
   ShowDebugString: 0
+--- !u!114 &950444270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 950444267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f32c00d7eadb7c046a095ba73b61a261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  streamingWorld: {fileID: 950444269}
+  playerGPS: {fileID: 322528712}
+  secondaryCamera: {fileID: 1642839569}
 --- !u!1 &1005403698
 GameObject:
   m_ObjectHideFlags: 0
@@ -7090,7 +7179,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3396ddecc6c50834cb47972e59a6526e, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 3396ddecc6c50834cb47972e59a6526e, type: 2}
       propertyPath: m_IsActive
@@ -7205,990 +7294,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1174988947}
---- !u!1 &1209927334
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 224: {fileID: 1209927335}
-  - 222: {fileID: 1209927337}
-  - 114: {fileID: 1209927336}
-  m_Layer: 5
-  m_Name: Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1209927335
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1209927334}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 142213822}
-  m_RootOrder: 1
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: 37}
-  m_SizeDelta: {x: 1088, y: 649}
-  m_Pivot: {x: .5, y: .5}
---- !u!114 &1209927336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1209927334}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: '2/16/2015 3:08:08 AM *** Dev console created
-
-    2/16/2015 3:08:08 AM *** Logging started
-
-    2/16/2015 3:08:08 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\DAGGER.SND
-    doesn''t exist!
-
-    2/16/2015 3:08:08 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:09 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY02.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:09 AM *** FileProxy: The requested file at F:/dropbox/Dropbox/Games/dosbox/drive/DAGGER/ARENA2\ART_PAL.COL
-    doesn''t exist!
-
-    2/16/2015 3:08:09 AM *** DFTFU 1.2.41: TextureReader: Failed to load palette file,
-    is Arena2Path correct?
-
-    2/16/2015 3:08:09 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:09 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:09 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:09 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:09 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:09 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:09 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:09 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:09 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:09 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:09 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:09 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:09 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:09 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:09 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:09 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:09 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:09 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:09 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:09 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:09 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:09 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:09 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:09 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:09 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:09 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:09 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:09 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:09 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:09 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:09 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:09 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:09 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:09 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:09 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:09 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:09 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:09 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:09 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:09 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:09 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:09 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:09 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:09 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:09 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:10 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:10 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:10 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:10 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:10 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:11 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:11 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:12 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:12 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:13 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:13 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:13 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:13 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:13 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:13 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:13 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:13 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:13 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:13 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:13 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:13 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:13 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:13 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:13 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:13 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:13 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:13 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:13 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:13 AM *** DFTFU 1.2.41: Failed to load Daggerfall audio clip.
-
-    2/16/2015 3:08:13 AM *** FileProxy: The requested file at F:/DROPBOX/DROPBOX/GAMES/DOSBOX/DRIVE/DAGGER/ARENA2\SKY18.DAT
-    doesn''t exist!
-
-    2/16/2015 3:08:26 AM *** DFTFU 1.2.41: Arena2 path validated.
-
-'
---- !u!222 &1209927337
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1209927334}
 --- !u!1 &1216030545
 GameObject:
   m_ObjectHideFlags: 0
@@ -9598,7 +8703,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1290164391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9675,7 +8780,7 @@ RectTransform:
   - {fileID: 197315579}
   - {fileID: 1788845684}
   m_Father: {fileID: 338791046}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -9816,7 +8921,7 @@ RectTransform:
   - {fileID: 420428872}
   - {fileID: 1348939750}
   m_Father: {fileID: 142213822}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: -323.25}
@@ -10197,7 +9302,7 @@ Transform:
   - {fileID: 873893181}
   - {fileID: 1480674237}
   m_Father: {fileID: 322528709}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!114 &1403717496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10734,6 +9839,88 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1560774015}
+--- !u!1 &1642839567
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1642839568}
+  - 20: {fileID: 1642839569}
+  - 114: {fileID: 1642839570}
+  m_Layer: 0
+  m_Name: SecondaryCamera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1642839568
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1642839567}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: .800000012, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 322528709}
+  m_RootOrder: 1
+--- !u!20 &1642839569
+Camera:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1642839567}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 1600
+  far clip plane: 800000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 8192
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_HDR: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: .0219999999
+--- !u!114 &1642839570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1642839567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3093152d56f286440ac4b3849422d0c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invertMouseY: 0
+  clampInDegrees: {x: 360, y: 180}
+  lockCursor: 1
+  sensitivity: {x: 1.5, y: 1.5}
+  smoothing: {x: 3, y: 3}
+  targetDirection: {x: 0, y: 0}
+  targetCharacterDirection: {x: 0, y: 0}
+  characterBody: {fileID: 322528708}
+  enableMouseLook: 1
+  uiOwner: {fileID: 338791045}
 --- !u!1 &1698564447
 GameObject:
   m_ObjectHideFlags: 0
@@ -10819,7 +10006,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1710277661
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11592,7 +10779,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 2000000, guid: 5c205003e7fae5f4ea18254aca4fcacc, type: 2}
       propertyPath: m_CullingMask.m_Bits
-      value: 4294967295
+      value: 4294959103
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 5c205003e7fae5f4ea18254aca4fcacc, type: 2}
       propertyPath: uiManager
@@ -11629,6 +10816,14 @@ Prefab:
     - target: {fileID: 11400004, guid: 5c205003e7fae5f4ea18254aca4fcacc, type: 2}
       propertyPath: toggleFly
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 5c205003e7fae5f4ea18254aca4fcacc, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000000, guid: 5c205003e7fae5f4ea18254aca4fcacc, type: 2}
+      propertyPath: far clip plane
+      value: 5000
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400000, guid: 5c205003e7fae5f4ea18254aca4fcacc, type: 2}
@@ -12454,7 +11649,7 @@ Transform:
   m_Children:
   - {fileID: 1254144972}
   m_Father: {fileID: 322528709}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!199 &2073905203
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0

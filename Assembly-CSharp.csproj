@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\ConsoleGUI.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\API\Arch3dFile.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\API\BaseImageFile.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\API\BlocksFile.cs" />
@@ -130,7 +131,6 @@
      <Compile Include="Assets\Daggerfall Unity\Scripts\Internal\DaggerfallMobileUnit.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Internal\DaggerfallRDBBlock.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Internal\DaggerfallSky.cs" />
-     <Compile Include="Assets\Daggerfall Unity\Scripts\Internal\DaggerfallSkyThreaded.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Internal\DaggerfallSongPlayer.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Internal\DaggerfallStaticDoors.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Internal\PlayerGPS.cs" />
@@ -143,6 +143,7 @@
      <Compile Include="Assets\Daggerfall Unity\Scripts\SoundReader.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\StaticTextureTables.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Terrain\DaggerfallTerrain.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\Terrain\IncreasedTerrainDistance.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Terrain\StreamingWorld.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Terrain\TerrainHelper.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Terrain\TerrainTexturing.cs" />
@@ -170,8 +171,9 @@
      <Compile Include="Assets\Daggerfall\Game\Error.cs" />
      <Compile Include="Assets\Daggerfall\Game\GameTimer.cs" />
      <Compile Include="Assets\Daggerfall\Game\Logger.cs" />
-     <Compile Include="Assets\Daggerfall\Game\Quest.cs" />
-     <Compile Include="Assets\Daggerfall\Game\QuestManager.cs" />
+     <Compile Include="Assets\Daggerfall\Game\Quest\Quest.cs" />
+     <Compile Include="Assets\Daggerfall\Game\Quest\QuestManager.cs" />
+     <Compile Include="Assets\Daggerfall\Game\Quest\XMLQuestParser.cs" />
      <Compile Include="Assets\Daggerfall\Game\Task.cs" />
      <Compile Include="Assets\Daggerfall\Game\UIManager.cs" />
      <Compile Include="Assets\Daggerfall\Scripts\Gameplay\AnimateTexture.cs" />
@@ -223,6 +225,7 @@
      <None Include="Assets\Files\testquest.xml" />
      <None Include="Assets\OVR\Shaders\TextShader3D.shader" />
      <None Include="Assets\Daggerfall Unity\Resources\Songs\tracklisting.txt" />
+     <None Include="Assets\Daggerfall Unity\Shaders\DaggerfallIncreasedTerrainTilemap.shader" />
      <None Include="Assets\Daggerfall Unity\Licenses\Daggerfall Connect.txt" />
      <None Include="Assets\Daggerfall\todo.txt" />
      <None Include="Assets\Daggerfall Unity\Shaders\DaggerfallBillboardBatchTransparentCutout.shader" />

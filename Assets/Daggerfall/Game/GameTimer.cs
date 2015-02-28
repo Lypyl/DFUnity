@@ -36,7 +36,8 @@ public class GameTimer : MonoBehaviour {
         if (running) { 
             outputString += "   Started at: " + startedAt.LongDateTimeString() + "\n";
         }
-        outputString += "  World Time is: " + worldTime.Now.LongDateTimeString() + "\n";
+        outputString += "   World Time is: " + worldTime.Now.LongDateTimeString() + "\n";
+        outputString += "   Time remaining: " + getTimeRemaining() + "s\n";
 
         return outputString;
     }
@@ -72,6 +73,11 @@ public class GameTimer : MonoBehaviour {
 
     public bool isComplete() {
         return complete;
+    }
+
+    public long getTimeRemaining() {
+        if(complete) return 0;
+        return ((long)startedAt.ToSeconds() + (long)durationSeconds) - (long)worldTime.Now.ToSeconds();
     }
 
 	// Use this for initialization

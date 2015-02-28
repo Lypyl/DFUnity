@@ -5,15 +5,23 @@ using DaggerfallConnect.Utility;
 using System.Collections.Generic;
 
 namespace Daggerfall.Game.Quest { 
-    public class QuestManager : MonoBehaviour {
-        private static QuestManager instance;
+    public class QuestManager {
+        private static QuestManager instance = null;
+        System.Guid _UUID;
         private List<Quest> quests;
 
-        public static QuestManager GetInstance() { 
-            if (instance == null) {
-                instance = new QuestManager();
+        private QuestManager() { 
+            quests = new List<Quest>();
+            _UUID = System.Guid.NewGuid();
+        }
+
+        public static QuestManager Instance {
+            get {
+                if(instance == null) {
+                    instance = new QuestManager();
+                }
+                return instance;
             }
-            return instance;
         }
 
         // Use this for initialization
@@ -26,7 +34,7 @@ namespace Daggerfall.Game.Quest {
         }
 
         public void doDebugQuest() {
-            if (quests == null) quests = new List<Quest>();
+            Logger.GetInstance().log(_UUID.ToString());
             FileProxy file = new FileProxy();
             file.Load("Assets/Files/testquest.xml", FileUsage.UseMemory, true);
             Quest q; 
@@ -36,6 +44,7 @@ namespace Daggerfall.Game.Quest {
         }
 
         public void dumpAllQuests() { 
+            Logger.GetInstance().log(_UUID.ToString());
             foreach (Quest q in quests) {
                 q.dumpQuest();
                 q.dumpAllTimers();

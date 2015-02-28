@@ -35,7 +35,7 @@ namespace Daggerfall.Game {
 
         public void displayText(string text, bool newline = true) {
             // TODO: can string.concat ever buffer overflow?
-            _outputText += System.DateTime.UtcNow + " *** " + text;
+            _outputText += System.DateTime.UtcNow.ToLocalTime() + " *** " + text;
             if (newline) { 
                 _outputText += "\n";
             }
@@ -113,11 +113,11 @@ namespace Daggerfall.Game {
                     }
                     break;
                 case (XML_DEBUG):
-                    QuestManager.GetInstance().doDebugQuest();
+                    QuestManager.Instance.doDebugQuest();
                     break;
                 case (QUEST_DEBUG):
                     l.log("Dumping all quests:");
-                    QuestManager.GetInstance().dumpAllQuests();
+                    QuestManager.Instance.dumpAllQuests();
                     break;
                 case (TIME_DEBUG):
                     l.log("The time is: " + dfUnity.WorldTime.Now.LongDateTimeString());

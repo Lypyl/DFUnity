@@ -39,14 +39,13 @@
 	<Reference Include="System.Core" />
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
-	  <HintPath>C:/apps/programming/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>c:/apps/programming/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>C:/apps/programming/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>c:/apps/programming/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\ConsoleGUI.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\API\Arch3dFile.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\API\BaseImageFile.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\API\BlocksFile.cs" />
@@ -169,6 +168,7 @@
      <Compile Include="Assets\Daggerfall Unity\SmartLocalization\Scripts\uGUI\LocalizedText.cs" />
      <Compile Include="Assets\Daggerfall\Game\DevConsole.cs" />
      <Compile Include="Assets\Daggerfall\Game\Error.cs" />
+     <Compile Include="Assets\Daggerfall\Game\Events\GameTimerEvent.cs" />
      <Compile Include="Assets\Daggerfall\Game\GameTimer.cs" />
      <Compile Include="Assets\Daggerfall\Game\Logger.cs" />
      <Compile Include="Assets\Daggerfall\Game\Quest\Quest.cs" />
@@ -222,7 +222,6 @@
      <None Include="Assets\Plugins\x86_64\donotdelete.txt" />
      <None Include="Assets\Daggerfall Unity\Shaders\DaggerfallBillboardBatchTransparentCutoutForceForward.shader" />
      <None Include="Assets\Daggerfall Unity\Resources\Fonts\Readme_TES_Fonts.txt" />
-     <None Include="Assets\Files\testquest.xml" />
      <None Include="Assets\OVR\Shaders\TextShader3D.shader" />
      <None Include="Assets\Daggerfall Unity\Resources\Songs\tracklisting.txt" />
      <None Include="Assets\Daggerfall Unity\Shaders\DaggerfallIncreasedTerrainTilemap.shader" />
@@ -230,6 +229,7 @@
      <None Include="Assets\Daggerfall\todo.txt" />
      <None Include="Assets\Daggerfall Unity\Shaders\DaggerfallBillboardBatchTransparentCutout.shader" />
      <None Include="Assets\Daggerfall Unity\Licenses\DaggerfallConnect.txt" />
+     <None Include="Assets\Files\K0C00Y08.xml" />
      <None Include="Assets\Daggerfall Unity\Licenses\Daggerfall Tools for Unity.txt" />
      <None Include="Assets\OVR\Shaders\OVRGUIShader.shader" />
      <None Include="Assets\Plugins\x86\donotdelete.txt" />
@@ -240,7 +240,7 @@
      <None Include="Assets\Daggerfall Unity\Licenses\C# Synth Project.txt" />
      <None Include="Assets\Daggerfall Unity\Shaders\DaggerfallTilemap.shader" />
  <Reference Include="UnityEngine.UI">
- <HintPath>C:/apps/programming/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.2/UnityEngine.UI.dll</HintPath>
+ <HintPath>c:/apps/programming/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.2/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="AudioSynthesis">
  <HintPath>C:/Users/dan/Documents/unity/DFUnity/Assets/Daggerfall Unity/Resources/AudioSynthesis.dll</HintPath>

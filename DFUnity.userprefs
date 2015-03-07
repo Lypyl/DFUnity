@@ -2,14 +2,16 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Daggerfall Unity\Scripts\Utility\DaggerfallDateTime.cs">
     <Files>
-      <File FileName="Assets\Daggerfall\Game\DevConsole.cs" Line="121" Column="1" />
-      <File FileName="Assets\Daggerfall Unity\Scripts\Utility\DaggerfallDateTime.cs" Line="364" Column="21" />
+      <File FileName="Assets\Daggerfall\Game\DevConsole.cs" Line="123" Column="1" />
+      <File FileName="Assets\Daggerfall Unity\Scripts\Utility\DaggerfallDateTime.cs" Line="374" Column="1" />
+      <File FileName="Assets\Daggerfall Unity\Scripts\Demo\AmbientEffectsPlayer.cs" Line="100" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="C:\Users\dan\Documents\unity\DFUnity\Assets\Daggerfall\Game\DevConsole.cs" line="118" />
       <Breakpoint file="C:\Users\dan\Documents\unity\DFUnity\Assets\Daggerfall Unity\Scripts\Utility\DaggerfallDateTime.cs" line="356" />
+      <Breakpoint file="C:\Users\dan\Documents\unity\DFUnity\Assets\Daggerfall Unity\Scripts\Utility\DaggerfallDateTime.cs" line="373" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

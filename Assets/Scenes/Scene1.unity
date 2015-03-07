@@ -1399,13 +1399,12 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "2/28/2015 12:05:58 AM *** Dev console created\n2/28/2015 12:05:59 AM ***
-    Logging started\n2/28/2015 12:06:10 AM *** > \n2/28/2015 12:07:42 AM *** > travel
-    Daggerfall/Daggerfall\n2/28/2015 12:07:42 AM *** Found location in Daggerfall!\n\n2/28/2015
-    12:09:28 AM *** > travel Daggerfall/Daggerfall\n2/28/2015 12:09:28 AM *** Found
-    location in Daggerfall!\n\n2/28/2015 12:11:12 AM *** > \n2/28/2015 12:11:47 AM
-    *** > travel Wayrest/Wayrest\n2/28/2015 12:11:47 AM *** Found location in Wayrest!\n\n2/28/2015
-    12:12:15 AM *** DFTFU 1.3.0: Arena2 path validated.\n"
+  m_Text: "3/6/2015 9:56:10 PM *** Dev console created\n3/6/2015 9:56:10 PM *** Logging
+    started\n3/6/2015 9:56:18 PM *** > xml\n3/6/2015 9:56:18 PM *** 8a7fd5b1-346a-4930-b87c-02f2b48da4cf\n3/6/2015
+    9:56:18 PM *** unknown element: prelude, \n3/6/2015 9:56:18 PM *** unknown element:
+    statistics, \n3/6/2015 9:56:18 PM *** unknown element: quest, \n3/6/2015 9:56:18
+    PM *** unknown element: __text__, \n3/6/2015 9:56:24 PM *** DFTFU 1.3.0: Arena2
+    path validated.\n"
 --- !u!222 &258195061
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6950,6 +6949,45 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1089866129}
+--- !u!1 &1135630278
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1135630280}
+  - 114: {fileID: 1135630279}
+  m_Layer: 0
+  m_Name: QuestManagerOwner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1135630279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1135630278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f1bab070035bde4ab14accdff171c2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1135630280
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1135630278}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 547.597473, y: 417.55719, z: 1322.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
 --- !u!1 &1148820566
 GameObject:
   m_ObjectHideFlags: 0

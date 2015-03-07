@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using DaggerfallWorkshop;
 using DaggerfallWorkshop.Utility;
+using Daggerfall.Game.Events;
 
-public class GameTimer : MonoBehaviour {
+public class GameTimer {
 
     DaggerfallDateTime startedAt;
     WorldTime worldTime;
@@ -15,11 +16,19 @@ public class GameTimer : MonoBehaviour {
     private bool running;
     private bool complete;
 
+    private GameObject _notifyGO = null;
+    private string _notifyGOMethodName = "";
+
     public GameTimer(WorldTime DFWorldTime) { 
         unknownInformation = new List<string>();
         running = false;
         complete = false;
         worldTime = DFWorldTime;
+    }
+
+    public void registerForCompleteEvent(GameObject gameObject, string methodName) { 
+        _notifyGO = gameObject;
+        _notifyGOMethodName = methodName;
     }
 
     public string dumpTimer() {
@@ -60,6 +69,14 @@ public class GameTimer : MonoBehaviour {
         return true;
     }
 
+    public void updateTimer() {
+        // TODO: Check isRunning, or run logic no matter what? 
+        if(getTimeRemaining() <= 0) {
+            stopAndSetComplete(); 
+        }
+
+    }
+
     /**
      * Stops the timer if it's running
      * @returns true if it was stopped, false otherwise
@@ -71,6 +88,15 @@ public class GameTimer : MonoBehaviour {
         return true;
     }
 
+
+    private void stopAndSetComplete() {
+        stop();
+        complete = true;
+        if(_notifyGO != null && _notifyGOMethodName != "") {
+            _notifyGO.SendMessage(_notifyGOMethodName, new GameTimerEvent(this, GameTimerEventType.GAME_TIMER_COMPLETE));
+        }
+    }
+
     public bool isComplete() {
         return complete;
     }
@@ -79,14 +105,4 @@ public class GameTimer : MonoBehaviour {
         if(complete) return 0;
         return ((long)startedAt.ToSeconds() + (long)durationSeconds) - (long)worldTime.Now.ToSeconds();
     }
-
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }

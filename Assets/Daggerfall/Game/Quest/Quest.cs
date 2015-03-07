@@ -3,9 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using DaggerfallWorkshop;
 using System;
+using Daggerfall.Game.Events;
 
 namespace Daggerfall.Game.Quest { 
-    public class Quest : MonoBehaviour {
+    public class Quest {
         public Dictionary<string, string> resources = new Dictionary<string, string>();
         public List<KeyValuePair<string, string>> QBN = new List<KeyValuePair<string, string>>();
         public List<Task> tasks = new List<Task>();
@@ -19,15 +20,6 @@ namespace Daggerfall.Game.Quest {
             //timers = new Dictionary<string,GameTimer>();
         }
 
-        // Use this for initialization
-        void Start () {
-        }
-        
-        // Update is called once per frame
-        void Update () {
-        
-        }
-
         public void createTimers() { 
             timers = new Dictionary<string, GameTimer>();
             foreach (KeyValuePair<string, string> qbnItem in QBN) { 
@@ -38,22 +30,35 @@ namespace Daggerfall.Game.Quest {
                     timer.id = pieces[1];
 
                     string[] durationPieces = pieces[2].Split(':');
-                    timer.durationSeconds = Int32.Parse(durationPieces[0]) * 3600 + Int32.Parse(durationPieces[1]) * 60;
+                    timer.durationSeconds = float.Parse(durationPieces[0]) * 86400 + Int32.Parse(durationPieces[1]) * 60;
                     
                     for (int x=3; x<pieces.Length; x++) {
                         timer.unknownInformation.Add(pieces[x]);
                     }
                     timers.Add(timer.id, timer);
+                    timer.registerForCompleteEvent(QuestManager.Instance.gameObject, "timerComplete");
+
 
                     //Logger.GetInstance().log(timer.dumpTimer());
                 }
             }
         }
 
-        public void dumpAllTimers() { 
+
+        public void updateGameTimers() {
             foreach (KeyValuePair<string, GameTimer> kvp in timers) {
-                Logger.GetInstance().log(kvp.Value.dumpTimer());
+                if (kvp.Value.isRunning()) {
+                    kvp.Value.updateTimer();
+                }
             }
+        }
+
+        public string dumpAllTimers() { 
+            string output = "";
+            foreach (KeyValuePair<string, GameTimer> kvp in timers) {
+                output += kvp.Value.dumpTimer();
+            }
+            return output;
         }
 
         public void startAllTimers() { 

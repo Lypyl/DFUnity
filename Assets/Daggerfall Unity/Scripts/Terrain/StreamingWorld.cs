@@ -40,7 +40,7 @@ namespace DaggerfallWorkshop
         // 1 : ( 2 * 1 + 1 ) * ( 2 * 1 + 1 ) = 9 tiles
         // 3 : ( 2 * 3 + 1 ) * ( 2 * 3 + 1 ) = 49 tiles
         [Range(1, 3)]
-        public int TerrainDistance = 4;
+        public int TerrainDistance = 3;
 
         // This controls central map pixel for streaming world
         // Synced to PlayerGPS at runtime

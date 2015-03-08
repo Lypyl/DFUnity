@@ -19,7 +19,7 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_4_6_2;UNITY_4_6;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_IL2CPP;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_4_6_FEATURES;INCLUDE_WP_BLUE_SUPPORT;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;UNITY5_SCRIPTING_IN_UNITY4;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN</DefineConstants>
+	<DefineConstants>DEBUG;TRACE;UNITY_5_0_0;UNITY_5_0;UNITY_5;ENABLE_LICENSE_RENAME;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_NEW_HIERARCHY;ENABLE_PHYSICS;ENABLE_PHYSICS_PHYSX3;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_AUDIOMIXER_SUSPEND;ENABLE_NONPRO;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -39,10 +39,10 @@
 	<Reference Include="System.Core" />
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
-	  <HintPath>c:/apps/programming/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>C:/apps/programming/Unity5/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>c:/apps/programming/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>C:/apps/programming/Unity5/Editor/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
@@ -67,6 +67,7 @@
      <Compile Include="Assets\Daggerfall Unity\Scripts\API\DFValidator.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\API\FaceUVTool.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\API\FileProxy.cs" />
+     <Compile Include="Assets\Daggerfall Unity\Scripts\API\FntFile.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\API\ImgFile.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\API\MapsFile.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\API\MonsterFile.cs" />
@@ -121,7 +122,6 @@
      <Compile Include="Assets\Daggerfall Unity\Scripts\Internal\DaggerfallBillboardBatch.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Internal\DaggerfallCityGate.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Internal\DaggerfallDungeon.cs" />
-     <Compile Include="Assets\Daggerfall Unity\Scripts\Internal\DaggerfallGroundMesh.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Internal\DaggerfallGroundPlane.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Internal\DaggerfallInterior.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Internal\DaggerfallLight.cs" />
@@ -186,7 +186,6 @@
      <Compile Include="Assets\Daggerfall\Scripts\Gameplay\EnemySenses.cs" />
      <Compile Include="Assets\Daggerfall\Scripts\Gameplay\EnemySounds.cs" />
      <Compile Include="Assets\Daggerfall\Scripts\Gameplay\FPSCrosshair.cs" />
-     <Compile Include="Assets\Daggerfall\Scripts\Gameplay\FPSWeapon.cs" />
      <Compile Include="Assets\Daggerfall\Scripts\Gameplay\Items\Item.cs" />
      <Compile Include="Assets\Daggerfall\Scripts\Gameplay\Mobs\Attributes.cs" />
      <Compile Include="Assets\Daggerfall\Scripts\Gameplay\Mobs\Creature.cs" />
@@ -194,35 +193,17 @@
      <Compile Include="Assets\Daggerfall\Scripts\Gameplay\Mobs\Skills.cs" />
      <Compile Include="Assets\Daggerfall\Scripts\Gameplay\PlayerActivate.cs" />
      <Compile Include="Assets\Daggerfall\Scripts\Gameplay\PlayerEnterExit.cs" />
-     <Compile Include="Assets\Daggerfall\Scripts\Gameplay\PlayerFootsteps.cs" />
      <Compile Include="Assets\Daggerfall\Scripts\Gameplay\PlayerHealth.cs" />
      <Compile Include="Assets\Daggerfall\Scripts\Gameplay\PlayerMotor.cs" />
      <Compile Include="Assets\Daggerfall\Scripts\Gameplay\PlayerMouseLook.cs" />
      <Compile Include="Assets\Daggerfall\Scripts\Gameplay\ShowPlayerDamage.cs" />
-     <Compile Include="Assets\Daggerfall\Scripts\Gameplay\WeaponManager.cs" />
      <Compile Include="Assets\Daggerfall\Scripts\Internal\CreatureSpawner.cs" />
      <Compile Include="Assets\Daggerfall\Scripts\Internal\DFUnityInit.cs" />
-     <Compile Include="Assets\OVR\Scripts\OVRCameraRig.cs" />
-     <Compile Include="Assets\OVR\Scripts\OVRCommon.cs" />
-     <Compile Include="Assets\OVR\Scripts\OVRDisplay.cs" />
-     <Compile Include="Assets\OVR\Scripts\OVRManager.cs" />
-     <Compile Include="Assets\OVR\Scripts\OVRPluginEvent.cs" />
-     <Compile Include="Assets\OVR\Scripts\OVRTracker.cs" />
-     <Compile Include="Assets\OVR\Scripts\OvrCapi.cs" />
-     <Compile Include="Assets\OVR\Scripts\Util\OVRCrosshair.cs" />
-     <Compile Include="Assets\OVR\Scripts\Util\OVRGUI.cs" />
-     <Compile Include="Assets\OVR\Scripts\Util\OVRGamepadController.cs" />
-     <Compile Include="Assets\OVR\Scripts\Util\OVRGridCube.cs" />
-     <Compile Include="Assets\OVR\Scripts\Util\OVRMainMenu.cs" />
-     <Compile Include="Assets\OVR\Scripts\Util\OVRPlayerController.cs" />
-     <Compile Include="Assets\OVR\Scripts\Util\OVRScreenFade.cs" />
-     <Compile Include="Assets\OVR\Scripts\Util\OVRUGUI.cs" />
-     <Compile Include="Assets\OVR\Scripts\Util\OVRVisionGuide.cs" />
+     <Compile Include="Assets\ScrollManager.cs" />
      <None Include="Assets\Plugins\donotdelete.txt" />
      <None Include="Assets\Plugins\x86_64\donotdelete.txt" />
      <None Include="Assets\Daggerfall Unity\Shaders\DaggerfallBillboardBatchTransparentCutoutForceForward.shader" />
      <None Include="Assets\Daggerfall Unity\Resources\Fonts\Readme_TES_Fonts.txt" />
-     <None Include="Assets\OVR\Shaders\TextShader3D.shader" />
      <None Include="Assets\Daggerfall Unity\Resources\Songs\tracklisting.txt" />
      <None Include="Assets\Daggerfall Unity\Shaders\DaggerfallIncreasedTerrainTilemap.shader" />
      <None Include="Assets\Daggerfall Unity\Licenses\Daggerfall Connect.txt" />
@@ -231,7 +212,6 @@
      <None Include="Assets\Daggerfall Unity\Licenses\DaggerfallConnect.txt" />
      <None Include="Assets\Files\K0C00Y08.xml" />
      <None Include="Assets\Daggerfall Unity\Licenses\Daggerfall Tools for Unity.txt" />
-     <None Include="Assets\OVR\Shaders\OVRGUIShader.shader" />
      <None Include="Assets\Plugins\x86\donotdelete.txt" />
      <None Include="Assets\Daggerfall Unity\SmartLocalization\README.txt" />
      <None Include="Assets\Daggerfall Unity\SmartLocalization\Resources\EmptyResourceHeader.txt" />
@@ -240,7 +220,7 @@
      <None Include="Assets\Daggerfall Unity\Licenses\C# Synth Project.txt" />
      <None Include="Assets\Daggerfall Unity\Shaders\DaggerfallTilemap.shader" />
  <Reference Include="UnityEngine.UI">
- <HintPath>c:/apps/programming/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.2/UnityEngine.UI.dll</HintPath>
+ <HintPath>C:/apps/programming/Unity5/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="AudioSynthesis">
  <HintPath>C:/Users/dan/Documents/unity/DFUnity/Assets/Daggerfall Unity/Resources/AudioSynthesis.dll</HintPath>

@@ -96,7 +96,7 @@ namespace DaggerfallWorkshop.Utility
         {
             get { return GetBirthSignName(); }
         }
-        
+
         /// <summary>
         /// Gets current birth sign enum value.
         /// </summary>

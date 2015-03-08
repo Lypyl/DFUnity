@@ -8,6 +8,7 @@ using Daggerfall.Game.Events;
 namespace Daggerfall.Game.Quest { 
     public class QuestManager : MonoBehaviour {
         private static QuestManager instance = null;
+        public UIManager uiManager;
         System.Guid _UUID;
         private List<Quest> quests;
         private int _count = 0;
@@ -23,6 +24,7 @@ namespace Daggerfall.Game.Quest {
                     GameObject go = new GameObject();
                     go.name = "QuestManager";
                     instance = go.AddComponent<QuestManager>();
+                    //instance.Start();
                 }
                 return instance;
             }
@@ -37,21 +39,22 @@ namespace Daggerfall.Game.Quest {
         }
 
         // Use this for initialization
-        void Start () {
+        void Awake() {
+            if (!uiManager) {
+                uiManager = GameObject.FindGameObjectWithTag("UIOwner").GetComponentInChildren<UIManager>();
+            }
         }
         
         // Update is called once per frame
         void Update () {
-            if(_count % 30 == 0) {
+            if (uiManager.isUIOpen) return;
+            if(_count % 32 == 0) {
                 foreach(Quest q in quests) {
                     q.updateGameTimers();
-                }
-            } else if (_count % 400 == 0) {
-                foreach(Quest q in quests) { 
-                    Logger.GetInstance().log(q.dumpAllTimers());
+                    uiManager.SendMessage("debugHUD_displayText", q.dumpAllTimers());
                 }
                 _count = 0;
-            }
+            } 
         
             _count += 1;
         }
@@ -64,10 +67,10 @@ namespace Daggerfall.Game.Quest {
             XMLQuestParser.createQuestFromXMLFile(file, out q);
             quests.Add(q);
             Logger.GetInstance().log(q.dumpQuest());
-
+            uiManager.SendMessage("uiScroll_displayText", q.resources["QuestorOffer"]);
             q.startAllTimers();
             Logger.GetInstance().log("Started all timers\n");
-             Logger.GetInstance().log(q.dumpAllTimers());
+            Logger.GetInstance().log(q.dumpAllTimers());
         }
 
         public void dumpAllQuests() { 

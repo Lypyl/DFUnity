@@ -21,6 +21,7 @@ namespace Daggerfall.Game {
         public UIManager uiManager;
         public StreamingWorld streamingWorldOwner;
         public WeatherManager weatherManager;
+        public ScrollManager scrollManager;
              
         DaggerfallUnity dfUnity;
         float deltaTime = 0.0f;
@@ -32,6 +33,7 @@ namespace Daggerfall.Game {
         private const string XML_DEBUG = "xml";
         private const string QUEST_DEBUG = "quest";
         private const string TIME_DEBUG = "time";
+        private const string DISPLAY_SCROLL = "scroll";
 
         public void displayText(string text, bool newline = true) {
             // TODO: can string.concat ever buffer overflow?
@@ -129,6 +131,11 @@ namespace Daggerfall.Game {
                     l.log("The time is now: " + dfUnity.WorldTime.Now.LongDateTimeString());
                     l.log("The time in seconds is now: " + dfUnity.WorldTime.Now.ToSeconds().ToString());
 
+                    break;
+                case (DISPLAY_SCROLL): 
+                    if (args.Length == 2) {
+                        scrollManager.displayScroll(args[1]);
+                    }
                     break;
                 default:
                     break;

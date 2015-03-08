@@ -3,6 +3,8 @@ using System.Collections;
 using DaggerfallWorkshop.Demo;
 using DaggerfallWorkshop;
 using UnityEngine.UI;
+using Daggerfall.Game;
+using System.Collections.Generic;
 
 namespace Daggerfall.Game { 
     public class UIManager : MonoBehaviour {
@@ -12,15 +14,28 @@ namespace Daggerfall.Game {
         }
 
         public Canvas MenuOptions1;
-        public Canvas DevConsole;
+        public Canvas DevConsoleCanvas;
         public Canvas PlayerSheet;
+        public Canvas DebugHUD;
+        public Canvas UIScroll;
+        public Canvas SmallScroll;
         public Camera playerCamera; // necessary to change PlayerMouseLook behavior
+        List<Canvas> openableUIElements;
 
         // Use this for initialization
         void Start () {
             MenuOptions1.enabled = false;
-            DevConsole.enabled = false;
+            DevConsoleCanvas.enabled = false;
             PlayerSheet.enabled = false;
+            UIScroll.enabled = true;
+            //SmallScroll.enabled = false;
+            DebugHUD.enabled = true;
+            openableUIElements = new List<Canvas>();
+            openableUIElements.Add(MenuOptions1);
+            openableUIElements.Add(DevConsoleCanvas);
+            openableUIElements.Add(PlayerSheet);
+            //openableUIElements.Add(SmallScroll);
+            updateUIState();
         }
         
         // Update is called once per frame
@@ -28,32 +43,60 @@ namespace Daggerfall.Game {
             // This whole area will need game logic for what can be opened when
             if (Input.GetKeyDown(KeyCode.Alpha1)) {
                 MenuOptions1.enabled = !MenuOptions1.enabled;
-                _isUIOpen = MenuOptions1.enabled;
                 //playerCamera.GetComponent<PlayerMouseLook>().enableMLook = !MenuOptions1.enabled;
+                    updateUIState();
             } else if (Input.GetButtonDown("DevConsole")) { 
-                if (!_isUIOpen) {
-                    _isUIOpen = true;
-                    DevConsole.enabled = true;
-                    DevConsole devConsole = DevConsole.GetComponent<DevConsole>();
-                    devConsole.enabled = true;
-                    devConsole.inputField.enabled = true;
-                    devConsole.inputField.Select();
+                // TODO: For the love of God, refactor this
+                DevConsole devConsoleScript = DevConsoleCanvas.GetComponent<DevConsole>();
+                if (!DevConsoleCanvas.enabled) { 
+                    DevConsoleCanvas.enabled = true;
+                    //devConsoleScript.inputField.enabled = true;
+                    devConsoleScript.inputField.Select();
                 } else {
-                    _isUIOpen = false;
-                    DevConsole.enabled = false;
-                    DevConsole devConsole = DevConsole.GetComponent<DevConsole>();
-                    devConsole.enabled = false;
-                    devConsole.inputField.enabled = false;
+                    DevConsoleCanvas.enabled = false;
+                    //devConsoleScript.inputField.enabled = false;
                 }
+                updateUIState();
             } else if (Input.GetButtonDown("PlayerSheet")) { 
                 PlayerSheet.enabled = !PlayerSheet.enabled;
-                _isUIOpen = PlayerSheet.enabled; 
+                updateUIState();
             }
         }
 
+        // TODO: Optimization: aggressive inlining? 
+        void updateUIState() {
+            _isUIOpen = false;
+            foreach (Canvas canvas in openableUIElements) {
+                if (canvas.enabled) {
+                    _isUIOpen = true;
+                    break;
+                }
+            }
+        }
+
+        void debugHUD_displayText(string completeContents) {
+            DebugHUD.GetComponentInChildren<Text>().text = completeContents;
+        }
 
         void devConsole_displayText(string line) {
-            DevConsole.GetComponent<DevConsole>().displayText(line);
+            DevConsoleCanvas.GetComponent<DevConsole>().displayText(line);
+        }
+
+        void uiScroll_displayText(string output) {
+            if (UIScroll) {
+                ScrollManager sm = UIScroll.GetComponent<ScrollManager>();
+                if (sm) { 
+                    sm.displayScroll(output);
+                }
+            }
+        }
+
+        void uiElementOpened() {
+            updateUIState();
+        }
+
+        void uiElementClosed() {
+            updateUIState();
         }
     }
 }

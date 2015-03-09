@@ -46,12 +46,22 @@ namespace Daggerfall.Game.Quest {
         }
         
         // Update is called once per frame
+        /**
+         * Every few ticks this function will update any running quests
+         **/
         void Update () {
+            // TODO: DEBUG: DEMO: Remove this 
+            if (Input.GetButtonDown("TempDebugKey")) {  
+                doDebugQuest();
+                return;
+            }
+
+
             if (uiManager.isUIOpen) return;
             if(_count % 32 == 0) {
                 foreach(Quest q in quests) {
                     q.updateGameTimers();
-                    uiManager.SendMessage("debugHUD_displayText", q.dumpAllTimers());
+                    uiManager.SendMessage("debugHUD_displayText", q.dumpAllRunningTimers());
                 }
                 _count = 0;
             } 

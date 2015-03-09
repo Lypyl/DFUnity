@@ -13,28 +13,32 @@ namespace Daggerfall.Game {
             get { return _isUIOpen; }
         }
 
-        public Canvas MenuOptions1;
-        public Canvas DevConsoleCanvas;
-        public Canvas PlayerSheet;
-        public Canvas DebugHUD;
-        public Canvas UIScroll;
-        public Canvas SmallScroll;
+        // TODO: Refactor with PFSM
+        public GameObject MenuOptions1;
+        public GameObject DevConsole;
+        public GameObject PlayerSheet;
+        public GameObject DebugHUD;
+        public PrefabStateMachine UIScroll;
+
+        public ScrollManager scrollManager;
         public Camera playerCamera; // necessary to change PlayerMouseLook behavior
-        List<Canvas> openableUIElements;
+        List<GameObject> openableUIElements;
+        List<PrefabStateMachine> PFSMs;
 
         // Use this for initialization
         void Start () {
-            MenuOptions1.enabled = false;
-            DevConsoleCanvas.enabled = false;
-            PlayerSheet.enabled = false;
-            UIScroll.enabled = true;
-            //SmallScroll.enabled = false;
-            DebugHUD.enabled = true;
-            openableUIElements = new List<Canvas>();
+            MenuOptions1.SetActive(false);
+            DevConsole.SetActive(false);
+            PlayerSheet.SetActive(false);
+            DebugHUD.SetActive(true);
+            openableUIElements = new List<GameObject>();
             openableUIElements.Add(MenuOptions1);
-            openableUIElements.Add(DevConsoleCanvas);
+            openableUIElements.Add(DevConsole);
             openableUIElements.Add(PlayerSheet);
-            //openableUIElements.Add(SmallScroll);
+
+            PFSMs = new List<PrefabStateMachine>();
+            PFSMs.Add(UIScroll);
+
             updateUIState();
         }
         
@@ -42,23 +46,22 @@ namespace Daggerfall.Game {
         void Update () {
             // This whole area will need game logic for what can be opened when
             if (Input.GetKeyDown(KeyCode.Alpha1)) {
-                MenuOptions1.enabled = !MenuOptions1.enabled;
+                //MenuOptions1.activeSelf = !MenuOptions1.active;
                 //playerCamera.GetComponent<PlayerMouseLook>().enableMLook = !MenuOptions1.enabled;
-                    updateUIState();
+                updateUIState();
             } else if (Input.GetButtonDown("DevConsole")) { 
-                // TODO: For the love of God, refactor this
-                DevConsole devConsoleScript = DevConsoleCanvas.GetComponent<DevConsole>();
-                if (!DevConsoleCanvas.enabled) { 
-                    DevConsoleCanvas.enabled = true;
+                DevConsole devConsoleScript = DevConsole.GetComponent<DevConsole>();
+                if (!DevConsole.activeSelf) { 
+                    DevConsole.SetActive(true);
                     //devConsoleScript.inputField.enabled = true;
                     devConsoleScript.inputField.Select();
                 } else {
-                    DevConsoleCanvas.enabled = false;
+                    DevConsole.SetActive(false);
                     //devConsoleScript.inputField.enabled = false;
                 }
                 updateUIState();
             } else if (Input.GetButtonDown("PlayerSheet")) { 
-                PlayerSheet.enabled = !PlayerSheet.enabled;
+                //PlayerSheet.enabled = !PlayerSheet.enabled;
                 updateUIState();
             }
         }
@@ -66,8 +69,16 @@ namespace Daggerfall.Game {
         // TODO: Optimization: aggressive inlining? 
         void updateUIState() {
             _isUIOpen = false;
-            foreach (Canvas canvas in openableUIElements) {
-                if (canvas.enabled) {
+            foreach (GameObject go in openableUIElements) {
+                if (go.activeSelf) {
+                    _isUIOpen = true;
+                    break;
+                }
+            }
+
+            // TODO: Convert to just one system
+            foreach (PrefabStateMachine PFSM in PFSMs) { 
+                if (PFSM.currentOrPendingState != PrefabState.UI_OFF) { 
                     _isUIOpen = true;
                     break;
                 }
@@ -79,16 +90,11 @@ namespace Daggerfall.Game {
         }
 
         void devConsole_displayText(string line) {
-            DevConsoleCanvas.GetComponent<DevConsole>().displayText(line);
+            DevConsole.GetComponent<DevConsole>().displayText(line);
         }
 
         void uiScroll_displayText(string output) {
-            if (UIScroll) {
-                ScrollManager sm = UIScroll.GetComponent<ScrollManager>();
-                if (sm) { 
-                    sm.displayScroll(output);
-                }
-            }
+                scrollManager.displayScroll(output);
         }
 
         void uiElementOpened() {

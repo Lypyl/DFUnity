@@ -61,6 +61,16 @@ namespace Daggerfall.Game.Quest {
             return output;
         }
 
+        public string dumpAllRunningTimers() { 
+            string output = "";
+            foreach (KeyValuePair<string, GameTimer> kvp in timers) {
+                if (kvp.Value.isRunning()) { 
+                    output += kvp.Value.dumpTimer();
+                }
+            }
+            return output;
+        }
+
         public void startAllTimers() { 
             foreach (KeyValuePair<string, GameTimer> kvp in timers) {
                 kvp.Value.start();

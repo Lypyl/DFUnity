@@ -1,19 +1,20 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Daggerfall Unity\Scripts\Internal\DaggerfallGroundMesh.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Daggerfall\Game\PrefabStateMachine.cs">
     <Files>
       <File FileName="Assets\Daggerfall\Game\DevConsole.cs" Line="137" Column="1" />
       <File FileName="Assets\Daggerfall Unity\Scripts\Utility\DaggerfallDateTime.cs" Line="1" Column="1" />
       <File FileName="Assets\Daggerfall Unity\Scripts\Demo\AmbientEffectsPlayer.cs" Line="1" Column="1" />
       <File FileName="Assets\Daggerfall\Game\Quest\QuestManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\ScrollManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Daggerfall\Game\UIManager.cs" Line="88" Column="27" />
-      <File FileName="Assets\Daggerfall Unity\Scripts\Internal\DaggerfallGroundMesh.cs" Line="61" Column="1" />
+      <File FileName="Assets\ScrollManager.cs" Line="21" Column="1" />
+      <File FileName="Assets\Daggerfall\Game\UIManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Daggerfall\Game\PrefabStateMachine.cs" Line="66" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="C:\Users\dan\Documents\unity\DFUnity\Assets\Daggerfall\Game\UIManager.cs" line="101" />
+      <Breakpoint file="F:\docs\unity\DFUnity\Assets\Daggerfall\Game\PrefabStateMachine.cs" line="39" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

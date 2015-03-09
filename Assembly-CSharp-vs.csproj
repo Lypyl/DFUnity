@@ -39,10 +39,10 @@
 	<Reference Include="System.Core" />
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
-	  <HintPath>C:/apps/programming/Unity5/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>F:/apps/programming/Unity5/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>C:/apps/programming/Unity5/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>F:/apps/programming/Unity5/Editor/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
@@ -96,7 +96,6 @@
      <Compile Include="Assets\Daggerfall Unity\Scripts\Demo\EnemySounds.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Demo\ExitGame.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Demo\ExplorerMode.cs" />
-     <Compile Include="Assets\Daggerfall Unity\Scripts\Demo\FPSCrosshair.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Demo\FPSWeapon.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Demo\NewLocationAlert.cs" />
      <Compile Include="Assets\Daggerfall Unity\Scripts\Demo\PlayerActivate.cs" />
@@ -171,10 +170,14 @@
      <Compile Include="Assets\Daggerfall\Game\Events\GameTimerEvent.cs" />
      <Compile Include="Assets\Daggerfall\Game\GameTimer.cs" />
      <Compile Include="Assets\Daggerfall\Game\Logger.cs" />
+     <Compile Include="Assets\Daggerfall\Game\PrefabStateMachine.cs" />
      <Compile Include="Assets\Daggerfall\Game\Quest\Quest.cs" />
      <Compile Include="Assets\Daggerfall\Game\Quest\QuestManager.cs" />
      <Compile Include="Assets\Daggerfall\Game\Quest\XMLQuestParser.cs" />
      <Compile Include="Assets\Daggerfall\Game\Task.cs" />
+     <Compile Include="Assets\Daggerfall\Game\UI\ClickToDismiss.cs" />
+     <Compile Include="Assets\Daggerfall\Game\UI\DisplayText.cs" />
+     <Compile Include="Assets\Daggerfall\Game\UI\FPSCrosshair.cs" />
      <Compile Include="Assets\Daggerfall\Game\UIManager.cs" />
      <Compile Include="Assets\Daggerfall\Scripts\Gameplay\AnimateTexture.cs" />
      <Compile Include="Assets\Daggerfall\Scripts\Gameplay\DaggerfallPlayerController.cs" />
@@ -220,13 +223,13 @@
      <None Include="Assets\Daggerfall Unity\Licenses\C# Synth Project.txt" />
      <None Include="Assets\Daggerfall Unity\Shaders\DaggerfallTilemap.shader" />
  <Reference Include="UnityEngine.UI">
- <HintPath>C:/apps/programming/Unity5/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ <HintPath>F:/apps/programming/Unity5/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="AudioSynthesis">
- <HintPath>C:/Users/dan/Documents/unity/DFUnity/Assets/Daggerfall Unity/Resources/AudioSynthesis.dll</HintPath>
+ <HintPath>F:/docs/unity/DFUnity/Assets/Daggerfall Unity/Resources/AudioSynthesis.dll</HintPath>
  </Reference>
  <Reference Include="SmartLocalization_Runtime">
- <HintPath>C:/Users/dan/Documents/unity/DFUnity/Assets/Daggerfall Unity/SmartLocalization/SmartLocalization_Runtime.dll</HintPath>
+ <HintPath>F:/docs/unity/DFUnity/Assets/Daggerfall Unity/SmartLocalization/SmartLocalization_Runtime.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

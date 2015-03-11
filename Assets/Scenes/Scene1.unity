@@ -1309,56 +1309,53 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "3/8/2015 9:23:56 PM *** Dev console created\n3/8/2015 9:23:56 PM *** Logging
-    started\n3/8/2015 9:24:27 PM *** > `\n3/8/2015 9:24:29 PM *** > \n3/8/2015 9:24:35
-    PM *** 3a4938d8-6a89-4b55-a627-686a66672f02\n3/8/2015 9:24:35 PM *** unknown element:
-    prelude, \n3/8/2015 9:24:35 PM *** unknown element: statistics, \n3/8/2015 9:24:35
-    PM *** unknown element: quest, \n3/8/2015 9:24:35 PM *** unknown element: __text__,
-    \n3/8/2015 9:24:35 PM *** Created all timers\n\n3/8/2015 9:24:35 PM *** Started
-    all timers\n\n3/8/2015 9:24:35 PM *** Timer (_queston_). Duration: 87000 seconds.\n
-    \       running: Yes\n       complete: No\n   unknown flag: 0\n   unknown flag:
-    flag\n   unknown flag: 17\n   unknown flag: range\n   unknown flag: 0\n   unknown
-    flag: 2\n   Started at: 12:04:21 on Sundas, 01 of Midyear, 3E405\n   World Time
-    is: 12:04:22 on Sundas, 01 of Midyear, 3E405\n   Time remaining: 87000s\n\n3/8/2015
-    9:24:35 PM *** CDATA: \r\nQuestFile: ..\\K0C00Y08.Qbn.\r\nStartsBy: NPC\r\nQuestee:
-    anyone\r\nQuestor: merchant\r\nRepute: 0\r\nQuestId: 8\r\nMessages: 13\r\nQuest:
-    K0C00Y08\r\nMessage panels\r\n\nCDATA: \r\nSymbols used in the QRC file:\r\n              %cn
-    occurs 2 times.\r\n              %g2 occurs 1 time.\r\n              %g3 occurs
-    1 time.\r\n             %jok occurs 6 times.\r\n             %oth occurs 2 times.\r\n
-    \            %pcf occurs 3 times.\r\n             %qdt occurs 1 time.\r\n              %ra
-    occurs 1 time.\r\n             %reg occurs 3 times.\r\n        =queston_ occurs
-    2 times.\r\n      ___mondung_ occurs 2 times.\r\n       ___qgiver_ occurs 2 times.\r\n
-    \          _book_ occurs 6 times.\r\n           _gold_ occurs 5 times.\r\n         _qgiver_
-    occurs 3 times.\r\n        _upfront_ occurs 2 times.\r\n\nsid: QuestorOffer. Value:
-    \r\nI am looking for a very special book, one\r\nthat is not available in any
-    store, at least not\r\nfor any price less than astronomical. Recently, I\r\nhave
-    heard that a copy of it has surfaced not too\r\nfar from here, in a dungeon. If
-    you will accept\r\nthis quest to find this tome, I will give you\r\n_upfront_
-    gold pieces now and another _gold_ gold\r\npieces when you return. Do we have\r\na
-    deal then, %pcf?\r\n\nsid: RefuseQuest$1001. Value: \r\n                          Very
-    well. I'll look for a\r\n                           different mercenary then.\r\n\nsid:
-    AcceptQuest$1002. Value: \r\n                 Good. I'll give you =queston_ days
-    to get the\r\n                          book out of ___mondung_ and\r\n                return.
-    After that time, the _gold_ gold pieces\r\n                    will be forfeit.
-    The name of the book is\r\n                               _book_. Good luck,\r\n
-    \                                    %pcf.\r\n\nsid: QuestComplete. Value: \r\n
-    \                      Ah, marvelous. Here's the _gold_\r\n                     gold
-    pieces I promised. Thank you very\r\n                                  much, %pcf.\r\n\nsid:
-    RumorsDuringQuest$1005. Value: \r\nThe legal system in %reg has good points and
-    bad ones.\r\n\nsid: RumorsPostfailure$1006. Value: \r\nThe legal system in %reg
-    has it good points and bad ones.\r\n\nsid: RumorsPostsuccess$1007. Value: \r\n_qgiver_
-    is happy as a harpy about %g3 new acquisition.\r\n\nsid: QuestorPostsuccess$1008.
-    Value: \r\nWhat can I do for you, o %ra who brought me _book_?\r\n\nsid: QuestorPostfailure$1009.
-    Value: \r\n                            As _book_ is lost once\r\n                          again,
-    I find it in dubious\r\n                          taste that you are bothering\r\n
-    \                             me. Go get stuffed.\r\n\nsid: QuestLogEntry$1010.
-    Value: \r\n%qdt:\r\n _qgiver_ of\r\n __qgiver_, ___qgiver_ has\r\n sent me to
-    ___mondung_ in\r\n search of _book_,\r\n a very rare book. I will be given _gold_\r\n
-    gold pieces if I return in =queston_ days or less.\r\n\nsid: $1011. Value: \r\n
-    \                                You picked up\r\n                                    _book_.\r\n\nsid:
-    $1012. Value: \r\n                               _qgiver_ will be\r\n                       angry.
-    This is past the time when\r\n                        you were to bring %g2 the
-    book.\r\n\ntag: item. Value:  _gold_ gold\ntag: item. Value:  _upfront_ gold range
+  m_Text: "3/10/2015 10:52:00 PM *** Logging started\n3/10/2015 10:52:09 PM *** 71581211-5156-45ce-b692-b23e12fa72fa\n3/10/2015
+    10:52:09 PM *** unknown element: prelude, \n3/10/2015 10:52:09 PM *** unknown
+    element: statistics, \n3/10/2015 10:52:09 PM *** unknown element: quest, \n3/10/2015
+    10:52:09 PM *** unknown element: __text__, \n3/10/2015 10:52:09 PM *** Created
+    all timers\n\n3/10/2015 10:52:09 PM *** Started all timers\n\n3/10/2015 10:52:09
+    PM *** Timer (_queston_). Duration: 87000 seconds.\n        running: Yes\n       complete:
+    No\n   unknown flag: 0\n   unknown flag: flag\n   unknown flag: 17\n   unknown
+    flag: range\n   unknown flag: 0\n   unknown flag: 2\n   Started at: 12:00:27 on
+    Sundas, 01 of Midyear, 3E405\n   World Time is: 12:00:27 on Sundas, 01 of Midyear,
+    3E405\n   Time remaining: 87000s\n\n3/10/2015 10:52:09 PM *** CDATA: \nQuestFile:
+    ..\\K0C00Y08.Qbn.\nStartsBy: NPC\nQuestee: anyone\nQuestor: merchant\nRepute:
+    0\nQuestId: 8\nMessages: 13\nQuest: K0C00Y08\nMessage panels\n\nCDATA: \nSymbols
+    used in the QRC file:\n              %cn occurs 2 times.\n              %g2 occurs
+    1 time.\n              %g3 occurs 1 time.\n             %jok occurs 6 times.\n
+    \            %oth occurs 2 times.\n             %pcf occurs 3 times.\n             %qdt
+    occurs 1 time.\n              %ra occurs 1 time.\n             %reg occurs 3 times.\n
+    \       =queston_ occurs 2 times.\n      ___mondung_ occurs 2 times.\n       ___qgiver_
+    occurs 2 times.\n           _book_ occurs 6 times.\n           _gold_ occurs 5
+    times.\n         _qgiver_ occurs 3 times.\n        _upfront_ occurs 2 times.\n\nsid:
+    QuestorOffer. Value: \nI am looking for a very special book, one that is not available
+    in any store, at least not for any price less than astronomical. Recently, I have
+    heard that a copy of it has surfaced not too far from here, in a dungeon. If you
+    will accept this quest to find this tome, I will give you _upfront_ gold pieces
+    now and another _gold_ gold pieces when you return. Do we have a deal then, %pcf?\n\nsid:
+    RefuseQuest$1001. Value: \n                          Very well. I'll look for
+    a\n                           different mercenary then.\n\nsid: AcceptQuest$1002.
+    Value: \n                 Good. I'll give you =queston_ days to get the\n                          book
+    out of ___mondung_ and\n                return. After that time, the _gold_ gold
+    pieces\n                    will be forfeit. The name of the book is\n                               _book_.
+    Good luck,\n                                     %pcf.\n\nsid: QuestComplete.
+    Value: \n                       Ah, marvelous. Here's the _gold_\n                     gold
+    pieces I promised. Thank you very\n                                  much, %pcf.\n\nsid:
+    RumorsDuringQuest$1005. Value: \nThe legal system in %reg has good points and
+    bad ones.\n\nsid: RumorsPostfailure$1006. Value: \nThe legal system in %reg has
+    it good points and bad ones.\n\nsid: RumorsPostsuccess$1007. Value: \n_qgiver_
+    is happy as a harpy about %g3 new acquisition.\n\nsid: QuestorPostsuccess$1008.
+    Value: \nWhat can I do for you, o %ra who brought me _book_?\n\nsid: QuestorPostfailure$1009.
+    Value: \n                            As _book_ is lost once\n                          again,
+    I find it in dubious\n                          taste that you are bothering\n
+    \                             me. Go get stuffed.\n\nsid: QuestLogEntry$1010.
+    Value: \n%qdt:\n _qgiver_ of\n __qgiver_, ___qgiver_ has\n sent me to ___mondung_
+    in\n search of _book_,\n a very rare book. I will be given _gold_\n gold pieces
+    if I return in =queston_ days or less.\n\nsid: $1011. Value: \n                                 You
+    picked up\n                                    _book_.\n\nsid: $1012. Value: \n
+    \                              _qgiver_ will be\n                       angry.
+    This is past the time when\n                        you were to bring %g2 the
+    book.\n\ntag: item. Value:  _gold_ gold\ntag: item. Value:  _upfront_ gold range
     5 to 50\ntag: item. Value:  _book_ book2\ntag: person. Value:  _qgiver_ group
     Questor male\ntag: place. Value:  _mondung_ remote dungeon\ntag: clock. Value:
     \ _queston_ 1.0:10 0 flag 17 range 0 2\nOn task.Attribute: special, value: startup\nCommand:
@@ -1369,18 +1366,1253 @@ MonoBehaviour:
     clicked item _book_ \nCommand: say 1011 \nOn task.Attribute: sid, value: _S.02_\nCommand:
     toting _book_ and _qgiver_ clicked \nCommand: give pc _gold_ \nCommand: end quest
     \nOn task.Attribute: sid, value: _S.03_\nCommand: say 1012 \nCommand: make _book_
-    permanent \n\n3/8/2015 9:24:37 PM *** Started all timers\n\n3/8/2015 9:24:37 PM
-    *** Timer (_queston_). Duration: 87000 seconds.\n        running: Yes\n       complete:
+    permanent \n\n3/10/2015 10:52:09 PM *** Started all timers\n\n3/10/2015 10:52:09
+    PM *** Timer (_queston_). Duration: 87000 seconds.\n        running: Yes\n       complete:
     No\n   unknown flag: 0\n   unknown flag: flag\n   unknown flag: 17\n   unknown
-    flag: range\n   unknown flag: 0\n   unknown flag: 2\n   Started at: 12:04:21 on
-    Sundas, 01 of Midyear, 3E405\n   World Time is: 12:04:22 on Sundas, 01 of Midyear,
-    3E405\n   Time remaining: 87000s\n\n3/8/2015 9:24:58 PM *** > `\n3/8/2015 9:25:10
-    PM *** Timer just completed!\n3/8/2015 9:25:10 PM *** Timer (_queston_). Duration:
-    87000 seconds.\n        running: No\n       complete: Yes\n   unknown flag: 0\n
-    \  unknown flag: flag\n   unknown flag: 17\n   unknown flag: range\n   unknown
-    flag: 0\n   unknown flag: 2\n   World Time is: 12:38:17 on Morndas, 02 of Midyear,
-    3E405\n   Time remaining: 0s\n\n3/8/2015 9:25:18 PM *** DFTFU 1.3.6: Arena2 path
-    validated.\n"
+    flag: range\n   unknown flag: 0\n   unknown flag: 2\n   Started at: 12:00:27 on
+    Sundas, 01 of Midyear, 3E405\n   World Time is: 12:00:27 on Sundas, 01 of Midyear,
+    3E405\n   Time remaining: 87000s\n\n3/10/2015 10:52:55 PM *** 71581211-5156-45ce-b692-b23e12fa72fa\n3/10/2015
+    10:52:55 PM *** unknown element: prelude, \n3/10/2015 10:52:55 PM *** unknown
+    element: statistics, \n3/10/2015 10:52:55 PM *** unknown element: quest, \n3/10/2015
+    10:52:55 PM *** unknown element: __text__, \n3/10/2015 10:52:55 PM *** Created
+    all timers\n\n3/10/2015 10:52:55 PM *** Started all timers\n\n3/10/2015 10:52:55
+    PM *** Timer (_queston_). Duration: 87000 seconds.\n        running: Yes\n       complete:
+    No\n   unknown flag: 0\n   unknown flag: flag\n   unknown flag: 17\n   unknown
+    flag: range\n   unknown flag: 0\n   unknown flag: 2\n   Started at: 12:04:34 on
+    Sundas, 01 of Midyear, 3E405\n   World Time is: 12:04:35 on Sundas, 01 of Midyear,
+    3E405\n   Time remaining: 87000s\n\n3/10/2015 10:52:55 PM *** CDATA: \nQuestFile:
+    ..\\K0C00Y08.Qbn.\nStartsBy: NPC\nQuestee: anyone\nQuestor: merchant\nRepute:
+    0\nQuestId: 8\nMessages: 13\nQuest: K0C00Y08\nMessage panels\n\nCDATA: \nSymbols
+    used in the QRC file:\n              %cn occurs 2 times.\n              %g2 occurs
+    1 time.\n              %g3 occurs 1 time.\n             %jok occurs 6 times.\n
+    \            %oth occurs 2 times.\n             %pcf occurs 3 times.\n             %qdt
+    occurs 1 time.\n              %ra occurs 1 time.\n             %reg occurs 3 times.\n
+    \       =queston_ occurs 2 times.\n      ___mondung_ occurs 2 times.\n       ___qgiver_
+    occurs 2 times.\n           _book_ occurs 6 times.\n           _gold_ occurs 5
+    times.\n         _qgiver_ occurs 3 times.\n        _upfront_ occurs 2 times.\n\nsid:
+    QuestorOffer. Value: \nI am looking for a very special book, one that is not available
+    in any store, at least not for any price less than astronomical. Recently, I have
+    heard that a copy of it has surfaced not too far from here, in a dungeon. If you
+    will accept this quest to find this tome, I will give you _upfront_ gold pieces
+    now and another _gold_ gold pieces when you return. Do we have a deal then, %pcf?\n\nsid:
+    RefuseQuest$1001. Value: \n                          Very well. I'll look for
+    a\n                           different mercenary then.\n\nsid: AcceptQuest$1002.
+    Value: \n                 Good. I'll give you =queston_ days to get the\n                          book
+    out of ___mondung_ and\n                return. After that time, the _gold_ gold
+    pieces\n                    will be forfeit. The name of the book is\n                               _book_.
+    Good luck,\n                                     %pcf.\n\nsid: QuestComplete.
+    Value: \n                       Ah, marvelous. Here's the _gold_\n                     gold
+    pieces I promised. Thank you very\n                                  much, %pcf.\n\nsid:
+    RumorsDuringQuest$1005. Value: \nThe legal system in %reg has good points and
+    bad ones.\n\nsid: RumorsPostfailure$1006. Value: \nThe legal system in %reg has
+    it good points and bad ones.\n\nsid: RumorsPostsuccess$1007. Value: \n_qgiver_
+    is happy as a harpy about %g3 new acquisition.\n\nsid: QuestorPostsuccess$1008.
+    Value: \nWhat can I do for you, o %ra who brought me _book_?\n\nsid: QuestorPostfailure$1009.
+    Value: \n                            As _book_ is lost once\n                          again,
+    I find it in dubious\n                          taste that you are bothering\n
+    \                             me. Go get stuffed.\n\nsid: QuestLogEntry$1010.
+    Value: \n%qdt:\n _qgiver_ of\n __qgiver_, ___qgiver_ has\n sent me to ___mondung_
+    in\n search of _book_,\n a very rare book. I will be given _gold_\n gold pieces
+    if I return in =queston_ days or less.\n\nsid: $1011. Value: \n                                 You
+    picked up\n                                    _book_.\n\nsid: $1012. Value: \n
+    \                              _qgiver_ will be\n                       angry.
+    This is past the time when\n                        you were to bring %g2 the
+    book.\n\ntag: item. Value:  _gold_ gold\ntag: item. Value:  _upfront_ gold range
+    5 to 50\ntag: item. Value:  _book_ book2\ntag: person. Value:  _qgiver_ group
+    Questor male\ntag: place. Value:  _mondung_ remote dungeon\ntag: clock. Value:
+    \ _queston_ 1.0:10 0 flag 17 range 0 2\nOn task.Attribute: special, value: startup\nCommand:
+    place item _book_ at _mondung_ \nCommand: start timer _queston_ \nCommand: reveal
+    _mondung_ \nCommand: log 1010 step 0 \nCommand: get item _upfront_ \nCommand:
+    make _upfront_ permanent \nOn task.Attribute: sid, value: _queston_\nCommand:
+    have _book_ set _S.03_ \nCommand: end quest \nOn task.Attribute: sid, value: _S.01_\nCommand:
+    clicked item _book_ \nCommand: say 1011 \nOn task.Attribute: sid, value: _S.02_\nCommand:
+    toting _book_ and _qgiver_ clicked \nCommand: give pc _gold_ \nCommand: end quest
+    \nOn task.Attribute: sid, value: _S.03_\nCommand: say 1012 \nCommand: make _book_
+    permanent \n\n3/10/2015 10:52:55 PM *** Started all timers\n\n3/10/2015 10:52:55
+    PM *** Timer (_queston_). Duration: 87000 seconds.\n        running: Yes\n       complete:
+    No\n   unknown flag: 0\n   unknown flag: flag\n   unknown flag: 17\n   unknown
+    flag: range\n   unknown flag: 0\n   unknown flag: 2\n   Started at: 12:04:34 on
+    Sundas, 01 of Midyear, 3E405\n   World Time is: 12:04:35 on Sundas, 01 of Midyear,
+    3E405\n   Time remaining: 87000s\n\n3/10/2015 10:52:55 PM *** 835186ed-dabb-41fa-8426-bd9d69dd17c6\n3/10/2015
+    10:52:55 PM *** unknown element: prelude, \n3/10/2015 10:52:55 PM *** unknown
+    element: statistics, \n3/10/2015 10:52:55 PM *** unknown element: quest, \n3/10/2015
+    10:52:55 PM *** unknown element: __text__, \n3/10/2015 10:52:55 PM *** Created
+    all timers\n\n3/10/2015 10:52:55 PM *** Started all timers\n\n3/10/2015 10:52:55
+    PM *** Timer (_queston_). Duration: 87000 seconds.\n        running: Yes\n       complete:
+    No\n   unknown flag: 0\n   unknown flag: flag\n   unknown flag: 17\n   unknown
+    flag: range\n   unknown flag: 0\n   unknown flag: 2\n   Started at: 12:04:34 on
+    Sundas, 01 of Midyear, 3E405\n   World Time is: 12:04:35 on Sundas, 01 of Midyear,
+    3E405\n   Time remaining: 87000s\n\n3/10/2015 10:52:55 PM *** CDATA: \nQuestFile:
+    ..\\K0C00Y08.Qbn.\nStartsBy: NPC\nQuestee: anyone\nQuestor: merchant\nRepute:
+    0\nQuestId: 8\nMessages: 13\nQuest: K0C00Y08\nMessage panels\n\nCDATA: \nSymbols
+    used in the QRC file:\n              %cn occurs 2 times.\n              %g2 occurs
+    1 time.\n              %g3 occurs 1 time.\n             %jok occurs 6 times.\n
+    \            %oth occurs 2 times.\n             %pcf occurs 3 times.\n             %qdt
+    occurs 1 time.\n              %ra occurs 1 time.\n             %reg occurs 3 times.\n
+    \       =queston_ occurs 2 times.\n      ___mondung_ occurs 2 times.\n       ___qgiver_
+    occurs 2 times.\n           _book_ occurs 6 times.\n           _gold_ occurs 5
+    times.\n         _qgiver_ occurs 3 times.\n        _upfront_ occurs 2 times.\n\nsid:
+    QuestorOffer. Value: \nI am looking for a very special book, one that is not available
+    in any store, at least not for any price less than astronomical. Recently, I have
+    heard that a copy of it has surfaced not too far from here, in a dungeon. If you
+    will accept this quest to find this tome, I will give you _upfront_ gold pieces
+    now and another _gold_ gold pieces when you return. Do we have a deal then, %pcf?\n\nsid:
+    RefuseQuest$1001. Value: \n                          Very well. I'll look for
+    a\n                           different mercenary then.\n\nsid: AcceptQuest$1002.
+    Value: \n                 Good. I'll give you =queston_ days to get the\n                          book
+    out of ___mondung_ and\n                return. After that time, the _gold_ gold
+    pieces\n                    will be forfeit. The name of the book is\n                               _book_.
+    Good luck,\n                                     %pcf.\n\nsid: QuestComplete.
+    Value: \n                       Ah, marvelous. Here's the _gold_\n                     gold
+    pieces I promised. Thank you very\n                                  much, %pcf.\n\nsid:
+    RumorsDuringQuest$1005. Value: \nThe legal system in %reg has good points and
+    bad ones.\n\nsid: RumorsPostfailure$1006. Value: \nThe legal system in %reg has
+    it good points and bad ones.\n\nsid: RumorsPostsuccess$1007. Value: \n_qgiver_
+    is happy as a harpy about %g3 new acquisition.\n\nsid: QuestorPostsuccess$1008.
+    Value: \nWhat can I do for you, o %ra who brought me _book_?\n\nsid: QuestorPostfailure$1009.
+    Value: \n                            As _book_ is lost once\n                          again,
+    I find it in dubious\n                          taste that you are bothering\n
+    \                             me. Go get stuffed.\n\nsid: QuestLogEntry$1010.
+    Value: \n%qdt:\n _qgiver_ of\n __qgiver_, ___qgiver_ has\n sent me to ___mondung_
+    in\n search of _book_,\n a very rare book. I will be given _gold_\n gold pieces
+    if I return in =queston_ days or less.\n\nsid: $1011. Value: \n                                 You
+    picked up\n                                    _book_.\n\nsid: $1012. Value: \n
+    \                              _qgiver_ will be\n                       angry.
+    This is past the time when\n                        you were to bring %g2 the
+    book.\n\ntag: item. Value:  _gold_ gold\ntag: item. Value:  _upfront_ gold range
+    5 to 50\ntag: item. Value:  _book_ book2\ntag: person. Value:  _qgiver_ group
+    Questor male\ntag: place. Value:  _mondung_ remote dungeon\ntag: clock. Value:
+    \ _queston_ 1.0:10 0 flag 17 range 0 2\nOn task.Attribute: special, value: startup\nCommand:
+    place item _book_ at _mondung_ \nCommand: start timer _queston_ \nCommand: reveal
+    _mondung_ \nCommand: log 1010 step 0 \nCommand: get item _upfront_ \nCommand:
+    make _upfront_ permanent \nOn task.Attribute: sid, value: _queston_\nCommand:
+    have _book_ set _S.03_ \nCommand: end quest \nOn task.Attribute: sid, value: _S.01_\nCommand:
+    clicked item _book_ \nCommand: say 1011 \nOn task.Attribute: sid, value: _S.02_\nCommand:
+    toting _book_ and _qgiver_ clicked \nCommand: give pc _gold_ \nCommand: end quest
+    \nOn task.Attribute: sid, value: _S.03_\nCommand: say 1012 \nCommand: make _book_
+    permanent \n\n3/10/2015 10:52:55 PM *** Started all timers\n\n3/10/2015 10:52:55
+    PM *** Timer (_queston_). Duration: 87000 seconds.\n        running: Yes\n       complete:
+    No\n   unknown flag: 0\n   unknown flag: flag\n   unknown flag: 17\n   unknown
+    flag: range\n   unknown flag: 0\n   unknown flag: 2\n   Started at: 12:04:34 on
+    Sundas, 01 of Midyear, 3E405\n   World Time is: 12:04:35 on Sundas, 01 of Midyear,
+    3E405\n   Time remaining: 87000s\n\n3/10/2015 10:52:58 PM *** 71581211-5156-45ce-b692-b23e12fa72fa\n3/10/2015
+    10:52:58 PM *** unknown element: prelude, \n3/10/2015 10:52:58 PM *** unknown
+    element: statistics, \n3/10/2015 10:52:58 PM *** unknown element: quest, \n3/10/2015
+    10:52:58 PM *** unknown element: __text__, \n3/10/2015 10:52:58 PM *** Created
+    all timers\n\n3/10/2015 10:52:58 PM *** Started all timers\n\n3/10/2015 10:52:58
+    PM *** Timer (_queston_). Duration: 87000 seconds.\n        running: Yes\n       complete:
+    No\n   unknown flag: 0\n   unknown flag: flag\n   unknown flag: 17\n   unknown
+    flag: range\n   unknown flag: 0\n   unknown flag: 2\n   Started at: 12:04:57 on
+    Sundas, 01 of Midyear, 3E405\n   World Time is: 12:04:57 on Sundas, 01 of Midyear,
+    3E405\n   Time remaining: 87000s\n\n3/10/2015 10:52:58 PM *** CDATA: \nQuestFile:
+    ..\\K0C00Y08.Qbn.\nStartsBy: NPC\nQuestee: anyone\nQuestor: merchant\nRepute:
+    0\nQuestId: 8\nMessages: 13\nQuest: K0C00Y08\nMessage panels\n\nCDATA: \nSymbols
+    used in the QRC file:\n              %cn occurs 2 times.\n              %g2 occurs
+    1 time.\n              %g3 occurs 1 time.\n             %jok occurs 6 times.\n
+    \            %oth occurs 2 times.\n             %pcf occurs 3 times.\n             %qdt
+    occurs 1 time.\n              %ra occurs 1 time.\n             %reg occurs 3 times.\n
+    \       =queston_ occurs 2 times.\n      ___mondung_ occurs 2 times.\n       ___qgiver_
+    occurs 2 times.\n           _book_ occurs 6 times.\n           _gold_ occurs 5
+    times.\n         _qgiver_ occurs 3 times.\n        _upfront_ occurs 2 times.\n\nsid:
+    QuestorOffer. Value: \nI am looking for a very special book, one that is not available
+    in any store, at least not for any price less than astronomical. Recently, I have
+    heard that a copy of it has surfaced not too far from here, in a dungeon. If you
+    will accept this quest to find this tome, I will give you _upfront_ gold pieces
+    now and another _gold_ gold pieces when you return. Do we have a deal then, %pcf?\n\nsid:
+    RefuseQuest$1001. Value: \n                          Very well. I'll look for
+    a\n                           different mercenary then.\n\nsid: AcceptQuest$1002.
+    Value: \n                 Good. I'll give you =queston_ days to get the\n                          book
+    out of ___mondung_ and\n                return. After that time, the _gold_ gold
+    pieces\n                    will be forfeit. The name of the book is\n                               _book_.
+    Good luck,\n                                     %pcf.\n\nsid: QuestComplete.
+    Value: \n                       Ah, marvelous. Here's the _gold_\n                     gold
+    pieces I promised. Thank you very\n                                  much, %pcf.\n\nsid:
+    RumorsDuringQuest$1005. Value: \nThe legal system in %reg has good points and
+    bad ones.\n\nsid: RumorsPostfailure$1006. Value: \nThe legal system in %reg has
+    it good points and bad ones.\n\nsid: RumorsPostsuccess$1007. Value: \n_qgiver_
+    is happy as a harpy about %g3 new acquisition.\n\nsid: QuestorPostsuccess$1008.
+    Value: \nWhat can I do for you, o %ra who brought me _book_?\n\nsid: QuestorPostfailure$1009.
+    Value: \n                            As _book_ is lost once\n                          again,
+    I find it in dubious\n                          taste that you are bothering\n
+    \                             me. Go get stuffed.\n\nsid: QuestLogEntry$1010.
+    Value: \n%qdt:\n _qgiver_ of\n __qgiver_, ___qgiver_ has\n sent me to ___mondung_
+    in\n search of _book_,\n a very rare book. I will be given _gold_\n gold pieces
+    if I return in =queston_ days or less.\n\nsid: $1011. Value: \n                                 You
+    picked up\n                                    _book_.\n\nsid: $1012. Value: \n
+    \                              _qgiver_ will be\n                       angry.
+    This is past the time when\n                        you were to bring %g2 the
+    book.\n\ntag: item. Value:  _gold_ gold\ntag: item. Value:  _upfront_ gold range
+    5 to 50\ntag: item. Value:  _book_ book2\ntag: person. Value:  _qgiver_ group
+    Questor male\ntag: place. Value:  _mondung_ remote dungeon\ntag: clock. Value:
+    \ _queston_ 1.0:10 0 flag 17 range 0 2\nOn task.Attribute: special, value: startup\nCommand:
+    place item _book_ at _mondung_ \nCommand: start timer _queston_ \nCommand: reveal
+    _mondung_ \nCommand: log 1010 step 0 \nCommand: get item _upfront_ \nCommand:
+    make _upfront_ permanent \nOn task.Attribute: sid, value: _queston_\nCommand:
+    have _book_ set _S.03_ \nCommand: end quest \nOn task.Attribute: sid, value: _S.01_\nCommand:
+    clicked item _book_ \nCommand: say 1011 \nOn task.Attribute: sid, value: _S.02_\nCommand:
+    toting _book_ and _qgiver_ clicked \nCommand: give pc _gold_ \nCommand: end quest
+    \nOn task.Attribute: sid, value: _S.03_\nCommand: say 1012 \nCommand: make _book_
+    permanent \n\n3/10/2015 10:52:58 PM *** Started all timers\n\n3/10/2015 10:52:58
+    PM *** Timer (_queston_). Duration: 87000 seconds.\n        running: Yes\n       complete:
+    No\n   unknown flag: 0\n   unknown flag: flag\n   unknown flag: 17\n   unknown
+    flag: range\n   unknown flag: 0\n   unknown flag: 2\n   Started at: 12:04:57 on
+    Sundas, 01 of Midyear, 3E405\n   World Time is: 12:04:57 on Sundas, 01 of Midyear,
+    3E405\n   Time remaining: 87000s\n\n3/10/2015 10:52:58 PM *** 835186ed-dabb-41fa-8426-bd9d69dd17c6\n3/10/2015
+    10:52:58 PM *** unknown element: prelude, \n3/10/2015 10:52:58 PM *** unknown
+    element: statistics, \n3/10/2015 10:52:58 PM *** unknown element: quest, \n3/10/2015
+    10:52:58 PM *** unknown element: __text__, \n3/10/2015 10:52:58 PM *** Created
+    all timers\n\n3/10/2015 10:52:58 PM *** Started all timers\n\n3/10/2015 10:52:58
+    PM *** Timer (_queston_). Duration: 87000 seconds.\n        running: Yes\n       complete:
+    No\n   unknown flag: 0\n   unknown flag: flag\n   unknown flag: 17\n   unknown
+    flag: range\n   unknown flag: 0\n   unknown flag: 2\n   Started at: 12:04:57 on
+    Sundas, 01 of Midyear, 3E405\n   World Time is: 12:04:57 on Sundas, 01 of Midyear,
+    3E405\n   Time remaining: 87000s\n\n3/10/2015 10:52:58 PM *** CDATA: \nQuestFile:
+    ..\\K0C00Y08.Qbn.\nStartsBy: NPC\nQuestee: anyone\nQuestor: merchant\nRepute:
+    0\nQuestId: 8\nMessages: 13\nQuest: K0C00Y08\nMessage panels\n\nCDATA: \nSymbols
+    used in the QRC file:\n              %cn occurs 2 times.\n              %g2 occurs
+    1 time.\n              %g3 occurs 1 time.\n             %jok occurs 6 times.\n
+    \            %oth occurs 2 times.\n             %pcf occurs 3 times.\n             %qdt
+    occurs 1 time.\n              %ra occurs 1 time.\n             %reg occurs 3 times.\n
+    \       =queston_ occurs 2 times.\n      ___mondung_ occurs 2 times.\n       ___qgiver_
+    occurs 2 times.\n           _book_ occurs 6 times.\n           _gold_ occurs 5
+    times.\n         _qgiver_ occurs 3 times.\n        _upfront_ occurs 2 times.\n\nsid:
+    QuestorOffer. Value: \nI am looking for a very special book, one that is not available
+    in any store, at least not for any price less than astronomical. Recently, I have
+    heard that a copy of it has surfaced not too far from here, in a dungeon. If you
+    will accept this quest to find this tome, I will give you _upfront_ gold pieces
+    now and another _gold_ gold pieces when you return. Do we have a deal then, %pcf?\n\nsid:
+    RefuseQuest$1001. Value: \n                          Very well. I'll look for
+    a\n                           different mercenary then.\n\nsid: AcceptQuest$1002.
+    Value: \n                 Good. I'll give you =queston_ days to get the\n                          book
+    out of ___mondung_ and\n                return. After that time, the _gold_ gold
+    pieces\n                    will be forfeit. The name of the book is\n                               _book_.
+    Good luck,\n                                     %pcf.\n\nsid: QuestComplete.
+    Value: \n                       Ah, marvelous. Here's the _gold_\n                     gold
+    pieces I promised. Thank you very\n                                  much, %pcf.\n\nsid:
+    RumorsDuringQuest$1005. Value: \nThe legal system in %reg has good points and
+    bad ones.\n\nsid: RumorsPostfailure$1006. Value: \nThe legal system in %reg has
+    it good points and bad ones.\n\nsid: RumorsPostsuccess$1007. Value: \n_qgiver_
+    is happy as a harpy about %g3 new acquisition.\n\nsid: QuestorPostsuccess$1008.
+    Value: \nWhat can I do for you, o %ra who brought me _book_?\n\nsid: QuestorPostfailure$1009.
+    Value: \n                            As _book_ is lost once\n                          again,
+    I find it in dubious\n                          taste that you are bothering\n
+    \                             me. Go get stuffed.\n\nsid: QuestLogEntry$1010.
+    Value: \n%qdt:\n _qgiver_ of\n __qgiver_, ___qgiver_ has\n sent me to ___mondung_
+    in\n search of _book_,\n a very rare book. I will be given _gold_\n gold pieces
+    if I return in =queston_ days or less.\n\nsid: $1011. Value: \n                                 You
+    picked up\n                                    _book_.\n\nsid: $1012. Value: \n
+    \                              _qgiver_ will be\n                       angry.
+    This is past the time when\n                        you were to bring %g2 the
+    book.\n\ntag: item. Value:  _gold_ gold\ntag: item. Value:  _upfront_ gold range
+    5 to 50\ntag: item. Value:  _book_ book2\ntag: person. Value:  _qgiver_ group
+    Questor male\ntag: place. Value:  _mondung_ remote dungeon\ntag: clock. Value:
+    \ _queston_ 1.0:10 0 flag 17 range 0 2\nOn task.Attribute: special, value: startup\nCommand:
+    place item _book_ at _mondung_ \nCommand: start timer _queston_ \nCommand: reveal
+    _mondung_ \nCommand: log 1010 step 0 \nCommand: get item _upfront_ \nCommand:
+    make _upfront_ permanent \nOn task.Attribute: sid, value: _queston_\nCommand:
+    have _book_ set _S.03_ \nCommand: end quest \nOn task.Attribute: sid, value: _S.01_\nCommand:
+    clicked item _book_ \nCommand: say 1011 \nOn task.Attribute: sid, value: _S.02_\nCommand:
+    toting _book_ and _qgiver_ clicked \nCommand: give pc _gold_ \nCommand: end quest
+    \nOn task.Attribute: sid, value: _S.03_\nCommand: say 1012 \nCommand: make _book_
+    permanent \n\n3/10/2015 10:52:58 PM *** Started all timers\n\n3/10/2015 10:52:58
+    PM *** Timer (_queston_). Duration: 87000 seconds.\n        running: Yes\n       complete:
+    No\n   unknown flag: 0\n   unknown flag: flag\n   unknown flag: 17\n   unknown
+    flag: range\n   unknown flag: 0\n   unknown flag: 2\n   Started at: 12:04:57 on
+    Sundas, 01 of Midyear, 3E405\n   World Time is: 12:04:57 on Sundas, 01 of Midyear,
+    3E405\n   Time remaining: 87000s\n\n3/10/2015 10:52:58 PM *** 71581211-5156-45ce-b692-b23e12fa72fa\n3/10/2015
+    10:52:58 PM *** unknown element: prelude, \n3/10/2015 10:52:58 PM *** unknown
+    element: statistics, \n3/10/2015 10:52:58 PM *** unknown element: quest, \n3/10/2015
+    10:52:58 PM *** unknown element: __text__, \n3/10/2015 10:52:58 PM *** Created
+    all timers\n\n3/10/2015 10:52:58 PM *** Started all timers\n\n3/10/2015 10:52:58
+    PM *** Timer (_queston_). Duration: 87000 seconds.\n        running: Yes\n       complete:
+    No\n   unknown flag: 0\n   unknown flag: flag\n   unknown flag: 17\n   unknown
+    flag: range\n   unknown flag: 0\n   unknown flag: 2\n   Started at: 12:05:04 on
+    Sundas, 01 of Midyear, 3E405\n   World Time is: 12:05:04 on Sundas, 01 of Midyear,
+    3E405\n   Time remaining: 87000s\n\n3/10/2015 10:52:58 PM *** CDATA: \nQuestFile:
+    ..\\K0C00Y08.Qbn.\nStartsBy: NPC\nQuestee: anyone\nQuestor: merchant\nRepute:
+    0\nQuestId: 8\nMessages: 13\nQuest: K0C00Y08\nMessage panels\n\nCDATA: \nSymbols
+    used in the QRC file:\n              %cn occurs 2 times.\n              %g2 occurs
+    1 time.\n              %g3 occurs 1 time.\n             %jok occurs 6 times.\n
+    \            %oth occurs 2 times.\n             %pcf occurs 3 times.\n             %qdt
+    occurs 1 time.\n              %ra occurs 1 time.\n             %reg occurs 3 times.\n
+    \       =queston_ occurs 2 times.\n      ___mondung_ occurs 2 times.\n       ___qgiver_
+    occurs 2 times.\n           _book_ occurs 6 times.\n           _gold_ occurs 5
+    times.\n         _qgiver_ occurs 3 times.\n        _upfront_ occurs 2 times.\n\nsid:
+    QuestorOffer. Value: \nI am looking for a very special book, one that is not available
+    in any store, at least not for any price less than astronomical. Recently, I have
+    heard that a copy of it has surfaced not too far from here, in a dungeon. If you
+    will accept this quest to find this tome, I will give you _upfront_ gold pieces
+    now and another _gold_ gold pieces when you return. Do we have a deal then, %pcf?\n\nsid:
+    RefuseQuest$1001. Value: \n                          Very well. I'll look for
+    a\n                           different mercenary then.\n\nsid: AcceptQuest$1002.
+    Value: \n                 Good. I'll give you =queston_ days to get the\n                          book
+    out of ___mondung_ and\n                return. After that time, the _gold_ gold
+    pieces\n                    will be forfeit. The name of the book is\n                               _book_.
+    Good luck,\n                                     %pcf.\n\nsid: QuestComplete.
+    Value: \n                       Ah, marvelous. Here's the _gold_\n                     gold
+    pieces I promised. Thank you very\n                                  much, %pcf.\n\nsid:
+    RumorsDuringQuest$1005. Value: \nThe legal system in %reg has good points and
+    bad ones.\n\nsid: RumorsPostfailure$1006. Value: \nThe legal system in %reg has
+    it good points and bad ones.\n\nsid: RumorsPostsuccess$1007. Value: \n_qgiver_
+    is happy as a harpy about %g3 new acquisition.\n\nsid: QuestorPostsuccess$1008.
+    Value: \nWhat can I do for you, o %ra who brought me _book_?\n\nsid: QuestorPostfailure$1009.
+    Value: \n                            As _book_ is lost once\n                          again,
+    I find it in dubious\n                          taste that you are bothering\n
+    \                             me. Go get stuffed.\n\nsid: QuestLogEntry$1010.
+    Value: \n%qdt:\n _qgiver_ of\n __qgiver_, ___qgiver_ has\n sent me to ___mondung_
+    in\n search of _book_,\n a very rare book. I will be given _gold_\n gold pieces
+    if I return in =queston_ days or less.\n\nsid: $1011. Value: \n                                 You
+    picked up\n                                    _book_.\n\nsid: $1012. Value: \n
+    \                              _qgiver_ will be\n                       angry.
+    This is past the time when\n                        you were to bring %g2 the
+    book.\n\ntag: item. Value:  _gold_ gold\ntag: item. Value:  _upfront_ gold range
+    5 to 50\ntag: item. Value:  _book_ book2\ntag: person. Value:  _qgiver_ group
+    Questor male\ntag: place. Value:  _mondung_ remote dungeon\ntag: clock. Value:
+    \ _queston_ 1.0:10 0 flag 17 range 0 2\nOn task.Attribute: special, value: startup\nCommand:
+    place item _book_ at _mondung_ \nCommand: start timer _queston_ \nCommand: reveal
+    _mondung_ \nCommand: log 1010 step 0 \nCommand: get item _upfront_ \nCommand:
+    make _upfront_ permanent \nOn task.Attribute: sid, value: _queston_\nCommand:
+    have _book_ set _S.03_ \nCommand: end quest \nOn task.Attribute: sid, value: _S.01_\nCommand:
+    clicked item _book_ \nCommand: say 1011 \nOn task.Attribute: sid, value: _S.02_\nCommand:
+    toting _book_ and _qgiver_ clicked \nCommand: give pc _gold_ \nCommand: end quest
+    \nOn task.Attribute: sid, value: _S.03_\nCommand: say 1012 \nCommand: make _book_
+    permanent \n\n3/10/2015 10:52:58 PM *** Started all timers\n\n3/10/2015 10:52:58
+    PM *** Timer (_queston_). Duration: 87000 seconds.\n        running: Yes\n       complete:
+    No\n   unknown flag: 0\n   unknown flag: flag\n   unknown flag: 17\n   unknown
+    flag: range\n   unknown flag: 0\n   unknown flag: 2\n   Started at: 12:05:04 on
+    Sundas, 01 of Midyear, 3E405\n   World Time is: 12:05:04 on Sundas, 01 of Midyear,
+    3E405\n   Time remaining: 87000s\n\n3/10/2015 10:52:58 PM *** 835186ed-dabb-41fa-8426-bd9d69dd17c6\n3/10/2015
+    10:52:58 PM *** unknown element: prelude, \n3/10/2015 10:52:58 PM *** unknown
+    element: statistics, \n3/10/2015 10:52:58 PM *** unknown element: quest, \n3/10/2015
+    10:52:58 PM *** unknown element: __text__, \n3/10/2015 10:52:58 PM *** Created
+    all timers\n\n3/10/2015 10:52:58 PM *** Started all timers\n\n3/10/2015 10:52:58
+    PM *** Timer (_queston_). Duration: 87000 seconds.\n        running: Yes\n       complete:
+    No\n   unknown flag: 0\n   unknown flag: flag\n   unknown flag: 17\n   unknown
+    flag: range\n   unknown flag: 0\n   unknown flag: 2\n   Started at: 12:05:04 on
+    Sundas, 01 of Midyear, 3E405\n   World Time is: 12:05:04 on Sundas, 01 of Midyear,
+    3E405\n   Time remaining: 87000s\n\n3/10/2015 10:52:58 PM *** CDATA: \nQuestFile:
+    ..\\K0C00Y08.Qbn.\nStartsBy: NPC\nQuestee: anyone\nQuestor: merchant\nRepute:
+    0\nQuestId: 8\nMessages: 13\nQuest: K0C00Y08\nMessage panels\n\nCDATA: \nSymbols
+    used in the QRC file:\n              %cn occurs 2 times.\n              %g2 occurs
+    1 time.\n              %g3 occurs 1 time.\n             %jok occurs 6 times.\n
+    \            %oth occurs 2 times.\n             %pcf occurs 3 times.\n             %qdt
+    occurs 1 time.\n              %ra occurs 1 time.\n             %reg occurs 3 times.\n
+    \       =queston_ occurs 2 times.\n      ___mondung_ occurs 2 times.\n       ___qgiver_
+    occurs 2 times.\n           _book_ occurs 6 times.\n           _gold_ occurs 5
+    times.\n         _qgiver_ occurs 3 times.\n        _upfront_ occurs 2 times.\n\nsid:
+    QuestorOffer. Value: \nI am looking for a very special book, one that is not available
+    in any store, at least not for any price less than astronomical. Recently, I have
+    heard that a copy of it has surfaced not too far from here, in a dungeon. If you
+    will accept this quest to find this tome, I will give you _upfront_ gold pieces
+    now and another _gold_ gold pieces when you return. Do we have a deal then, %pcf?\n\nsid:
+    RefuseQuest$1001. Value: \n                          Very well. I'll look for
+    a\n                           different mercenary then.\n\nsid: AcceptQuest$1002.
+    Value: \n                 Good. I'll give you =queston_ days to get the\n                          book
+    out of ___mondung_ and\n                return. After that time, the _gold_ gold
+    pieces\n                    will be forfeit. The name of the book is\n                               _book_.
+    Good luck,\n                                     %pcf.\n\nsid: QuestComplete.
+    Value: \n                       Ah, marvelous. Here's the _gold_\n                     gold
+    pieces I promised. Thank you very\n                                  much, %pcf.\n\nsid:
+    RumorsDuringQuest$1005. Value: \nThe legal system in %reg has good points and
+    bad ones.\n\nsid: RumorsPostfailure$1006. Value: \nThe legal system in %reg has
+    it good points and bad ones.\n\nsid: RumorsPostsuccess$1007. Value: \n_qgiver_
+    is happy as a harpy about %g3 new acquisition.\n\nsid: QuestorPostsuccess$1008.
+    Value: \nWhat can I do for you, o %ra who brought me _book_?\n\nsid: QuestorPostfailure$1009.
+    Value: \n                            As _book_ is lost once\n                          again,
+    I find it in dubious\n                          taste that you are bothering\n
+    \                             me. Go get stuffed.\n\nsid: QuestLogEntry$1010.
+    Value: \n%qdt:\n _qgiver_ of\n __qgiver_, ___qgiver_ has\n sent me to ___mondung_
+    in\n search of _book_,\n a very rare book. I will be given _gold_\n gold pieces
+    if I return in =queston_ days or less.\n\nsid: $1011. Value: \n                                 You
+    picked up\n                                    _book_.\n\nsid: $1012. Value: \n
+    \                              _qgiver_ will be\n                       angry.
+    This is past the time when\n                        you were to bring %g2 the
+    book.\n\ntag: item. Value:  _gold_ gold\ntag: item. Value:  _upfront_ gold range
+    5 to 50\ntag: item. Value:  _book_ book2\ntag: person. Value:  _qgiver_ group
+    Questor male\ntag: place. Value:  _mondung_ remote dungeon\ntag: clock. Value:
+    \ _queston_ 1.0:10 0 flag 17 range 0 2\nOn task.Attribute: special, value: startup\nCommand:
+    place item _book_ at _mondung_ \nCommand: start timer _queston_ \nCommand: reveal
+    _mondung_ \nCommand: log 1010 step 0 \nCommand: get item _upfront_ \nCommand:
+    make _upfront_ permanent \nOn task.Attribute: sid, value: _queston_\nCommand:
+    have _book_ set _S.03_ \nCommand: end quest \nOn task.Attribute: sid, value: _S.01_\nCommand:
+    clicked item _book_ \nCommand: say 1011 \nOn task.Attribute: sid, value: _S.02_\nCommand:
+    toting _book_ and _qgiver_ clicked \nCommand: give pc _gold_ \nCommand: end quest
+    \nOn task.Attribute: sid, value: _S.03_\nCommand: say 1012 \nCommand: make _book_
+    permanent \n\n3/10/2015 10:52:58 PM *** Started all timers\n\n3/10/2015 10:52:58
+    PM *** Timer (_queston_). Duration: 87000 seconds.\n        running: Yes\n       complete:
+    No\n   unknown flag: 0\n   unknown flag: flag\n   unknown flag: 17\n   unknown
+    flag: range\n   unknown flag: 0\n   unknown flag: 2\n   Started at: 12:05:04 on
+    Sundas, 01 of Midyear, 3E405\n   World Time is: 12:05:04 on Sundas, 01 of Midyear,
+    3E405\n   Time remaining: 87000s\n\n3/10/2015 10:53:00 PM *** 71581211-5156-45ce-b692-b23e12fa72fa\n3/10/2015
+    10:53:00 PM *** unknown element: prelude, \n3/10/2015 10:53:00 PM *** unknown
+    element: statistics, \n3/10/2015 10:53:00 PM *** unknown element: quest, \n3/10/2015
+    10:53:00 PM *** unknown element: __text__, \n3/10/2015 10:53:00 PM *** Created
+    all timers\n\n3/10/2015 10:53:00 PM *** Started all timers\n\n3/10/2015 10:53:00
+    PM *** Timer (_queston_). Duration: 87000 seconds.\n        running: Yes\n       complete:
+    No\n   unknown flag: 0\n   unknown flag: flag\n   unknown flag: 17\n   unknown
+    flag: range\n   unknown flag: 0\n   unknown flag: 2\n   Started at: 12:05:22 on
+    Sundas, 01 of Midyear, 3E405\n   World Time is: 12:05:22 on Sundas, 01 of Midyear,
+    3E405\n   Time remaining: 87000s\n\n3/10/2015 10:53:00 PM *** CDATA: \nQuestFile:
+    ..\\K0C00Y08.Qbn.\nStartsBy: NPC\nQuestee: anyone\nQuestor: merchant\nRepute:
+    0\nQuestId: 8\nMessages: 13\nQuest: K0C00Y08\nMessage panels\n\nCDATA: \nSymbols
+    used in the QRC file:\n              %cn occurs 2 times.\n              %g2 occurs
+    1 time.\n              %g3 occurs 1 time.\n             %jok occurs 6 times.\n
+    \            %oth occurs 2 times.\n             %pcf occurs 3 times.\n             %qdt
+    occurs 1 time.\n              %ra occurs 1 time.\n             %reg occurs 3 times.\n
+    \       =queston_ occurs 2 times.\n      ___mondung_ occurs 2 times.\n       ___qgiver_
+    occurs 2 times.\n           _book_ occurs 6 times.\n           _gold_ occurs 5
+    times.\n         _qgiver_ occurs 3 times.\n        _upfront_ occurs 2 times.\n\nsid:
+    QuestorOffer. Value: \nI am looking for a very special book, one that is not available
+    in any store, at least not for any price less than astronomical. Recently, I have
+    heard that a copy of it has surfaced not too far from here, in a dungeon. If you
+    will accept this quest to find this tome, I will give you _upfront_ gold pieces
+    now and another _gold_ gold pieces when you return. Do we have a deal then, %pcf?\n\nsid:
+    RefuseQuest$1001. Value: \n                          Very well. I'll look for
+    a\n                           different mercenary then.\n\nsid: AcceptQuest$1002.
+    Value: \n                 Good. I'll give you =queston_ days to get the\n                          book
+    out of ___mondung_ and\n                return. After that time, the _gold_ gold
+    pieces\n                    will be forfeit. The name of the book is\n                               _book_.
+    Good luck,\n                                     %pcf.\n\nsid: QuestComplete.
+    Value: \n                       Ah, marvelous. Here's the _gold_\n                     gold
+    pieces I promised. Thank you very\n                                  much, %pcf.\n\nsid:
+    RumorsDuringQuest$1005. Value: \nThe legal system in %reg has good points and
+    bad ones.\n\nsid: RumorsPostfailure$1006. Value: \nThe legal system in %reg has
+    it good points and bad ones.\n\nsid: RumorsPostsuccess$1007. Value: \n_qgiver_
+    is happy as a harpy about %g3 new acquisition.\n\nsid: QuestorPostsuccess$1008.
+    Value: \nWhat can I do for you, o %ra who brought me _book_?\n\nsid: QuestorPostfailure$1009.
+    Value: \n                            As _book_ is lost once\n                          again,
+    I find it in dubious\n                          taste that you are bothering\n
+    \                             me. Go get stuffed.\n\nsid: QuestLogEntry$1010.
+    Value: \n%qdt:\n _qgiver_ of\n __qgiver_, ___qgiver_ has\n sent me to ___mondung_
+    in\n search of _book_,\n a very rare book. I will be given _gold_\n gold pieces
+    if I return in =queston_ days or less.\n\nsid: $1011. Value: \n                                 You
+    picked up\n                                    _book_.\n\nsid: $1012. Value: \n
+    \                              _qgiver_ will be\n                       angry.
+    This is past the time when\n                        you were to bring %g2 the
+    book.\n\ntag: item. Value:  _gold_ gold\ntag: item. Value:  _upfront_ gold range
+    5 to 50\ntag: item. Value:  _book_ book2\ntag: person. Value:  _qgiver_ group
+    Questor male\ntag: place. Value:  _mondung_ remote dungeon\ntag: clock. Value:
+    \ _queston_ 1.0:10 0 flag 17 range 0 2\nOn task.Attribute: special, value: startup\nCommand:
+    place item _book_ at _mondung_ \nCommand: start timer _queston_ \nCommand: reveal
+    _mondung_ \nCommand: log 1010 step 0 \nCommand: get item _upfront_ \nCommand:
+    make _upfront_ permanent \nOn task.Attribute: sid, value: _queston_\nCommand:
+    have _book_ set _S.03_ \nCommand: end quest \nOn task.Attribute: sid, value: _S.01_\nCommand:
+    clicked item _book_ \nCommand: say 1011 \nOn task.Attribute: sid, value: _S.02_\nCommand:
+    toting _book_ and _qgiver_ clicked \nCommand: give pc _gold_ \nCommand: end quest
+    \nOn task.Attribute: sid, value: _S.03_\nCommand: say 1012 \nCommand: make _book_
+    permanent \n\n3/10/2015 10:53:00 PM *** Started all timers\n\n3/10/2015 10:53:00
+    PM *** Timer (_queston_). Duration: 87000 seconds.\n        running: Yes\n       complete:
+    No\n   unknown flag: 0\n   unknown flag: flag\n   unknown flag: 17\n   unknown
+    flag: range\n   unknown flag: 0\n   unknown flag: 2\n   Started at: 12:05:22 on
+    Sundas, 01 of Midyear, 3E405\n   World Time is: 12:05:22 on Sundas, 01 of Midyear,
+    3E405\n   Time remaining: 87000s\n\n3/10/2015 10:53:00 PM *** 835186ed-dabb-41fa-8426-bd9d69dd17c6\n3/10/2015
+    10:53:00 PM *** unknown element: prelude, \n3/10/2015 10:53:00 PM *** unknown
+    element: statistics, \n3/10/2015 10:53:00 PM *** unknown element: quest, \n3/10/2015
+    10:53:00 PM *** unknown element: __text__, \n3/10/2015 10:53:00 PM *** Created
+    all timers\n\n3/10/2015 10:53:00 PM *** Started all timers\n\n3/10/2015 10:53:00
+    PM *** Timer (_queston_). Duration: 87000 seconds.\n        running: Yes\n       complete:
+    No\n   unknown flag: 0\n   unknown flag: flag\n   unknown flag: 17\n   unknown
+    flag: range\n   unknown flag: 0\n   unknown flag: 2\n   Started at: 12:05:22 on
+    Sundas, 01 of Midyear, 3E405\n   World Time is: 12:05:22 on Sundas, 01 of Midyear,
+    3E405\n   Time remaining: 87000s\n\n3/10/2015 10:53:00 PM *** CDATA: \nQuestFile:
+    ..\\K0C00Y08.Qbn.\nStartsBy: NPC\nQuestee: anyone\nQuestor: merchant\nRepute:
+    0\nQuestId: 8\nMessages: 13\nQuest: K0C00Y08\nMessage panels\n\nCDATA: \nSymbols
+    used in the QRC file:\n              %cn occurs 2 times.\n              %g2 occurs
+    1 time.\n              %g3 occurs 1 time.\n             %jok occurs 6 times.\n
+    \            %oth occurs 2 times.\n             %pcf occurs 3 times.\n             %qdt
+    occurs 1 time.\n              %ra occurs 1 time.\n             %reg occurs 3 times.\n
+    \       =queston_ occurs 2 times.\n      ___mondung_ occurs 2 times.\n       ___qgiver_
+    occurs 2 times.\n           _book_ occurs 6 times.\n           _gold_ occurs 5
+    times.\n         _qgiver_ occurs 3 times.\n        _upfront_ occurs 2 times.\n\nsid:
+    QuestorOffer. Value: \nI am looking for a very special book, one that is not available
+    in any store, at least not for any price less than astronomical. Recently, I have
+    heard that a copy of it has surfaced not too far from here, in a dungeon. If you
+    will accept this quest to find this tome, I will give you _upfront_ gold pieces
+    now and another _gold_ gold pieces when you return. Do we have a deal then, %pcf?\n\nsid:
+    RefuseQuest$1001. Value: \n                          Very well. I'll look for
+    a\n                           different mercenary then.\n\nsid: AcceptQuest$1002.
+    Value: \n                 Good. I'll give you =queston_ days to get the\n                          book
+    out of ___mondung_ and\n                return. After that time, the _gold_ gold
+    pieces\n                    will be forfeit. The name of the book is\n                               _book_.
+    Good luck,\n                                     %pcf.\n\nsid: QuestComplete.
+    Value: \n                       Ah, marvelous. Here's the _gold_\n                     gold
+    pieces I promised. Thank you very\n                                  much, %pcf.\n\nsid:
+    RumorsDuringQuest$1005. Value: \nThe legal system in %reg has good points and
+    bad ones.\n\nsid: RumorsPostfailure$1006. Value: \nThe legal system in %reg has
+    it good points and bad ones.\n\nsid: RumorsPostsuccess$1007. Value: \n_qgiver_
+    is happy as a harpy about %g3 new acquisition.\n\nsid: QuestorPostsuccess$1008.
+    Value: \nWhat can I do for you, o %ra who brought me _book_?\n\nsid: QuestorPostfailure$1009.
+    Value: \n                            As _book_ is lost once\n                          again,
+    I find it in dubious\n                          taste that you are bothering\n
+    \                             me. Go get stuffed.\n\nsid: QuestLogEntry$1010.
+    Value: \n%qdt:\n _qgiver_ of\n __qgiver_, ___qgiver_ has\n sent me to ___mondung_
+    in\n search of _book_,\n a very rare book. I will be given _gold_\n gold pieces
+    if I return in =queston_ days or less.\n\nsid: $1011. Value: \n                                 You
+    picked up\n                                    _book_.\n\nsid: $1012. Value: \n
+    \                              _qgiver_ will be\n                       angry.
+    This is past the time when\n                        you were to bring %g2 the
+    book.\n\ntag: item. Value:  _gold_ gold\ntag: item. Value:  _upfront_ gold range
+    5 to 50\ntag: item. Value:  _book_ book2\ntag: person. Value:  _qgiver_ group
+    Questor male\ntag: place. Value:  _mondung_ remote dungeon\ntag: clock. Value:
+    \ _queston_ 1.0:10 0 flag 17 range 0 2\nOn task.Attribute: special, value: startup\nCommand:
+    place item _book_ at _mondung_ \nCommand: start timer _queston_ \nCommand: reveal
+    _mondung_ \nCommand: log 1010 step 0 \nCommand: get item _upfront_ \nCommand:
+    make _upfront_ permanent \nOn task.Attribute: sid, value: _queston_\nCommand:
+    have _book_ set _S.03_ \nCommand: end quest \nOn task.Attribute: sid, value: _S.01_\nCommand:
+    clicked item _book_ \nCommand: say 1011 \nOn task.Attribute: sid, value: _S.02_\nCommand:
+    toting _book_ and _qgiver_ clicked \nCommand: give pc _gold_ \nCommand: end quest
+    \nOn task.Attribute: sid, value: _S.03_\nCommand: say 1012 \nCommand: make _book_
+    permanent \n\n3/10/2015 10:53:00 PM *** Started all timers\n\n3/10/2015 10:53:00
+    PM *** Timer (_queston_). Duration: 87000 seconds.\n        running: Yes\n       complete:
+    No\n   unknown flag: 0\n   unknown flag: flag\n   unknown flag: 17\n   unknown
+    flag: range\n   unknown flag: 0\n   unknown flag: 2\n   Started at: 12:05:22 on
+    Sundas, 01 of Midyear, 3E405\n   World Time is: 12:05:22 on Sundas, 01 of Midyear,
+    3E405\n   Time remaining: 87000s\n\n3/10/2015 10:53:02 PM *** 71581211-5156-45ce-b692-b23e12fa72fa\n3/10/2015
+    10:53:02 PM *** unknown element: prelude, \n3/10/2015 10:53:02 PM *** unknown
+    element: statistics, \n3/10/2015 10:53:02 PM *** unknown element: quest, \n3/10/2015
+    10:53:02 PM *** unknown element: __text__, \n3/10/2015 10:53:02 PM *** Created
+    all timers\n\n3/10/2015 10:53:02 PM *** Started all timers\n\n3/10/2015 10:53:02
+    PM *** Timer (_queston_). Duration: 87000 seconds.\n        running: Yes\n       complete:
+    No\n   unknown flag: 0\n   unknown flag: flag\n   unknown flag: 17\n   unknown
+    flag: range\n   unknown flag: 0\n   unknown flag: 2\n   Started at: 12:05:39 on
+    Sundas, 01 of Midyear, 3E405\n   World Time is: 12:05:40 on Sundas, 01 of Midyear,
+    3E405\n   Time remaining: 87000s\n\n3/10/2015 10:53:02 PM *** CDATA: \nQuestFile:
+    ..\\K0C00Y08.Qbn.\nStartsBy: NPC\nQuestee: anyone\nQuestor: merchant\nRepute:
+    0\nQuestId: 8\nMessages: 13\nQuest: K0C00Y08\nMessage panels\n\nCDATA: \nSymbols
+    used in the QRC file:\n              %cn occurs 2 times.\n              %g2 occurs
+    1 time.\n              %g3 occurs 1 time.\n             %jok occurs 6 times.\n
+    \            %oth occurs 2 times.\n             %pcf occurs 3 times.\n             %qdt
+    occurs 1 time.\n              %ra occurs 1 time.\n             %reg occurs 3 times.\n
+    \       =queston_ occurs 2 times.\n      ___mondung_ occurs 2 times.\n       ___qgiver_
+    occurs 2 times.\n           _book_ occurs 6 times.\n           _gold_ occurs 5
+    times.\n         _qgiver_ occurs 3 times.\n        _upfront_ occurs 2 times.\n\nsid:
+    QuestorOffer. Value: \nI am looking for a very special book, one that is not available
+    in any store, at least not for any price less than astronomical. Recently, I have
+    heard that a copy of it has surfaced not too far from here, in a dungeon. If you
+    will accept this quest to find this tome, I will give you _upfront_ gold pieces
+    now and another _gold_ gold pieces when you return. Do we have a deal then, %pcf?\n\nsid:
+    RefuseQuest$1001. Value: \n                          Very well. I'll look for
+    a\n                           different mercenary then.\n\nsid: AcceptQuest$1002.
+    Value: \n                 Good. I'll give you =queston_ days to get the\n                          book
+    out of ___mondung_ and\n                return. After that time, the _gold_ gold
+    pieces\n                    will be forfeit. The name of the book is\n                               _book_.
+    Good luck,\n                                     %pcf.\n\nsid: QuestComplete.
+    Value: \n                       Ah, marvelous. Here's the _gold_\n                     gold
+    pieces I promised. Thank you very\n                                  much, %pcf.\n\nsid:
+    RumorsDuringQuest$1005. Value: \nThe legal system in %reg has good points and
+    bad ones.\n\nsid: RumorsPostfailure$1006. Value: \nThe legal system in %reg has
+    it good points and bad ones.\n\nsid: RumorsPostsuccess$1007. Value: \n_qgiver_
+    is happy as a harpy about %g3 new acquisition.\n\nsid: QuestorPostsuccess$1008.
+    Value: \nWhat can I do for you, o %ra who brought me _book_?\n\nsid: QuestorPostfailure$1009.
+    Value: \n                            As _book_ is lost once\n                          again,
+    I find it in dubious\n                          taste that you are bothering\n
+    \                             me. Go get stuffed.\n\nsid: QuestLogEntry$1010.
+    Value: \n%qdt:\n _qgiver_ of\n __qgiver_, ___qgiver_ has\n sent me to ___mondung_
+    in\n search of _book_,\n a very rare book. I will be given _gold_\n gold pieces
+    if I return in =queston_ days or less.\n\nsid: $1011. Value: \n                                 You
+    picked up\n                                    _book_.\n\nsid: $1012. Value: \n
+    \                              _qgiver_ will be\n                       angry.
+    This is past the time when\n                        you were to bring %g2 the
+    book.\n\ntag: item. Value:  _gold_ gold\ntag: item. Value:  _upfront_ gold range
+    5 to 50\ntag: item. Value:  _book_ book2\ntag: person. Value:  _qgiver_ group
+    Questor male\ntag: place. Value:  _mondung_ remote dungeon\ntag: clock. Value:
+    \ _queston_ 1.0:10 0 flag 17 range 0 2\nOn task.Attribute: special, value: startup\nCommand:
+    place item _book_ at _mondung_ \nCommand: start timer _queston_ \nCommand: reveal
+    _mondung_ \nCommand: log 1010 step 0 \nCommand: get item _upfront_ \nCommand:
+    make _upfront_ permanent \nOn task.Attribute: sid, value: _queston_\nCommand:
+    have _book_ set _S.03_ \nCommand: end quest \nOn task.Attribute: sid, value: _S.01_\nCommand:
+    clicked item _book_ \nCommand: say 1011 \nOn task.Attribute: sid, value: _S.02_\nCommand:
+    toting _book_ and _qgiver_ clicked \nCommand: give pc _gold_ \nCommand: end quest
+    \nOn task.Attribute: sid, value: _S.03_\nCommand: say 1012 \nCommand: make _book_
+    permanent \n\n3/10/2015 10:53:02 PM *** Started all timers\n\n3/10/2015 10:53:02
+    PM *** Timer (_queston_). Duration: 87000 seconds.\n        running: Yes\n       complete:
+    No\n   unknown flag: 0\n   unknown flag: flag\n   unknown flag: 17\n   unknown
+    flag: range\n   unknown flag: 0\n   unknown flag: 2\n   Started at: 12:05:39 on
+    Sundas, 01 of Midyear, 3E405\n   World Time is: 12:05:40 on Sundas, 01 of Midyear,
+    3E405\n   Time remaining: 87000s\n\n3/10/2015 10:53:02 PM *** 835186ed-dabb-41fa-8426-bd9d69dd17c6\n3/10/2015
+    10:53:02 PM *** unknown element: prelude, \n3/10/2015 10:53:02 PM *** unknown
+    element: statistics, \n3/10/2015 10:53:02 PM *** unknown element: quest, \n3/10/2015
+    10:53:02 PM *** unknown element: __text__, \n3/10/2015 10:53:02 PM *** Created
+    all timers\n\n3/10/2015 10:53:02 PM *** Started all timers\n\n3/10/2015 10:53:02
+    PM *** Timer (_queston_). Duration: 87000 seconds.\n        running: Yes\n       complete:
+    No\n   unknown flag: 0\n   unknown flag: flag\n   unknown flag: 17\n   unknown
+    flag: range\n   unknown flag: 0\n   unknown flag: 2\n   Started at: 12:05:39 on
+    Sundas, 01 of Midyear, 3E405\n   World Time is: 12:05:40 on Sundas, 01 of Midyear,
+    3E405\n   Time remaining: 87000s\n\n3/10/2015 10:53:02 PM *** CDATA: \nQuestFile:
+    ..\\K0C00Y08.Qbn.\nStartsBy: NPC\nQuestee: anyone\nQuestor: merchant\nRepute:
+    0\nQuestId: 8\nMessages: 13\nQuest: K0C00Y08\nMessage panels\n\nCDATA: \nSymbols
+    used in the QRC file:\n              %cn occurs 2 times.\n              %g2 occurs
+    1 time.\n              %g3 occurs 1 time.\n             %jok occurs 6 times.\n
+    \            %oth occurs 2 times.\n             %pcf occurs 3 times.\n             %qdt
+    occurs 1 time.\n              %ra occurs 1 time.\n             %reg occurs 3 times.\n
+    \       =queston_ occurs 2 times.\n      ___mondung_ occurs 2 times.\n       ___qgiver_
+    occurs 2 times.\n           _book_ occurs 6 times.\n           _gold_ occurs 5
+    times.\n         _qgiver_ occurs 3 times.\n        _upfront_ occurs 2 times.\n\nsid:
+    QuestorOffer. Value: \nI am looking for a very special book, one that is not available
+    in any store, at least not for any price less than astronomical. Recently, I have
+    heard that a copy of it has surfaced not too far from here, in a dungeon. If you
+    will accept this quest to find this tome, I will give you _upfront_ gold pieces
+    now and another _gold_ gold pieces when you return. Do we have a deal then, %pcf?\n\nsid:
+    RefuseQuest$1001. Value: \n                          Very well. I'll look for
+    a\n                           different mercenary then.\n\nsid: AcceptQuest$1002.
+    Value: \n                 Good. I'll give you =queston_ days to get the\n                          book
+    out of ___mondung_ and\n                return. After that time, the _gold_ gold
+    pieces\n                    will be forfeit. The name of the book is\n                               _book_.
+    Good luck,\n                                     %pcf.\n\nsid: QuestComplete.
+    Value: \n                       Ah, marvelous. Here's the _gold_\n                     gold
+    pieces I promised. Thank you very\n                                  much, %pcf.\n\nsid:
+    RumorsDuringQuest$1005. Value: \nThe legal system in %reg has good points and
+    bad ones.\n\nsid: RumorsPostfailure$1006. Value: \nThe legal system in %reg has
+    it good points and bad ones.\n\nsid: RumorsPostsuccess$1007. Value: \n_qgiver_
+    is happy as a harpy about %g3 new acquisition.\n\nsid: QuestorPostsuccess$1008.
+    Value: \nWhat can I do for you, o %ra who brought me _book_?\n\nsid: QuestorPostfailure$1009.
+    Value: \n                            As _book_ is lost once\n                          again,
+    I find it in dubious\n                          taste that you are bothering\n
+    \                             me. Go get stuffed.\n\nsid: QuestLogEntry$1010.
+    Value: \n%qdt:\n _qgiver_ of\n __qgiver_, ___qgiver_ has\n sent me to ___mondung_
+    in\n search of _book_,\n a very rare book. I will be given _gold_\n gold pieces
+    if I return in =queston_ days or less.\n\nsid: $1011. Value: \n                                 You
+    picked up\n                                    _book_.\n\nsid: $1012. Value: \n
+    \                              _qgiver_ will be\n                       angry.
+    This is past the time when\n                        you were to bring %g2 the
+    book.\n\ntag: item. Value:  _gold_ gold\ntag: item. Value:  _upfront_ gold range
+    5 to 50\ntag: item. Value:  _book_ book2\ntag: person. Value:  _qgiver_ group
+    Questor male\ntag: place. Value:  _mondung_ remote dungeon\ntag: clock. Value:
+    \ _queston_ 1.0:10 0 flag 17 range 0 2\nOn task.Attribute: special, value: startup\nCommand:
+    place item _book_ at _mondung_ \nCommand: start timer _queston_ \nCommand: reveal
+    _mondung_ \nCommand: log 1010 step 0 \nCommand: get item _upfront_ \nCommand:
+    make _upfront_ permanent \nOn task.Attribute: sid, value: _queston_\nCommand:
+    have _book_ set _S.03_ \nCommand: end quest \nOn task.Attribute: sid, value: _S.01_\nCommand:
+    clicked item _book_ \nCommand: say 1011 \nOn task.Attribute: sid, value: _S.02_\nCommand:
+    toting _book_ and _qgiver_ clicked \nCommand: give pc _gold_ \nCommand: end quest
+    \nOn task.Attribute: sid, value: _S.03_\nCommand: say 1012 \nCommand: make _book_
+    permanent \n\n3/10/2015 10:53:02 PM *** Started all timers\n\n3/10/2015 10:53:02
+    PM *** Timer (_queston_). Duration: 87000 seconds.\n        running: Yes\n       complete:
+    No\n   unknown flag: 0\n   unknown flag: flag\n   unknown flag: 17\n   unknown
+    flag: range\n   unknown flag: 0\n   unknown flag: 2\n   Started at: 12:05:39 on
+    Sundas, 01 of Midyear, 3E405\n   World Time is: 12:05:40 on Sundas, 01 of Midyear,
+    3E405\n   Time remaining: 87000s\n\n3/10/2015 10:53:02 PM *** 71581211-5156-45ce-b692-b23e12fa72fa\n3/10/2015
+    10:53:02 PM *** unknown element: prelude, \n3/10/2015 10:53:02 PM *** unknown
+    element: statistics, \n3/10/2015 10:53:02 PM *** unknown element: quest, \n3/10/2015
+    10:53:02 PM *** unknown element: __text__, \n3/10/2015 10:53:02 PM *** Created
+    all timers\n\n3/10/2015 10:53:02 PM *** Started all timers\n\n3/10/2015 10:53:02
+    PM *** Timer (_queston_). Duration: 87000 seconds.\n        running: Yes\n       complete:
+    No\n   unknown flag: 0\n   unknown flag: flag\n   unknown flag: 17\n   unknown
+    flag: range\n   unknown flag: 0\n   unknown flag: 2\n   Started at: 12:05:45 on
+    Sundas, 01 of Midyear, 3E405\n   World Time is: 12:05:45 on Sundas, 01 of Midyear,
+    3E405\n   Time remaining: 87000s\n\n3/10/2015 10:53:02 PM *** CDATA: \nQuestFile:
+    ..\\K0C00Y08.Qbn.\nStartsBy: NPC\nQuestee: anyone\nQuestor: merchant\nRepute:
+    0\nQuestId: 8\nMessages: 13\nQuest: K0C00Y08\nMessage panels\n\nCDATA: \nSymbols
+    used in the QRC file:\n              %cn occurs 2 times.\n              %g2 occurs
+    1 time.\n              %g3 occurs 1 time.\n             %jok occurs 6 times.\n
+    \            %oth occurs 2 times.\n             %pcf occurs 3 times.\n             %qdt
+    occurs 1 time.\n              %ra occurs 1 time.\n             %reg occurs 3 times.\n
+    \       =queston_ occurs 2 times.\n      ___mondung_ occurs 2 times.\n       ___qgiver_
+    occurs 2 times.\n           _book_ occurs 6 times.\n           _gold_ occurs 5
+    times.\n         _qgiver_ occurs 3 times.\n        _upfront_ occurs 2 times.\n\nsid:
+    QuestorOffer. Value: \nI am looking for a very special book, one that is not available
+    in any store, at least not for any price less than astronomical. Recently, I have
+    heard that a copy of it has surfaced not too far from here, in a dungeon. If you
+    will accept this quest to find this tome, I will give you _upfront_ gold pieces
+    now and another _gold_ gold pieces when you return. Do we have a deal then, %pcf?\n\nsid:
+    RefuseQuest$1001. Value: \n                          Very well. I'll look for
+    a\n                           different mercenary then.\n\nsid: AcceptQuest$1002.
+    Value: \n                 Good. I'll give you =queston_ days to get the\n                          book
+    out of ___mondung_ and\n                return. After that time, the _gold_ gold
+    pieces\n                    will be forfeit. The name of the book is\n                               _book_.
+    Good luck,\n                                     %pcf.\n\nsid: QuestComplete.
+    Value: \n                       Ah, marvelous. Here's the _gold_\n                     gold
+    pieces I promised. Thank you very\n                                  much, %pcf.\n\nsid:
+    RumorsDuringQuest$1005. Value: \nThe legal system in %reg has good points and
+    bad ones.\n\nsid: RumorsPostfailure$1006. Value: \nThe legal system in %reg has
+    it good points and bad ones.\n\nsid: RumorsPostsuccess$1007. Value: \n_qgiver_
+    is happy as a harpy about %g3 new acquisition.\n\nsid: QuestorPostsuccess$1008.
+    Value: \nWhat can I do for you, o %ra who brought me _book_?\n\nsid: QuestorPostfailure$1009.
+    Value: \n                            As _book_ is lost once\n                          again,
+    I find it in dubious\n                          taste that you are bothering\n
+    \                             me. Go get stuffed.\n\nsid: QuestLogEntry$1010.
+    Value: \n%qdt:\n _qgiver_ of\n __qgiver_, ___qgiver_ has\n sent me to ___mondung_
+    in\n search of _book_,\n a very rare book. I will be given _gold_\n gold pieces
+    if I return in =queston_ days or less.\n\nsid: $1011. Value: \n                                 You
+    picked up\n                                    _book_.\n\nsid: $1012. Value: \n
+    \                              _qgiver_ will be\n                       angry.
+    This is past the time when\n                        you were to bring %g2 the
+    book.\n\ntag: item. Value:  _gold_ gold\ntag: item. Value:  _upfront_ gold range
+    5 to 50\ntag: item. Value:  _book_ book2\ntag: person. Value:  _qgiver_ group
+    Questor male\ntag: place. Value:  _mondung_ remote dungeon\ntag: clock. Value:
+    \ _queston_ 1.0:10 0 flag 17 range 0 2\nOn task.Attribute: special, value: startup\nCommand:
+    place item _book_ at _mondung_ \nCommand: start timer _queston_ \nCommand: reveal
+    _mondung_ \nCommand: log 1010 step 0 \nCommand: get item _upfront_ \nCommand:
+    make _upfront_ permanent \nOn task.Attribute: sid, value: _queston_\nCommand:
+    have _book_ set _S.03_ \nCommand: end quest \nOn task.Attribute: sid, value: _S.01_\nCommand:
+    clicked item _book_ \nCommand: say 1011 \nOn task.Attribute: sid, value: _S.02_\nCommand:
+    toting _book_ and _qgiver_ clicked \nCommand: give pc _gold_ \nCommand: end quest
+    \nOn task.Attribute: sid, value: _S.03_\nCommand: say 1012 \nCommand: make _book_
+    permanent \n\n3/10/2015 10:53:02 PM *** Started all timers\n\n3/10/2015 10:53:02
+    PM *** Timer (_queston_). Duration: 87000 seconds.\n        running: Yes\n       complete:
+    No\n   unknown flag: 0\n   unknown flag: flag\n   unknown flag: 17\n   unknown
+    flag: range\n   unknown flag: 0\n   unknown flag: 2\n   Started at: 12:05:45 on
+    Sundas, 01 of Midyear, 3E405\n   World Time is: 12:05:45 on Sundas, 01 of Midyear,
+    3E405\n   Time remaining: 87000s\n\n3/10/2015 10:53:02 PM *** 835186ed-dabb-41fa-8426-bd9d69dd17c6\n3/10/2015
+    10:53:02 PM *** unknown element: prelude, \n3/10/2015 10:53:02 PM *** unknown
+    element: statistics, \n3/10/2015 10:53:02 PM *** unknown element: quest, \n3/10/2015
+    10:53:02 PM *** unknown element: __text__, \n3/10/2015 10:53:02 PM *** Created
+    all timers\n\n3/10/2015 10:53:02 PM *** Started all timers\n\n3/10/2015 10:53:02
+    PM *** Timer (_queston_). Duration: 87000 seconds.\n        running: Yes\n       complete:
+    No\n   unknown flag: 0\n   unknown flag: flag\n   unknown flag: 17\n   unknown
+    flag: range\n   unknown flag: 0\n   unknown flag: 2\n   Started at: 12:05:45 on
+    Sundas, 01 of Midyear, 3E405\n   World Time is: 12:05:45 on Sundas, 01 of Midyear,
+    3E405\n   Time remaining: 87000s\n\n3/10/2015 10:53:02 PM *** CDATA: \nQuestFile:
+    ..\\K0C00Y08.Qbn.\nStartsBy: NPC\nQuestee: anyone\nQuestor: merchant\nRepute:
+    0\nQuestId: 8\nMessages: 13\nQuest: K0C00Y08\nMessage panels\n\nCDATA: \nSymbols
+    used in the QRC file:\n              %cn occurs 2 times.\n              %g2 occurs
+    1 time.\n              %g3 occurs 1 time.\n             %jok occurs 6 times.\n
+    \            %oth occurs 2 times.\n             %pcf occurs 3 times.\n             %qdt
+    occurs 1 time.\n              %ra occurs 1 time.\n             %reg occurs 3 times.\n
+    \       =queston_ occurs 2 times.\n      ___mondung_ occurs 2 times.\n       ___qgiver_
+    occurs 2 times.\n           _book_ occurs 6 times.\n           _gold_ occurs 5
+    times.\n         _qgiver_ occurs 3 times.\n        _upfront_ occurs 2 times.\n\nsid:
+    QuestorOffer. Value: \nI am looking for a very special book, one that is not available
+    in any store, at least not for any price less than astronomical. Recently, I have
+    heard that a copy of it has surfaced not too far from here, in a dungeon. If you
+    will accept this quest to find this tome, I will give you _upfront_ gold pieces
+    now and another _gold_ gold pieces when you return. Do we have a deal then, %pcf?\n\nsid:
+    RefuseQuest$1001. Value: \n                          Very well. I'll look for
+    a\n                           different mercenary then.\n\nsid: AcceptQuest$1002.
+    Value: \n                 Good. I'll give you =queston_ days to get the\n                          book
+    out of ___mondung_ and\n                return. After that time, the _gold_ gold
+    pieces\n                    will be forfeit. The name of the book is\n                               _book_.
+    Good luck,\n                                     %pcf.\n\nsid: QuestComplete.
+    Value: \n                       Ah, marvelous. Here's the _gold_\n                     gold
+    pieces I promised. Thank you very\n                                  much, %pcf.\n\nsid:
+    RumorsDuringQuest$1005. Value: \nThe legal system in %reg has good points and
+    bad ones.\n\nsid: RumorsPostfailure$1006. Value: \nThe legal system in %reg has
+    it good points and bad ones.\n\nsid: RumorsPostsuccess$1007. Value: \n_qgiver_
+    is happy as a harpy about %g3 new acquisition.\n\nsid: QuestorPostsuccess$1008.
+    Value: \nWhat can I do for you, o %ra who brought me _book_?\n\nsid: QuestorPostfailure$1009.
+    Value: \n                            As _book_ is lost once\n                          again,
+    I find it in dubious\n                          taste that you are bothering\n
+    \                             me. Go get stuffed.\n\nsid: QuestLogEntry$1010.
+    Value: \n%qdt:\n _qgiver_ of\n __qgiver_, ___qgiver_ has\n sent me to ___mondung_
+    in\n search of _book_,\n a very rare book. I will be given _gold_\n gold pieces
+    if I return in =queston_ days or less.\n\nsid: $1011. Value: \n                                 You
+    picked up\n                                    _book_.\n\nsid: $1012. Value: \n
+    \                              _qgiver_ will be\n                       angry.
+    This is past the time when\n                        you were to bring %g2 the
+    book.\n\ntag: item. Value:  _gold_ gold\ntag: item. Value:  _upfront_ gold range
+    5 to 50\ntag: item. Value:  _book_ book2\ntag: person. Value:  _qgiver_ group
+    Questor male\ntag: place. Value:  _mondung_ remote dungeon\ntag: clock. Value:
+    \ _queston_ 1.0:10 0 flag 17 range 0 2\nOn task.Attribute: special, value: startup\nCommand:
+    place item _book_ at _mondung_ \nCommand: start timer _queston_ \nCommand: reveal
+    _mondung_ \nCommand: log 1010 step 0 \nCommand: get item _upfront_ \nCommand:
+    make _upfront_ permanent \nOn task.Attribute: sid, value: _queston_\nCommand:
+    have _book_ set _S.03_ \nCommand: end quest \nOn task.Attribute: sid, value: _S.01_\nCommand:
+    clicked item _book_ \nCommand: say 1011 \nOn task.Attribute: sid, value: _S.02_\nCommand:
+    toting _book_ and _qgiver_ clicked \nCommand: give pc _gold_ \nCommand: end quest
+    \nOn task.Attribute: sid, value: _S.03_\nCommand: say 1012 \nCommand: make _book_
+    permanent \n\n3/10/2015 10:53:02 PM *** Started all timers\n\n3/10/2015 10:53:02
+    PM *** Timer (_queston_). Duration: 87000 seconds.\n        running: Yes\n       complete:
+    No\n   unknown flag: 0\n   unknown flag: flag\n   unknown flag: 17\n   unknown
+    flag: range\n   unknown flag: 0\n   unknown flag: 2\n   Started at: 12:05:45 on
+    Sundas, 01 of Midyear, 3E405\n   World Time is: 12:05:45 on Sundas, 01 of Midyear,
+    3E405\n   Time remaining: 87000s\n\n3/10/2015 10:53:04 PM *** 71581211-5156-45ce-b692-b23e12fa72fa\n3/10/2015
+    10:53:04 PM *** unknown element: prelude, \n3/10/2015 10:53:04 PM *** unknown
+    element: statistics, \n3/10/2015 10:53:04 PM *** unknown element: quest, \n3/10/2015
+    10:53:04 PM *** unknown element: __text__, \n3/10/2015 10:53:04 PM *** Created
+    all timers\n\n3/10/2015 10:53:04 PM *** Started all timers\n\n3/10/2015 10:53:04
+    PM *** Timer (_queston_). Duration: 87000 seconds.\n        running: Yes\n       complete:
+    No\n   unknown flag: 0\n   unknown flag: flag\n   unknown flag: 17\n   unknown
+    flag: range\n   unknown flag: 0\n   unknown flag: 2\n   Started at: 12:05:57 on
+    Sundas, 01 of Midyear, 3E405\n   World Time is: 12:05:57 on Sundas, 01 of Midyear,
+    3E405\n   Time remaining: 87000s\n\n3/10/2015 10:53:04 PM *** CDATA: \nQuestFile:
+    ..\\K0C00Y08.Qbn.\nStartsBy: NPC\nQuestee: anyone\nQuestor: merchant\nRepute:
+    0\nQuestId: 8\nMessages: 13\nQuest: K0C00Y08\nMessage panels\n\nCDATA: \nSymbols
+    used in the QRC file:\n              %cn occurs 2 times.\n              %g2 occurs
+    1 time.\n              %g3 occurs 1 time.\n             %jok occurs 6 times.\n
+    \            %oth occurs 2 times.\n             %pcf occurs 3 times.\n             %qdt
+    occurs 1 time.\n              %ra occurs 1 time.\n             %reg occurs 3 times.\n
+    \       =queston_ occurs 2 times.\n      ___mondung_ occurs 2 times.\n       ___qgiver_
+    occurs 2 times.\n           _book_ occurs 6 times.\n           _gold_ occurs 5
+    times.\n         _qgiver_ occurs 3 times.\n        _upfront_ occurs 2 times.\n\nsid:
+    QuestorOffer. Value: \nI am looking for a very special book, one that is not available
+    in any store, at least not for any price less than astronomical. Recently, I have
+    heard that a copy of it has surfaced not too far from here, in a dungeon. If you
+    will accept this quest to find this tome, I will give you _upfront_ gold pieces
+    now and another _gold_ gold pieces when you return. Do we have a deal then, %pcf?\n\nsid:
+    RefuseQuest$1001. Value: \n                          Very well. I'll look for
+    a\n                           different mercenary then.\n\nsid: AcceptQuest$1002.
+    Value: \n                 Good. I'll give you =queston_ days to get the\n                          book
+    out of ___mondung_ and\n                return. After that time, the _gold_ gold
+    pieces\n                    will be forfeit. The name of the book is\n                               _book_.
+    Good luck,\n                                     %pcf.\n\nsid: QuestComplete.
+    Value: \n                       Ah, marvelous. Here's the _gold_\n                     gold
+    pieces I promised. Thank you very\n                                  much, %pcf.\n\nsid:
+    RumorsDuringQuest$1005. Value: \nThe legal system in %reg has good points and
+    bad ones.\n\nsid: RumorsPostfailure$1006. Value: \nThe legal system in %reg has
+    it good points and bad ones.\n\nsid: RumorsPostsuccess$1007. Value: \n_qgiver_
+    is happy as a harpy about %g3 new acquisition.\n\nsid: QuestorPostsuccess$1008.
+    Value: \nWhat can I do for you, o %ra who brought me _book_?\n\nsid: QuestorPostfailure$1009.
+    Value: \n                            As _book_ is lost once\n                          again,
+    I find it in dubious\n                          taste that you are bothering\n
+    \                             me. Go get stuffed.\n\nsid: QuestLogEntry$1010.
+    Value: \n%qdt:\n _qgiver_ of\n __qgiver_, ___qgiver_ has\n sent me to ___mondung_
+    in\n search of _book_,\n a very rare book. I will be given _gold_\n gold pieces
+    if I return in =queston_ days or less.\n\nsid: $1011. Value: \n                                 You
+    picked up\n                                    _book_.\n\nsid: $1012. Value: \n
+    \                              _qgiver_ will be\n                       angry.
+    This is past the time when\n                        you were to bring %g2 the
+    book.\n\ntag: item. Value:  _gold_ gold\ntag: item. Value:  _upfront_ gold range
+    5 to 50\ntag: item. Value:  _book_ book2\ntag: person. Value:  _qgiver_ group
+    Questor male\ntag: place. Value:  _mondung_ remote dungeon\ntag: clock. Value:
+    \ _queston_ 1.0:10 0 flag 17 range 0 2\nOn task.Attribute: special, value: startup\nCommand:
+    place item _book_ at _mondung_ \nCommand: start timer _queston_ \nCommand: reveal
+    _mondung_ \nCommand: log 1010 step 0 \nCommand: get item _upfront_ \nCommand:
+    make _upfront_ permanent \nOn task.Attribute: sid, value: _queston_\nCommand:
+    have _book_ set _S.03_ \nCommand: end quest \nOn task.Attribute: sid, value: _S.01_\nCommand:
+    clicked item _book_ \nCommand: say 1011 \nOn task.Attribute: sid, value: _S.02_\nCommand:
+    toting _book_ and _qgiver_ clicked \nCommand: give pc _gold_ \nCommand: end quest
+    \nOn task.Attribute: sid, value: _S.03_\nCommand: say 1012 \nCommand: make _book_
+    permanent \n\n3/10/2015 10:53:04 PM *** Started all timers\n\n3/10/2015 10:53:04
+    PM *** Timer (_queston_). Duration: 87000 seconds.\n        running: Yes\n       complete:
+    No\n   unknown flag: 0\n   unknown flag: flag\n   unknown flag: 17\n   unknown
+    flag: range\n   unknown flag: 0\n   unknown flag: 2\n   Started at: 12:05:57 on
+    Sundas, 01 of Midyear, 3E405\n   World Time is: 12:05:57 on Sundas, 01 of Midyear,
+    3E405\n   Time remaining: 87000s\n\n3/10/2015 10:53:04 PM *** 835186ed-dabb-41fa-8426-bd9d69dd17c6\n3/10/2015
+    10:53:04 PM *** unknown element: prelude, \n3/10/2015 10:53:04 PM *** unknown
+    element: statistics, \n3/10/2015 10:53:04 PM *** unknown element: quest, \n3/10/2015
+    10:53:04 PM *** unknown element: __text__, \n3/10/2015 10:53:04 PM *** Created
+    all timers\n\n3/10/2015 10:53:04 PM *** Started all timers\n\n3/10/2015 10:53:04
+    PM *** Timer (_queston_). Duration: 87000 seconds.\n        running: Yes\n       complete:
+    No\n   unknown flag: 0\n   unknown flag: flag\n   unknown flag: 17\n   unknown
+    flag: range\n   unknown flag: 0\n   unknown flag: 2\n   Started at: 12:05:57 on
+    Sundas, 01 of Midyear, 3E405\n   World Time is: 12:05:57 on Sundas, 01 of Midyear,
+    3E405\n   Time remaining: 87000s\n\n3/10/2015 10:53:04 PM *** CDATA: \nQuestFile:
+    ..\\K0C00Y08.Qbn.\nStartsBy: NPC\nQuestee: anyone\nQuestor: merchant\nRepute:
+    0\nQuestId: 8\nMessages: 13\nQuest: K0C00Y08\nMessage panels\n\nCDATA: \nSymbols
+    used in the QRC file:\n              %cn occurs 2 times.\n              %g2 occurs
+    1 time.\n              %g3 occurs 1 time.\n             %jok occurs 6 times.\n
+    \            %oth occurs 2 times.\n             %pcf occurs 3 times.\n             %qdt
+    occurs 1 time.\n              %ra occurs 1 time.\n             %reg occurs 3 times.\n
+    \       =queston_ occurs 2 times.\n      ___mondung_ occurs 2 times.\n       ___qgiver_
+    occurs 2 times.\n           _book_ occurs 6 times.\n           _gold_ occurs 5
+    times.\n         _qgiver_ occurs 3 times.\n        _upfront_ occurs 2 times.\n\nsid:
+    QuestorOffer. Value: \nI am looking for a very special book, one that is not available
+    in any store, at least not for any price less than astronomical. Recently, I have
+    heard that a copy of it has surfaced not too far from here, in a dungeon. If you
+    will accept this quest to find this tome, I will give you _upfront_ gold pieces
+    now and another _gold_ gold pieces when you return. Do we have a deal then, %pcf?\n\nsid:
+    RefuseQuest$1001. Value: \n                          Very well. I'll look for
+    a\n                           different mercenary then.\n\nsid: AcceptQuest$1002.
+    Value: \n                 Good. I'll give you =queston_ days to get the\n                          book
+    out of ___mondung_ and\n                return. After that time, the _gold_ gold
+    pieces\n                    will be forfeit. The name of the book is\n                               _book_.
+    Good luck,\n                                     %pcf.\n\nsid: QuestComplete.
+    Value: \n                       Ah, marvelous. Here's the _gold_\n                     gold
+    pieces I promised. Thank you very\n                                  much, %pcf.\n\nsid:
+    RumorsDuringQuest$1005. Value: \nThe legal system in %reg has good points and
+    bad ones.\n\nsid: RumorsPostfailure$1006. Value: \nThe legal system in %reg has
+    it good points and bad ones.\n\nsid: RumorsPostsuccess$1007. Value: \n_qgiver_
+    is happy as a harpy about %g3 new acquisition.\n\nsid: QuestorPostsuccess$1008.
+    Value: \nWhat can I do for you, o %ra who brought me _book_?\n\nsid: QuestorPostfailure$1009.
+    Value: \n                            As _book_ is lost once\n                          again,
+    I find it in dubious\n                          taste that you are bothering\n
+    \                             me. Go get stuffed.\n\nsid: QuestLogEntry$1010.
+    Value: \n%qdt:\n _qgiver_ of\n __qgiver_, ___qgiver_ has\n sent me to ___mondung_
+    in\n search of _book_,\n a very rare book. I will be given _gold_\n gold pieces
+    if I return in =queston_ days or less.\n\nsid: $1011. Value: \n                                 You
+    picked up\n                                    _book_.\n\nsid: $1012. Value: \n
+    \                              _qgiver_ will be\n                       angry.
+    This is past the time when\n                        you were to bring %g2 the
+    book.\n\ntag: item. Value:  _gold_ gold\ntag: item. Value:  _upfront_ gold range
+    5 to 50\ntag: item. Value:  _book_ book2\ntag: person. Value:  _qgiver_ group
+    Questor male\ntag: place. Value:  _mondung_ remote dungeon\ntag: clock. Value:
+    \ _queston_ 1.0:10 0 flag 17 range 0 2\nOn task.Attribute: special, value: startup\nCommand:
+    place item _book_ at _mondung_ \nCommand: start timer _queston_ \nCommand: reveal
+    _mondung_ \nCommand: log 1010 step 0 \nCommand: get item _upfront_ \nCommand:
+    make _upfront_ permanent \nOn task.Attribute: sid, value: _queston_\nCommand:
+    have _book_ set _S.03_ \nCommand: end quest \nOn task.Attribute: sid, value: _S.01_\nCommand:
+    clicked item _book_ \nCommand: say 1011 \nOn task.Attribute: sid, value: _S.02_\nCommand:
+    toting _book_ and _qgiver_ clicked \nCommand: give pc _gold_ \nCommand: end quest
+    \nOn task.Attribute: sid, value: _S.03_\nCommand: say 1012 \nCommand: make _book_
+    permanent \n\n3/10/2015 10:53:04 PM *** Started all timers\n\n3/10/2015 10:53:04
+    PM *** Timer (_queston_). Duration: 87000 seconds.\n        running: Yes\n       complete:
+    No\n   unknown flag: 0\n   unknown flag: flag\n   unknown flag: 17\n   unknown
+    flag: range\n   unknown flag: 0\n   unknown flag: 2\n   Started at: 12:05:57 on
+    Sundas, 01 of Midyear, 3E405\n   World Time is: 12:05:57 on Sundas, 01 of Midyear,
+    3E405\n   Time remaining: 87000s\n\n3/10/2015 10:53:05 PM *** 71581211-5156-45ce-b692-b23e12fa72fa\n3/10/2015
+    10:53:05 PM *** unknown element: prelude, \n3/10/2015 10:53:05 PM *** unknown
+    element: statistics, \n3/10/2015 10:53:05 PM *** unknown element: quest, \n3/10/2015
+    10:53:05 PM *** unknown element: __text__, \n3/10/2015 10:53:05 PM *** Created
+    all timers\n\n3/10/2015 10:53:05 PM *** Started all timers\n\n3/10/2015 10:53:05
+    PM *** Timer (_queston_). Duration: 87000 seconds.\n        running: Yes\n       complete:
+    No\n   unknown flag: 0\n   unknown flag: flag\n   unknown flag: 17\n   unknown
+    flag: range\n   unknown flag: 0\n   unknown flag: 2\n   Started at: 12:06:07 on
+    Sundas, 01 of Midyear, 3E405\n   World Time is: 12:06:08 on Sundas, 01 of Midyear,
+    3E405\n   Time remaining: 87000s\n\n3/10/2015 10:53:05 PM *** CDATA: \nQuestFile:
+    ..\\K0C00Y08.Qbn.\nStartsBy: NPC\nQuestee: anyone\nQuestor: merchant\nRepute:
+    0\nQuestId: 8\nMessages: 13\nQuest: K0C00Y08\nMessage panels\n\nCDATA: \nSymbols
+    used in the QRC file:\n              %cn occurs 2 times.\n              %g2 occurs
+    1 time.\n              %g3 occurs 1 time.\n             %jok occurs 6 times.\n
+    \            %oth occurs 2 times.\n             %pcf occurs 3 times.\n             %qdt
+    occurs 1 time.\n              %ra occurs 1 time.\n             %reg occurs 3 times.\n
+    \       =queston_ occurs 2 times.\n      ___mondung_ occurs 2 times.\n       ___qgiver_
+    occurs 2 times.\n           _book_ occurs 6 times.\n           _gold_ occurs 5
+    times.\n         _qgiver_ occurs 3 times.\n        _upfront_ occurs 2 times.\n\nsid:
+    QuestorOffer. Value: \nI am looking for a very special book, one that is not available
+    in any store, at least not for any price less than astronomical. Recently, I have
+    heard that a copy of it has surfaced not too far from here, in a dungeon. If you
+    will accept this quest to find this tome, I will give you _upfront_ gold pieces
+    now and another _gold_ gold pieces when you return. Do we have a deal then, %pcf?\n\nsid:
+    RefuseQuest$1001. Value: \n                          Very well. I'll look for
+    a\n                           different mercenary then.\n\nsid: AcceptQuest$1002.
+    Value: \n                 Good. I'll give you =queston_ days to get the\n                          book
+    out of ___mondung_ and\n                return. After that time, the _gold_ gold
+    pieces\n                    will be forfeit. The name of the book is\n                               _book_.
+    Good luck,\n                                     %pcf.\n\nsid: QuestComplete.
+    Value: \n                       Ah, marvelous. Here's the _gold_\n                     gold
+    pieces I promised. Thank you very\n                                  much, %pcf.\n\nsid:
+    RumorsDuringQuest$1005. Value: \nThe legal system in %reg has good points and
+    bad ones.\n\nsid: RumorsPostfailure$1006. Value: \nThe legal system in %reg has
+    it good points and bad ones.\n\nsid: RumorsPostsuccess$1007. Value: \n_qgiver_
+    is happy as a harpy about %g3 new acquisition.\n\nsid: QuestorPostsuccess$1008.
+    Value: \nWhat can I do for you, o %ra who brought me _book_?\n\nsid: QuestorPostfailure$1009.
+    Value: \n                            As _book_ is lost once\n                          again,
+    I find it in dubious\n                          taste that you are bothering\n
+    \                             me. Go get stuffed.\n\nsid: QuestLogEntry$1010.
+    Value: \n%qdt:\n _qgiver_ of\n __qgiver_, ___qgiver_ has\n sent me to ___mondung_
+    in\n search of _book_,\n a very rare book. I will be given _gold_\n gold pieces
+    if I return in =queston_ days or less.\n\nsid: $1011. Value: \n                                 You
+    picked up\n                                    _book_.\n\nsid: $1012. Value: \n
+    \                              _qgiver_ will be\n                       angry.
+    This is past the time when\n                        you were to bring %g2 the
+    book.\n\ntag: item. Value:  _gold_ gold\ntag: item. Value:  _upfront_ gold range
+    5 to 50\ntag: item. Value:  _book_ book2\ntag: person. Value:  _qgiver_ group
+    Questor male\ntag: place. Value:  _mondung_ remote dungeon\ntag: clock. Value:
+    \ _queston_ 1.0:10 0 flag 17 range 0 2\nOn task.Attribute: special, value: startup\nCommand:
+    place item _book_ at _mondung_ \nCommand: start timer _queston_ \nCommand: reveal
+    _mondung_ \nCommand: log 1010 step 0 \nCommand: get item _upfront_ \nCommand:
+    make _upfront_ permanent \nOn task.Attribute: sid, value: _queston_\nCommand:
+    have _book_ set _S.03_ \nCommand: end quest \nOn task.Attribute: sid, value: _S.01_\nCommand:
+    clicked item _book_ \nCommand: say 1011 \nOn task.Attribute: sid, value: _S.02_\nCommand:
+    toting _book_ and _qgiver_ clicked \nCommand: give pc _gold_ \nCommand: end quest
+    \nOn task.Attribute: sid, value: _S.03_\nCommand: say 1012 \nCommand: make _book_
+    permanent \n\n3/10/2015 10:53:05 PM *** Started all timers\n\n3/10/2015 10:53:05
+    PM *** Timer (_queston_). Duration: 87000 seconds.\n        running: Yes\n       complete:
+    No\n   unknown flag: 0\n   unknown flag: flag\n   unknown flag: 17\n   unknown
+    flag: range\n   unknown flag: 0\n   unknown flag: 2\n   Started at: 12:06:07 on
+    Sundas, 01 of Midyear, 3E405\n   World Time is: 12:06:08 on Sundas, 01 of Midyear,
+    3E405\n   Time remaining: 87000s\n\n3/10/2015 10:53:05 PM *** 835186ed-dabb-41fa-8426-bd9d69dd17c6\n3/10/2015
+    10:53:05 PM *** unknown element: prelude, \n3/10/2015 10:53:05 PM *** unknown
+    element: statistics, \n3/10/2015 10:53:05 PM *** unknown element: quest, \n3/10/2015
+    10:53:05 PM *** unknown element: __text__, \n3/10/2015 10:53:05 PM *** Created
+    all timers\n\n3/10/2015 10:53:05 PM *** Started all timers\n\n3/10/2015 10:53:05
+    PM *** Timer (_queston_). Duration: 87000 seconds.\n        running: Yes\n       complete:
+    No\n   unknown flag: 0\n   unknown flag: flag\n   unknown flag: 17\n   unknown
+    flag: range\n   unknown flag: 0\n   unknown flag: 2\n   Started at: 12:06:07 on
+    Sundas, 01 of Midyear, 3E405\n   World Time is: 12:06:08 on Sundas, 01 of Midyear,
+    3E405\n   Time remaining: 87000s\n\n3/10/2015 10:53:05 PM *** CDATA: \nQuestFile:
+    ..\\K0C00Y08.Qbn.\nStartsBy: NPC\nQuestee: anyone\nQuestor: merchant\nRepute:
+    0\nQuestId: 8\nMessages: 13\nQuest: K0C00Y08\nMessage panels\n\nCDATA: \nSymbols
+    used in the QRC file:\n              %cn occurs 2 times.\n              %g2 occurs
+    1 time.\n              %g3 occurs 1 time.\n             %jok occurs 6 times.\n
+    \            %oth occurs 2 times.\n             %pcf occurs 3 times.\n             %qdt
+    occurs 1 time.\n              %ra occurs 1 time.\n             %reg occurs 3 times.\n
+    \       =queston_ occurs 2 times.\n      ___mondung_ occurs 2 times.\n       ___qgiver_
+    occurs 2 times.\n           _book_ occurs 6 times.\n           _gold_ occurs 5
+    times.\n         _qgiver_ occurs 3 times.\n        _upfront_ occurs 2 times.\n\nsid:
+    QuestorOffer. Value: \nI am looking for a very special book, one that is not available
+    in any store, at least not for any price less than astronomical. Recently, I have
+    heard that a copy of it has surfaced not too far from here, in a dungeon. If you
+    will accept this quest to find this tome, I will give you _upfront_ gold pieces
+    now and another _gold_ gold pieces when you return. Do we have a deal then, %pcf?\n\nsid:
+    RefuseQuest$1001. Value: \n                          Very well. I'll look for
+    a\n                           different mercenary then.\n\nsid: AcceptQuest$1002.
+    Value: \n                 Good. I'll give you =queston_ days to get the\n                          book
+    out of ___mondung_ and\n                return. After that time, the _gold_ gold
+    pieces\n                    will be forfeit. The name of the book is\n                               _book_.
+    Good luck,\n                                     %pcf.\n\nsid: QuestComplete.
+    Value: \n                       Ah, marvelous. Here's the _gold_\n                     gold
+    pieces I promised. Thank you very\n                                  much, %pcf.\n\nsid:
+    RumorsDuringQuest$1005. Value: \nThe legal system in %reg has good points and
+    bad ones.\n\nsid: RumorsPostfailure$1006. Value: \nThe legal system in %reg has
+    it good points and bad ones.\n\nsid: RumorsPostsuccess$1007. Value: \n_qgiver_
+    is happy as a harpy about %g3 new acquisition.\n\nsid: QuestorPostsuccess$1008.
+    Value: \nWhat can I do for you, o %ra who brought me _book_?\n\nsid: QuestorPostfailure$1009.
+    Value: \n                            As _book_ is lost once\n                          again,
+    I find it in dubious\n                          taste that you are bothering\n
+    \                             me. Go get stuffed.\n\nsid: QuestLogEntry$1010.
+    Value: \n%qdt:\n _qgiver_ of\n __qgiver_, ___qgiver_ has\n sent me to ___mondung_
+    in\n search of _book_,\n a very rare book. I will be given _gold_\n gold pieces
+    if I return in =queston_ days or less.\n\nsid: $1011. Value: \n                                 You
+    picked up\n                                    _book_.\n\nsid: $1012. Value: \n
+    \                              _qgiver_ will be\n                       angry.
+    This is past the time when\n                        you were to bring %g2 the
+    book.\n\ntag: item. Value:  _gold_ gold\ntag: item. Value:  _upfront_ gold range
+    5 to 50\ntag: item. Value:  _book_ book2\ntag: person. Value:  _qgiver_ group
+    Questor male\ntag: place. Value:  _mondung_ remote dungeon\ntag: clock. Value:
+    \ _queston_ 1.0:10 0 flag 17 range 0 2\nOn task.Attribute: special, value: startup\nCommand:
+    place item _book_ at _mondung_ \nCommand: start timer _queston_ \nCommand: reveal
+    _mondung_ \nCommand: log 1010 step 0 \nCommand: get item _upfront_ \nCommand:
+    make _upfront_ permanent \nOn task.Attribute: sid, value: _queston_\nCommand:
+    have _book_ set _S.03_ \nCommand: end quest \nOn task.Attribute: sid, value: _S.01_\nCommand:
+    clicked item _book_ \nCommand: say 1011 \nOn task.Attribute: sid, value: _S.02_\nCommand:
+    toting _book_ and _qgiver_ clicked \nCommand: give pc _gold_ \nCommand: end quest
+    \nOn task.Attribute: sid, value: _S.03_\nCommand: say 1012 \nCommand: make _book_
+    permanent \n\n3/10/2015 10:53:05 PM *** Started all timers\n\n3/10/2015 10:53:05
+    PM *** Timer (_queston_). Duration: 87000 seconds.\n        running: Yes\n       complete:
+    No\n   unknown flag: 0\n   unknown flag: flag\n   unknown flag: 17\n   unknown
+    flag: range\n   unknown flag: 0\n   unknown flag: 2\n   Started at: 12:06:07 on
+    Sundas, 01 of Midyear, 3E405\n   World Time is: 12:06:08 on Sundas, 01 of Midyear,
+    3E405\n   Time remaining: 87000s\n\n3/10/2015 10:53:06 PM *** 71581211-5156-45ce-b692-b23e12fa72fa\n3/10/2015
+    10:53:06 PM *** unknown element: prelude, \n3/10/2015 10:53:06 PM *** unknown
+    element: statistics, \n3/10/2015 10:53:06 PM *** unknown element: quest, \n3/10/2015
+    10:53:06 PM *** unknown element: __text__, \n3/10/2015 10:53:06 PM *** Created
+    all timers\n\n3/10/2015 10:53:06 PM *** Started all timers\n\n3/10/2015 10:53:06
+    PM *** Timer (_queston_). Duration: 87000 seconds.\n        running: Yes\n       complete:
+    No\n   unknown flag: 0\n   unknown flag: flag\n   unknown flag: 17\n   unknown
+    flag: range\n   unknown flag: 0\n   unknown flag: 2\n   Started at: 12:06:20 on
+    Sundas, 01 of Midyear, 3E405\n   World Time is: 12:06:20 on Sundas, 01 of Midyear,
+    3E405\n   Time remaining: 87000s\n\n3/10/2015 10:53:06 PM *** CDATA: \nQuestFile:
+    ..\\K0C00Y08.Qbn.\nStartsBy: NPC\nQuestee: anyone\nQuestor: merchant\nRepute:
+    0\nQuestId: 8\nMessages: 13\nQuest: K0C00Y08\nMessage panels\n\nCDATA: \nSymbols
+    used in the QRC file:\n              %cn occurs 2 times.\n              %g2 occurs
+    1 time.\n              %g3 occurs 1 time.\n             %jok occurs 6 times.\n
+    \            %oth occurs 2 times.\n             %pcf occurs 3 times.\n             %qdt
+    occurs 1 time.\n              %ra occurs 1 time.\n             %reg occurs 3 times.\n
+    \       =queston_ occurs 2 times.\n      ___mondung_ occurs 2 times.\n       ___qgiver_
+    occurs 2 times.\n           _book_ occurs 6 times.\n           _gold_ occurs 5
+    times.\n         _qgiver_ occurs 3 times.\n        _upfront_ occurs 2 times.\n\nsid:
+    QuestorOffer. Value: \nI am looking for a very special book, one that is not available
+    in any store, at least not for any price less than astronomical. Recently, I have
+    heard that a copy of it has surfaced not too far from here, in a dungeon. If you
+    will accept this quest to find this tome, I will give you _upfront_ gold pieces
+    now and another _gold_ gold pieces when you return. Do we have a deal then, %pcf?\n\nsid:
+    RefuseQuest$1001. Value: \n                          Very well. I'll look for
+    a\n                           different mercenary then.\n\nsid: AcceptQuest$1002.
+    Value: \n                 Good. I'll give you =queston_ days to get the\n                          book
+    out of ___mondung_ and\n                return. After that time, the _gold_ gold
+    pieces\n                    will be forfeit. The name of the book is\n                               _book_.
+    Good luck,\n                                     %pcf.\n\nsid: QuestComplete.
+    Value: \n                       Ah, marvelous. Here's the _gold_\n                     gold
+    pieces I promised. Thank you very\n                                  much, %pcf.\n\nsid:
+    RumorsDuringQuest$1005. Value: \nThe legal system in %reg has good points and
+    bad ones.\n\nsid: RumorsPostfailure$1006. Value: \nThe legal system in %reg has
+    it good points and bad ones.\n\nsid: RumorsPostsuccess$1007. Value: \n_qgiver_
+    is happy as a harpy about %g3 new acquisition.\n\nsid: QuestorPostsuccess$1008.
+    Value: \nWhat can I do for you, o %ra who brought me _book_?\n\nsid: QuestorPostfailure$1009.
+    Value: \n                            As _book_ is lost once\n                          again,
+    I find it in dubious\n                          taste that you are bothering\n
+    \                             me. Go get stuffed.\n\nsid: QuestLogEntry$1010.
+    Value: \n%qdt:\n _qgiver_ of\n __qgiver_, ___qgiver_ has\n sent me to ___mondung_
+    in\n search of _book_,\n a very rare book. I will be given _gold_\n gold pieces
+    if I return in =queston_ days or less.\n\nsid: $1011. Value: \n                                 You
+    picked up\n                                    _book_.\n\nsid: $1012. Value: \n
+    \                              _qgiver_ will be\n                       angry.
+    This is past the time when\n                        you were to bring %g2 the
+    book.\n\ntag: item. Value:  _gold_ gold\ntag: item. Value:  _upfront_ gold range
+    5 to 50\ntag: item. Value:  _book_ book2\ntag: person. Value:  _qgiver_ group
+    Questor male\ntag: place. Value:  _mondung_ remote dungeon\ntag: clock. Value:
+    \ _queston_ 1.0:10 0 flag 17 range 0 2\nOn task.Attribute: special, value: startup\nCommand:
+    place item _book_ at _mondung_ \nCommand: start timer _queston_ \nCommand: reveal
+    _mondung_ \nCommand: log 1010 step 0 \nCommand: get item _upfront_ \nCommand:
+    make _upfront_ permanent \nOn task.Attribute: sid, value: _queston_\nCommand:
+    have _book_ set _S.03_ \nCommand: end quest \nOn task.Attribute: sid, value: _S.01_\nCommand:
+    clicked item _book_ \nCommand: say 1011 \nOn task.Attribute: sid, value: _S.02_\nCommand:
+    toting _book_ and _qgiver_ clicked \nCommand: give pc _gold_ \nCommand: end quest
+    \nOn task.Attribute: sid, value: _S.03_\nCommand: say 1012 \nCommand: make _book_
+    permanent \n\n3/10/2015 10:53:06 PM *** Started all timers\n\n3/10/2015 10:53:06
+    PM *** Timer (_queston_). Duration: 87000 seconds.\n        running: Yes\n       complete:
+    No\n   unknown flag: 0\n   unknown flag: flag\n   unknown flag: 17\n   unknown
+    flag: range\n   unknown flag: 0\n   unknown flag: 2\n   Started at: 12:06:20 on
+    Sundas, 01 of Midyear, 3E405\n   World Time is: 12:06:20 on Sundas, 01 of Midyear,
+    3E405\n   Time remaining: 87000s\n\n3/10/2015 10:53:06 PM *** 835186ed-dabb-41fa-8426-bd9d69dd17c6\n3/10/2015
+    10:53:06 PM *** unknown element: prelude, \n3/10/2015 10:53:06 PM *** unknown
+    element: statistics, \n3/10/2015 10:53:06 PM *** unknown element: quest, \n3/10/2015
+    10:53:06 PM *** unknown element: __text__, \n3/10/2015 10:53:06 PM *** Created
+    all timers\n\n3/10/2015 10:53:06 PM *** Started all timers\n\n3/10/2015 10:53:06
+    PM *** Timer (_queston_). Duration: 87000 seconds.\n        running: Yes\n       complete:
+    No\n   unknown flag: 0\n   unknown flag: flag\n   unknown flag: 17\n   unknown
+    flag: range\n   unknown flag: 0\n   unknown flag: 2\n   Started at: 12:06:20 on
+    Sundas, 01 of Midyear, 3E405\n   World Time is: 12:06:20 on Sundas, 01 of Midyear,
+    3E405\n   Time remaining: 87000s\n\n3/10/2015 10:53:06 PM *** CDATA: \nQuestFile:
+    ..\\K0C00Y08.Qbn.\nStartsBy: NPC\nQuestee: anyone\nQuestor: merchant\nRepute:
+    0\nQuestId: 8\nMessages: 13\nQuest: K0C00Y08\nMessage panels\n\nCDATA: \nSymbols
+    used in the QRC file:\n              %cn occurs 2 times.\n              %g2 occurs
+    1 time.\n              %g3 occurs 1 time.\n             %jok occurs 6 times.\n
+    \            %oth occurs 2 times.\n             %pcf occurs 3 times.\n             %qdt
+    occurs 1 time.\n              %ra occurs 1 time.\n             %reg occurs 3 times.\n
+    \       =queston_ occurs 2 times.\n      ___mondung_ occurs 2 times.\n       ___qgiver_
+    occurs 2 times.\n           _book_ occurs 6 times.\n           _gold_ occurs 5
+    times.\n         _qgiver_ occurs 3 times.\n        _upfront_ occurs 2 times.\n\nsid:
+    QuestorOffer. Value: \nI am looking for a very special book, one that is not available
+    in any store, at least not for any price less than astronomical. Recently, I have
+    heard that a copy of it has surfaced not too far from here, in a dungeon. If you
+    will accept this quest to find this tome, I will give you _upfront_ gold pieces
+    now and another _gold_ gold pieces when you return. Do we have a deal then, %pcf?\n\nsid:
+    RefuseQuest$1001. Value: \n                          Very well. I'll look for
+    a\n                           different mercenary then.\n\nsid: AcceptQuest$1002.
+    Value: \n                 Good. I'll give you =queston_ days to get the\n                          book
+    out of ___mondung_ and\n                return. After that time, the _gold_ gold
+    pieces\n                    will be forfeit. The name of the book is\n                               _book_.
+    Good luck,\n                                     %pcf.\n\nsid: QuestComplete.
+    Value: \n                       Ah, marvelous. Here's the _gold_\n                     gold
+    pieces I promised. Thank you very\n                                  much, %pcf.\n\nsid:
+    RumorsDuringQuest$1005. Value: \nThe legal system in %reg has good points and
+    bad ones.\n\nsid: RumorsPostfailure$1006. Value: \nThe legal system in %reg has
+    it good points and bad ones.\n\nsid: RumorsPostsuccess$1007. Value: \n_qgiver_
+    is happy as a harpy about %g3 new acquisition.\n\nsid: QuestorPostsuccess$1008.
+    Value: \nWhat can I do for you, o %ra who brought me _book_?\n\nsid: QuestorPostfailure$1009.
+    Value: \n                            As _book_ is lost once\n                          again,
+    I find it in dubious\n                          taste that you are bothering\n
+    \                             me. Go get stuffed.\n\nsid: QuestLogEntry$1010.
+    Value: \n%qdt:\n _qgiver_ of\n __qgiver_, ___qgiver_ has\n sent me to ___mondung_
+    in\n search of _book_,\n a very rare book. I will be given _gold_\n gold pieces
+    if I return in =queston_ days or less.\n\nsid: $1011. Value: \n                                 You
+    picked up\n                                    _book_.\n\nsid: $1012. Value: \n
+    \                              _qgiver_ will be\n                       angry.
+    This is past the time when\n                        you were to bring %g2 the
+    book.\n\ntag: item. Value:  _gold_ gold\ntag: item. Value:  _upfront_ gold range
+    5 to 50\ntag: item. Value:  _book_ book2\ntag: person. Value:  _qgiver_ group
+    Questor male\ntag: place. Value:  _mondung_ remote dungeon\ntag: clock. Value:
+    \ _queston_ 1.0:10 0 flag 17 range 0 2\nOn task.Attribute: special, value: startup\nCommand:
+    place item _book_ at _mondung_ \nCommand: start timer _queston_ \nCommand: reveal
+    _mondung_ \nCommand: log 1010 step 0 \nCommand: get item _upfront_ \nCommand:
+    make _upfront_ permanent \nOn task.Attribute: sid, value: _queston_\nCommand:
+    have _book_ set _S.03_ \nCommand: end quest \nOn task.Attribute: sid, value: _S.01_\nCommand:
+    clicked item _book_ \nCommand: say 1011 \nOn task.Attribute: sid, value: _S.02_\nCommand:
+    toting _book_ and _qgiver_ clicked \nCommand: give pc _gold_ \nCommand: end quest
+    \nOn task.Attribute: sid, value: _S.03_\nCommand: say 1012 \nCommand: make _book_
+    permanent \n\n3/10/2015 10:53:06 PM *** Started all timers\n\n3/10/2015 10:53:06
+    PM *** Timer (_queston_). Duration: 87000 seconds.\n        running: Yes\n       complete:
+    No\n   unknown flag: 0\n   unknown flag: flag\n   unknown flag: 17\n   unknown
+    flag: range\n   unknown flag: 0\n   unknown flag: 2\n   Started at: 12:06:20 on
+    Sundas, 01 of Midyear, 3E405\n   World Time is: 12:06:20 on Sundas, 01 of Midyear,
+    3E405\n   Time remaining: 87000s\n\n3/10/2015 10:53:11 PM *** 71581211-5156-45ce-b692-b23e12fa72fa\n3/10/2015
+    10:53:11 PM *** unknown element: prelude, \n3/10/2015 10:53:11 PM *** unknown
+    element: statistics, \n3/10/2015 10:53:11 PM *** unknown element: quest, \n3/10/2015
+    10:53:11 PM *** unknown element: __text__, \n3/10/2015 10:53:11 PM *** Created
+    all timers\n\n3/10/2015 10:53:11 PM *** Started all timers\n\n3/10/2015 10:53:11
+    PM *** Timer (_queston_). Duration: 87000 seconds.\n        running: Yes\n       complete:
+    No\n   unknown flag: 0\n   unknown flag: flag\n   unknown flag: 17\n   unknown
+    flag: range\n   unknown flag: 0\n   unknown flag: 2\n   Started at: 12:07:09 on
+    Sundas, 01 of Midyear, 3E405\n   World Time is: 12:07:09 on Sundas, 01 of Midyear,
+    3E405\n   Time remaining: 87000s\n\n3/10/2015 10:53:11 PM *** CDATA: \nQuestFile:
+    ..\\K0C00Y08.Qbn.\nStartsBy: NPC\nQuestee: anyone\nQuestor: merchant\nRepute:
+    0\nQuestId: 8\nMessages: 13\nQuest: K0C00Y08\nMessage panels\n\nCDATA: \nSymbols
+    used in the QRC file:\n              %cn occurs 2 times.\n              %g2 occurs
+    1 time.\n              %g3 occurs 1 time.\n             %jok occurs 6 times.\n
+    \            %oth occurs 2 times.\n             %pcf occurs 3 times.\n             %qdt
+    occurs 1 time.\n              %ra occurs 1 time.\n             %reg occurs 3 times.\n
+    \       =queston_ occurs 2 times.\n      ___mondung_ occurs 2 times.\n       ___qgiver_
+    occurs 2 times.\n           _book_ occurs 6 times.\n           _gold_ occurs 5
+    times.\n         _qgiver_ occurs 3 times.\n        _upfront_ occurs 2 times.\n\nsid:
+    QuestorOffer. Value: \nI am looking for a very special book, one that is not available
+    in any store, at least not for any price less than astronomical. Recently, I have
+    heard that a copy of it has surfaced not too far from here, in a dungeon. If you
+    will accept this quest to find this tome, I will give you _upfront_ gold pieces
+    now and another _gold_ gold pieces when you return. Do we have a deal then, %pcf?\n\nsid:
+    RefuseQuest$1001. Value: \n                          Very well. I'll look for
+    a\n                           different mercenary then.\n\nsid: AcceptQuest$1002.
+    Value: \n                 Good. I'll give you =queston_ days to get the\n                          book
+    out of ___mondung_ and\n                return. After that time, the _gold_ gold
+    pieces\n                    will be forfeit. The name of the book is\n                               _book_.
+    Good luck,\n                                     %pcf.\n\nsid: QuestComplete.
+    Value: \n                       Ah, marvelous. Here's the _gold_\n                     gold
+    pieces I promised. Thank you very\n                                  much, %pcf.\n\nsid:
+    RumorsDuringQuest$1005. Value: \nThe legal system in %reg has good points and
+    bad ones.\n\nsid: RumorsPostfailure$1006. Value: \nThe legal system in %reg has
+    it good points and bad ones.\n\nsid: RumorsPostsuccess$1007. Value: \n_qgiver_
+    is happy as a harpy about %g3 new acquisition.\n\nsid: QuestorPostsuccess$1008.
+    Value: \nWhat can I do for you, o %ra who brought me _book_?\n\nsid: QuestorPostfailure$1009.
+    Value: \n                            As _book_ is lost once\n                          again,
+    I find it in dubious\n                          taste that you are bothering\n
+    \                             me. Go get stuffed.\n\nsid: QuestLogEntry$1010.
+    Value: \n%qdt:\n _qgiver_ of\n __qgiver_, ___qgiver_ has\n sent me to ___mondung_
+    in\n search of _book_,\n a very rare book. I will be given _gold_\n gold pieces
+    if I return in =queston_ days or less.\n\nsid: $1011. Value: \n                                 You
+    picked up\n                                    _book_.\n\nsid: $1012. Value: \n
+    \                              _qgiver_ will be\n                       angry.
+    This is past the time when\n                        you were to bring %g2 the
+    book.\n\ntag: item. Value:  _gold_ gold\ntag: item. Value:  _upfront_ gold range
+    5 to 50\ntag: item. Value:  _book_ book2\ntag: person. Value:  _qgiver_ group
+    Questor male\ntag: place. Value:  _mondung_ remote dungeon\ntag: clock. Value:
+    \ _queston_ 1.0:10 0 flag 17 range 0 2\nOn task.Attribute: special, value: startup\nCommand:
+    place item _book_ at _mondung_ \nCommand: start timer _queston_ \nCommand: reveal
+    _mondung_ \nCommand: log 1010 step 0 \nCommand: get item _upfront_ \nCommand:
+    make _upfront_ permanent \nOn task.Attribute: sid, value: _queston_\nCommand:
+    have _book_ set _S.03_ \nCommand: end quest \nOn task.Attribute: sid, value: _S.01_\nCommand:
+    clicked item _book_ \nCommand: say 1011 \nOn task.Attribute: sid, value: _S.02_\nCommand:
+    toting _book_ and _qgiver_ clicked \nCommand: give pc _gold_ \nCommand: end quest
+    \nOn task.Attribute: sid, value: _S.03_\nCommand: say 1012 \nCommand: make _book_
+    permanent \n\n3/10/2015 10:53:11 PM *** Started all timers\n\n3/10/2015 10:53:11
+    PM *** Timer (_queston_). Duration: 87000 seconds.\n        running: Yes\n       complete:
+    No\n   unknown flag: 0\n   unknown flag: flag\n   unknown flag: 17\n   unknown
+    flag: range\n   unknown flag: 0\n   unknown flag: 2\n   Started at: 12:07:09 on
+    Sundas, 01 of Midyear, 3E405\n   World Time is: 12:07:09 on Sundas, 01 of Midyear,
+    3E405\n   Time remaining: 87000s\n\n3/10/2015 10:53:11 PM *** 835186ed-dabb-41fa-8426-bd9d69dd17c6\n3/10/2015
+    10:53:11 PM *** unknown element: prelude, \n3/10/2015 10:53:11 PM *** unknown
+    element: statistics, \n3/10/2015 10:53:11 PM *** unknown element: quest, \n3/10/2015
+    10:53:11 PM *** unknown element: __text__, \n3/10/2015 10:53:11 PM *** Created
+    all timers\n\n3/10/2015 10:53:11 PM *** Started all timers\n\n3/10/2015 10:53:11
+    PM *** Timer (_queston_). Duration: 87000 seconds.\n        running: Yes\n       complete:
+    No\n   unknown flag: 0\n   unknown flag: flag\n   unknown flag: 17\n   unknown
+    flag: range\n   unknown flag: 0\n   unknown flag: 2\n   Started at: 12:07:09 on
+    Sundas, 01 of Midyear, 3E405\n   World Time is: 12:07:09 on Sundas, 01 of Midyear,
+    3E405\n   Time remaining: 87000s\n\n3/10/2015 10:53:11 PM *** CDATA: \nQuestFile:
+    ..\\K0C00Y08.Qbn.\nStartsBy: NPC\nQuestee: anyone\nQuestor: merchant\nRepute:
+    0\nQuestId: 8\nMessages: 13\nQuest: K0C00Y08\nMessage panels\n\nCDATA: \nSymbols
+    used in the QRC file:\n              %cn occurs 2 times.\n              %g2 occurs
+    1 time.\n              %g3 occurs 1 time.\n             %jok occurs 6 times.\n
+    \            %oth occurs 2 times.\n             %pcf occurs 3 times.\n             %qdt
+    occurs 1 time.\n              %ra occurs 1 time.\n             %reg occurs 3 times.\n
+    \       =queston_ occurs 2 times.\n      ___mondung_ occurs 2 times.\n       ___qgiver_
+    occurs 2 times.\n           _book_ occurs 6 times.\n           _gold_ occurs 5
+    times.\n         _qgiver_ occurs 3 times.\n        _upfront_ occurs 2 times.\n\nsid:
+    QuestorOffer. Value: \nI am looking for a very special book, one that is not available
+    in any store, at least not for any price less than astronomical. Recently, I have
+    heard that a copy of it has surfaced not too far from here, in a dungeon. If you
+    will accept this quest to find this tome, I will give you _upfront_ gold pieces
+    now and another _gold_ gold pieces when you return. Do we have a deal then, %pcf?\n\nsid:
+    RefuseQuest$1001. Value: \n                          Very well. I'll look for
+    a\n                           different mercenary then.\n\nsid: AcceptQuest$1002.
+    Value: \n                 Good. I'll give you =queston_ days to get the\n                          book
+    out of ___mondung_ and\n                return. After that time, the _gold_ gold
+    pieces\n                    will be forfeit. The name of the book is\n                               _book_.
+    Good luck,\n                                     %pcf.\n\nsid: QuestComplete.
+    Value: \n                       Ah, marvelous. Here's the _gold_\n                     gold
+    pieces I promised. Thank you very\n                                  much, %pcf.\n\nsid:
+    RumorsDuringQuest$1005. Value: \nThe legal system in %reg has good points and
+    bad ones.\n\nsid: RumorsPostfailure$1006. Value: \nThe legal system in %reg has
+    it good points and bad ones.\n\nsid: RumorsPostsuccess$1007. Value: \n_qgiver_
+    is happy as a harpy about %g3 new acquisition.\n\nsid: QuestorPostsuccess$1008.
+    Value: \nWhat can I do for you, o %ra who brought me _book_?\n\nsid: QuestorPostfailure$1009.
+    Value: \n                            As _book_ is lost once\n                          again,
+    I find it in dubious\n                          taste that you are bothering\n
+    \                             me. Go get stuffed.\n\nsid: QuestLogEntry$1010.
+    Value: \n%qdt:\n _qgiver_ of\n __qgiver_, ___qgiver_ has\n sent me to ___mondung_
+    in\n search of _book_,\n a very rare book. I will be given _gold_\n gold pieces
+    if I return in =queston_ days or less.\n\nsid: $1011. Value: \n                                 You
+    picked up\n                                    _book_.\n\nsid: $1012. Value: \n
+    \                              _qgiver_ will be\n                       angry.
+    This is past the time when\n                        you were to bring %g2 the
+    book.\n\ntag: item. Value:  _gold_ gold\ntag: item. Value:  _upfront_ gold range
+    5 to 50\ntag: item. Value:  _book_ book2\ntag: person. Value:  _qgiver_ group
+    Questor male\ntag: place. Value:  _mondung_ remote dungeon\ntag: clock. Value:
+    \ _queston_ 1.0:10 0 flag 17 range 0 2\nOn task.Attribute: special, value: startup\nCommand:
+    place item _book_ at _mondung_ \nCommand: start timer _queston_ \nCommand: reveal
+    _mondung_ \nCommand: log 1010 step 0 \nCommand: get item _upfront_ \nCommand:
+    make _upfront_ permanent \nOn task.Attribute: sid, value: _queston_\nCommand:
+    have _book_ set _S.03_ \nCommand: end quest \nOn task.Attribute: sid, value: _S.01_\nCommand:
+    clicked item _book_ \nCommand: say 1011 \nOn task.Attribute: sid, value: _S.02_\nCommand:
+    toting _book_ and _qgiver_ clicked \nCommand: give pc _gold_ \nCommand: end quest
+    \nOn task.Attribute: sid, value: _S.03_\nCommand: say 1012 \nCommand: make _book_
+    permanent \n\n3/10/2015 10:53:11 PM *** Started all timers\n\n3/10/2015 10:53:11
+    PM *** Timer (_queston_). Duration: 87000 seconds.\n        running: Yes\n       complete:
+    No\n   unknown flag: 0\n   unknown flag: flag\n   unknown flag: 17\n   unknown
+    flag: range\n   unknown flag: 0\n   unknown flag: 2\n   Started at: 12:07:09 on
+    Sundas, 01 of Midyear, 3E405\n   World Time is: 12:07:09 on Sundas, 01 of Midyear,
+    3E405\n   Time remaining: 87000s\n\n3/10/2015 10:56:27 PM *** DFTFU 1.3.6: Arena2
+    path validated.\n"
 --- !u!222 &258195061
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4084,6 +5316,8 @@ MonoBehaviour:
   prefabs:
   - state: 1
     prefabObject: {fileID: 156550, guid: f7271000a46bdce47b2903e918897c23, type: 2}
+  - state: 4
+    prefabObject: {fileID: 156550, guid: f7271000a46bdce47b2903e918897c23, type: 2}
   uiManager: {fileID: 338791047}
 --- !u!1 &1087392628
 GameObject:
@@ -5630,7 +6864,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 0811f78212229814d8c469c916304789, type: 2}
       propertyPath: Arena2Path
-      value: F:/dropbox/Dropbox/Games/dosbox/drive/DAGGER/ARENA2
+      value: C:/Users/dan/Dropbox/Games/dosbox/drive/DAGGER/ARENA2
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 0811f78212229814d8c469c916304789, type: 2}
       propertyPath: Option_ImportPointLights

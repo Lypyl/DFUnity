@@ -15,18 +15,9 @@ Message panels
 </prelude>
 <QRC>
 <text sid="QuestorOffer">
-You've heard of _book_?
-It is a very rare tome, almost never seen, but I have located a copy buried away in a dungeon here in %reg. I will give you _upfront_ gold pieces now and _gold_ gold once the book is in my hands. Agreed?
+You've heard of _book_? It is a very rare tome, almost never seen, but I have located a copy buried away in a dungeon here in %reg. I will give you _upfront_ gold pieces now and _gold_ gold once the book is in my hands. Agreed?
 <section/>
-I am looking for a very special book, one
-that is not available in any store, at least not
-for any price less than astronomical. Recently, I
-have heard that a copy of it has surfaced not too
-far from here, in a dungeon. If you will accept
-this quest to find this tome, I will give you
-_upfront_ gold pieces now and another _gold_ gold
-pieces when you return. Do we have
-a deal then, %pcf?
+I am looking for a very special book, one that is not available in any store, at least not for any price less than astronomical. Recently, I have heard that a copy of it has surfaced not too far from here, in a dungeon. If you will accept this quest to find this tome, I will give you _upfront_ gold pieces now and another _gold_ gold pieces when you return. Do we have a deal then, %pcf?
 </text>
 <text sid="RefuseQuest$1001">
                           Very well. I'll look for a

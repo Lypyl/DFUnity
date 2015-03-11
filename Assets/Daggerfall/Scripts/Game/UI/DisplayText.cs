@@ -4,11 +4,11 @@ using UnityEngine.UI;
 
 namespace Daggerfall.Game.UI { 
     public class DisplayText : MonoBehaviour {
+        public Text text;
 
         void displayText(string output) { 
-            Text t = gameObject.GetComponent<Text>();
-            if (t) { 
-                t.text = output;
+            if (text) { 
+                text.text = output;
             }
         }
 
